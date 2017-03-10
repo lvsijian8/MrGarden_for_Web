@@ -2,8 +2,8 @@ FlowerpotTomcat/*
 
 !FlowerpotTomcat/src/
 
+FlowerpotTomcat/src/1.properties
+
 !FlowerpotTomcat/web/
 
-*.properties
-
-*.class
+FlowerpotTomcat/web/WEB-INF/classes

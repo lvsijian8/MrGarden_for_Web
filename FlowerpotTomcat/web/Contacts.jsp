@@ -65,11 +65,11 @@
 <div class="content">
     <div class="container_12">
         <div class="grid_8">
-            <h2>How to Find Us</h2>
+            <h2>我们在这里</h2>
             <div class="map">
                 <div class="img_block fleft">
                     <figure class="img_inner">
-                        <iframe src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Brooklyn,+New+York,+NY,+United+States&amp;aq=0&amp;sll=37.0625,-95.677068&amp;sspn=61.282355,146.513672&amp;ie=UTF8&amp;hq=&amp;hnear=Brooklyn,+Kings,+New+York&amp;ll=40.649974,-73.950005&amp;spn=0.01628,0.025663&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe>
+                        <iframe src="map.html"></iframe>
                     </figure>
                     <span class="l"></span>
                     <span class="ll"></span>
@@ -80,58 +80,58 @@
                     <span class="rb"></span>
                     <span class="rrb"></span>
                 </div>
-                <div class="extra_wrapper">
-                    <p class="pt1">Get 24/7 support for all <span class="col1"><a href="http://www.templatemonster.com/website-templates.php" rel="nofollow">premium templates</a></span> at our site. We do not provide it for free templates.</p>
-                    <p>If you need any help with customization of a chosen free theme, ask <span class="col1"><a href="http://www.templatetuning.com/" rel="nofollow">Template Tuning</a></span> to help you.</p>
-                    <address>
-                        <dl>
-                            <dt>The Company Name Inc. <br>
-                                8901 Marmora Road,<br>
-                                Glasgow, D04 89GR.
-                            </dt>
-                            <dd><span>Freephone:</span>+1 800 559 6580</dd>
-                            <dd><span>Telephone:</span>+1 800 603 6035</dd>
-                            <dd><span>FAX:</span>+1 800 889 9898</dd>
-                            <dd>E-mail: <a href="#" class="link-1">mail@demolink.org</a></dd>
-                        </dl>
-                    </address>
-                </div>
             </div>
         </div>
         <div class="grid_4">
-            <h2>Contact Form</h2>
+            <h2>联系我们</h2>
             <form id="form">
                 <div class="success_wrapper">
                     <div class="success-message">Contact form submitted</div>
                 </div>
                 <label class="name">
-                    <input type="text" placeholder="Name:" data-constraints="@Required @JustLetters" />
-                    <span class="empty-message">*This field is required.</span>
-                    <span class="error-message">*This is not a valid name.</span>
+                    <input type="text" placeholder="姓名:" data-constraints="@Required @JustLetters" />
+                    <span class="empty-message">*请填写您的用户名.</span>
+                    <span class="error-message">*这不是有效的用户名.</span>
                 </label>
                 <label class="email">
                     <input type="text" placeholder="E-mail:" data-constraints="@Required @Email" />
-                    <span class="empty-message">*This field is required.</span>
-                    <span class="error-message">*This is not a valid email.</span>
+                    <span class="empty-message">*请填写您的email.</span>
+                    <span class="error-message">*这不是有效的email.</span>
                 </label>
                 <label class="phone">
-                    <input type="text" placeholder="Phone:" data-constraints="@Required @JustNumbers"/>
-                    <span class="empty-message">*This field is required.</span>
-                    <span class="error-message">*This is not a valid phone.</span>
+                    <input type="text" placeholder="手机:" data-constraints="@Required @JustNumbers @Length(min=11,max=11)"/>
+                    <span class="empty-message">*请填写您的手机号码.</span>
+                    <span class="error-message">*这不是有效的手机号码.</span>
                 </label>
-                <label class="message">
-                    <textarea placeholder="Message:" data-constraints='@Required @Length(min=20,max=999999)'></textarea>
-                    <span class="empty-message">*This field is required.</span>
-                    <span class="error-message">*The message is too short.</span>
+                <label class="内容:">
+                    <textarea placeholder="Message:" data-constraints='@Required @Length(min=5,max=999999)'></textarea>
+                    <span class="empty-message">*请填写您要发送的内容.</span>
+                    <span class="error-message">*不能少于5个字.</span>
                 </label>
                 <div>
                     <div class="clear"></div>
                     <div class="btns">
-                        <a href="#" data-type="reset" class="btn">clear</a>
-                        <a href="#" data-type="submit" class="btn">send</a>
+                        <a href="#" data-type="reset" class="btn">重置</a>
+                        <a href="#" data-type="submit" class="btn">发送</a>
                     </div>
                 </div>
             </form>
+            <div class="extra_wrapper">
+                <p class="pt1">Get 24/7 support for all <span class="col1"><a href="http://www.templatemonster.com/website-templates.php" rel="nofollow">premium templates</a></span> at our site. We do not provide it for free templates.</p>
+                <p>If you need any help with customization of a chosen free theme, ask <span class="col1"><a href="http://www.templatetuning.com/" rel="nofollow">Template Tuning</a></span> to help you.</p>
+                <address>
+                    <dl>
+                        <dt>The Company Name Inc. <br>
+                            8901 Marmora Road,<br>
+                            Glasgow, D04 89GR.
+                        </dt>
+                        <dd><span>Freephone:</span>+1 800 559 6580</dd>
+                        <dd><span>Telephone:</span>+1 800 603 6035</dd>
+                        <dd><span>FAX:</span>+1 800 889 9898</dd>
+                        <dd>E-mail: <a href="#" class="link-1">mail@demolink.org</a></dd>
+                    </dl>
+                </address>
+            </div>
         </div>
     </div>
 </div>
@@ -140,7 +140,7 @@
     <div class="container_12">
         <div class="grid_12 ">
             <div class="copy">
-                Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+                Copyright &copy; 2017.Company name All rights reserved.
             </div>
         </div>
         <div class="clear"></div>
