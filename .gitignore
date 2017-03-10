@@ -1,0 +1,9 @@
+FlowerpotTomcat/*
+
+!FlowerpotTomcat/src/
+
+!FlowerpotTomcat/web/
+
+*.properties
+
+*.class
