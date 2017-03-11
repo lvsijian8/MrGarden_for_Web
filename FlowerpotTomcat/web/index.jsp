@@ -61,10 +61,10 @@
         <div class="grid_12">
           <nav class="horizontal-nav full-width horizontalNav-notprocessed">
             <ul class="sf-menu">
-              <li class="current"><a href="index.jsp">首页</a></li>
-              <li><a href="index-1.html">图表</a></li>
-              <li><a href="index-2.html">设备</a></li>
-              <li><a href="index-3.html">价格</a></li>
+              <li><a href="index.jsp">首页</a></li>
+              <li><a href="chart.jsp">图表</a></li>
+              <li><a href="equipment.jsp">设备</a></li>
+              <li><a href="price.jsp">价格</a></li>
               <li><a href="Contacts.jsp">联系我们</a></li>
               <li><a href="login.jsp">登录|注册</a></li>
             </ul>
@@ -76,7 +76,7 @@
     </div>
   </header>
   <!--==============================Content=================================-->
-  <div class="content"><div class="ic">More Website Templates @ TemplateMonster.com - January 27, 2014!</div>
+  <div class="content">
     <div class="container_12">
       <div class="grid_4">
         <div class="block1">
@@ -92,7 +92,7 @@
             <span class="rrb"></span>
           </div>
           <div class="text1">Landscape Design</div><br>
-          <a href="#" class="btn">more</a>
+          <a href="#" class="btn">查看更多</a>
         </div>
       </div>
       <div class="grid_4">
@@ -109,7 +109,7 @@
             <span class="rrb"></span>
           </div>
           <div class="text1">Garden Plans</div><br>
-          <a href="#" class="btn">more</a>
+          <a href="#" class="btn">查看更多</a>
         </div>
       </div>
       <div class="grid_4">
@@ -126,33 +126,31 @@
             <span class="rrb"></span>
           </div>
           <div class="text1">Planting Design</div><br>
-          <a href="#" class="btn">more</a>
+          <a href="#" class="btn">查看更多</a>
         </div>
       </div>
       <div class="clear"></div>
       <div class="grid_8">
-        <h3>About Us</h3>
+        <h3>关于系统</h3>
         <div id="owl">
           <div class="item">
-            <p>Go to TemplateMonster.com blog to read more about this <span class="col1"><a href="http://sc.chinaz.com/">freebie</a></span>. </p>
-            <p>Interested in more examples of <span class="col1"><a href="http://sc.chinaz.com/" rel="nofollow">Exterior Design Website Templates</a></span>? Visit the same name category of premium themes.</p>
-            Vivamus at magna non nunc tristique rhoncusiquam nibh ante, egestas id dictum acommodo.
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。 </p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在硬件方面使用无线通信模块使得监控与控制不受空间和时间限制，并且使用了成本低易于推广的开源硬件，采用DS3231高精度时钟模块让周期栽培的时间更加精准，以及大量高精度传感器使数据更加准确。</p>
           </div>
           <div class="item">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus obcaecati dicta. Saepe delectus consequuntur atque quaerat sit accusamus aperiam voluptas laboriosam molestias nihil magni sunt nesciunt ad deserunt ea consequatur!
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在功能方面即使是无人看护的情况下系统也能保证植物的正常生长，并且通过机器学习使得智慧盆栽可以在较短的时间内即可掌握不同植物在不同时期的独特需求从而始终做到以最合适的方式进行护养。并且在种植业中可以轻易的实现无人远程批量管理。在数据采集方面最优算法用于排除异常数据大大提高数据的准确性。
           </div>
         </div>
       </div>
       <div class="grid_4">
-        <h3>What We Do</h3>
+        <h3>系统能做什么</h3>
         <ul class="list">
-          <li><a href="#">Front Yards</a></li>
-          <li><a href="#">Backyards</a></li>
-          <li><a href="#">Garden Ponds</a></li>
-          <li><a href="#">Patios</a></li>
-          <li><a href="#">Garden Paths &amp; Walkways</a></li>
-          <li><a href="#">Landscape Steps &amp; Stairs</a></li>
-          <li><a href="#">Garden Arches &amp; Arbors</a></li>
+          <li><a href="#">盆栽添加删除与共享</a></li>
+          <li><a href="#">浇灌指令发出</a></li>
+          <li><a href="#">数据采集间隔设置</a></li>
+          <li><a href="#">拍照指令的发出</a></li>
+          <li><a href="#">数据的报表管理</a></li>
+          <li><a href="#">盆栽的模式管理</a></li>
         </ul>
       </div>
     </div>
@@ -160,7 +158,7 @@
   <div class="bottom_block">
     <div class="container_12">
       <div class="grid_3">
-        <h3>Top Projects</h3>
+        <h3>顶级项目</h3>
         <div id="owl1">
           <div class="item">
             <div class="img_block ib1">
@@ -191,23 +189,23 @@
         </div>
       </div>
       <div class="grid_4 prefix_1">
-        <h3>Latest News</h3>
+        <h3>最新消息</h3>
         <p class="col1">
-          <time datetime="2014-01-01">04.01.14</time> -
-          <a href="#">Your Garden</a>
+          <time datetime="2014-01-01">03.11.17</time> -
+          <a href="#">花盆</a>
         </p>
-        Curabitur vel lorem sit amet nullaertylllamcr fermentum. In vitae varius augue, eu onse ligula. Etiam dui er laoreet sit amet est ve
+        花盆测试中。。。。。。
       </div>
       <div class="grid_4">
-        <h3>Newsletter Sign Up</h3>
-        <p>In vitae varius augue, eu onse ligula. Etiam dui er laoreet sit amet est ve commodo </p>
+        <h3>邮件订阅</h3>
+        <p>输入您的邮箱订阅网站最新信息 </p>
         <form id="newsletter">
           <div class="rel">
-            <div class="success">Your subscribe request has been sent!</div>
+            <div class="success">您的订阅请求以成功发送!</div>
             <label class="email">
-              <input type="email" value="Enter your e-mail here..." >
-              <a href="#" class="" data-type="submit">submit</a>
-              <span class="error">*This is not a valid email address.</span>
+              <input type="email" value="请输入您的邮箱..." >
+              <a href="#" class="" data-type="submit">提交</a>
+              <span class="error"><font color="red">*这不是有效的邮箱地址.</font></span>
             </label>
           </div>
         </form>

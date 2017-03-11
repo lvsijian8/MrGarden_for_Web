@@ -55,12 +55,14 @@
             </div>
             <div class="cont_forms" >
                 <div class="cont_img_back_"> <img src="images/po.jpg" alt="" /> </div>
+                <form>
                 <div class="cont_form_login"> <a href="#" onClick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
                     <h2>登录</h2>
                     <input type="email" placeholder="Email" id="email1" required/>
                     <input type="password" placeholder="密码" id="password1" required />
-                    <button class="btn_login" onClick="cambiar_login()">登录</button>
+                    <button class="btn_login" onClick="login()">登录</button>
                 </div>
+                </form>
                 <form>
                 <div class="cont_form_sign_up"> <a href="#" onClick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
                     <h2>注册</h2>
@@ -68,7 +70,7 @@
                     <input type="text" placeholder="用户名" required="required"/>
                     <input type="password" placeholder="密码" id="password2" required="required"/>
                     <input type="password" placeholder="再次输入密码" id="password3" onblur="pd()" required="required" />
-                    <button type="submit" class="btn_sign_up" onClick="cambiar_sign_up()">注册</button>
+                    <button type="submit" class="btn_sign_up" onClick="sign_up()">注册</button>
                 </div>
                 </form>
             </div>

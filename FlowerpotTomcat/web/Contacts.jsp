@@ -48,9 +48,9 @@
                 <nav class="horizontal-nav full-width horizontalNav-notprocessed">
                     <ul class="sf-menu">
                         <li><a href="index.jsp">首页</a></li>
-                        <li><a href="index-1.html">图表</a></li>
-                        <li><a href="index-2.html">设备</a></li>
-                        <li><a href="index-3.html">价格</a></li>
+                        <li><a href="chart.jsp">图表</a></li>
+                        <li><a href="equipment.jsp">设备</a></li>
+                        <li><a href="price.jsp">价格</a></li>
                         <li><a href="Contacts.jsp">联系我们</a></li>
                         <li><a href="login.jsp">登录|注册</a></li>
                     </ul>

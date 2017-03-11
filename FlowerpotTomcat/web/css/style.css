@@ -220,10 +220,10 @@ a.btn:hover {
 
 /*header*/
 header {
-    background: url(../images/header_img.jpg) center -240px no-repeat;
+    background: url(../images/header_img.jpg) center -120px no-repeat;
 	display: block;
     overflow: hidden;
-    padding: 42px 0 0;
+    padding: 100px 0 0;
     position: relative;
 
 }
@@ -256,7 +256,6 @@ header h1 {
 header h1 a {
 	display: inline-block;
 	overflow: hidden;
-	width: 205px;
 	font-size: 0;
 	line-height: 0;
 	text-indent: -999px;
