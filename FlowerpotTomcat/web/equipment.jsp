@@ -27,6 +27,18 @@
             $().UItoTop({ easingType: 'easeOutQuart' });
         })
     </script>
+
+    <script type="text/javascript" language="javascript">
+        function iFrameHeight() {
+            var ifm= document.getElementById("iframepage");
+            var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument;
+            if(ifm != null && subWeb != null) {
+                ifm.height = subWeb.body.scrollHeight;
+                ifm.width = subWeb.body.scrollWidth;
+            }
+        }
+    </script>
+
 </head>
 <body id="top">
 <header>
@@ -62,16 +74,17 @@
 
 <!--==============================Content=================================-->
     <div>
-        <div id="equipment1">
-            <div>虎尾兰</div><div></div>
-        </div>
+        <figure>
+            <iframe src="guanli.html" width="100%" height="400px"></iframe>
+        </figure>
     </div>
+
 <!--==============================footer=================================-->
 <footer>
     <div class="container_12">
         <div class="grid_12 ">
             <div class="copy">
-                Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+                Copyright &copy; 2014.Company name All rights reserved.
             </div>
         </div>
         <div class="clear"></div>

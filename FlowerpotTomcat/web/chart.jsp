@@ -64,14 +64,6 @@
     </header>
 
     <!--==============================Content=================================-->
-    <div style="float: right">
-        <form>
-            <font color="gray" size="20px">请选择您的花盆类型：</font><select name="pot">
-                <option value="虎尾兰" selected>虎尾兰</option>
-                <option value="观音竹">观音竹</option>
-            </select>
-        </form>
-    </div>
     <div style="text-align:center;clear:both;">
         <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
         <script src="/follow.js" type="text/javascript"></script>
@@ -172,7 +164,7 @@
         <div class="container_12">
             <div class="grid_12 ">
                 <div class="copy">
-                    Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+                    Copyright &copy; 2014.Company name All rights reserved.
                 </div>
             </div>
             <div class="clear"></div>

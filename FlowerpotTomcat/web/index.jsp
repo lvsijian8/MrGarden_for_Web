@@ -201,7 +201,7 @@
         <p>输入您的邮箱订阅网站最新信息 </p>
         <form id="newsletter">
           <div class="rel">
-            <div class="success">您的订阅请求以成功发送!</div>
+            <div class="success">您的订阅请求已成功发送!</div>
             <label class="email">
               <input type="email" value="请输入您的邮箱..." >
               <a href="#" class="" data-type="submit">提交</a>
@@ -217,7 +217,7 @@
     <div class="container_12">
       <div class="grid_12 ">
         <div class="copy">
-          Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+          Copyright &copy; 2014.Company name All rights reserved.
         </div>
       </div>
       <div class="clear"></div>

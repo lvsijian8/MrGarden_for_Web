@@ -158,7 +158,7 @@
     <div class="container_12">
         <div class="grid_12 ">
             <div class="copy">
-                Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+                Copyright &copy; 2014.Company name All rights reserved.
             </div>
         </div>
         <div class="clear"></div>

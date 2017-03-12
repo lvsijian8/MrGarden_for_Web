@@ -101,7 +101,6 @@ ul {
 	list-style: none;
 }
 
-
 .page1 .list {
     margin-top: -1px;
 }
@@ -114,7 +113,6 @@ ul.list li {
 ul.list  li+li {
     margin-top: 6px;
 }
-
 
 /****Links****/
 
@@ -870,3 +868,4 @@ footer {
     transition: all 0.3s ease-out; 
     position: absolute;
 }
+
