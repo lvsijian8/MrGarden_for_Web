@@ -73,18 +73,30 @@
 </header>
 
 <!--==============================Content=================================-->
-    <div>
-        <figure>
-            <iframe src="guanli.html" width="100%" height="400px"></iframe>
-        </figure>
+    <div  style="text-align: center;background-color: #f9f9f9">
+        <div style="padding: 18px">
+            <h1 style="font-size: 24px">设备状态</h1>
+        </div>
+        <div>
+            <figure>
+                <iframe src="guanli.html" width="80%" height="400px" ></iframe>
+            </figure>
+        </div>
+        <div style="padding: 18px">
+            <h1 style="font-size: 24px">设备控制</h1>
+        </div>
+        <div style="margin: 0 40px 0 0">
+            <figure>
+                <iframe src="devices.html" width="85%" height="400px" scrolling="no"></iframe>
+            </figure>
+        </div>
     </div>
-
 <!--==============================footer=================================-->
 <footer>
     <div class="container_12">
         <div class="grid_12 ">
             <div class="copy">
-                Copyright &copy; 2014.Company name All rights reserved.
+                Copyright &copy; 2017.Mr.Flower All rights reserved.
             </div>
         </div>
         <div class="clear"></div>

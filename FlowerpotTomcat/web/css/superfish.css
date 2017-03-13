@@ -24,7 +24,7 @@ nav>.sf-menu {
 	position: relative;
 }
 nav{ position:relative;padding: 0px 0 0 0;}
-.sf-menu ul {position:absolute;top:-999px; display:none;/* left offset of submenus need to match (see below) */}
+.sf-menu ul {position:absolute;top:-999px; display:none;}
 .sf-menu li {float:left;position:relative; }
 .sf-menu>li {
 	z-index: 900;
@@ -105,7 +105,7 @@ nav{ position:relative;padding: 0px 0 0 0;}
 	left: auto !important;
 	bottom: 5px;
 	pointer-events: none;
-	z-index: 999;
+	z-index: 1999;
 }
 
 .sf-menu>li>ul>li.sfHover>a.sf-with-ul:after {
@@ -120,7 +120,7 @@ nav{ position:relative;padding: 0px 0 0 0;}
 /*================================>> 2 Level <<========================================*/
 .sf-menu li ul,.sf-menu li.sfHover>ul{
 	left: 0px;
-	z-index: 999; 
+	z-index: 999;
 	padding-top: 12px;
 	width: 97px;
 	top: 104px;
@@ -152,10 +152,6 @@ nav{ position:relative;padding: 0px 0 0 0;}
 	color:#bcbcbc;	
 
 }
-
-
-
-
 
 .sf-menu li li a:hover, 
 .sf-menu li.sfHover li.sfHover>a {  

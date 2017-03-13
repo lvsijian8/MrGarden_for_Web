@@ -103,8 +103,8 @@
                     <span class="empty-message">*请填写您的手机号码.</span>
                     <span class="error-message">*这不是有效的手机号码.</span>
                 </label>
-                <label class="内容:">
-                    <textarea placeholder="Message:" data-constraints='@Required @Length(min=5,max=999999)'></textarea>
+                <label class="Message:">
+                    <textarea placeholder="内容:" data-constraints='@Required @Length(min=5,max=999999)'></textarea>
                     <span class="empty-message">*请填写您要发送的内容.</span>
                     <span class="error-message">*不能少于5个字.</span>
                 </label>
@@ -140,7 +140,7 @@
     <div class="container_12">
         <div class="grid_12 ">
             <div class="copy">
-                Copyright &copy; 2017.Company name All rights reserved.
+                Copyright &copy; 2017.Mr.Flower All rights reserved.
             </div>
         </div>
         <div class="clear"></div>
