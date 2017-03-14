@@ -61,7 +61,7 @@
                         <li><a href="chart.jsp">图表</a></li>
                         <li><a href="equipment.jsp">设备</a></li>
                         <li><a href="price.jsp">价格</a></li>
-                        <li><a href="Contacts.jsp">联系我们</a></li>
+                        <li><a href="Contacts.jsp">联系</a></li>
                         <li><a href="login.jsp">登录|注册</a></li>
                     </ul>
                 </nav>
@@ -85,9 +85,9 @@
         <div style="padding: 18px">
             <h1 style="font-size: 24px">设备控制</h1>
         </div>
-        <div style="margin: 0 40px 0 0">
+        <div style="margin: 0 20px 0 0">
             <figure>
-                <iframe src="devices.html" width="85%" height="400px" scrolling="no"></iframe>
+                <iframe src="devices.html" width="90%" height="400px" scrolling="no"></iframe>
             </figure>
         </div>
     </div>

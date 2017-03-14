@@ -52,7 +52,7 @@
                             <li><a href="chart.jsp">图表</a></li>
                             <li><a href="equipment.jsp">设备</a></li>
                             <li><a href="price.jsp">价格</a></li>
-                            <li><a href="Contacts.jsp">联系我们</a></li>
+                            <li><a href="Contacts.jsp">联系</a></li>
                             <li><a href="login.jsp">登录|注册</a></li>
                         </ul>
                     </nav>
@@ -70,7 +70,7 @@
     </div>
     <div class="charts-container cf">
         <div class="chart" id="graph-1-container">
-            <h2 class="title">温度</h2>
+            <h2 class="title">温度(0-90°C)</h2>
             <div class="chart-svg">
                 <svg class="chart-line" id="chart-1" viewBox="0 0 80 40">
                     <defs>
@@ -114,7 +114,7 @@
             <div class="triangle green"></div>
         </div>
         <div class="chart" id="graph-2-container">
-            <h2 class="title">湿度</h2>
+            <h2 class="title">湿度(0-90%)</h2>
             <div class="chart-svg">
                 <svg class="chart-line" id="chart-2" viewBox="0 0 80 40">
                 </svg>

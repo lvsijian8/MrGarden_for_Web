@@ -18,7 +18,7 @@ var chart_w = 80;
 var stepX = 77 / 14;
 
 var chart_1_y = [
-  15, 25, 40, 30, 45, 40, 35, 55, 37, 50, 60, 45,70, 78
+  15, 25, 40, 30, 12, 20, 23, 25, 27, 23, 24, 28, 29,30
 ];
 var chart_2_y = [
   80, 65, 65, 40, 55, 34, 54, 50, 60, 64, 55, 27, 24, 30
@@ -75,7 +75,9 @@ function drawLineGraph(graph, points, container, id) {
             myPoints.push(p);
         }
     }
+    function onMouseOver(points) {
 
+    }
     var segments = [];
 
     function createSegments(p_array) {
