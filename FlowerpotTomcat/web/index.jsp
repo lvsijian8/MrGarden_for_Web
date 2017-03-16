@@ -77,7 +77,7 @@
   </header>
   <!--==============================Content=================================-->
   <div class="content">
-    <div class="container_12">
+    <div class="container_12" style="padding-top: 2em">
       <div class="grid_4">
         <div class="block1">
           <div class="img_block">

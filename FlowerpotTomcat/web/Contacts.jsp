@@ -89,17 +89,17 @@
                     <div class="success-message">Contact form submitted</div>
                 </div>
                 <label class="name">
-                    <input type="text" placeholder="姓名:" data-constraints="@Required @JustLetters" />
+                    <input type="text" placeholder="姓名:" data-constraints="@Required @JustLetters" onkeyup="this.value=this.value.replace(' ','')"/>
                     <span class="empty-message">*请填写您的用户名.</span>
                     <span class="error-message">*这不是有效的用户名.</span>
                 </label>
                 <label class="email">
-                    <input type="text" placeholder="E-mail:" data-constraints="@Required @Email" />
+                    <input type="text" placeholder="E-mail:" data-constraints="@Required @Email" onkeyup="this.value=this.value.replace(' ','')"/>
                     <span class="empty-message">*请填写您的email.</span>
                     <span class="error-message">*这不是有效的email.</span>
                 </label>
                 <label class="phone">
-                    <input type="text" placeholder="手机:" data-constraints="@Required @JustNumbers @Length(min=11,max=11)"/>
+                    <input type="text" placeholder="手机:" data-constraints="@Required @JustNumbers @Length(min=11,max=11)" onkeyup="this.value=this.value.replace(' ','')"/>
                     <span class="empty-message">*请填写您的手机号码.</span>
                     <span class="error-message">*这不是有效的手机号码.</span>
                 </label>

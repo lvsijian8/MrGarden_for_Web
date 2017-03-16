@@ -25,6 +25,92 @@
     <link rel="stylesheet" href="css/chart_reset.css">
     <link rel="stylesheet" href="css/chart_style.css" media="screen" type="text/css" />
     <script src="js/modernizr.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <style type="text/css">
+        a:hover,a:focus{
+            text-decoration: none;
+            outline: none;
+        }
+        #accordion{
+            padding-right: 24px;
+            padding-left: 24px;
+            z-index: 1;
+        }
+        #accordion .panel{
+            border: none;
+            box-shadow: none;
+        }
+        #accordion .panel-heading{
+            padding: 0;
+            border-radius: 0;
+            border: none;
+        }
+        #accordion .panel-title{
+            padding: 0;
+        }
+        #accordion .panel-title a{
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            background: #212833;
+            color: #1A3D41;
+            padding: 15px 25px;
+            position: relative;
+            margin-left: -24px;
+            transition: all 0.3s ease 0s;
+        }
+        #accordion .panel-title a.collapsed{
+            background: #1A3D41;
+            color: #212833;
+            margin-left: 0;
+            transition: all 0.3s ease 0s;
+        }
+        #accordion .panel-title a:before{
+            content: "";
+            border-left: 24px solid #212833;
+            border-top: 24px solid transparent;
+            border-bottom: 24px solid transparent;
+            position: absolute;
+            top: 0;
+            right: -24px;
+            transition: all 0.3s ease 0s;
+        }
+        #accordion .panel-title a.collapsed:before{
+            border-left-color: #1A3D41;
+        }
+        #accordion .panel-title a:after{
+            content: "\f106";
+            font-family: 'FontAwesome';
+            position: absolute;
+            top: 30%;
+            right: 15px;
+            font-size: 18px;
+            color: #1A3D41;
+        }
+        #accordion .panel-title a.collapsed:after{
+            content: "\f107";
+            color: #212833;
+        }
+        #accordion .panel-collapse{
+            position: relative;
+        }
+        #accordion .panel-collapse.in:before{
+            content: "";
+            border-right: 24px solid #1A3D41;
+            border-bottom: 18px solid transparent;
+            position: absolute;
+            top: 0;
+            left: -24px;
+        }
+        #accordion .panel-body{
+            font-size: 14px;
+            color: #333;
+            background: #e4e4e4;
+            border-top: none;
+            z-index: 1;
+        }
+    </style>
     <script>
         $(document).ready(function(){
             $().UItoTop({ easingType: 'easeOutQuart' });
@@ -64,6 +150,41 @@
     </header>
 
     <!--==============================Content=================================-->
+    <div class="demo" style="padding: 3em 10em 0 0; background-color: #FFFFFF; text-align: left">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        选择您的花盆
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    <form>
+                                        <input type="radio" name="radio" value="虎尾兰" checked>虎尾兰<br>
+                                        <input type="radio" name="radio" value="观音竹" >观音竹
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <div style="text-align:center;clear:both">
+        <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
+        <script src="/follow.js" type="text/javascript"></script>
+    </div>
     <div style="text-align:center;clear:both;">
         <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
         <script src="/follow.js" type="text/javascript"></script>
