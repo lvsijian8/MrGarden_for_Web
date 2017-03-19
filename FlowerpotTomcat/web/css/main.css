@@ -42,7 +42,6 @@ a {
 	width:100%;
     min-width:1200px;
 	background: #fff;
-	box-shadow: 0px 4px 15px #181818;
 	padding-bottom:16px;
 	padding-bottom:1rem;
 }
@@ -111,7 +110,6 @@ select {
 /*header*/
 header{
 	position:relative;
-	height:72px;
 }
 #logo{
 	float:left;
@@ -221,7 +219,7 @@ header .user{
 	background-color: #CCC;
 	text-align: center;
 	width: 100% !important;
-	border: #CCC 1px solid;z
+	border: #CCC 1px solid;
 }
 #location label{
 	margin: 0em 0em 0.3em;
@@ -296,7 +294,6 @@ header .user{
 /* ui header*/
 h5.ui.header.sprite-icon {
     padding-left:22px;
-    background:url(../images/icon-sprite.png) no-repeat top left;
 }
 h5.ui.header.sprite-icon.data{ background-position: 0 -68px;}
 h5.ui.header.sprite-icon.bird{ background-position: 0 0;}
@@ -325,7 +322,7 @@ h5.ui.header.sprite-icon.switchicon{ background-position: 0 -336px;}
 .ui.type.label{
     background-color:#47a447;
     border-color:#47a447;
-    color:#fff;`
+    color:#fff;
     font-size:12px;
     font-size:0.75rem;
     padding:0 7px!important;
@@ -404,7 +401,6 @@ footer {
 #copyrights .logo {
 	width:164px;
 	height:40px;
-	background:url(../images/logo_footer.png);
 	text-indent:-999em;
 }
 #copyrights p {

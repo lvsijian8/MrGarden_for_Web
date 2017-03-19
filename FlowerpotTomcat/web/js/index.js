@@ -75,9 +75,21 @@ function drawLineGraph(graph, points, container, id) {
             myPoints.push(p);
         }
     }
-    function onMouseOver(points) {
+    /*function onMouseOver(points) {
+        document.getElementById("graph-1-container").onmouseover = function(e) {
 
-    }
+            if ((e.target||window.event.srcElement).tagName.toLowerCase() === 'svg') {
+
+                alert((e.target||window.event.srcElement).innerHTML);
+
+                return false;
+
+            }
+
+            return false;
+
+        };
+    }*/
     var segments = [];
 
     function createSegments(p_array) {

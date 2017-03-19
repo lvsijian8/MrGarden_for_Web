@@ -24,6 +24,9 @@
     <script src="js/jquery.easing.1.3.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="css/framework.css" />
+    <link type="text/css" rel="stylesheet" href="css/main.css" />
     <style type="text/css">
         a:hover,a:focus{
             text-decoration: none;
@@ -174,9 +177,9 @@
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                             <div class="panel-body">
-                                <form>
-                                    <input type="radio" name="radio" value="虎尾兰" checked>虎尾兰<br>
-                                    <input type="radio" name="radio" value="观音竹" >观音竹
+                                <form class="form" method="post">
+                                    <input type="radio" id="hwl" name="radio" value="虎尾兰" checked><label for="hwl">虎尾兰</label><br/>
+                                    <input type="radio" id="gyz" name="radio" value="观音竹" ><label for="gyz">观音竹</label>
                                 </form>
                             </div>
                         </div>
@@ -190,10 +193,6 @@
 <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"></script>
 
-<div style="text-align:center;clear:both">
-    <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
-    <script src="/follow.js" type="text/javascript"></script>
-</div>
     <div  style="text-align: center;background-color: #f9f9f9">
         <div style="padding: 18px">
             <h1 style="font-size: 24px">设备状态</h1>
@@ -206,11 +205,81 @@
         <div style="padding: 18px">
             <h1 style="font-size: 24px">设备控制</h1>
         </div>
-        <div style="margin: 0 20px 0 0">
-            <figure>
-                <iframe src="devices.html" width="90%" height="400px" scrolling="no"></iframe>
-            </figure>
+        <div class="page"  style="background-color: #f9f9f9;width: 60%;padding-left: 5em">
+
+        <!--the main content begin-->
+        <div class="container">
+            <!--the content-->
+            <div class="ui grid">
+
+                <!--the Devicelist-->
+                <div class="twelve wide column">
+                    <!--the device content-->
+                    <div class="ui device two column middle aligned vertical grid segment">
+                        <div class="column verborder" style="padding-left: 7em">
+                            <div class="ui info segment">
+                                <p><img src="images/Watering_Can.png">水</p>
+                                <p>水剩余： <span class="stress">100%</span></p>
+                                <p>上次浇水时间： <span class="stress">1小时前</span></p>
+                                <p>建议浇水时间： <span class="stress">23小时后</span></p>
+                                <p>建议： <span class="stress">水量充足，不需要添加水</span></p>
+                            </div>
+                        </div>
+                        <div class="center aligned column">
+                            <div class="ui buttons">
+                                <input type="button" id="green1" value="点击加水" style="height: 33px;border: 2px solid #f9f9f9;border-radius: 2px;background-color: transparent;"></input>
+                                <a class="ui tiny green button" href="manage.jsp"><i><img src="images/Settings.png" width="14px" height="auto"> </i>管 理</a>
+                                <a class="ui tiny blue button" href="history.jsp"><i><img src="images/Clock.png" width="14px" height="auto"></i>历 史</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--another device content-->
+                    <div class="ui two column device middle aligned vertical grid segment">
+                        <div class="column verborder" style="padding-left: 7em">
+                            <div class="ui info segment">
+                                <p><img src="images/Bottle_of_Water.png">营养液</p>
+                                <p>营养液剩余： <span class="stress">10%</span></p>
+                                <p>上次加营养液时间： <span class="stress">1天前</span></p>
+                                <p>建议加营养液时间： <span class="stress">6天后</span></p>
+                                <p>建议： <span class="stress">营养液余量不足，需要添加营养液</span></p>
+                            </div>
+                        </div>
+                        <div class="center aligned column">
+                            <div class="ui buttons">
+                                <input type="button" id="green2" value="点击施肥" style="height: 33px;border: 2px solid #f9f9f9;border-radius: 2px;background-color: transparent;"></input>
+                                <a class="ui tiny green button" href="#"><i><img src="images/Settings.png" width="14px" height="auto"> </i>管 理</a>
+                                <a class="ui tiny blue button" href="history.jsp"><i><img src="images/Clock.png" width="14px" height="auto"></i>历 史</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+        <script type="text/javascript">
+            var wait=10;
+            function time(i) {
+                if (wait == 0) {
+
+                    i.removeAttribute("disabled");
+                    i.value="继续添加";
+                    wait = 10;
+                } else {
+                    i.setAttribute("disabled", true);
+                    i.value="正在添加";
+
+                    wait--;
+                    setTimeout(function() {
+                            time(i)
+                        },
+                        1000)
+                }
+            }
+            document.getElementById("green1").onclick=function(){time(this);}
+            document.getElementById("green2").onclick=function(){time(this);}
+        </script>
+
+
     </div>
 <!--==============================footer=================================-->
 <footer>

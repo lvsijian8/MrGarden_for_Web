@@ -31,9 +31,9 @@
                     </div>
   					<div class="center aligned column">
     					<div class="ui buttons">
-							<a class="ui tiny green button"><i ><img src="images/Wate.png" width="14px" height="auto"> </i>加 水</a>
-  							<a class="ui tiny blue button" href="#"><i><img src="images/Settings.png" width="14px" height="auto"> </i>管 理</a>
-                            <a class="ui tiny basic button"><i><img src="images/Clock.png" width="14px" height="auto"></i>历 史</a>
+							<input type="button" id="green1" value="点击加水" style="height: 33px;"></input>
+  							<a class="ui tiny blue button" href="manage.jsp"><i><img src="images/Settings.png" width="14px" height="auto"> </i>管 理</a>
+                            <a class="ui tiny green button"><i><img src="images/Clock.png" width="14px" height="auto"></i>历 史</a>
                             
 						</div>
   					</div>
@@ -51,9 +51,9 @@
                     </div>
   					<div class="center aligned column">
     					<div class="ui buttons">
-                            <a class="ui tiny green button"><i ><img src="images/Bottle.png" width="14px" height="auto"> </i>施 肥</a>
+							<input type="button" id="green2" value="点击施肥" style="height: 33px;"></input>
   							<a class="ui tiny blue button" href="#"><i><img src="images/Settings.png" width="14px" height="auto"> </i>管 理</a>
-                            <a class="ui tiny basic button"><i><img src="images/Clock.png" width="14px" height="auto"></i>历 史</a>
+                            <a class="ui tiny green button"><i><img src="images/Clock.png" width="14px" height="auto"></i>历 史</a>
 						</div>
   					</div>
 				</div>
@@ -61,6 +61,29 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+    var wait=10;
+    function time(i) {
+        if (wait == 0) {
+
+            i.removeAttribute("disabled");
+            i.value="继续添加";
+            wait = 10;
+        } else {
+            i.setAttribute("disabled", true);
+            i.value="请勿频繁添加";
+
+            wait--;
+            setTimeout(function() {
+                    time(i)
+                },
+                1000)
+        }
+    }
+    document.getElementById("green1").onclick=function(){time(this);alert("加水成功！");}
+    document.getElementById("green2").onclick=function(){time(this);alert("施肥成功！");}
+</script>
+
 
 </body>
 </html>

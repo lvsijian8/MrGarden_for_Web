@@ -54,7 +54,7 @@
             font-size: 16px;
             font-weight: bold;
             background: #212833;
-            color: #1A3D41;
+            color: #FFFFFF;
             padding: 15px 25px;
             position: relative;
             margin-left: -24px;
@@ -62,7 +62,7 @@
         }
         #accordion .panel-title a.collapsed{
             background: #1A3D41;
-            color: #212833;
+            color: #FFFFFF;
             margin-left: 0;
             transition: all 0.3s ease 0s;
         }
@@ -166,8 +166,8 @@
                             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                 <div class="panel-body">
                                     <form>
-                                        <input type="radio" name="radio" value="虎尾兰" checked>虎尾兰<br>
-                                        <input type="radio" name="radio" value="观音竹" >观音竹
+                                        <input type="radio" id="hwl" name="radio" value="虎尾兰" checked><label for="hwl">虎尾兰</label><br/>
+                                        <input type="radio" id="gyz" name="radio" value="观音竹" ><label for="gyz">观音竹</label>
                                     </form>
                                 </div>
                             </div>
