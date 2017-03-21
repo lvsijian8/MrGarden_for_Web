@@ -64,7 +64,7 @@
               <li><a href="index.jsp">首页</a></li>
               <li><a href="chart.jsp">图表</a></li>
               <li><a href="equipment.jsp">设备</a></li>
-              <li><a href="price.jsp">价格</a></li>
+              <li><a href="price.jsp">花卉</a></li>
               <li><a href="Contacts.jsp">联系</a></li>
               <li><a href="login.jsp">登录|注册</a></li>
             </ul>

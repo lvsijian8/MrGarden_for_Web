@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>历史纪录</title><meta name="format-detection" content="telephone=no" />
+    <title>历史记录</title><meta name="format-detection" content="telephone=no" />
     <link rel="icon" href="images/favicon.ico">
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="stylesheet" href="css/owl.carousel.css">
@@ -23,6 +23,35 @@
     <script src="js/jquery.mobilemenu.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/owl.carousel.js"></script>
+
+    <link rel="stylesheet" href="css/his_index.css"/>
+    <link rel="stylesheet" href="css/his_style.css"/>
+    <style>
+        select {
+            /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+            border: solid 1px #000;
+            width: 170px;
+            height: 20px;
+            /*很关键：将默认的select选择框样式清除*/
+            appearance:none;
+            -moz-appearance:none;
+            -webkit-appearance:none;
+            border-radius: 4px;
+            text-align: center;
+            /*在选择框的最右侧中间显示小箭头图片*/
+            background: url("images/Down.png") no-repeat scroll right center transparent;
+
+
+            /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+            padding-right: 14px;
+        }
+        .selectStyle{
+            display: inline;
+        }
+
+        /*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+        select::-ms-expand { display: none; }
+    </style>
     <script>
         $(document).ready(function(){
             $().UItoTop({ easingType: 'easeOutQuart' });
@@ -62,7 +91,7 @@
                         <li><a href="index.jsp">首页</a></li>
                         <li><a href="chart.jsp">图表</a></li>
                         <li><a href="equipment.jsp">设备</a></li>
-                        <li><a href="price.jsp">价格</a></li>
+                        <li><a href="price.jsp">花卉</a></li>
                         <li><a href="Contacts.jsp">联系</a></li>
                         <li><a href="login.jsp">登录|注册</a></li>
                     </ul>
@@ -74,7 +103,68 @@
     </div>
 </header>
 <!--==============================Content=================================-->
+    <div style="padding-bottom: 3em;text-align: center">
+        <form>
+            <div>
+                <div class="selectStyle">
+                    花盆：<select class="select">
+                    <option value="all">全部</option>
+                    <option value="hwl">虎尾兰</option>
+                    <option value="gyz">观音竹</option>
+                </select>
+                </div>
+                <div class="selectStyle">
+                    操作：<select class="select">
+                    <option value="all">全部</option>
+                    <option value="hwl">浇水</option>
+                    <option value="gyz">施肥</option>
+                </select>
+                </div>
+                <div class="selectStyle">
+                    时间：<input name="datetimelocal" type="datetime-local" style="width: 170px;height: 20px;border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;>
+                </div>
+                <div class="selectStyle">
+                    来源：<select class="select">
+                    <option value="all">全部</option>
+                    <option value="hwl">XXX的app</option>
+                    <option value="gyz">XXX的web</option>
+                </select>
+                </div>
+            </div>
+        </form>
+    </div>
 
+<script src='js/jquery.js'></script><script src='js/jquery.js'></script>
+<script src="js/xiala_index.js"></script><script src="js/index.js"></script></body>
+
+<div id="say">
+    <div class="weizi">
+        <ul class="say_box">
+            <div class="sy">
+                <p>浇水100ml</p>
+            </div>
+            <span class="dateview">2017-5-16</span>
+        </ul>
+        <ul class="say_box">
+            <div class="sy">
+                <p>浇水150ml</p>
+            </div>
+            <span class="dateview">2017-4-30</span>
+        </ul>
+        <ul class="say_box">
+            <div class="sy">
+                <p> 浇水100ml，施肥50ml</p>
+            </div>
+            <span class="dateview">2017-4-16</span>
+        </ul>
+        <ul class="say_box">
+            <div class="sy">
+                <p>浇水100ml</p>
+            </div>
+            <span class="dateview">2017-3-31</span>
+        </ul>
+    </div>
+</div>
 <!--==============================footer=================================-->
 <footer>
     <div class="container_12">
