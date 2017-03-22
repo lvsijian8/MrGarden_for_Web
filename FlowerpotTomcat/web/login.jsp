@@ -39,14 +39,14 @@
                 <div class="col_md_login">
                     <div class="cont_ba_opcitiy">
                         <h2>登录</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur.</p>
+                        <p>点击登录按钮进入.</p>
                         <button class="btn_login" onClick="cambiar_login()">登录</button>
                     </div>
                 </div>
                 <div class="col_md_sign_up">
                     <div class="cont_ba_opcitiy">
                         <h2>注册</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur.</p>
+                        <p>点击注册按钮加入我们.</p>
                         <button class="btn_sign_up" onClick="cambiar_sign_up()">注册</button>
                     </div>
                 </div>

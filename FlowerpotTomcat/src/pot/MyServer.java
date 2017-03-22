@@ -44,7 +44,6 @@ public class MyServer extends HttpServlet {
         {
             out.println("登录失败！");
         }*/
-        System.out.print("!!!!!!!!!!!!!!!!!!!!!!!!!!/n");
         String sql,return1 = "0";//初始值0用于检测return1是否有操作过
         String switchMode = new String(request.getParameter("switchMode").getBytes("ISO8859-1"), "UTF-8");
         try {
