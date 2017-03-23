@@ -121,7 +121,7 @@
                 </select>
                 </div>
                 <div class="selectStyle">
-                    时间：<input name="datetimelocal" type="datetime-local" style="width: 170px;height: 20px;border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;>
+                    时间：<input name="datetimelocal" type="datetime-local" style="width: 170px;height: 20px;border-radius:10%">
                 </div>
                 <div class="selectStyle">
                     来源：<select class="select">

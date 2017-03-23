@@ -210,6 +210,9 @@
             -webkit-transition: all .6s ease-in-out;
             transition: all .6s ease-in-out;
         }
+        td{
+            padding: 1em;
+        }
     </style>
 
 </head>
@@ -236,7 +239,7 @@
     <div id="right-side">
         <div id="first" class="active">
             <h1>虎尾兰</h1>
-            <img src="images/s.jpg">
+            <img src="images/s.jpg" style="padding-bottom: 2em">
         </div>
         <div id="second">
             <h1>虎尾兰</h1>
@@ -247,11 +250,25 @@
                 以排水性较好的砂质壤土较好。其生长适温为20-30℃，越冬温度为10℃。</p>
         </div>
         <div id="third">
-            <h1>养护</h1>
-            <p><font style="padding-right: 2em">浇水</font><img src="images/water_1.png" height="40" width="216"></p>
-            <p><font style="padding-right: 2em">日照</font><img src="images/sun_1.png" height="40" width="216"></p>
-            <p><font style="padding-right: 4em">温度</font><img src="images/Temperature_blue.png" height="40" width="40"><font style="padding-right: 2em">15°C</font><img src="images/Temperature_red.png" height="40" width="40">30°C</p>
-            <p><font style="padding-right: 2em">肥料</font><img src="images/ye_1.png" height="40" width="216"></p>
+            <h1>虎尾兰</h1>
+            <table>
+                <tr>
+                    <td width="100px">浇水</td>
+                    <td><img src="images/water_1.png" height="40" width="216"></td>
+                </tr>
+                <tr>
+                    <td width="100px">日照</td>
+                    <td><img src="images/sun_1.png" height="40" width="216"></td>
+                </tr>
+                <tr>
+                    <td width="100px">温度</td>
+                    <td><img src="images/Temperature_blue.png" height="30" width="30" style="vertical-align:middle;">15°C<img src="images/Temperature_red.png" height="30" width="30" style="vertical-align:middle;margin-left: 1em">30°C</td>
+                </tr>
+                <tr>
+                    <td width="100px">肥料</td>
+                    <td><img src="images/ye_1.png" height="40" width="216"></td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>

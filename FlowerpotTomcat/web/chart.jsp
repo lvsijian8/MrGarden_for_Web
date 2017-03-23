@@ -86,11 +86,11 @@
             top: 30%;
             right: 15px;
             font-size: 18px;
-            color: #1A3D41;
+            color: #FFFFFF;
         }
         #accordion .panel-title a.collapsed:after{
             content: "\f107";
-            color: #212833;
+            color: #FFFFFF;
         }
         #accordion .panel-collapse{
             position: relative;
