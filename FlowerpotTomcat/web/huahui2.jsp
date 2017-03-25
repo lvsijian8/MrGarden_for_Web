@@ -213,6 +213,11 @@
         td{
             padding: 1em;
         }
+        .plant_img{
+            padding-bottom: 2em;
+            height: 300px;
+            width: auto
+        }
     </style>
 
 </head>
@@ -239,7 +244,7 @@
     <div id="right-side">
         <div id="first" class="active">
             <h1>虎尾兰</h1>
-            <img src="images/s.jpg" style="padding-bottom: 2em">
+            <img class="plant_img" src="sql_image/Aloe_vera.jpg">
         </div>
         <div id="second">
             <h1>虎尾兰</h1>
