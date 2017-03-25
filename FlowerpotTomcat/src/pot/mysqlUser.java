@@ -9,12 +9,15 @@ import java.util.ResourceBundle;
 
 public class mysqlUser {
 	public static String driver="com.mysql.jdbc.Driver";
-	public static String url="jdbc:mysql://lvsijian.cn:3306/flowerpot";
+	public static String url="jdbc:mysql://lvsijian.cn:3306/flowerpot?useUnicode=true&characterEncoding=UTF-8&verifyServerCertificate=false&useSSL=false&autoReconnect=true";
 	public static String user="root";
 	public static String password="";
+
+
+
 	public static void User(){
-			ResourceBundle rB = ResourceBundle.getBundle("1");
-			url  = rB.getString("url");
+			ResourceBundle rB = ResourceBundle.getBundle("db");
+			//url  = rB.getString("url");
 			user  = rB.getString("user");
 			password  = rB.getString("password");
 	}
