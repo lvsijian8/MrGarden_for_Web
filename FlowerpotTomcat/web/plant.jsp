@@ -26,6 +26,14 @@
     <link rel="stylesheet" href="css/hua_index.css"/>
     <script type="text/javascript" src="js/jquery1.42.min.js"></script>
     <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+    <style>
+        div.page_normal{color: #a5a6a8; text-align:center; font-size:0px;background-color: #FFFFFF;}
+        .page_normal a,.page_normal .page_current,.page_normal .page_prev{margin-left:10px; padding:5px 7px; border:1px solid #cdcdcd; border-radius:3px; width:25px; height:20px; font-size:18px; display:inline-block;}
+        .page_normal a:hover{color:#ffffff; background-color: #f9f9f9;}
+        .page_normal a{color:#a5a6a8; text-decoration:none;}
+        .page_normal .page_current{color:#ffffff; background-color:#f9f9f9;}
+        .page_normal .page_prev{color:#a5a6a8;}
+    </style>
     <script>
         $(document).ready(function(){
             $().UItoTop({ easingType: 'easeOutQuart' });
@@ -138,6 +146,22 @@
                     <!--wz end-->
 
                 </div>
+            </div>
+        </div>
+        <div style="padding-bottom: 2em;padding-top: 3em;background-color: #FFFFFF;">
+            <div class="page_normal">
+                <a href="#" class="page_prev">&lt;</a>
+                <a href="#" class="page_current">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">7</a>
+                <a href="#">8</a>
+                <a href="#">9</a>
+                <a href="#">10</a>
+                <a href="#" class="page_next">&gt;</a>
             </div>
         </div>
 <!--==============================footer=================================-->
