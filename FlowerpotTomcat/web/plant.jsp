@@ -5,14 +5,24 @@
   Time: 16:46
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="net.sf.json.JSONArray" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    JSONArray FirstPlant = null;
+    if ((FirstPlant = (JSONArray) request.getAttribute("FirstPlant")) == null) {//若是直接访问plant.jsp则先跳转plant,再跳转回来
+%>
+<jsp:forward page="plant"/>
+<%
+    }
+%>
 <html>
 <head>
     <title>花卉</title>
     <meta charset="utf-8">
-    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="telephone=no"/>
     <link rel="icon" href="images/favicon.ico">
-    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="shortcut icon" href="images/favicon.ico"/>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery.js"></script>
     <script src="js/jquery-migrate-1.1.1.js"></script>
@@ -27,16 +37,46 @@
     <script type="text/javascript" src="js/jquery1.42.min.js"></script>
     <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
     <style>
-        div.page_normal{color: #a5a6a8; text-align:center; font-size:0px;background-color: #FFFFFF;}
-        .page_normal a,.page_normal .page_current,.page_normal .page_prev{margin-left:10px; padding:5px 7px; border:1px solid #cdcdcd; border-radius:3px; width:25px; height:20px; font-size:18px; display:inline-block;}
-        .page_normal a:hover{color:#ffffff; background-color: #f9f9f9;}
-        .page_normal a{color:#a5a6a8; text-decoration:none;}
-        .page_normal .page_current{color:#ffffff; background-color:#f9f9f9;}
-        .page_normal .page_prev{color:#a5a6a8;}
+        div.page_normal {
+            color: #a5a6a8;
+            text-align: center;
+            font-size: 0px;
+            background-color: #FFFFFF;
+        }
+
+        .page_normal a, .page_normal .page_current, .page_normal .page_prev {
+            margin-left: 10px;
+            padding: 5px 7px;
+            border: 1px solid #cdcdcd;
+            border-radius: 3px;
+            width: 25px;
+            height: 20px;
+            font-size: 18px;
+            display: inline-block;
+        }
+
+        .page_normal a:hover {
+            color: #ffffff;
+            background-color: #f9f9f9;
+        }
+
+        .page_normal a {
+            color: #a5a6a8;
+            text-decoration: none;
+        }
+
+        .page_normal .page_current {
+            color: #ffffff;
+            background-color: #f9f9f9;
+        }
+
+        .page_normal .page_prev {
+            color: #a5a6a8;
+        }
     </style>
     <script>
-        $(document).ready(function(){
-            $().UItoTop({ easingType: 'easeOutQuart' });
+        $(document).ready(function () {
+            $().UItoTop({easingType: 'easeOutQuart'});
         })
     </script>
 </head>
@@ -74,96 +114,99 @@
 
 <!--==============================Content=================================-->
 <!--content start-->
-        <div id="content">
-            <div class="left" id="learn">
-                <div class="l_content">
-                    <!--wz-->
-                    <div class="wz">
-                        <h3><a href="huahui.jsp" title="虎尾兰">虎尾兰</a></h3>
-                        <dl>
-                            <dt><img src="images/s.jpg" width="200"  height="123" alt=""></dt>
-                            <dd>
-                                <p class="dd_text_1">学名：Sansevieria trifasciata Prain.<br/>
-                                    别名：名虎皮兰，锦兰，千岁兰、虎尾掌、黄尾兰或岳母舌。<br/>
-                                    分类：百合科，虎尾兰属。<br/>
-                                    虎尾兰适应性强，性喜温暖湿润，耐干旱，喜光又耐阴。对土壤要求不严，<br/>
-                                    以排水性较好的砂质壤土较好。其生长适温为20-30℃，越冬温度为10℃。</p>
+<div id="content">
+    <div class="left" id="learn">
+        <div class="l_content">
+            <!--wz-->
+            <div class="wz">
+                <h3><a href="huahui.jsp" title="虎尾兰"><%=FirstPlant.getJSONObject(1).get("namec")%>
+                </a></h3>
+                <dl>
+                    <dt><img src="sql_image<%=FirstPlant.getJSONObject(1).get("pic")%>" width="200" height="123" alt="">
+                    </dt>
+                    <dd>
+                        <p class="dd_text_1"><%=FirstPlant.getJSONObject(1).get("brief")%>
+                        </p>
 
-                            </dd>
-                            <div class="clear"></div>
-                        </dl>
-                    </div>
-                    <!--wz end-->
-                    <!--wz-->
-                    <div class="wz">
-                        <h3><a href="#" title="观音竹">观音竹</a></h3>
-                        <dl>
-                            <dt><img src="images/s1.jpg" width="200" height="123" alt=""></dt>
-                            <dd>
-                                <p class="dd_text_1">学名：Rhapis excelsa (thunb.)Henry et Rehd.<br/>
-                                    别名：筋头竹。<br/>
-                                    分类：棕榈科(palmae)，棕竹属。<br/>
-                                    原产我国南部。喜温暖、阴湿和通风良好的环境，宜排水良好、肥沃的沙壤土，<br/>
-                                    不耐寒，冬季温度不低于4℃。</p>
-
-                            </dd>
-                            <div class="clear"></div>
-                        </dl>
-                    </div>
-                    <!--wz end-->
-                    <!--wz-->
-                    <div class="wz">
-                        <h3><a href="#" title="虎尾兰">虎尾兰</a></h3>
-                        <dl>
-                            <dt><img src="images/s.jpg" width="200"  height="123" alt=""></dt>
-                            <dd>
-                                <p class="dd_text_1">学名：Sansevieria trifasciata Prain.<br/>
-                                    别名：名虎皮兰，锦兰，千岁兰、虎尾掌、黄尾兰或岳母舌。<br/>
-                                    分类：百合科，虎尾兰属。<br/>
-                                    虎尾兰适应性强，性喜温暖湿润，耐干旱，喜光又耐阴。对土壤要求不严，<br/>
-                                    以排水性较好的砂质壤土较好。其生长适温为20-30℃，越冬温度为10℃。</p>
-                            </dd>
-                            <div class="clear"></div>
-                        </dl>
-                    </div>
-                    <!--wz end-->
-                    <!--wz-->
-                    <div class="wz">
-                        <h3><a href="#" title="观音竹">观音竹</a></h3>
-                        <dl>
-                            <dt><img src="images/s1.jpg" width="200" height="123" alt=""></dt>
-                            <dd>
-                                <p class="dd_text_1">学名：Rhapis excelsa (thunb.)Henry et Rehd.<br/>
-                                    别名：筋头竹。<br/>
-                                    分类：棕榈科(palmae)，棕竹属。<br/>
-                                    原产我国南部。喜温暖、阴湿和通风良好的环境，宜排水良好、肥沃的沙壤土，<br/>
-                                    不耐寒，冬季温度不低于4℃。</p>
-
-                            </dd>
-                            <div class="clear"></div>
-                        </dl>
-                    </div>
-                    <!--wz end-->
-
-                </div>
+                    </dd>
+                    <div class="clear"></div>
+                </dl>
             </div>
-        </div>
-        <div style="padding-bottom: 2em;padding-top: 3em;background-color: #FFFFFF;">
-            <div class="page_normal">
-                <a href="#" class="page_prev">&lt;</a>
-                <a href="#" class="page_current">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">7</a>
-                <a href="#">8</a>
-                <a href="#">9</a>
-                <a href="#">10</a>
-                <a href="#" class="page_next">&gt;</a>
+            <!--wz end-->
+            <!--wz-->
+            <div class="wz">
+                <h3><a href="huahui.jsp" title="虎尾兰"><%=FirstPlant.getJSONObject(2).get("namec")%>
+                </a></h3>
+                <dl>
+                    <dt><img src="sql_image<%=FirstPlant.getJSONObject(2).get("pic")%>" width="200" height="123" alt="">
+                    </dt>
+                    <dd>
+                        <p class="dd_text_1"><%=FirstPlant.getJSONObject(2).get("brief")%>
+                        </p>
+
+                    </dd>
+                    <div class="clear"></div>
+                </dl>
             </div>
+            <!--wz end-->
+            <!--wz-->
+            <div class="wz">
+                <h3><a href="huahui.jsp" title="虎尾兰"><%=FirstPlant.getJSONObject(3).get("namec")%>
+                </a></h3>
+                <dl>
+                    <dt><img src="sql_image<%=FirstPlant.getJSONObject(3).get("pic")%>" width="200" height="123" alt="">
+                    </dt>
+                    <dd>
+                        <p class="dd_text_1"><%=FirstPlant.getJSONObject(3).get("brief")%>
+                        </p>
+
+                    </dd>
+                    <div class="clear"></div>
+                </dl>
+            </div>
+            <!--wz end-->
+            <!--wz-->
+            <div class="wz">
+                <h3><a href="huahui.jsp" title="虎尾兰"><%=FirstPlant.getJSONObject(4).get("namec")%>
+                </a></h3>
+                <dl>
+                    <dt><img src="sql_image<%=FirstPlant.getJSONObject(4).get("pic")%>" width="200" height="123" alt="">
+                    </dt>
+                    <dd>
+                        <p class="dd_text_1"><%=FirstPlant.getJSONObject(4).get("brief")%>
+                        </p>
+
+                    </dd>
+                    <div class="clear"></div>
+                </dl>
+            </div>
+            <!--wz end-->
+
         </div>
+    </div>
+</div>
+<div style="padding-bottom: 2em;padding-top: 3em;background-color: #FFFFFF;">
+    <div class="page_normal">
+        <%
+            int pageThis = (int) request.getAttribute("page");
+            int pageMax = (int) FirstPlant.getJSONObject(0).get("pageMax");
+            out.println(pageMax);
+            int pagePrev = pageThis - 1;
+            int pageNext = pageThis + 1;
+            if (pageThis != 1)
+                out.print("<a href=\"plant?page=" + pagePrev + "\" class=\"page_prev\">&lt;</a>");//判断是否第一页,是则不显示前一页
+            for(int i=1;i<=pageMax;i++){
+                if(i==pageThis){
+                    out.print("<a class=\"page_current\">"+pageThis+"</a>");//为当前页加特效
+                    continue;
+                }
+                out.print("<a href=\"plant?page="+i+"\">"+i+"</a>");
+            }
+            if (pageThis != pageMax)
+                out.print("<a href=\"plant?page=" + pageNext + "\" class=\"page_next\">&gt;</a>");//判断是否最后一页,是则不显示下一页
+        %>
+    </div>
+</div>
 <!--==============================footer=================================-->
 <footer>
     <div class="container_12">
@@ -175,7 +218,9 @@
         <div class="clear"></div>
     </div>
 </footer>
-<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+<div style="display:none">
+    <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+</div>
 
 </body>
 </html>
