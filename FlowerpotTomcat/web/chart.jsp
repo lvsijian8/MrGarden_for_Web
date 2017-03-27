@@ -181,15 +181,7 @@
     <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js"></script>
 
-    <div style="text-align:center;clear:both">
-        <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
-        <script src="/follow.js" type="text/javascript"></script>
-    </div>
-    <div style="text-align:center;clear:both;">
-        <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
-        <script src="/follow.js" type="text/javascript"></script>
-    </div>
-    <div class="charts-container cf">
+    <div class="charts-container cf" style="padding-bottom: 3em">
         <div class="chart" id="graph-1-container">
             <h2 class="title">温度(0-90°C)</h2>
             <div class="chart-svg">
@@ -281,7 +273,7 @@
     <script src="js/index.js"></script>
 
     <!--==============================footer=================================-->
-    <footer style="background-color: #aea9a9">
+    <footer style="background-color: #53534A">
         <div class="container_12">
             <div class="grid_12 ">
                 <div class="copy">

@@ -38,7 +38,6 @@ a {
 }
 /*the style begin*/
 .page{
-	min-height:100%;
 	width:100%;
     min-width:1200px;
 	background: #fff;
@@ -378,7 +377,6 @@ h5.ui.header.sprite-icon.switchicon{ background-position: 0 -336px;}
 /*footer start*/
 footer {
 	width:100%;
-	height:150px;
     min-width:1200px;
 	background:#323232;
 	position:absolute;

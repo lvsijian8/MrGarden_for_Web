@@ -74,77 +74,79 @@
 
 <!--==============================Content=================================-->
 <!--content start-->
-        <div id="content">
-            <div class="left" id="learn">
-                <div class="l_content">
-                    <!--wz-->
-                    <div class="wz">
-                        <h3><a href="huahui.jsp" title="虎尾兰">虎尾兰</a></h3>
-                        <dl>
-                            <dt><img src="images/s.jpg" width="200"  height="123" alt=""></dt>
-                            <dd>
-                                <p class="dd_text_1">学名：Sansevieria trifasciata Prain.<br/>
-                                    别名：名虎皮兰，锦兰，千岁兰、虎尾掌、黄尾兰或岳母舌。<br/>
-                                    分类：百合科，虎尾兰属。<br/>
-                                    虎尾兰适应性强，性喜温暖湿润，耐干旱，喜光又耐阴。对土壤要求不严，<br/>
-                                    以排水性较好的砂质壤土较好。其生长适温为20-30℃，越冬温度为10℃。</p>
+        <div style="background-color: #FFFFFF">
+            <div id="content">
+                <div class="left" id="learn">
+                    <div class="l_content">
+                        <!--wz-->
+                        <div class="wz">
+                            <h3><a href="huahui.jsp" title="虎尾兰">虎尾兰</a></h3>
+                            <dl>
+                                <dt><img src="images/s.jpg" width="200"  height="123" alt=""></dt>
+                                <dd>
+                                    <p class="dd_text_1">学名：Sansevieria trifasciata Prain.<br/>
+                                        别名：名虎皮兰，锦兰，千岁兰、虎尾掌、黄尾兰或岳母舌。<br/>
+                                        分类：百合科，虎尾兰属。<br/>
+                                        虎尾兰适应性强，性喜温暖湿润，耐干旱，喜光又耐阴。对土壤要求不严，<br/>
+                                        以排水性较好的砂质壤土较好。其生长适温为20-30℃，越冬温度为10℃。</p>
 
-                            </dd>
-                            <div class="clear"></div>
-                        </dl>
-                    </div>
-                    <!--wz end-->
-                    <!--wz-->
-                    <div class="wz">
-                        <h3><a href="#" title="观音竹">观音竹</a></h3>
-                        <dl>
-                            <dt><img src="images/s1.jpg" width="200" height="123" alt=""></dt>
-                            <dd>
-                                <p class="dd_text_1">学名：Rhapis excelsa (thunb.)Henry et Rehd.<br/>
-                                    别名：筋头竹。<br/>
-                                    分类：棕榈科(palmae)，棕竹属。<br/>
-                                    原产我国南部。喜温暖、阴湿和通风良好的环境，宜排水良好、肥沃的沙壤土，<br/>
-                                    不耐寒，冬季温度不低于4℃。</p>
+                                </dd>
+                                <div class="clear"></div>
+                            </dl>
+                        </div>
+                        <!--wz end-->
+                        <!--wz-->
+                        <div class="wz">
+                            <h3><a href="#" title="观音竹">观音竹</a></h3>
+                            <dl>
+                                <dt><img src="images/s1.jpg" width="200" height="123" alt=""></dt>
+                                <dd>
+                                    <p class="dd_text_1">学名：Rhapis excelsa (thunb.)Henry et Rehd.<br/>
+                                        别名：筋头竹。<br/>
+                                        分类：棕榈科(palmae)，棕竹属。<br/>
+                                        原产我国南部。喜温暖、阴湿和通风良好的环境，宜排水良好、肥沃的沙壤土，<br/>
+                                        不耐寒，冬季温度不低于4℃。</p>
 
-                            </dd>
-                            <div class="clear"></div>
-                        </dl>
-                    </div>
-                    <!--wz end-->
-                    <!--wz-->
-                    <div class="wz">
-                        <h3><a href="#" title="虎尾兰">虎尾兰</a></h3>
-                        <dl>
-                            <dt><img src="images/s.jpg" width="200"  height="123" alt=""></dt>
-                            <dd>
-                                <p class="dd_text_1">学名：Sansevieria trifasciata Prain.<br/>
-                                    别名：名虎皮兰，锦兰，千岁兰、虎尾掌、黄尾兰或岳母舌。<br/>
-                                    分类：百合科，虎尾兰属。<br/>
-                                    虎尾兰适应性强，性喜温暖湿润，耐干旱，喜光又耐阴。对土壤要求不严，<br/>
-                                    以排水性较好的砂质壤土较好。其生长适温为20-30℃，越冬温度为10℃。</p>
-                            </dd>
-                            <div class="clear"></div>
-                        </dl>
-                    </div>
-                    <!--wz end-->
-                    <!--wz-->
-                    <div class="wz">
-                        <h3><a href="#" title="观音竹">观音竹</a></h3>
-                        <dl>
-                            <dt><img src="images/s1.jpg" width="200" height="123" alt=""></dt>
-                            <dd>
-                                <p class="dd_text_1">学名：Rhapis excelsa (thunb.)Henry et Rehd.<br/>
-                                    别名：筋头竹。<br/>
-                                    分类：棕榈科(palmae)，棕竹属。<br/>
-                                    原产我国南部。喜温暖、阴湿和通风良好的环境，宜排水良好、肥沃的沙壤土，<br/>
-                                    不耐寒，冬季温度不低于4℃。</p>
+                                </dd>
+                                <div class="clear"></div>
+                            </dl>
+                        </div>
+                        <!--wz end-->
+                        <!--wz-->
+                        <div class="wz">
+                            <h3><a href="#" title="虎尾兰">虎尾兰</a></h3>
+                            <dl>
+                                <dt><img src="images/s.jpg" width="200"  height="123" alt=""></dt>
+                                <dd>
+                                    <p class="dd_text_1">学名：Sansevieria trifasciata Prain.<br/>
+                                        别名：名虎皮兰，锦兰，千岁兰、虎尾掌、黄尾兰或岳母舌。<br/>
+                                        分类：百合科，虎尾兰属。<br/>
+                                        虎尾兰适应性强，性喜温暖湿润，耐干旱，喜光又耐阴。对土壤要求不严，<br/>
+                                        以排水性较好的砂质壤土较好。其生长适温为20-30℃，越冬温度为10℃。</p>
+                                </dd>
+                                <div class="clear"></div>
+                            </dl>
+                        </div>
+                        <!--wz end-->
+                        <!--wz-->
+                        <div class="wz">
+                            <h3><a href="#" title="观音竹">观音竹</a></h3>
+                            <dl>
+                                <dt><img src="images/s1.jpg" width="200" height="123" alt=""></dt>
+                                <dd>
+                                    <p class="dd_text_1">学名：Rhapis excelsa (thunb.)Henry et Rehd.<br/>
+                                        别名：筋头竹。<br/>
+                                        分类：棕榈科(palmae)，棕竹属。<br/>
+                                        原产我国南部。喜温暖、阴湿和通风良好的环境，宜排水良好、肥沃的沙壤土，<br/>
+                                        不耐寒，冬季温度不低于4℃。</p>
 
-                            </dd>
-                            <div class="clear"></div>
-                        </dl>
-                    </div>
-                    <!--wz end-->
+                                </dd>
+                                <div class="clear"></div>
+                            </dl>
+                        </div>
+                        <!--wz end-->
 
+                    </div>
                 </div>
             </div>
         </div>

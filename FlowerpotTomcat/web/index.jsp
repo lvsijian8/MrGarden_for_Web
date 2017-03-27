@@ -92,7 +92,6 @@
             <span class="rrb"></span>
           </div>
           <div class="text1">Landscape Design</div><br>
-          <a href="#" class="btn">查看更多</a>
         </div>
       </div>
       <div class="grid_4">
@@ -109,7 +108,6 @@
             <span class="rrb"></span>
           </div>
           <div class="text1">Garden Plans</div><br>
-          <a href="#" class="btn">查看更多</a>
         </div>
       </div>
       <div class="grid_4">
@@ -126,7 +124,6 @@
             <span class="rrb"></span>
           </div>
           <div class="text1">Planting Design</div><br>
-          <a href="#" class="btn">查看更多</a>
         </div>
       </div>
       <div class="clear"></div>
@@ -145,12 +142,12 @@
       <div class="grid_4">
         <h3>系统能做什么</h3>
         <ul class="list">
-          <li><a href="#">盆栽添加删除与共享</a></li>
-          <li><a href="#">浇灌指令发出</a></li>
-          <li><a href="#">数据采集间隔设置</a></li>
-          <li><a href="#">拍照指令的发出</a></li>
-          <li><a href="#">数据的报表管理</a></li>
-          <li><a href="#">盆栽的模式管理</a></li>
+          <li><a href="article.jsp#article1">盆栽添加删除与共享</a></li>
+          <li><a href="article.jsp#article2">浇灌指令发出</a></li>
+          <li><a href="article.jsp#article3">数据采集间隔设置</a></li>
+          <li><a href="article.jsp#article4">拍照指令的发出</a></li>
+          <li><a href="article.jsp#article5">数据的报表管理</a></li>
+          <li><a href="article.jsp#article6">盆栽的模式管理</a></li>
         </ul>
       </div>
     </div>
@@ -203,15 +200,32 @@
           <div class="rel">
             <div class="success">您的订阅请求已成功发送!</div>
             <label class="email">
-              <input type="email" value="请输入您的邮箱..." >
-              <a href="#" class="" data-type="submit">提交</a>
-              <span class="error"><font color="red">*这不是有效的邮箱地址.</font></span>
+                <input id="email" type="email" value="请输入您的邮箱..." >
+                <a href="#" id="submit1" class="submit1" data-type="submit" onclick="reg()">提交</a>
+                <span class="error"><font color="red">*这不是有效的邮箱地址.</font></span>
             </label>
           </div>
         </form>
       </div>
     </div>
   </div>
+<script>
+    function reg()
+    {
+        var email = document.getElementById("email").value;
+        if (email != "") {
+            var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+            isok= reg.test(email );
+            if (!isok) {
+                alert("邮箱格式不正确，请重新输入！");
+                document.getElementById("email").focus();
+                return false;
+            }
+            alert("提交成功！");
+            window.location.reload();
+        };
+    }
+</script>
   <!--==============================footer=================================-->
   <footer>
     <div class="container_12">

@@ -27,6 +27,7 @@
         $(document).ready(function(){
             $().UItoTop({ easingType: 'easeOutQuart' });
         })
+
     </script>
 </head>
 <body id="top">
@@ -84,27 +85,27 @@
         </div>
         <div class="grid_4">
             <h2>联系我们</h2>
-            <form id="form">
+            <form id="form" name="form1">
                 <div class="success_wrapper">
                     <div class="success-message">Contact form submitted</div>
                 </div>
                 <label class="name">
-                    <input type="text" placeholder="姓名:" data-constraints="@Required @JustLetters" onkeyup="this.value=this.value.replace(' ','')"/>
+                    <input type="text" id="name" placeholder="姓名:" data-constraints="@Required @JustLetters" onkeyup="this.value=this.value.replace(' ','')"/>
                     <span class="empty-message">*请填写您的用户名.</span>
                     <span class="error-message">*这不是有效的用户名.</span>
                 </label>
                 <label class="email">
-                    <input type="text" placeholder="E-mail:" data-constraints="@Required @Email" onkeyup="this.value=this.value.replace(' ','')"/>
+                    <input type="text" id="email" placeholder="E-mail:" data-constraints="@Required @Email" onkeyup="this.value=this.value.replace(' ','')"/>
                     <span class="empty-message">*请填写您的email.</span>
                     <span class="error-message">*这不是有效的email.</span>
                 </label>
                 <label class="phone">
-                    <input type="text" placeholder="手机:" data-constraints="@Required @JustNumbers @Length(min=11,max=11)" onkeyup="this.value=this.value.replace(' ','')"/>
+                    <input type="text" id="tel" placeholder="手机:" data-constraints="@Required @JustNumbers @Length(min=11,max=11)" onkeyup="this.value=this.value.replace(' ','')"/>
                     <span class="empty-message">*请填写您的手机号码.</span>
                     <span class="error-message">*这不是有效的手机号码.</span>
                 </label>
                 <label class="Message:">
-                    <textarea placeholder="内容:" data-constraints='@Required @Length(min=5,max=999999)'></textarea>
+                    <textarea id="txt" placeholder="内容:" data-constraints='@Required @Length(min=5,max=999999)'></textarea>
                     <span class="empty-message">*请填写您要发送的内容.</span>
                     <span class="error-message">*不能少于5个字.</span>
                 </label>
@@ -112,7 +113,7 @@
                     <div class="clear"></div>
                     <div class="btns">
                         <a href="#" data-type="reset" class="btn">重置</a>
-                        <a href="#" data-type="submit" class="btn">发送</a>
+                        <a href="#" data-type="submit" class="btn" onclick="reg()">发送</a>
                     </div>
                 </div>
             </form>
@@ -135,6 +136,43 @@
         </div>
     </div>
 </div>
+<script>
+    function reg()
+    {
+        var name= document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var tel = document.getElementById("tel").value;
+        var txt = document.getElementById("txt").value;
+        if (email != "" && tel!="" && name!="" && txt!="") {
+            var reg1 =/(?!^\d+$)(?!^[a-zA-Z]+$)[a-zA-Z]/;
+            isok1= reg1.test(name);
+            if(!isok1){
+                alert("用户名格式不正确，请重新输入！");
+                document.getElementById("name").focus();
+                return false;
+            }
+            var reg2 = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+            isok2= reg2.test(email );
+            if (!isok2) {
+                alert("邮箱格式不正确，请重新输入！");
+                document.getElementById("email").focus();
+                return false;
+            }
+            if(tel.length!=11){
+                alert("手机号码格式不正确，请重新输入！");
+                document.getElementById("tel").focus();
+                return false;
+            }
+            if(txt.length<5||txt.length>999999){
+                alert("内容格式不正确，请重新输入！");
+                document.getElementById("txt").focus();
+                return false;
+            }
+            alert("提交成功！");
+            window.location.reload();
+        };
+    }
+</script>
 <!--==============================footer=================================-->
 <footer>
     <div class="container_12">
