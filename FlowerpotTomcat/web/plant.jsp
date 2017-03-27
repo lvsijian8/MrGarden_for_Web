@@ -100,7 +100,7 @@
                         <li><a href="index.jsp">首页</a></li>
                         <li><a href="chart.jsp">图表</a></li>
                         <li><a href="equipment.jsp">设备</a></li>
-                        <li><a href="plant.jsp">花卉</a></li>
+                        <li><a href="plant">花卉</a></li>
                         <li><a href="Contacts.jsp">联系</a></li>
                         <li><a href="login.jsp">登录|注册</a></li>
                     </ul>
@@ -119,7 +119,7 @@
         <div class="l_content">
             <!--wz-->
             <div class="wz">
-                <h3><a href="huahui.jsp" title="虎尾兰"><%=FirstPlant.getJSONObject(1).get("namec")%>
+                <h3><a href="plant?plant_id=<%=FirstPlant.getJSONObject(1).get("plant_id")%>"><%=FirstPlant.getJSONObject(1).get("namec")%>
                 </a></h3>
                 <dl>
                     <dt><img src="sql_image<%=FirstPlant.getJSONObject(1).get("pic")%>" width="200" height="123" alt="">
@@ -127,7 +127,6 @@
                     <dd>
                         <p class="dd_text_1"><%=FirstPlant.getJSONObject(1).get("brief")%>
                         </p>
-
                     </dd>
                     <div class="clear"></div>
                 </dl>
@@ -135,7 +134,7 @@
             <!--wz end-->
             <!--wz-->
             <div class="wz">
-                <h3><a href="huahui.jsp" title="虎尾兰"><%=FirstPlant.getJSONObject(2).get("namec")%>
+                <h3><a href="plant?plant_id=<%=FirstPlant.getJSONObject(2).get("plant_id")%>"><%=FirstPlant.getJSONObject(2).get("namec")%>
                 </a></h3>
                 <dl>
                     <dt><img src="sql_image<%=FirstPlant.getJSONObject(2).get("pic")%>" width="200" height="123" alt="">
@@ -143,7 +142,6 @@
                     <dd>
                         <p class="dd_text_1"><%=FirstPlant.getJSONObject(2).get("brief")%>
                         </p>
-
                     </dd>
                     <div class="clear"></div>
                 </dl>
@@ -151,7 +149,7 @@
             <!--wz end-->
             <!--wz-->
             <div class="wz">
-                <h3><a href="huahui.jsp" title="虎尾兰"><%=FirstPlant.getJSONObject(3).get("namec")%>
+                <h3><a href="plant?plant_id=<%=FirstPlant.getJSONObject(3).get("plant_id")%>"><%=FirstPlant.getJSONObject(3).get("namec")%>
                 </a></h3>
                 <dl>
                     <dt><img src="sql_image<%=FirstPlant.getJSONObject(3).get("pic")%>" width="200" height="123" alt="">
@@ -159,7 +157,6 @@
                     <dd>
                         <p class="dd_text_1"><%=FirstPlant.getJSONObject(3).get("brief")%>
                         </p>
-
                     </dd>
                     <div class="clear"></div>
                 </dl>
@@ -167,7 +164,7 @@
             <!--wz end-->
             <!--wz-->
             <div class="wz">
-                <h3><a href="huahui.jsp" title="虎尾兰"><%=FirstPlant.getJSONObject(4).get("namec")%>
+                <h3><a href="plant?plant_id=<%=FirstPlant.getJSONObject(4).get("plant_id")%>"><%=FirstPlant.getJSONObject(4).get("namec")%>
                 </a></h3>
                 <dl>
                     <dt><img src="sql_image<%=FirstPlant.getJSONObject(4).get("pic")%>" width="200" height="123" alt="">
@@ -175,7 +172,6 @@
                     <dd>
                         <p class="dd_text_1"><%=FirstPlant.getJSONObject(4).get("brief")%>
                         </p>
-
                     </dd>
                     <div class="clear"></div>
                 </dl>
@@ -195,12 +191,12 @@
             int pageNext = pageThis + 1;
             if (pageThis != 1)
                 out.print("<a href=\"plant?page=" + pagePrev + "\" class=\"page_prev\">&lt;</a>");//判断是否第一页,是则不显示前一页
-            for(int i=1;i<=pageMax;i++){
-                if(i==pageThis){
-                    out.print("<a class=\"page_current\">"+pageThis+"</a>");//为当前页加特效
+            for (int i = 1; i <= pageMax; i++) {
+                if (i == pageThis) {
+                    out.print("<a class=\"page_current\">" + pageThis + "</a>");//为当前页加特效
                     continue;
                 }
-                out.print("<a href=\"plant?page="+i+"\">"+i+"</a>");
+                out.print("<a href=\"plant?page=" + i + "\">" + i + "</a>");
             }
             if (pageThis != pageMax)
                 out.print("<a href=\"plant?page=" + pageNext + "\" class=\"page_next\">&gt;</a>");//判断是否最后一页,是则不显示下一页

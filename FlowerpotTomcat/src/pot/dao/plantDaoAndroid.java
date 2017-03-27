@@ -11,10 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by lvsijian8 on 2017/3/25.
+ * Created by lvsijian8 on 2017/3/26.
  */
-public class plantDao {
-    public Map findFirstAnd(int id, int next) {//处理安卓植物第一界面
+public class plantDaoAndroid {
+    public Map findFirst(int id, int next) {//处理安卓植物第一界面
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
@@ -22,7 +22,7 @@ public class plantDao {
         Map wai = new HashMap();
         JSONArray array = new JSONArray();
         con = DBConnection.getDBConnection();
-        String sql = "select * from plant plant_id LIMIT ?,?";
+        String sql = "select plant_id,chinese_name,english_name,image_url from plant LIMIT ?,?";
         try {
             prepstmt = con.prepareStatement(sql);
             prepstmt.setInt(1, id);
@@ -49,32 +49,30 @@ public class plantDao {
             return null;
     }
 
-    public JSONArray findFirstWeb(int page,int next) {//处理安卓植物第一界面
-        page=(page-1)*4;
+    public Map findSecond(int id) {//安卓
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
+        Map wai = new HashMap();
         JSONArray array = new JSONArray();
         con = DBConnection.getDBConnection();
-        String sql1="select COUNT(plant_id) from plant";
-        String sql = "select * from plant plant_id LIMIT ?,?";
+        String sql = "select chinese_name,english_name,image_url,watering,sunshine,temperature_min,temperature_max,fertilizer,text,brief from plant where plant_id=?";
         try {
-            prepstmt = con.prepareStatement(sql1);
-            rs = prepstmt.executeQuery();
-            while (rs.next()) {
-                Map params = new HashMap();
-                params.put("pageMax",((rs.getInt(1)-1)/next+1));
-                array.add(params);
-            }
             prepstmt = con.prepareStatement(sql);
-            prepstmt.setInt(1, page);
-            prepstmt.setInt(2, next);
+            prepstmt.setInt(1, id);
             rs = prepstmt.executeQuery();
             while (rs.next()) {
                 Map params = new HashMap();
-                params.put("pic", rs.getString(4));
-                params.put("namec", rs.getString(2));
-                params.put("brief", rs.getString(5));
+                params.put("chinese_name", rs.getString(1));
+                params.put("english_name", rs.getString(2));
+                params.put("image_url", rs.getString(3));
+                params.put("watering", rs.getString(4));
+                params.put("sunshine", rs.getString(5));
+                params.put("temperature_min", rs.getString(6));
+                params.put("temperature_max", rs.getString(7));
+                params.put("fertilizer", rs.getString(8));
+                params.put("brief", rs.getString(10));
+                params.put("text", rs.getString(9));
                 array.add(params);
             }
         } catch (SQLException e) {
@@ -82,6 +80,9 @@ public class plantDao {
         } finally {
             DBConnection.closeDB(con, prepstmt, rs);
         }
-            return array;
+        wai.put("data", array);
+        return wai;
     }
+
+
 }
