@@ -13,19 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <script language="javascript">
-        function checkTel()
-        {
-            var tel = document.getElementById("tel").value;
-            if(tel!=""){
-                var reg1 =/(^\d{11}$)/;
-                isok1= reg1.test(tel);
-                if(!isok1){
-                    alert("手机号码格式不正确，请重新输入！");
-                    document.getElementById("tel").focus();
-                    return false;
-                }
-            }
-        }
+
         function pd()
         {
             var psw1 = document.getElementById("password2").value;
@@ -80,11 +68,11 @@
                 <form>
                 <div class="cont_form_sign_up"> <a href="#" onClick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
                     <h2>注册</h2>
-                    <input type="tel" id="tel" placeholder="手机号" onkeyup="this.value=this.value.replace(' ','')"/>
+                    <input type="tel" id="tel" placeholder="手机号" pattern= "[0-9]{11}" onkeyup="this.value=this.value.replace(' ','')"/>
                     <input type="text" placeholder="用户名" required="required" onkeyup="this.value=this.value.replace(' ','')"/>
                     <input type="password" placeholder="密码" id="password2" required="required" onkeyup="this.value=this.value.replace(' ','')"/>
                     <input type="password" placeholder="再次输入密码" id="password3" onblur="pd()" required="required" onkeyup="this.value=this.value.replace(' ','')"/>
-                    <button type="submit" class="btn_sign_up"onclick="checkTel()">注册</button>
+                    <button type="submit" class="btn_sign_up">注册</button>
                 </div>
                 </form>
             </div>
