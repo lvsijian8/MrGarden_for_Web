@@ -59,7 +59,7 @@
                 <form>
                 <div class="cont_form_login"> <a href="#" onClick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
                     <h2>登录</h2>
-                    <input type="email" placeholder="Email" id="email1" required onkeyup="this.value=this.value.replace(' ','')"/>
+                    <input type="text" placeholder="用户名" required onkeyup="this.value=this.value.replace(' ','')"/>
                     <input type="password" placeholder="密码" id="password1" required onkeyup="this.value=this.value.replace(' ','')"/>
                     <button class="btn_login" onClick="login()">登录</button>
                 </div>
@@ -67,7 +67,7 @@
                 <form>
                 <div class="cont_form_sign_up"> <a href="#" onClick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
                     <h2>注册</h2>
-                    <input type="email" placeholder="Email" id="email2" required="required" onkeyup="this.value=this.value.replace(' ','')"/>
+                    <input type="tel" placeholder="手机号" data-constraints="@Required @JustNumbers @Length(min=11,max=11)" onkeyup="this.value=this.value.replace(' ','')"/>
                     <input type="text" placeholder="用户名" required="required" onkeyup="this.value=this.value.replace(' ','')"/>
                     <input type="password" placeholder="密码" id="password2" required="required" onkeyup="this.value=this.value.replace(' ','')"/>
                     <input type="password" placeholder="再次输入密码" id="password3" onblur="pd()" required="required" onkeyup="this.value=this.value.replace(' ','')"/>

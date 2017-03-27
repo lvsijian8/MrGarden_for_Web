@@ -243,35 +243,31 @@
 
     <div id="right-side">
         <div id="first" class="active">
-            <h1>虎尾兰</h1>
-            <img class="plant_img" src="sql_image/Aloe_vera.jpg">
+            <h1><%=request.getParameter("chinese_name")%></h1>
+            <img class="plant_img" src="sql_image<%=request.getParameter("image_url")%>">
         </div>
         <div id="second">
-            <h1>虎尾兰</h1>
-            <p>学名：Sansevieria trifasciata Prain.<br/>
-                别名：名虎皮兰，锦兰，千岁兰、虎尾掌、黄尾兰或岳母舌。<br/>
-                分类：百合科，虎尾兰属。<br/>
-                虎尾兰适应性强，性喜温暖湿润，耐干旱，喜光又耐阴。对土壤要求不严，<br/>
-                以排水性较好的砂质壤土较好。其生长适温为20-30℃，越冬温度为10℃。</p>
+            <h1><%=request.getParameter("english_name")%></h1>
+            <p><%=request.getParameter("text")%></p>
         </div>
         <div id="third">
-            <h1>虎尾兰</h1>
+            <h1><%=request.getParameter("chinese_name")%></h1>
             <table>
                 <tr>
                     <td width="100px">浇水</td>
-                    <td><img src="images/water_1.png" height="40" width="216"></td>
+                    <td><img src="images/water_<%=request.getParameter("watering")%>.png" height="40" width="216"></td>
                 </tr>
                 <tr>
                     <td width="100px">日照</td>
-                    <td><img src="images/sun_1.png" height="40" width="216"></td>
+                    <td><img src="images/sun_<%=request.getParameter("sunshine")%>.png" height="40" width="216"></td>
                 </tr>
                 <tr>
                     <td width="100px">温度</td>
-                    <td><img src="images/Temperature_blue.png" height="30" width="30" style="vertical-align:middle;">15°C<img src="images/Temperature_red.png" height="30" width="30" style="vertical-align:middle;margin-left: 1em">30°C</td>
+                    <td><img src="images/Temperature_blue.png" height="30" width="30" style="vertical-align:middle;"><%=request.getParameter("temperature_min")%>°C<img src="images/Temperature_red.png" height="30" width="30" style="vertical-align:middle;margin-left: 1em"><%=request.getParameter("temperature_max")%>°C</td>
                 </tr>
                 <tr>
                     <td width="100px">肥料</td>
-                    <td><img src="images/ye_1.png" height="40" width="216"></td>
+                    <td><img src="images/ye_<%=request.getParameter("fertilizer")%>.png" height="40" width="216"></td>
                 </tr>
             </table>
         </div>
