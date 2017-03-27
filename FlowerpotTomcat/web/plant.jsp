@@ -114,73 +114,76 @@
 
 <!--==============================Content=================================-->
 <!--content start-->
-<div id="content">
-    <div class="left" id="learn">
-        <div class="l_content">
-            <!--wz-->
-            <div class="wz">
-                <h3><a href="plant?plant_id=<%=FirstPlant.getJSONObject(1).get("plant_id")%>"><%=FirstPlant.getJSONObject(1).get("namec")%>
-                </a></h3>
-                <dl>
-                    <dt><img src="sql_image<%=FirstPlant.getJSONObject(1).get("pic")%>" width="200" height="123" alt="">
-                    </dt>
-                    <dd>
-                        <p class="dd_text_1"><%=FirstPlant.getJSONObject(1).get("brief")%>
-                        </p>
-                    </dd>
-                    <div class="clear"></div>
-                </dl>
-            </div>
-            <!--wz end-->
-            <!--wz-->
-            <div class="wz">
-                <h3><a href="plant?plant_id=<%=FirstPlant.getJSONObject(2).get("plant_id")%>"><%=FirstPlant.getJSONObject(2).get("namec")%>
-                </a></h3>
-                <dl>
-                    <dt><img src="sql_image<%=FirstPlant.getJSONObject(2).get("pic")%>" width="200" height="123" alt="">
-                    </dt>
-                    <dd>
-                        <p class="dd_text_1"><%=FirstPlant.getJSONObject(2).get("brief")%>
-                        </p>
-                    </dd>
-                    <div class="clear"></div>
-                </dl>
-            </div>
-            <!--wz end-->
-            <!--wz-->
-            <div class="wz">
-                <h3><a href="plant?plant_id=<%=FirstPlant.getJSONObject(3).get("plant_id")%>"><%=FirstPlant.getJSONObject(3).get("namec")%>
-                </a></h3>
-                <dl>
-                    <dt><img src="sql_image<%=FirstPlant.getJSONObject(3).get("pic")%>" width="200" height="123" alt="">
-                    </dt>
-                    <dd>
-                        <p class="dd_text_1"><%=FirstPlant.getJSONObject(3).get("brief")%>
-                        </p>
-                    </dd>
-                    <div class="clear"></div>
-                </dl>
-            </div>
-            <!--wz end-->
-            <!--wz-->
-            <div class="wz">
-                <h3><a href="plant?plant_id=<%=FirstPlant.getJSONObject(4).get("plant_id")%>"><%=FirstPlant.getJSONObject(4).get("namec")%>
-                </a></h3>
-                <dl>
-                    <dt><img src="sql_image<%=FirstPlant.getJSONObject(4).get("pic")%>" width="200" height="123" alt="">
-                    </dt>
-                    <dd>
-                        <p class="dd_text_1"><%=FirstPlant.getJSONObject(4).get("brief")%>
-                        </p>
-                    </dd>
-                    <div class="clear"></div>
-                </dl>
-            </div>
-            <!--wz end-->
+<div style="background-color: #FFFFFF">
+    <div id="content" >
+        <div class="left" id="learn">
+            <div class="l_content">
+                <!--wz-->
+                <div class="wz">
+                    <h3><a href="plant?plant_id=<%=FirstPlant.getJSONObject(1).get("plant_id")%>"><%=FirstPlant.getJSONObject(1).get("namec")%>
+                    </a></h3>
+                    <dl>
+                        <dt><img src="sql_image<%=FirstPlant.getJSONObject(1).get("pic")%>" width="200" height="123" alt="">
+                        </dt>
+                        <dd>
+                            <p class="dd_text_1"><%=FirstPlant.getJSONObject(1).get("brief")%>
+                            </p>
+                        </dd>
+                        <div class="clear"></div>
+                    </dl>
+                </div>
+                <!--wz end-->
+                <!--wz-->
+                <div class="wz">
+                    <h3><a href="plant?plant_id=<%=FirstPlant.getJSONObject(2).get("plant_id")%>"><%=FirstPlant.getJSONObject(2).get("namec")%>
+                    </a></h3>
+                    <dl>
+                        <dt><img src="sql_image<%=FirstPlant.getJSONObject(2).get("pic")%>" width="200" height="123" alt="">
+                        </dt>
+                        <dd>
+                            <p class="dd_text_1"><%=FirstPlant.getJSONObject(2).get("brief")%>
+                            </p>
+                        </dd>
+                        <div class="clear"></div>
+                    </dl>
+                </div>
+                <!--wz end-->
+                <!--wz-->
+                <div class="wz">
+                    <h3><a href="plant?plant_id=<%=FirstPlant.getJSONObject(3).get("plant_id")%>"><%=FirstPlant.getJSONObject(3).get("namec")%>
+                    </a></h3>
+                    <dl>
+                        <dt><img src="sql_image<%=FirstPlant.getJSONObject(3).get("pic")%>" width="200" height="123" alt="">
+                        </dt>
+                        <dd>
+                            <p class="dd_text_1"><%=FirstPlant.getJSONObject(3).get("brief")%>
+                            </p>
+                        </dd>
+                        <div class="clear"></div>
+                    </dl>
+                </div>
+                <!--wz end-->
+                <!--wz-->
+                <div class="wz">
+                    <h3><a href="plant?plant_id=<%=FirstPlant.getJSONObject(4).get("plant_id")%>"><%=FirstPlant.getJSONObject(4).get("namec")%>
+                    </a></h3>
+                    <dl>
+                        <dt><img src="sql_image<%=FirstPlant.getJSONObject(4).get("pic")%>" width="200" height="123" alt="">
+                        </dt>
+                        <dd>
+                            <p class="dd_text_1"><%=FirstPlant.getJSONObject(4).get("brief")%>
+                            </p>
+                        </dd>
+                        <div class="clear"></div>
+                    </dl>
+                </div>
+                <!--wz end-->
 
+            </div>
         </div>
     </div>
 </div>
+
 <div style="padding-bottom: 2em;padding-top: 3em;background-color: #FFFFFF;">
     <div class="page_normal">
         <%
