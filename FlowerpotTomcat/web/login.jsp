@@ -61,7 +61,10 @@
                         <h2>登录</h2>
                         <input type="text" placeholder="用户名" required onkeyup="this.value=this.value.replace(' ','')"/>
                         <input type="password" placeholder="密码" id="password1" required
-                               onkeyup="this.value=this.value.replace(' ','')"/>
+
+                               onkeyup="this.value=this.value.replace(' ','')"/><br/><br/>
+                        <div style="float: right;padding-right: 2em"><input type="checkbox" id="chk" name="chk" style="width: 15px"><font color="#757575">&nbsp;&nbsp;记住密码</font></div>
+                        <br><br>
                         <button class="btn_login" onClick="login()">登录</button>
                     </div>
                 </form>
