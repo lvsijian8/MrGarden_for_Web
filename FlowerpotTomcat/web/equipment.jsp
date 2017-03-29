@@ -275,7 +275,7 @@
                         1000)
                 }
             }
-            document.getElementById("green1").onclick=function(){time(this);}
+            document.getElementById("green1").onclick=function(){time(this);};
             document.getElementById("green2").onclick=function(){time(this);}
         </script>
 

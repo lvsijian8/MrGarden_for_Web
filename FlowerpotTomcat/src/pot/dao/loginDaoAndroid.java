@@ -15,7 +15,7 @@ public class loginDaoAndroid {
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
-        String state="-2";//默认密码错误
+        String state="-3";//默认密码错误
         Boolean isAlready=false;
         con = DBConnection.getDBConnection();
         String sqlAlready = "Select count(user_name) FROM user where user_name=?";
@@ -28,7 +28,7 @@ public class loginDaoAndroid {
                 if(rs.getInt(1)!=0)
                     isAlready=true;
                 else
-                    state="-1";//用户不存在
+                    state="-2";//用户不存在
             }
             if(isAlready){
                 prepstmt = con.prepareStatement(sql);

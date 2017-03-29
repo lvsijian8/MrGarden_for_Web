@@ -12,8 +12,9 @@
 // Object.create function
 if ( typeof Object.create !== "function" ) {
 	Object.create = function( obj ) {
-		function F() {};
-		F.prototype = obj;
+        function F() {
+        }
+        F.prototype = obj;
 		return new F();
 	};
 }
@@ -63,7 +64,7 @@ if ( typeof Object.create !== "function" ) {
 			base.baseClass();
 
 			base.$elem
-			.css({opacity: 0})
+			.css({opacity: 0});
 
 			base.checkTouch();
 			base.eventTypes();
@@ -105,7 +106,7 @@ if ( typeof Object.create !== "function" ) {
 				base.options.autoPlay = 5000;
 			}
 			base.play();
-			base.$elem.find(".owl-wrapper").css("display","block")
+			base.$elem.find(".owl-wrapper").css("display","block");
 
 			if(!base.$elem.is(":visible")){
 				base.watchVisibility();
@@ -332,7 +333,7 @@ if ( typeof Object.create !== "function" ) {
 			var base = this;
 			base.maximumSlide = base.itemsAmount - base.options.items;
 			var maximum = (base.itemsAmount * base.itemWidth) - base.options.items * base.itemWidth;
-				maximum = maximum * -1
+				maximum = maximum * -1;
 			base.maximumPixels = maximum;
 			return maximum;
 		},
@@ -368,7 +369,7 @@ if ( typeof Object.create !== "function" ) {
 
 		buildButtons : function(){
 			var base = this;
-			var buttonsWrapper = $("<div class=\"owl-buttons\"/>")
+			var buttonsWrapper = $("<div class=\"owl-buttons\"/>");
 			base.owlControls.append(buttonsWrapper);
 
 			base.buttonPrev = $("<div/>",{
@@ -711,7 +712,7 @@ if ( typeof Object.create !== "function" ) {
 				var rxTranslate = /translate3d\(0px, 0px, 0px\)/g;
 				var asSupport = eTemp.style.cssText.match(rxTranslate);
 				var bHasSupport = (asSupport !== null && asSupport.length === 1);
-				base.support3d = bHasSupport
+				base.support3d = bHasSupport;
 				return bHasSupport;
 		},
 
@@ -779,7 +780,7 @@ if ( typeof Object.create !== "function" ) {
 				sliding : null,
 				dargging: null,
 				targetElement : null
-			}
+			};
 
 			base.isCssFinish = true;
 
@@ -871,10 +872,10 @@ if ( typeof Object.create !== "function" ) {
 
 				var minSwipe = function(){
 					return  base.newRelativeX / 5;
-				}
+				};
 				var maxSwipe = function(){
 					return  base.maximumPixels + base.newRelativeX / 5;
-				}
+				};
 
 				base.newPosX = Math.max(Math.min( base.newPosX, minSwipe() ), maxSwipe() );
 				if(base.support3d === true){
@@ -899,7 +900,7 @@ if ( typeof Object.create !== "function" ) {
 					base.goTo(newPosition);
 					if(locals.targetElement === event.target && base.isTouch !== true){
 						$(event.target).on("click.disable", function(ev){
-							ev.stopImmediatePropagation()
+							ev.stopImmediatePropagation();
 							ev.stopPropagation();
 							ev.preventDefault();
 							$(event.target).off("click.disable");
@@ -958,10 +959,10 @@ if ( typeof Object.create !== "function" ) {
 			var base = this,
 				direction;
 			if(base.newRelativeX < 0 ){
-				direction = "right"
+				direction = "right";
 				base.playDirection = "next"
 			} else {
-				direction = "left"
+				direction = "left";
 				base.playDirection = "prev"
 			}
 			return direction

@@ -20,10 +20,12 @@ public class plantAndroid extends HttpServlet {
         String fid = new String(request.getParameter("fid").getBytes("ISO8859-1"), "UTF-8");
         plantDaoAndroid plantDao = new plantDaoAndroid();
         Map wai = plantDao.findFirst(Integer.parseInt(fid), 7);
-        response.setContentType("text/json;charset=UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        PrintWriter out = response.getWriter();
-        out.println(wai.toString());
+        if(wai!=null) {
+            response.setContentType("text/json;charset=UTF-8");
+            response.setCharacterEncoding("UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println(wai.toString());
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

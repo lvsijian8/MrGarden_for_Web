@@ -84,7 +84,7 @@
 				if( labels == null || labels.length === 0 )
 				{
 					// If attribute has no label and we want to use, then use the default labels
-					labels_object = new Array();
+					labels_object = [];
 					labels_object[0] = settings.unchecked_label;
 					labels_object[1] = settings.checked_label;
 				}
@@ -192,9 +192,8 @@
 	{
 		if( debug && window.console && window.console.log )
 			window.console.log( "jQuery-LABELAUTY: " + message );
-	};
-
-	function create( input_id, messages_object, label )
+    }
+    function create( input_id, messages_object, label )
 	{
 		var block;
 		var unchecked_message;
@@ -231,6 +230,5 @@
 		}
 
 		return block;
-	};
-
+    }
 }( jQuery ));

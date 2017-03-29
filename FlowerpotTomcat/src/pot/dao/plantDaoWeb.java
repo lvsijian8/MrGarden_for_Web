@@ -3,6 +3,7 @@ package pot.dao;
 import net.sf.json.JSONArray;
 import pot.util.DBConnection;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

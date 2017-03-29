@@ -25,8 +25,8 @@ var chart_2_y = [
 ];
 
 function point(x, y) {
-    x: 0;
-    y: 0;
+    0;
+    0;
 }
 /* DRAW GRID */
 function drawGrid(graph) {
@@ -39,14 +39,14 @@ function drawGrid(graph) {
             "L" + 77 + "," + stepX * i);
         horizontalLine.attr('class', 'horizontal');
         g.add(horizontalLine);
-    };
+    }
     for (i = 0; i <= 14; i++) {
         var horizontalLine = graph.path(
             "M" + stepX * i + "," + 38.7 + " " +
-            "L" + stepX * i + "," + 0)
+            "L" + stepX * i + "," + 0);
         horizontalLine.attr('class', 'vertical');
         g.add(horizontalLine);
-    };
+    }
 }
 drawGrid('#chart-2');
 drawGrid('#chart-1');
@@ -142,7 +142,7 @@ function drawLineGraph(graph, points, container, id) {
               percentageGain = endValue/initValue*100;
               percentageGain = Math.round(percentageGain);
           }
-        };
+        }
         percentageChange();
         findPrefix();
 
@@ -242,7 +242,7 @@ function drawCircle(container,id,progress,parent){
     'id':myID
   });
   
-  var animTime = 1300/*progress / 100*/
+  var animTime = 1300;/*progress / 100*/
   
   prog.animate({
     'stroke-dashoffset':toOffset

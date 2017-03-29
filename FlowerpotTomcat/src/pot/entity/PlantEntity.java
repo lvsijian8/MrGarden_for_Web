@@ -147,9 +147,7 @@ public class PlantEntity {
         if (englishName != null ? !englishName.equals(that.englishName) : that.englishName != null) return false;
         if (imageUrl != null ? !imageUrl.equals(that.imageUrl) : that.imageUrl != null) return false;
         if (brief != null ? !brief.equals(that.brief) : that.brief != null) return false;
-        if (text != null ? !text.equals(that.text) : that.text != null) return false;
-
-        return true;
+        return text != null ? text.equals(that.text) : that.text == null;
     }
 
     @Override

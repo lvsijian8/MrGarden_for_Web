@@ -19,18 +19,18 @@
 			
 		$('body').append('<a href="#" id="'+settings.containerID+'">'+settings.text+'</a>');
 		
-		var button_width = parseInt($(containerIDhash).css("width"))+90
-		var button_width_1 = parseInt($(containerIDhash).css("width"))+20
+		var button_width = parseInt($(containerIDhash).css("width"))+90;
+		var button_width_1 = parseInt($(containerIDhash).css("width"))+20;
 		var max_width = defaults.min_width+button_width;
-		var margin_right_1 = -(defaults.main_width+button_width_1)
-		var margin_right_2 = -(defaults.main_width-20)
+		var margin_right_1 = -(defaults.main_width+button_width_1);
+		var margin_right_2 = -(defaults.main_width-20);
 		
 		function top(){
-			if(($(window).width()<=max_width)&&($(window).width()>=defaults.min_width))$(containerIDhash).stop().animate({marginRight:margin_right_2,right:'50%'})
-			else if($(window).width()<=defaults.min_width)$(containerIDhash).stop().css({marginRight:0,right:10})
+			if(($(window).width()<=max_width)&&($(window).width()>=defaults.min_width))$(containerIDhash).stop().animate({marginRight:margin_right_2,right:'50%'});
+			else if($(window).width()<=defaults.min_width)$(containerIDhash).stop().css({marginRight:0,right:10});
 			else $(containerIDhash).stop().animate({marginRight:margin_right_1,right:'50%'})
 		}
-		top()
+		top();
 		$(containerIDhash).hide().click(function(){			
 			$('html, body').stop().animate({scrollTop:0}, settings.scrollSpeed, settings.easingType);
 			$('#'+settings.containerHoverID, this).stop().animate({'opacity': 0 }, settings.inDelay, settings.easingType);
