@@ -14,12 +14,10 @@
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <script language="javascript">
 
-        function pd()
-        {
+        function pd() {
             var psw1 = document.getElementById("password2").value;
             var psw2 = document.getElementById("password3").value;
-            if(psw1!=psw2)
-            {
+            if (psw1 != psw2) {
                 alert("对不起!重复密码不等于登录密码");
             }
 
@@ -53,27 +51,36 @@
                 </div>
             </div>
             <div class="cont_back_info">
-                <div class="cont_img_back_grey"> <img src="images/po.jpg" alt="" /> </div>
+                <div class="cont_img_back_grey"><img src="images/po.jpg" alt=""/></div>
             </div>
-            <div class="cont_forms" >
-                <div class="cont_img_back_"> <img src="images/po.jpg" alt="" /> </div>
+            <div class="cont_forms">
+                <div class="cont_img_back_"><img src="images/po.jpg" alt=""/></div>
                 <form>
-                <div class="cont_form_login"> <a href="#" onClick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
-                    <h2>登录</h2>
-                    <input type="text" placeholder="用户名" required onkeyup="this.value=this.value.replace(' ','')"/>
-                    <input type="password" placeholder="密码" id="password1" required onkeyup="this.value=this.value.replace(' ','')"/>
-                    <button class="btn_login" onClick="login()">登录</button>
-                </div>
+                    <div class="cont_form_login"><a href="#" onClick="ocultar_login_sign_up()"><i
+                            class="material-icons">&#xE5C4;</i></a>
+                        <h2>登录</h2>
+                        <input type="text" placeholder="用户名" required onkeyup="this.value=this.value.replace(' ','')"/>
+                        <input type="password" placeholder="密码" id="password1" required
+                               onkeyup="this.value=this.value.replace(' ','')"/><br/><br/>
+                        <div style="float: right;padding-right: 2em"><input type="checkbox" id="chk" name="chk" style="width: 15px"><font color="#757575">&nbsp;&nbsp;记住密码</font></div>
+                        <br><br>
+                        <button class="btn_login" onClick="login()">登录</button>
+                    </div>
                 </form>
                 <form>
-                <div class="cont_form_sign_up"> <a href="#" onClick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
-                    <h2>注册</h2>
-                    <input type="tel" id="tel" placeholder="手机号" pattern= "[0-9]{11}" onkeyup="this.value=this.value.replace(' ','')"/>
-                    <input type="text" placeholder="用户名" required="required" onkeyup="this.value=this.value.replace(' ','')"/>
-                    <input type="password" placeholder="密码" id="password2" required="required" onkeyup="this.value=this.value.replace(' ','')"/>
-                    <input type="password" placeholder="再次输入密码" id="password3" onblur="pd()" required="required" onkeyup="this.value=this.value.replace(' ','')"/>
-                    <button type="submit" class="btn_sign_up">注册</button>
-                </div>
+                    <div class="cont_form_sign_up"><a href="#" onClick="ocultar_login_sign_up()"><i
+                            class="material-icons">&#xE5C4;</i></a>
+                        <h2>注册</h2>
+                        <input type="tel" id="tel" placeholder="手机号" pattern="[0-9]{11}"
+                               onkeyup="this.value=this.value.replace(' ','')"/>
+                        <input type="text" placeholder="用户名" required="required"
+                               onkeyup="this.value=this.value.replace(' ','')"/>
+                        <input type="password" placeholder="密码" id="password2" required="required"
+                               onkeyup="this.value=this.value.replace(' ','')"/>
+                        <input type="password" placeholder="再次输入密码" id="password3" onblur="pd()" required="required"
+                               onkeyup="this.value=this.value.replace(' ','')"/>
+                        <button type="submit" class="btn_sign_up">注册</button>
+                    </div>
                 </form>
             </div>
         </div>
