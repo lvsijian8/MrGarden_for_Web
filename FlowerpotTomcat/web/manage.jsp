@@ -8,9 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>设备管理</title><meta name="format-detection" content="telephone=no" />
+    <title>设备管理</title>
+    <meta name="format-detection" content="telephone=no"/>
     <link rel="icon" href="images/favicon.ico">
-    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="shortcut icon" href="images/favicon.ico"/>
     <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery.js"></script>
@@ -26,19 +27,26 @@
     <script src="js/DelCookie.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
-        .demo{ background: #f9f9f9;padding: 1.5em 0; }
-        a:hover,a:focus{
+        .demo {
+            background: #f9f9f9;
+            padding: 1.5em 0;
+        }
+
+        a:hover, a:focus {
             outline: none;
             text-decoration: none;
         }
-        .tab .nav-tabs{
+
+        .tab .nav-tabs {
             position: relative;
             border-bottom: 0 none;
         }
-        .tab .nav-tabs li{
+
+        .tab .nav-tabs li {
             text-align: center;
         }
-        .tab .nav-tabs li a{
+
+        .tab .nav-tabs li a {
             display: block;
             height: 70px;
             line-height: 65px;
@@ -53,13 +61,15 @@
             position: relative;
             transition: all 0.5s ease 0s;
         }
+
         .tab .nav-tabs li.active a,
-        .tab .nav-tabs li a:hover{
+        .tab .nav-tabs li a:hover {
             background: linear-gradient(165deg, transparent 29%, #efe8d5 30%);
             border: none;
             color: #908a78;
         }
-        .tab .nav-tabs li a:before{
+
+        .tab .nav-tabs li a:before {
             content: "";
             height: 70px;
             line-height: 90px;
@@ -70,52 +80,59 @@
             left: 100%;
             z-index: 1;
         }
-        .tab .nav-tabs li:last-child a:before{
+
+        .tab .nav-tabs li:last-child a:before {
             border: none;
         }
-        .tab .tab-content{
+
+        .tab .tab-content {
             font-size: 14px;
             color: #6f6c6c;
             line-height: 26px;
             background: #efe8d5;
             padding: 20px;
         }
-        .tab .tab-content h3{
+
+        .tab .tab-content h3 {
             font-size: 24px;
             color: #6f6c6c;
             margin-top: 0;
         }
-        .tab .tab-content p{
+
+        .tab .tab-content p {
             margin-bottom: 0;
         }
-        @media only screen and (max-width: 480px){
-            .tab .nav-tabs li{
+
+        @media only screen and (max-width: 480px) {
+            .tab .nav-tabs li {
                 width: 100%;
                 margin-bottom: 8px;
             }
-            .tab .nav-tabs li:last-child{
+
+            .tab .nav-tabs li:last-child {
                 margin-bottom: 0;
             }
-            .tab .nav-tabs li a:before{
+
+            .tab .nav-tabs li a:before {
                 border: none;
             }
         }
     </style>
     <script>
-        $(document).ready(function(){
-            $().UItoTop({ easingType: 'easeOutQuart' });
+        $(document).ready(function () {
+            $().UItoTop({easingType: 'easeOutQuart'});
             /*carousel*/
-            var owl=$("#owl");
+            var owl = $("#owl");
             owl.owlCarousel({
-                items : 1, //10 items above 1000px browser width
-                navigation : true,
-                pagination :  false
+                items: 1, //10 items above 1000px browser width
+                navigation: true,
+                pagination: false
             });
-            var owl=$("#owl1");
+            var owl = $("#owl1");
             owl.owlCarousel({
-                items : 1, //10 items above 1000px browser width
-                navigation : true,
-                pagination :  false
+                items: 1, //10 items above 1000px browser width
+                navigation: true,
+                pagination: false
             });
         })
     </script>
@@ -143,7 +160,7 @@
                         <li><a href="plant">花卉</a></li>
                         <li><a href="Contacts.jsp">联系</a></li>
                         <li><%
-                            boolean isLogin=false;
+                            boolean isLogin = false;
                             Cookie cookie = null;
                             Cookie[] cookies = null;
                             // 获取cookies的数据,是一个数组
@@ -152,13 +169,13 @@
                                 for (int i = 0; i < cookies.length; i++) {//从cookie中获取当前已登陆用户
                                     cookie = cookies[i];
                                     if (cookie.getName().equals("user_name") && (cookie.getValue() != null)) {
-                                        out.print("<a style=\"float:left\" >"+cookie.getValue()+"</a>"+"|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
-                                        isLogin=true;
+                                        out.print("<a style=\"float:left\" >" + cookie.getValue() + "</a>" + "|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
+                                        isLogin = true;
                                         break;
                                     }
                                 }
                             }
-                            if(!isLogin)
+                            if (!isLogin)
                                 out.print("<a href=\"login.jsp\">登录|注册</a>");
                         %></li>
                     </ul>
@@ -177,21 +194,24 @@
                 <div class="tab" role="tabpanel">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab">浇水设置</a></li>
-                        <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab">施肥设置</a></li>
+                        <li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab"
+                                                                  data-toggle="tab">浇水设置</a></li>
+                        <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab"
+                                                   data-toggle="tab">施肥设置</a></li>
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content tabs">
                         <div role="tabpanel" class="tab-pane fade in active" id="Section1">
                             <h3>浇水时间间隔设置(天)</h3>
                             <script>
-                                function value_change(){
+                                function value_change() {
                                     var number = document.getElementById("range").value;
                                     document.getElementById("output").value = number;
                                 }
                             </script>
                             <form id="testform" style="display: inline">
-                                <input id="range" type="range" min="1" max="30" value="1" style="float: left;width: 200px" onchange="value_change()">
+                                <input id="range" type="range" min="1" max="30" value="1"
+                                       style="float: left;width: 200px" onchange="value_change()">
                                 <output id="output">1</output>
                             </form>
                             <h3>浇水时间设置</h3>
@@ -202,13 +222,14 @@
                         <div role="tabpanel" class="tab-pane fade" id="Section2">
                             <h3>施肥时间间隔设置(天)</h3>
                             <script>
-                                function value_change1(){
+                                function value_change1() {
                                     var number = document.getElementById("range1").value;
                                     document.getElementById("output1").value = number;
                                 }
                             </script>
                             <form id="testform1" style="display: inline">
-                                <input id="range1" type="range" min="1" max="30" value="7" style="float: left;width: 200px" onchange="value_change1()">
+                                <input id="range1" type="range" min="1" max="30" value="7"
+                                       style="float: left;width: 200px" onchange="value_change1()">
                                 <output id="output1">7</output>
                             </form>
                             <h3>施肥时间设置</h3>
@@ -241,6 +262,8 @@
         <div class="clear"></div>
     </div>
 </footer>
-<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+<div style="display:none">
+    <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+</div>
 </body>
 </html>

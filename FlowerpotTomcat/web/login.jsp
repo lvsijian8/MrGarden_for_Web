@@ -16,7 +16,7 @@
 
     <script language="javascript">
 
-        window.onload=function(){
+        window.onload = function () {
             <%
                 out.print(request.getAttribute("error"));
             %>

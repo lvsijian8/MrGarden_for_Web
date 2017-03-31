@@ -17,12 +17,7 @@ var chart_h = 40;
 var chart_w = 80;
 var stepX = 77 / 14;
 
-var chart_1_y = [
-  15, 25, 40, 30, 12, 20, 23, 25, 27, 23, 24, 28, 29,30
-];
-var chart_2_y = [
-  80, 65, 65, 40, 55, 34, 54, 50, 60, 64, 55, 27, 24, 30
-];
+//
 
 function point(x, y) {
     0;
@@ -263,8 +258,7 @@ function drawCircle(container,id,progress,parent){
 }
 
 
-    drawCircle('#chart-3',1,77,'#circle-1');
-    drawCircle('#chart-4',2,53,'#circle-2');
+    //
     drawLineGraph('#chart-1', chart_1_y, '#graph-1-container', 1);
     drawLineGraph('#chart-2', chart_2_y, '#graph-2-container', 2);
 

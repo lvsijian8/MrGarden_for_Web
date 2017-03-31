@@ -24,10 +24,10 @@ public class signupAndroid extends HttpServlet {
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        out.println(signupDao.writeUser(user_name,user_pwd,user_phone));
+        out.println(signupDao.writeUser(user_name, user_pwd, user_phone));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+        doPost(request, response);
     }
 }

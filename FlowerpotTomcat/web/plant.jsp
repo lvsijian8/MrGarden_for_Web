@@ -104,7 +104,7 @@
                         <li><a href="plant">花卉</a></li>
                         <li><a href="Contacts.jsp">联系</a></li>
                         <li><%
-                            boolean isLogin=false;
+                            boolean isLogin = false;
                             Cookie cookie = null;
                             Cookie[] cookies = null;
                             // 获取cookies的数据,是一个数组
@@ -113,13 +113,13 @@
                                 for (int i = 0; i < cookies.length; i++) {//从cookie中获取当前已登陆用户
                                     cookie = cookies[i];
                                     if (cookie.getName().equals("user_name") && (cookie.getValue() != null)) {
-                                        out.print("<a style=\"float:left\" >"+cookie.getValue()+"</a>"+"|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
-                                        isLogin=true;
+                                        out.print("<a style=\"float:left\" >" + cookie.getValue() + "</a>" + "|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
+                                        isLogin = true;
                                         break;
                                     }
                                 }
                             }
-                            if(!isLogin)
+                            if (!isLogin)
                                 out.print("<a href=\"login.jsp\">登录|注册</a>");
                         %></li>
                     </ul>
@@ -134,15 +134,17 @@
 <!--==============================Content=================================-->
 <!--content start-->
 <div style="background-color: #FFFFFF">
-    <div id="content" >
+    <div id="content">
         <div class="left" id="learn">
             <div class="l_content">
                 <!--wz-->
                 <div class="wz">
-                    <h3><a href="plant?plant_id=<%=FirstPlant.getJSONObject(1).get("plant_id")%>"><%=FirstPlant.getJSONObject(1).get("namec")%>
-                    </a></h3>
+                    <h3>
+                        <a href="plant?plant_id=<%=FirstPlant.getJSONObject(1).get("plant_id")%>"><%=FirstPlant.getJSONObject(1).get("namec")%>
+                        </a></h3>
                     <dl>
-                        <dt><img src="sql_image<%=FirstPlant.getJSONObject(1).get("pic")%>" width="200" height="123" alt="">
+                        <dt><img src="sql_image<%=FirstPlant.getJSONObject(1).get("pic")%>" width="200" height="123"
+                                 alt="">
                         </dt>
                         <dd>
                             <p class="dd_text_1"><%=FirstPlant.getJSONObject(1).get("brief")%>
@@ -154,10 +156,12 @@
                 <!--wz end-->
                 <!--wz-->
                 <div class="wz">
-                    <h3><a href="plant?plant_id=<%=FirstPlant.getJSONObject(2).get("plant_id")%>"><%=FirstPlant.getJSONObject(2).get("namec")%>
-                    </a></h3>
+                    <h3>
+                        <a href="plant?plant_id=<%=FirstPlant.getJSONObject(2).get("plant_id")%>"><%=FirstPlant.getJSONObject(2).get("namec")%>
+                        </a></h3>
                     <dl>
-                        <dt><img src="sql_image<%=FirstPlant.getJSONObject(2).get("pic")%>" width="200" height="123" alt="">
+                        <dt><img src="sql_image<%=FirstPlant.getJSONObject(2).get("pic")%>" width="200" height="123"
+                                 alt="">
                         </dt>
                         <dd>
                             <p class="dd_text_1"><%=FirstPlant.getJSONObject(2).get("brief")%>
@@ -169,10 +173,12 @@
                 <!--wz end-->
                 <!--wz-->
                 <div class="wz">
-                    <h3><a href="plant?plant_id=<%=FirstPlant.getJSONObject(3).get("plant_id")%>"><%=FirstPlant.getJSONObject(3).get("namec")%>
-                    </a></h3>
+                    <h3>
+                        <a href="plant?plant_id=<%=FirstPlant.getJSONObject(3).get("plant_id")%>"><%=FirstPlant.getJSONObject(3).get("namec")%>
+                        </a></h3>
                     <dl>
-                        <dt><img src="sql_image<%=FirstPlant.getJSONObject(3).get("pic")%>" width="200" height="123" alt="">
+                        <dt><img src="sql_image<%=FirstPlant.getJSONObject(3).get("pic")%>" width="200" height="123"
+                                 alt="">
                         </dt>
                         <dd>
                             <p class="dd_text_1"><%=FirstPlant.getJSONObject(3).get("brief")%>
@@ -184,10 +190,12 @@
                 <!--wz end-->
                 <!--wz-->
                 <div class="wz">
-                    <h3><a href="plant?plant_id=<%=FirstPlant.getJSONObject(4).get("plant_id")%>"><%=FirstPlant.getJSONObject(4).get("namec")%>
-                    </a></h3>
+                    <h3>
+                        <a href="plant?plant_id=<%=FirstPlant.getJSONObject(4).get("plant_id")%>"><%=FirstPlant.getJSONObject(4).get("namec")%>
+                        </a></h3>
                     <dl>
-                        <dt><img src="sql_image<%=FirstPlant.getJSONObject(4).get("pic")%>" width="200" height="123" alt="">
+                        <dt><img src="sql_image<%=FirstPlant.getJSONObject(4).get("pic")%>" width="200" height="123"
+                                 alt="">
                         </dt>
                         <dd>
                             <p class="dd_text_1"><%=FirstPlant.getJSONObject(4).get("brief")%>

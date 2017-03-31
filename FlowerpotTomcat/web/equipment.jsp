@@ -10,9 +10,9 @@
 <head>
     <title>设备</title>
     <meta charset="utf-8">
-    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="telephone=no"/>
     <link rel="icon" href="images/favicon.ico">
-    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="shortcut icon" href="images/favicon.ico"/>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery.js"></script>
     <script src="js/jquery-migrate-1.1.1.js"></script>
@@ -26,31 +26,36 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
 
-    <link type="text/css" rel="stylesheet" href="css/framework.css" />
-    <link type="text/css" rel="stylesheet" href="css/main.css" />
+    <link type="text/css" rel="stylesheet" href="css/framework.css"/>
+    <link type="text/css" rel="stylesheet" href="css/main.css"/>
     <style type="text/css">
-        a:hover,a:focus{
+        a:hover, a:focus {
             text-decoration: none;
             outline: none;
         }
-        #accordion{
+
+        #accordion {
             padding-right: 24px;
             padding-left: 24px;
             z-index: 1;
         }
-        #accordion .panel{
+
+        #accordion .panel {
             border: none;
             box-shadow: none;
         }
-        #accordion .panel-heading{
+
+        #accordion .panel-heading {
             padding: 0;
             border-radius: 0;
             border: none;
         }
-        #accordion .panel-title{
+
+        #accordion .panel-title {
             padding: 0;
         }
-        #accordion .panel-title a{
+
+        #accordion .panel-title a {
             display: block;
             font-size: 16px;
             font-weight: bold;
@@ -61,13 +66,15 @@
             margin-left: -24px;
             transition: all 0.3s ease 0s;
         }
-        #accordion .panel-title a.collapsed{
+
+        #accordion .panel-title a.collapsed {
             background: #f7c59f;
             color: #e16b47;
             margin-left: 0;
             transition: all 0.3s ease 0s;
         }
-        #accordion .panel-title a:before{
+
+        #accordion .panel-title a:before {
             content: "";
             border-left: 24px solid #e16b47;
             border-top: 24px solid transparent;
@@ -77,10 +84,12 @@
             right: -24px;
             transition: all 0.3s ease 0s;
         }
-        #accordion .panel-title a.collapsed:before{
+
+        #accordion .panel-title a.collapsed:before {
             border-left-color: #f7c59f;
         }
-        #accordion .panel-title a:after{
+
+        #accordion .panel-title a:after {
             content: "\f106";
             font-family: 'FontAwesome';
             position: absolute;
@@ -89,14 +98,17 @@
             font-size: 18px;
             color: #f7c59f;
         }
-        #accordion .panel-title a.collapsed:after{
+
+        #accordion .panel-title a.collapsed:after {
             content: "\f107";
             color: #e16b47;
         }
-        #accordion .panel-collapse{
+
+        #accordion .panel-collapse {
             position: relative;
         }
-        #accordion .panel-collapse.in:before{
+
+        #accordion .panel-collapse.in:before {
             content: "";
             border-right: 24px solid #f7c59f;
             border-bottom: 18px solid transparent;
@@ -104,7 +116,8 @@
             top: 0;
             left: -24px;
         }
-        #accordion .panel-body{
+
+        #accordion .panel-body {
             font-size: 14px;
             color: #333;
             background: #e4e4e4;
@@ -113,16 +126,16 @@
         }
     </style>
     <script>
-        $(document).ready(function(){
-            $().UItoTop({ easingType: 'easeOutQuart' });
+        $(document).ready(function () {
+            $().UItoTop({easingType: 'easeOutQuart'});
         })
     </script>
 
     <script type="text/javascript" language="javascript">
         function iFrameHeight() {
-            var ifm= document.getElementById("iframepage");
+            var ifm = document.getElementById("iframepage");
             var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument;
-            if(ifm != null && subWeb != null) {
+            if (ifm != null && subWeb != null) {
                 ifm.height = subWeb.body.scrollHeight;
                 ifm.width = subWeb.body.scrollWidth;
             }
@@ -153,7 +166,7 @@
                         <li><a href="plant">花卉</a></li>
                         <li><a href="Contacts.jsp">联系</a></li>
                         <li><%
-                            boolean isLogin=false;
+                            boolean isLogin = false;
                             Cookie cookie = null;
                             Cookie[] cookies = null;
                             // 获取cookies的数据,是一个数组
@@ -162,13 +175,13 @@
                                 for (int i = 0; i < cookies.length; i++) {//从cookie中获取当前已登陆用户
                                     cookie = cookies[i];
                                     if (cookie.getName().equals("user_name") && (cookie.getValue() != null)) {
-                                        out.print("<a style=\"float:left\" >"+cookie.getValue()+"</a>"+"|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
-                                        isLogin=true;
+                                        out.print("<a style=\"float:left\" >" + cookie.getValue() + "</a>" + "|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
+                                        isLogin = true;
                                         break;
                                     }
                                 }
                             }
-                            if(!isLogin)
+                            if (!isLogin)
                                 out.print("<a href=\"login.jsp\">登录|注册</a>");
                         %></li>
                     </ul>
@@ -189,16 +202,19 @@
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingTwo">
                             <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                   href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     选择您的花盆
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingTwo">
                             <div class="panel-body">
                                 <form class="form" method="post">
-                                    <input type="radio" id="hwl" name="radio" value="虎尾兰" checked><label for="hwl">虎尾兰</label><br/>
-                                    <input type="radio" id="gyz" name="radio" value="观音竹" ><label for="gyz">观音竹</label>
+                                    <input type="radio" id="hwl" name="radio" value="虎尾兰" checked><label
+                                        for="hwl">虎尾兰</label><br/>
+                                    <input type="radio" id="gyz" name="radio" value="观音竹"><label for="gyz">观音竹</label>
                                 </form>
                             </div>
                         </div>
@@ -212,19 +228,19 @@
 <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"></script>
 
-    <div  style="text-align: center;background-color: #f9f9f9">
-        <div style="padding: 18px">
-            <h1 style="font-size: 24px">设备状态</h1>
-        </div>
-        <div>
-            <figure>
-                <iframe src="guanli.html" width="80%" height="400px" ></iframe>
-            </figure>
-        </div>
-        <div style="padding: 18px">
-            <h1 style="font-size: 24px">设备控制</h1>
-        </div>
-        <div class="page"  style="background-color: #f9f9f9;width: 60%;padding-left: 5em">
+<div style="text-align: center;background-color: #f9f9f9">
+    <div style="padding: 18px">
+        <h1 style="font-size: 24px">设备状态</h1>
+    </div>
+    <div>
+        <figure>
+            <iframe src="guanli.html" width="80%" height="400px"></iframe>
+        </figure>
+    </div>
+    <div style="padding: 18px">
+        <h1 style="font-size: 24px">设备控制</h1>
+    </div>
+    <div class="page" style="background-color: #f9f9f9;width: 60%;padding-left: 5em">
 
         <!--the main content begin-->
         <div class="container">
@@ -246,9 +262,14 @@
                         </div>
                         <div class="center aligned column">
                             <div class="ui buttons">
-                                <input type="button" id="green1" value="点击加水" style="height: 33px;border: 2px solid #f9f9f9;border-radius: 2px;background-color: transparent;"></input>
-                                <a class="ui tiny green button" href="manage.jsp"><i><img src="images/Settings.png" width="14px" height="auto"> </i>管 理</a>
-                                <a class="ui tiny blue button" href="history.jsp"><i><img src="images/Clock.png" width="14px" height="auto"></i>历 史</a>
+                                <input type="button" id="green1" value="点击加水"
+                                       style="height: 33px;border: 2px solid #f9f9f9;border-radius: 2px;background-color: transparent;"></input>
+                                <a class="ui tiny green button" href="manage.jsp"><i><img src="images/Settings.png"
+                                                                                          width="14px" height="auto">
+                                </i>管 理</a>
+                                <a class="ui tiny blue button" href="history.jsp"><i><img src="images/Clock.png"
+                                                                                          width="14px"
+                                                                                          height="auto"></i>历 史</a>
                             </div>
                         </div>
                     </div>
@@ -265,9 +286,13 @@
                         </div>
                         <div class="center aligned column">
                             <div class="ui buttons">
-                                <input type="button" id="green2" value="点击施肥" style="height: 33px;border: 2px solid #f9f9f9;border-radius: 2px;background-color: transparent;"></input>
-                                <a class="ui tiny green button" href="#"><i><img src="images/Settings.png" width="14px" height="auto"> </i>管 理</a>
-                                <a class="ui tiny blue button" href="history.jsp"><i><img src="images/Clock.png" width="14px" height="auto"></i>历 史</a>
+                                <input type="button" id="green2" value="点击施肥"
+                                       style="height: 33px;border: 2px solid #f9f9f9;border-radius: 2px;background-color: transparent;"></input>
+                                <a class="ui tiny green button" href="#"><i><img src="images/Settings.png" width="14px"
+                                                                                 height="auto"> </i>管 理</a>
+                                <a class="ui tiny blue button" href="history.jsp"><i><img src="images/Clock.png"
+                                                                                          width="14px"
+                                                                                          height="auto"></i>历 史</a>
                             </div>
                         </div>
                     </div>
@@ -275,31 +300,35 @@
             </div>
         </div>
     </div>
-        <script type="text/javascript">
-            var wait=10;
-            function time(i) {
-                if (wait == 0) {
+    <script type="text/javascript">
+        var wait = 10;
+        function time(i) {
+            if (wait == 0) {
 
-                    i.removeAttribute("disabled");
-                    i.value="继续添加";
-                    wait = 10;
-                } else {
-                    i.setAttribute("disabled", true);
-                    i.value="正在添加";
+                i.removeAttribute("disabled");
+                i.value = "继续添加";
+                wait = 10;
+            } else {
+                i.setAttribute("disabled", true);
+                i.value = "正在添加";
 
-                    wait--;
-                    setTimeout(function() {
-                            time(i)
-                        },
-                        1000)
-                }
+                wait--;
+                setTimeout(function () {
+                        time(i)
+                    },
+                    1000)
             }
-            document.getElementById("green1").onclick=function(){time(this);};
-            document.getElementById("green2").onclick=function(){time(this);}
-        </script>
+        }
+        document.getElementById("green1").onclick = function () {
+            time(this);
+        };
+        document.getElementById("green2").onclick = function () {
+            time(this);
+        }
+    </script>
 
 
-    </div>
+</div>
 <!--==============================footer=================================-->
 <footer>
     <div class="container_12">
@@ -311,7 +340,9 @@
         <div class="clear"></div>
     </div>
 </footer>
-<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+<div style="display:none">
+    <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+</div>
 
 </body>
 </html>

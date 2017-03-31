@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>花卉</title>
 
-    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/normalize.css"/>
     <link rel="stylesheet" type="text/css" href="css/default.css">
 
     <style type="text/css">
@@ -92,6 +92,7 @@
             -ms-flex-pack: center;
             justify-content: center;
         }
+
         #left-side ul li {
             padding-top: 10px;
             padding-bottom: 10px;
@@ -106,17 +107,21 @@
             -webkit-transition: all .2s ease-out;
             transition: all .2s ease-out;
         }
+
         #left-side ul li:hover {
             color: #333333;
             -webkit-transition: all .2s ease-out;
             transition: all .2s ease-out;
         }
+
         #left-side ul li:hover > .icon {
             fill: #333;
         }
+
         #left-side ul li.active {
             color: #333333;
         }
+
         #left-side ul li.active:hover > .icon {
             fill: #E74C3C;
         }
@@ -126,6 +131,7 @@
             width: 1px;
             background-color: rgba(51, 51, 51, 0.2);
         }
+
         #border #line.one {
             width: 5px;
             height: 54px;
@@ -135,6 +141,7 @@
             -webkit-transition: all .4s ease-in-out;
             transition: all .4s ease-in-out;
         }
+
         #border #line.two {
             width: 5px;
             height: 54px;
@@ -144,6 +151,7 @@
             -webkit-transition: all .4s ease-in-out;
             transition: all .4s ease-in-out;
         }
+
         #border #line.three {
             width: 5px;
             height: 54px;
@@ -153,6 +161,7 @@
             -webkit-transition: all .4s ease-in-out;
             transition: all .4s ease-in-out;
         }
+
         #border #line.four {
             width: 5px;
             height: 54px;
@@ -168,6 +177,7 @@
             width: 75%;
             overflow: hidden;
         }
+
         #right-side #first, #right-side #second, #right-side #third, #right-side #fourth {
             position: absolute;
             height: 300px;
@@ -194,26 +204,31 @@
             -ms-flex-direction: column;
             flex-direction: column;
         }
+
         #right-side #first h1, #right-side #second h1, #right-side #third h1, #right-side #fourth h1 {
             font-weight: 800;
             color: #333;
         }
+
         #right-side #first p, #right-side #second p, #right-side #third p, #right-side #fourth p {
             color: #333;
             font-weight: 500;
             padding-left: 30px;
             padding-right: 30px;
         }
+
         #right-side #first.active, #right-side #second.active, #right-side #third.active, #right-side #fourth.active {
             margin-top: 0px;
             opacity: 1;
             -webkit-transition: all .6s ease-in-out;
             transition: all .6s ease-in-out;
         }
-        td{
+
+        td {
             padding: 1em;
         }
-        .plant_img{
+
+        .plant_img {
             padding-bottom: 2em;
             height: 300px;
             width: auto
@@ -243,15 +258,19 @@
 
     <div id="right-side">
         <div id="first" class="active">
-            <h1><%=request.getParameter("chinese_name")%></h1>
+            <h1><%=request.getParameter("chinese_name")%>
+            </h1>
             <img class="plant_img" src="sql_image<%=request.getParameter("image_url")%>">
         </div>
         <div id="second">
-            <h1><%=request.getParameter("english_name")%></h1>
-            <p><%=request.getParameter("text")%></p>
+            <h1><%=request.getParameter("english_name")%>
+            </h1>
+            <p><%=request.getParameter("text")%>
+            </p>
         </div>
         <div id="third">
-            <h1><%=request.getParameter("chinese_name")%></h1>
+            <h1><%=request.getParameter("chinese_name")%>
+            </h1>
             <table>
                 <tr>
                     <td width="100px">浇水</td>
@@ -263,7 +282,12 @@
                 </tr>
                 <tr>
                     <td width="100px">温度</td>
-                    <td><img src="images/Temperature_blue.png" height="30" width="30" style="vertical-align:middle;"><%=request.getParameter("temperature_min")%>°C<img src="images/Temperature_red.png" height="30" width="30" style="vertical-align:middle;margin-left: 1em"><%=request.getParameter("temperature_max")%>°C</td>
+                    <td><img src="images/Temperature_blue.png" height="30" width="30"
+                             style="vertical-align:middle;"><%=request.getParameter("temperature_min")%>°C<img
+                            src="images/Temperature_red.png" height="30" width="30"
+                            style="vertical-align:middle;margin-left: 1em"><%=request.getParameter("temperature_max")%>
+                        °C
+                    </td>
                 </tr>
                 <tr>
                     <td width="100px">肥料</td>

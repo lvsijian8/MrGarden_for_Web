@@ -60,7 +60,7 @@
                         <li><a href="plant">花卉</a></li>
                         <li><a href="Contacts.jsp">联系</a></li>
                         <li><%
-                            boolean isLogin=false;
+                            boolean isLogin = false;
                             Cookie cookie = null;
                             Cookie[] cookies = null;
                             // 获取cookies的数据,是一个数组
@@ -69,13 +69,13 @@
                                 for (int i = 0; i < cookies.length; i++) {//从cookie中获取当前已登陆用户
                                     cookie = cookies[i];
                                     if (cookie.getName().equals("user_name") && (cookie.getValue() != null)) {
-                                        out.print("<a style=\"float:left\" >"+cookie.getValue()+"</a>"+"|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
-                                        isLogin=true;
+                                        out.print("<a style=\"float:left\" >" + cookie.getValue() + "</a>" + "|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
+                                        isLogin = true;
                                         break;
                                     }
                                 }
                             }
-                            if(!isLogin)
+                            if (!isLogin)
                                 out.print("<a href=\"login.jsp\">登录|注册</a>");
                         %></li>
                     </ul>
