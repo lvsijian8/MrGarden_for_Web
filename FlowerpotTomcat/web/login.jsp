@@ -12,7 +12,15 @@
     <link rel="stylesheet" href="css/login_style.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
+
     <script language="javascript">
+
+        window.onload=function(){
+            <%
+                out.print(request.getAttribute("error"));
+            %>
+        }
 
         function pd() {
             var psw1 = document.getElementById("password2").value;
@@ -55,29 +63,33 @@
             </div>
             <div class="cont_forms">
                 <div class="cont_img_back_"><img src="images/po.jpg" alt=""/></div>
-                <form>
+                <form action="loginWeb">
                     <div class="cont_form_login"><a href="#" onClick="ocultar_login_sign_up()"><i
                             class="material-icons">&#xE5C4;</i></a>
                         <h2>登录</h2>
-                        <input type="text" placeholder="用户名" required onkeyup="this.value=this.value.replace(' ','')"/>
+                        <input type="text" placeholder="用户名" required onkeyup="this.value=this.value.replace(' ','')"
+                               name="user_name"/>
                         <input type="password" placeholder="密码" id="password1" required
 
-                               onkeyup="this.value=this.value.replace(' ','')"/><br/><br/>
-                        <div style="float: right;padding-right: 2em"><input type="checkbox" id="chk" name="chk" style="width: 15px"><font color="#757575">&nbsp;&nbsp;记住密码</font></div>
+                               onkeyup="this.value=this.value.replace(' ','')" name="user_pwd"/><br/><br/>
+                        <div style="float: right;padding-right: 2em"><input type="checkbox" name="remember"
+                                                                            style="width: 15px"><font color="#757575">&nbsp;&nbsp;记住密码</font>
+                        </div>
                         <br><br>
-                        <button class="btn_login" onClick="login()">登录</button>
+                        <button class="btn_login" onClick="login()" type="submit">登录</button>
+                        <%--<input class="btn_login" onClick="login()" type="submit" value="登录"/>--%>
                     </div>
                 </form>
-                <form>
+                <form action="signupWeb">
                     <div class="cont_form_sign_up"><a href="#" onClick="ocultar_login_sign_up()"><i
                             class="material-icons">&#xE5C4;</i></a>
                         <h2>注册</h2>
                         <input type="tel" id="tel" placeholder="手机号" pattern="[0-9]{11}"
-                               onkeyup="this.value=this.value.replace(' ','')"/>
+                               onkeyup="this.value=this.value.replace(' ','')" name="user_phone"/>
                         <input type="text" placeholder="用户名" required="required"
-                               onkeyup="this.value=this.value.replace(' ','')"/>
+                               onkeyup="this.value=this.value.replace(' ','')" name="user_name"/>
                         <input type="password" placeholder="密码" id="password2" required="required"
-                               onkeyup="this.value=this.value.replace(' ','')"/>
+                               onkeyup="this.value=this.value.replace(' ','')" name="user_pwd"/>
                         <input type="password" placeholder="再次输入密码" id="password3" onblur="pd()" required="required"
                                onkeyup="this.value=this.value.replace(' ','')"/>
                         <button type="submit" class="btn_sign_up">注册</button>
