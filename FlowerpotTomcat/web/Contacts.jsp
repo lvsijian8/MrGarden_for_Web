@@ -142,21 +142,16 @@
                 </div>
             </form>
             <div class="extra_wrapper">
-                <p class="pt1">Get 24/7 support for all <span class="col1"><a
-                        href="http://www.templatemonster.com/website-templates.php" rel="nofollow">premium templates</a></span>
-                    at our site. We do not provide it for free templates.</p>
-                <p>If you need any help with customization of a chosen free theme, ask <span class="col1"><a
-                        href="http://www.templatetuning.com/" rel="nofollow">Template Tuning</a></span> to help you.</p>
+                <p class="pt1">点击发送联系我们，获取我们网站的全天候服务支持。</p>
+                <p>如果您需要定制一个特定的花盆，请联系我们来帮助您。</p>
                 <address>
                     <dl>
-                        <dt>The Company Name Inc. <br>
-                            8901 Marmora Road,<br>
-                            Glasgow, D04 89GR.
+                        <dt>中山大学新华学院 <br>
+                            东莞市麻涌镇<br>
+                            沿江西一路7号
                         </dt>
-                        <dd><span>Freephone:</span>+1 800 559 6580</dd>
-                        <dd><span>Telephone:</span>+1 800 603 6035</dd>
-                        <dd><span>FAX:</span>+1 800 889 9898</dd>
-                        <dd>E-mail: <a href="#" class="link-1">mail@demolink.org</a></dd>
+                        <dd><span>联系方式:</span>13554773703 </dd>
+                        <dd>E-mail: 499365864@qq.com</dd>
                     </dl>
                 </address>
             </div>

@@ -112,7 +112,7 @@
                     <span class="rb"></span>
                     <span class="rrb"></span>
                 </div>
-                <div class="text1">Landscape Design</div>
+                <div class="text1">花盆正视图</div>
                 <br>
             </div>
         </div>
@@ -129,7 +129,7 @@
                     <span class="rb"></span>
                     <span class="rrb"></span>
                 </div>
-                <div class="text1">Garden Plans</div>
+                <div class="text1">花盆侧视图</div>
                 <br>
             </div>
         </div>
@@ -146,7 +146,7 @@
                     <span class="rb"></span>
                     <span class="rrb"></span>
                 </div>
-                <div class="text1">Planting Design</div>
+                <div class="text1">花盆顶视图</div>
                 <br>
             </div>
         </div>
@@ -166,12 +166,10 @@
         <div class="grid_4">
             <h3>系统能做什么</h3>
             <ul class="list">
-                <li><a href="article.jsp#article1">盆栽添加删除与共享</a></li>
-                <li><a href="article.jsp#article2">浇灌指令发出</a></li>
-                <li><a href="article.jsp#article3">数据采集间隔设置</a></li>
-                <li><a href="article.jsp#article4">拍照指令的发出</a></li>
-                <li><a href="article.jsp#article5">数据的报表管理</a></li>
-                <li><a href="article.jsp#article6">盆栽的模式管理</a></li>
+                <li><a href="article.jsp#article1">系统的用户管理</a></li>
+                <li><a href="article.jsp#article2">盆栽的操作管理</a></li>
+                <li><a href="article.jsp#article3">数据的报表管理</a></li>
+                <li><a href="article.jsp#article4">盆栽的模式管理</a></li>
             </ul>
         </div>
     </div>
@@ -261,8 +259,5 @@
         <div class="clear"></div>
     </div>
 </footer>
-<div style="display:none">
-    <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
-</div>
 </body>
 </html>

@@ -306,10 +306,6 @@
     </div>
 </div>
 
-<div style="text-align:center;clear:both;">
-    <script src="/gg_bd_ad_720x90-2.js" type="text/javascript"></script>
-    <script src="/follow.js" type="text/javascript"></script>
-</div>
 
 <script src='js/jquery.js'></script>
 <script src='js/snap.svg-min.js'></script>

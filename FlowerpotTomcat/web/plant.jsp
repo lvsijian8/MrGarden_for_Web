@@ -147,7 +147,7 @@
                                  alt="">
                         </dt>
                         <dd>
-                            <p class="dd_text_1"><%=FirstPlant.getJSONObject(1).get("brief")%>
+                            <p class="dd_text_1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=FirstPlant.getJSONObject(1).get("brief")%>
                             </p>
                         </dd>
                         <div class="clear"></div>
@@ -164,7 +164,7 @@
                                  alt="">
                         </dt>
                         <dd>
-                            <p class="dd_text_1"><%=FirstPlant.getJSONObject(2).get("brief")%>
+                            <p class="dd_text_1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=FirstPlant.getJSONObject(2).get("brief")%>
                             </p>
                         </dd>
                         <div class="clear"></div>
@@ -181,7 +181,7 @@
                                  alt="">
                         </dt>
                         <dd>
-                            <p class="dd_text_1"><%=FirstPlant.getJSONObject(3).get("brief")%>
+                            <p class="dd_text_1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=FirstPlant.getJSONObject(3).get("brief")%>
                             </p>
                         </dd>
                         <div class="clear"></div>
@@ -198,7 +198,7 @@
                                  alt="">
                         </dt>
                         <dd>
-                            <p class="dd_text_1"><%=FirstPlant.getJSONObject(4).get("brief")%>
+                            <p class="dd_text_1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=FirstPlant.getJSONObject(4).get("brief")%>
                             </p>
                         </dd>
                         <div class="clear"></div>

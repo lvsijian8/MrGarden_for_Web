@@ -22,10 +22,90 @@
     <script src="js/jquery.equalheights.js"></script>
     <script src="js/jquery.mobilemenu.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
-    <link rel="stylesheet" href="css/chart_reset.css">
-    <link rel="stylesheet" href="css/chart_style.css" media="screen" type="text/css"/>
     <script src="js/modernizr.js"></script>
     <script src="js/DelCookie.js"></script>
+    <style type="text/css">
+        .clearfix:after, .container:after, .tab-nav:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        /* ==========
+           Setup Page */
+        *, *:before, *:after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        /* =================
+           Container Styling */
+        .container {
+            position: relative;
+            background: white;
+            padding: 3em;
+        }
+
+        /* ===========
+           Tab Styling */
+        .tab-group {
+            position: relative;
+            border: 1px solid #eee;
+            margin-top: 2.5em;
+            border-radius: 0 0 10px 10px;
+        }
+        .tab-group section {
+            opacity: 0;
+            height: 0;
+            padding: 0 1em;
+            overflow: hidden;
+            transition: opacity 0.4s ease, height 0.4s ease;
+        }
+        .tab-group section.active {
+            opacity: 1;
+            height: auto;
+            overflow: visible;
+        }
+
+        .tab-nav {
+            list-style: none;
+            margin: -2.5em -1px 0 0;
+            padding: 0;
+            height: 2.5em;
+            overflow: hidden;
+        }
+        .tab-nav li {
+            display: inline;
+        }
+        .tab-nav li a {
+            top: 1px;
+            position: relative;
+            display: block;
+            float: left;
+            border-radius: 10px 10px 0 0;
+            background: #eee;
+            line-height: 2em;
+            padding: 0 1em;
+            text-decoration: none;
+            color: grey;
+            margin-top: .5em;
+            margin-right: 1px;
+            transition: background .2s ease, line-height .2s ease, margin .2s ease;
+        }
+        .tab-nav li.active a {
+            background: #6EB590;
+            color: #5F604B;
+            line-height: 2.5em;
+            margin-top: 0;
+        }
+    </style>
+
+    <script src="js/prefixfree.min.js"></script>
     <script>
         $(document).ready(function () {
             $().UItoTop({easingType: 'easeOutQuart'});
@@ -83,50 +163,81 @@
 </header>
 
 <!--==============================Content=================================-->
-<div style="text-align: center;width: 750px;margin:auto;color: #7a7a7a;font: 14px/20px Arial, Helvetica, sans-serif;padding-bottom: 2em">
+<div style="background-color: white">
+    <div class="htmleaf-container" style="width: 70%;margin: auto">
+        <div class="container">
+            <div class="tab-group">
+                <section id="tab1" title="用户">
+                    <h3>
+                        系统的用户管理
+                    </h3>
+                    <p>
+                        基本的账户登陆注册与注销，资料修改，通过手机号找回密码。
+                    </p>
+                </section>
+                <section id="tab2" title="操作">
+                    <h3>
+                        盆栽的操作管理
+                    </h3>
+                    <p>
+                        当前用户下盆栽添加删除与共享，浇灌指令发出，数据采集间隔设置，拍照指令的发出。
+                    </p>
+                </section>
+                <section id="tab3" title="报表">
+                    <h3>
+                        数据的报表管理
+                    </h3>
+                    <p>
+                        单一数据时序图，多种数据时序图，当前用户下多盆栽数据对比，根据采集数据提供养护建议，植物生长警报，植物数据百科全书，数据实时刷新，生长记录相册。
+                    </p>
+                </section>
+                <section id="tab4" title="模式">
+                    <h3>
+                        盆栽的模式管理
+                    </h3>
+                    <p>
+                        模式选择，自定义模式，手动模式，无人托管模式，自动适应模式，已经模式的编辑添加与删除。
+                    </p>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-tab.js"></script>
+<script type="text/javascript">
+    $(function(){
+        // Calling the plugin
+        $('.tab-group').tabify();
+    })
+</script>
+<!--div style="text-align: center;width: 750px;margin:auto;color: #7a7a7a;font: 14px/20px Arial, Helvetica, sans-serif;padding-bottom: 2em">
     <div id="article1">
-        <h1>第一段</h1>
-        <p>系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
-            系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
-            系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
+        <h1>系统的用户管理</h1>
+        <p>
+            基本的账户登陆注册与注销，资料修改，通过手机号找回密码。
         </p>
     </div>
     <div id="article2">
-        <h1>第二段</h1>
-        <p>系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
-            系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
-            系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
+        <h1>盆栽的操作管理</h1>
+        <p>
+            当前用户下盆栽添加删除与共享，浇灌指令发出，数据采集间隔设置，拍照指令的发出。
         </p>
     </div>
     <div id="article3">
-        <h1>第三段</h1>
-        <p> 系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
-            系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
-            系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
+        <h1>数据的报表管理</h1>
+        <p>
+            单一数据时序图，多种数据时序图，当前用户下多盆栽数据对比，根据采集数据提供养护<br>建议，植物生长警报，植物数据百科全书，数据实时刷新，生长记录相册。
         </p>
     </div>
     <div id="article4">
-        <h1>第四段</h1>
-        <p> 系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
-            系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
-            系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
+        <h1>盆栽的模式管理</h1>
+        <p>
+            模式选择，自定义模式，手动模式，无人托管模式，自动适应模式，已经模式的编辑添加与删除。
         </p>
     </div>
-    <div id="article5">
-        <h1>第五段</h1>
-        <p> 系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
-            系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
-            系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
-        </p>
-    </div>
-    <div id="article6">
-        <h1>第六段</h1>
-        <p> 系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
-            系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
-            系统在讯通方面采用服务器做为中转站，确保硬件，软件与数据库之间准确稳定独立的通讯，数据的存储与调用方便快捷，各个通讯模块之间相互独立也让后期的维护工作更加方便简单。
-        </p>
-    </div>
-</div>
+</div-->
 
 
 <!--==============================footer=================================-->

@@ -427,7 +427,6 @@
   content: '';
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.8) url(../images/loader-large.gif) no-repeat 50% 50%;
   visibility: visible;
 }
 
@@ -1751,7 +1750,6 @@ body > .ui.grid {
   content: '';
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.8) url(../images/loader-large.gif) no-repeat 50% 50%;
   visibility: visible;
 }
 
@@ -1805,8 +1803,6 @@ body > .ui.grid {
   width: 100%;
   height: 1px;
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0.1) 1.5em, rgba(0, 0, 0, 0.03) 100%);
-  background-image: -webkit-gradient(linear, top left, top right, from(rgba(0, 0, 0, 0.03)), color-stop(1.5em, rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.03)));
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.03)), color-stop(1.5em, rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.03)));
   background-image: linear-gradient(left, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0.1) 1.5em, rgba(0, 0, 0, 0.03) 100%);
 }
 
@@ -3980,8 +3976,6 @@ body > .ui.grid {
 
 @font-face {
   font-family: 'Basic Icons';
-  src: url(../fonts/basic.icons.eot);
-  src: url(../fonts/basic.icons.eot?#iefix) format('embedded-opentype'), url(../fonts/basic.icons.woff) format('woff'), url(../fonts/basic.icons.ttf) format('truetype'), url(../fonts/basic.icons.svg#basic.icons) format('svg');
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -5208,7 +5202,6 @@ i.massive.basic.icon {
   width: 100%;
   height: 100%;
   content: '';
-  background: transparent url(../images/loader-mini.gif) no-repeat 50% 50%;
 }
 
 .ui.labeled.icon.loading.button .icon {
@@ -5653,34 +5646,7 @@ i.massive.basic.icon {
   height: 1.45em;
 }
 
-/* loading */
 
-.ui.huge.loading.button:after {
-  background-image: url(../images/loader-small.gif);
-}
-
-.ui.massive.buttons .loading.button:after,
-.ui.gigantic.buttons .loading.button:after,
-.ui.massive.loading.button:after,
-.ui.gigantic.loading.button:after {
-  background-image: url(../images/loader-medium.gif);
-}
-
-.ui.huge.loading.button:after,
-.ui.huge.loading.button.active:after {
-  background-image: url(../images/loader-small.gif);
-}
-
-.ui.massive.buttons .loading.button:after,
-.ui.gigantic.buttons .loading.button:after,
-.ui.massive.loading.button:after,
-.ui.gigantic.loading.button:after,
-.ui.massive.buttons .loading.button.active:after,
-.ui.gigantic.buttons .loading.button.active:after,
-.ui.massive.loading.button.active:after,
-.ui.gigantic.loading.button.active:after {
-  background-image: url(../images/loader-medium.gif);
-}
 
 /*--------------
     Icon Only
@@ -7056,8 +7022,6 @@ h5.ui.header {
 
 @font-face {
   font-family: 'Icons';
-  src: url(../fonts/icons.eot);
-  src: url(../fonts/icons.eot?#iefix) format('embedded-opentype'), url(../fonts/icons.woff) format('woff'), url(../fonts/icons.ttf) format('truetype'), url(../fonts/icons.svg#icons) format('svg');
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -9077,14 +9041,6 @@ img.ui.image {
 
 /* browsers require these rules separate */
 
-.ui.input::-web inputkit-input-placeholder {
-  color: #BBBBBB;
-}
-
-.ui.input::-moz input-placeholder {
-  color: #BBBBBB;
-}
-
 /*******************************
             States
 *******************************/
@@ -9103,9 +9059,6 @@ img.ui.image {
         Loading
 ---------------------*/
 
-.ui.loading.input > .icon {
-  background: url(../images/loader-mini.gif) no-repeat 50% 50%;
-}
 
 .ui.loading.input > .icon:before,
 .ui.loading.input > .icon:after {
@@ -10295,35 +10248,6 @@ a.ui.teal.label:hover:before {
 .ui.inverted.dimmer .ui.text.loader {
   color: rgba(0, 0, 0, 0.8);
 }
-
-/* Tiny Size */
-
-.ui.dimmer .mini.ui.loader,
-.ui.inverted .mini.ui.loader {
-  background-image: url(../images/loader-mini-inverted.gif);
-}
-
-/* Small Size */
-
-.ui.dimmer .small.ui.loader,
-.ui.inverted .small.ui.loader {
-  background-image: url(../images/loader-small-inverted.gif);
-}
-
-/* Standard Size */
-
-.ui.dimmer .ui.loader,
-.ui.inverted.loader {
-  background-image: url(../images/loader-medium-inverted.gif);
-}
-
-/* Large Size */
-
-.ui.dimmer .large.ui.loader,
-.ui.inverted .large.ui.loader {
-  background-image: url(../images/loader-large-inverted.gif);
-}
-
 /*-------------------
         Sizes
 --------------------*/
@@ -10334,7 +10258,6 @@ a.ui.teal.label:hover:before {
 .ui.mini.loader {
   width: 16px;
   height: 16px;
-  background-image: url(../images/loader-mini.gif);
 }
 
 /* Small Size */
@@ -10343,14 +10266,12 @@ a.ui.teal.label:hover:before {
 .ui.small.loader {
   width: 24px;
   height: 24px;
-  background-image: url(../images/loader-small.gif);
 }
 
 .ui.inverted.dimmer .ui.loader,
 .ui.loader {
   width: 32px;
   height: 32px;
-  background: url(../images/loader-medium.gif) no-repeat;
   background-position: 48% 0px;
 }
 
@@ -10360,7 +10281,6 @@ a.ui.teal.label:hover:before {
 .ui.loader.large {
   width: 64px;
   height: 64px;
-  background-image: url(../images/loader-large.gif);
 }
 
 /*-------------------
@@ -13082,7 +13002,6 @@ a.ui.teal.label:hover:before {
 
 .ui.pointing.dropdown .menu .active.item:first-child {
   background: transparent -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.03));
-  background: transparent-webkit-gradient(linear, top left, bottom left, from(transparent), to(rgba(0, 0, 0, 0.03)));
   background: transparent linear-gradient(transparent, rgba(0, 0, 0, 0.03));
 }
 
@@ -14220,9 +14139,6 @@ a.ui.nag {
      Loading
 ---------------*/
 
-.ui.search.loading .input .icon {
-  background: url(../images/loader-mini.gif) no-repeat 50% 50%;
-}
 
 .ui.search.loading .input .icon:before,
 .ui.search.loading .input .icon:after {
@@ -14712,7 +14628,6 @@ body {
   width: 100%;
   height: 100%;
   padding-top: 75px;
-  background: url(../images/loader-large.gif) no-repeat 0px 0px;
   visibility: visible;
 }
 /*******************************

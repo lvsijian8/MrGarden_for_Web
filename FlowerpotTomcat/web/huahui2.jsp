@@ -265,7 +265,7 @@
         <div id="second">
             <h1><%=request.getParameter("english_name")%>
             </h1>
-            <p><%=request.getParameter("text")%>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#7a7a7a" style="line-height: 25px"><%=request.getParameter("text")%></font>
             </p>
         </div>
         <div id="third">
