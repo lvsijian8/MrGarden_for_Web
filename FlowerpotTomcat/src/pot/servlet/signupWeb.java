@@ -14,10 +14,11 @@ import java.io.PrintWriter;
 @WebServlet("/signupWeb")
 public class signupWeb extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String user_name = new String(request.getParameter("user_name").getBytes("ISO8859-1"), "UTF-8");
+        String user_name = request.getParameter("user_name");
         String user_pwd = new String(request.getParameter("user_pwd").getBytes("ISO8859-1"), "UTF-8");
         String user_phone = new String(request.getParameter("user_phone").getBytes("ISO8859-1"), "UTF-8");
         String user_id = "";
+        System.out.println(user_name+"________________--");
         signupDaoAndroid signupDao = new signupDaoAndroid();
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");

@@ -20,7 +20,7 @@
             <%
                 out.print(request.getAttribute("error"));
             %>
-        }
+        };
 
         function pd() {
             var psw1 = document.getElementById("password2").value;

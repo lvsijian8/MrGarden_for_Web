@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/chart_reset.css">
     <link rel="stylesheet" href="css/chart_style.css" media="screen" type="text/css"/>
     <script src="js/modernizr.js"></script>
+    <script src="js/index.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <script src="js/DelCookie.js"></script>
@@ -126,14 +127,6 @@
         }
     </style>
     <script>
-        var chart_1_y = [
-            15, 25, 40, 30, 12, 20, 23, 25, 27, 23, 24, 28, 29, 30
-        ];
-        var chart_2_y = [
-            80, 65, 65, 40, 55, 34, 54, 50, 60, 64, 55, 27, 24, 30
-        ];
-        drawCircle('#chart-3', 1, 77, '#circle-1');
-        drawCircle('#chart-4', 2, 53, '#circle-2');
 
         $(document).ready(function () {
             $().UItoTop({easingType: 'easeOutQuart'});
