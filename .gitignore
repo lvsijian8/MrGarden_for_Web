@@ -1,9 +1,9 @@
-FlowerpotTomcat/*
+MrFlower/*
 
-!FlowerpotTomcat/src/
+!MrFlower/src/
 
-FlowerpotTomcat/src/1.properties
+MrFlower/src/1.properties
 
-!FlowerpotTomcat/web/
+!MrFlower/web/
 
-FlowerpotTomcat/web/WEB-INF/classes
+MrFlower/web/WEB-INF/classes
