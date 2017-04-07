@@ -16,6 +16,7 @@ import java.io.PrintWriter;
 @WebServlet("/appendAndroid")
 public class appendAndroid extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int user_id=Integer.parseInt(request.getParameter("user_id"));
         int fid=Integer.parseInt(request.getParameter("fid"));
         String flowername = new String(request.getParameter("flowername").getBytes("ISO8859-1"), "UTF-8");
         int num_bottle_day=Integer.parseInt(request.getParameter("num_bottle_day"));
@@ -28,7 +29,7 @@ public class appendAndroid extends HttpServlet {
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        out.println(appendDao.append(fid, flowername, num_bottle_day,num_bottle_time,num_bottle_ml,num_water_day,num_water_time,num_water_ml));
+        out.println(appendDao.append(user_id,fid, flowername, num_bottle_day,num_bottle_time,num_bottle_ml,num_water_day,num_water_time,num_water_ml));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
