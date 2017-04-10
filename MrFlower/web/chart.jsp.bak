@@ -593,12 +593,19 @@
         }
         countCircle(animTime,parent,progress);
     }
+<<<<<<< HEAD:MrFlower/web/chart.jsp
+
 
     //
 
 
 
 </script>
+
+=======
+
+</script>
+>>>>>>> origin/master:MrFlower/web/chart.jsp
 
 <!--==============================footer=================================-->
 <footer style="background-color: #53534A">
