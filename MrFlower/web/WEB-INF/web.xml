@@ -23,4 +23,8 @@
         <filter-name>checkLogin</filter-name>
         <url-pattern>/history.jsp</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>checkLogin</filter-name>
+        <url-pattern>/chart</url-pattern>
+    </filter-mapping>
 </web-app>

@@ -44,7 +44,7 @@
           $sections.filter('.active').removeClass('active');
           $tabs.has('a[href="' + id + '"]').addClass('active');
           $sections.filter(id).addClass('active');
-        }
+        };
         
         // Setup events
         $tabs.on('click', function(e){

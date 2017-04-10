@@ -1,3 +1,5 @@
+<%@ page import="net.sf.json.JSONArray" %>
+<%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
   User: desol
@@ -6,6 +8,20 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    JSONArray Potchart = null;
+    if ((Potchart = (JSONArray) request.getAttribute("Potchart")) == null) {//若是直接访问chart.jsp则先跳转chart,再跳转回来
+%>
+<jsp:forward page="chart"/>
+<%
+    }
+%>
+<%
+    List<String> pot_names = ((List<String>) Potchart.getJSONObject(0).get("pot_names"));
+    List<Integer> pot_ids = ((List<Integer>) Potchart.getJSONObject(0).get("pot_ids"));
+    List<Integer> humidity = ((List<Integer>) Potchart.getJSONObject(0).get("humidity"));
+    List<Integer> temperature = ((List<Integer>) Potchart.getJSONObject(0).get("temperature"));
+%>
 <html>
 <head>
     <title>图表</title>
@@ -201,9 +217,16 @@
                              aria-labelledby="headingTwo">
                             <div class="panel-body">
                                 <form>
-                                    <input type="radio" id="hwl" name="radio" value="虎尾兰" checked><label
-                                        for="hwl">虎尾兰</label><br/>
-                                    <input type="radio" id="gyz" name="radio" value="观音竹"><label for="gyz">观音竹</label>
+                                    <%
+                                        for (int i = 0; i < pot_names.size(); i++) {
+                                            String checked1 = "";
+                                            if ((Integer) Potchart.getJSONObject(0).get("checked") == i)
+                                                checked1 = "checked";
+                                            out.print("<input " + checked1 + " type=\"radio\" id=\"huahua" + i + "\" name=\"radio\" onclick=\"changePot(" + pot_ids.get(i) + ")\"><label for=\"huahua" + i + "\" onclick=\"changePot(" + pot_ids.get(i) + ")\">" + pot_names.get(i) + "</label>");
+                                            if (i + 1 < pot_names.size())
+                                                out.print("<br/>");
+                                        }
+                                    %>
                                 </form>
                             </div>
                         </div>
@@ -213,7 +236,11 @@
         </div>
     </div>
 </div>
-
+<script>
+    function changePot(id) {
+        window.location.href = "chart?pot_id=" + id;
+    }
+</script>
 <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"></script>
 
@@ -255,11 +282,11 @@
             </svg>
             <h3 class="valueX">时间/天</h3>
         </div>
-        <!--div class="chart-values">
-            <p class="h-value">1689h</p>
+        <div class="chart-values">
+            <p class="h-value"><%= Potchart.getJSONObject(0).get("out_t")%>°C</p><%------------------%>
             <p class="percentage-value"></p>
             <p class="total-gain"></p>
-        </div-->
+        </div>
         <div class="triangle green"></div>
     </div>
     <div class="chart" id="graph-2-container">
@@ -269,11 +296,11 @@
             </svg>
             <h3 class="valueX">时间/天</h3>
         </div>
-        <!--div class="chart-values">
-            <p class="h-value">322h</p>
+        <div class="chart-values">
+            <p class="h-value"><%= Potchart.getJSONObject(0).get("out_h")%>%</p><%------------------%>
             <p class="percentage-value"></p>
             <p class="total-gain"></p>
-        </div-->
+        </div>
         <div class="triangle red"></div>
     </div>
     <div class="chart circle" id="circle-1">
@@ -300,23 +327,32 @@
 
 
 <script src='js/snap.svg-min.js'></script>
-<script >
+<script>
 
-                                //--------------------------------------------------------------------------//
+    //--------------------------------------------------------------------------//
     //曲线的值
     var chart_1_y = [
-        99, 25, 40, 30, 12, 20, 23, 25, 27, 23, 24, 28, 29, 99
+        //25, 25, 40, 30, 12, 20, 23, 25, 27, 23, 24, 28, 99, 101
+        <%
+            for(int i=0;i<temperature.size();i++){
+                out.print(temperature.get(i)+",");
+            }
+        %>
     ];
     var chart_2_y = [
-        80, 65, 65, 40, 55, 34, 54, 50, 60, 64, 55, 27, 24, 30
+//        80, 65, 65, 40, 55, 34, 54, 50, 60, 64, 55, 27, 24, 30,
+        <%
+            for(int i=0;i<humidity.size();i++){
+                out.print(humidity.get(i)+",");
+            }
+        %>
     ];
 
     //圆圆的值
-    drawCircle('#chart-3', 1, 78, '#circle-1');
-    drawCircle('#chart-4', 2, 54, '#circle-2');
+    drawCircle('#chart-3', 1, <%= Potchart.getJSONObject(0).get("water")%>, '#circle-1');
+    drawCircle('#chart-4', 2, <%= Potchart.getJSONObject(0).get("fertilizer")%>, '#circle-2');
     drawLineGraph('#chart-1', chart_1_y, '#graph-1-container', 1);
     drawLineGraph('#chart-2', chart_2_y, '#graph-2-container', 2);
-
 
 
     /*
@@ -437,16 +473,16 @@
             function percentageChange() {
                 percentageGain = initValue / endValue * 100;
 
-                if(percentageGain > 100){
+                if (percentageGain > 100) {
                     console.log('over100');
-                    percentageGain = Math.round(percentageGain * 100*10) / 100;
-                }else if(percentageGain < 100){
+                    percentageGain = Math.round(percentageGain * 100 * 10) / 100;
+                } else if (percentageGain < 100) {
                     console.log('under100');
                     percentageGain = Math.round(percentageGain * 10) / 10;
                 }
                 if (initValue > endValue) {
 
-                    percentageGain = endValue/initValue*100-100;
+                    percentageGain = endValue / initValue * 100 - 100;
                     percentageGain = percentageGain.toFixed(2);
 
                     percentagePrefix = "";
@@ -454,11 +490,12 @@
                 } else {
                     percentagePrefix = "+";
                 }
-                if(endValue > initValue){
-                    percentageGain = endValue/initValue*100;
+                if (endValue > initValue) {
+                    percentageGain = endValue / initValue * 100;
                     percentageGain = Math.round(percentageGain);
                 }
             }
+
             percentageChange();
             findPrefix();
 
@@ -486,6 +523,7 @@
                     }, intervalTime);
                 }
             }
+
             count(graph, sum);
 
             percentage.text(percentagePrefix + percentageGain + "%");
@@ -528,7 +566,7 @@
 
         createSegments(myPoints);
         calculatePercentage(points, container);
-        joinLine(segments,id);
+        joinLine(segments, id);
 
         drawPolygon(segments, id);
 
@@ -545,37 +583,39 @@
          }
          drawPolygon(segments,id);*/
     }
-    function drawCircle(container,id,progress,parent){
+    function drawCircle(container, id, progress, parent) {
         var paper = Snap(container);
         var prog = paper.path("M5,50 A45,45,0 1 1 95,50 A45,45,0 1 1 5,50");
         var lineL = prog.getTotalLength();
-        var oneUnit = lineL/100;
+        var oneUnit = lineL / 100;
         var toOffset = lineL - oneUnit * progress;
-        var myID = 'circle-graph-'+id;
+        var myID = 'circle-graph-' + id;
         prog.attr({
-            'stroke-dashoffset':lineL,
-            'stroke-dasharray':lineL,
-            'id':myID
+            'stroke-dashoffset': lineL,
+            'stroke-dasharray': lineL,
+            'id': myID
         });
 
-        var animTime = 1300;/*progress / 100*/
+        var animTime = 1300;
+        /*progress / 100*/
 
         prog.animate({
-            'stroke-dashoffset':toOffset
-        },animTime,mina.easein);
+            'stroke-dashoffset': toOffset
+        }, animTime, mina.easein);
 
-        function countCircle(animtime,parent,progress){
+        function countCircle(animtime, parent, progress) {
             var textContainer = $(parent).find('.circle-percentage');
             var i = 0;
             var time = 1300;
             var intervalTime = Math.abs(time / progress);
             var timerID = setInterval(function () {
                 i++;
-                textContainer.text(i+"%");
+                textContainer.text(i + "%");
                 if (i === progress) clearInterval(timerID);
             }, intervalTime);
         }
-        countCircle(animTime,parent,progress);
+
+        countCircle(animTime, parent, progress);
     }
 
 </script>

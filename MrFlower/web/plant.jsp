@@ -12,7 +12,7 @@
     JSONArray FirstPlant = null;
     if ((FirstPlant = (JSONArray) request.getAttribute("FirstPlant")) == null) {//若是直接访问plant.jsp则先跳转plant,再跳转回来
 %>
-<jsp:forward page="plant"/>
+<jsp:forward page="plant?page=1"/>
 <%
     }
 %>
