@@ -160,6 +160,7 @@
 <script src='js/jquery.js'></script>
 <script src='js/jquery.js'></script>
 <script src="js/xiala_index.js"></script>
+<script src="js/index.js"></script>
 </body>
 
 <div id="say">

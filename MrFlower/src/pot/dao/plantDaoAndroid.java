@@ -70,8 +70,8 @@ public class plantDaoAndroid {
                 params.put("temperature_min", Integer.parseInt(rs.getString(5)));
                 params.put("temperature_max", Integer.parseInt(rs.getString(6)));
                 params.put("fertilizer", "/ye_"+rs.getString(7)+".png");
-                params.put("text", rs.getString(8));
                 params.put("brief", rs.getString(9));
+                params.put("text", rs.getString(8));
                 array.add(params);
             }
         } catch (SQLException e) {
