@@ -2,7 +2,7 @@ MrFlower/*
 
 !MrFlower/src/
 
-MrFlower/src/1.properties
+MrFlower/src/db.properties
 
 !MrFlower/web/
 

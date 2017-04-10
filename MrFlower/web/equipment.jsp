@@ -233,14 +233,67 @@
         <h1 style="font-size: 24px">设备状态</h1>
     </div>
     <div>
-        <figure>
+        <!--figure>
             <iframe src="guanli.html" width="80%" height="400px"></iframe>
-        </figure>
+        </figure-->
+        <div id="page-wrapper">
+            <div class="graphs" style="width: 80%;margin:0 auto">
+                <div class="col_3" style="border-bottom-color: #e6e6e6;display:inline;">
+                    <div class="col-md-3 widget widget1" style="float: left" >
+                        <div class="r3_counter_box">
+                            <i class="fa"><img src="images/Temperature.png"> </i>
+                            <div class="stats">
+                                <h5>30<span>°C</span></h5>
+                                <div class="grow grow3">
+                                    <p>温度</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 widget widget1" style="float: left">
+                        <div class="r3_counter_box">
+                            <i class="fa"><img src="images/Humidity.png"></i>
+                            <div class="stats">
+                                <h5>30<span>%</span></h5>
+                                <div class="grow grow1">
+                                    <p>湿度</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 widget widget1" style="float: left">
+                        <div class="r3_counter_box">
+                            <i class="fa"><img src="images/Battery_Full.png"> </i>
+                            <div class="stats">
+                                <h5>100<span>%</span></h5>
+                                <div class="grow">
+                                    <p>电量</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 widget widget1" style="float: left">
+                        <div class="r3_counter_box">
+                            <i class="fa"><img src="images/Sun.png"> </i>
+                            <div class="stats">
+                                <h5>强<span></span></h5>
+                                <div class="grow grow2">
+                                    <p>光照</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div style="padding: 18px">
-        <h1 style="font-size: 24px">设备控制</h1>
+    <link href="css/guanli_style.css" rel='stylesheet' type='text/css'/>
+    <link href="css/font-awesome2.css" rel="stylesheet">
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div style="padding: 3em 0;float: none;">
+        <h1 style="font-size: 24px;">设备控制</h1>
     </div>
-    <div class="page" style="background-color: #f9f9f9;width: 60%;padding-left: 5em">
+    <div class="page" style="background-color: #f9f9f9;width: 50%;margin:0 auto;">
 
         <!--the main content begin-->
         <div class="container">
@@ -250,8 +303,8 @@
                 <!--the Devicelist-->
                 <div class="twelve wide column">
                     <!--the device content-->
-                    <div class="ui device two column middle aligned vertical grid segment">
-                        <div class="column verborder" style="padding-left: 7em">
+                    <div class="ui device two column middle aligned vertical grid segment" style="width: 90%;margin: 22px auto">
+                        <div class="column verborder" style="padding-left: 12em">
                             <div class="ui info segment">
                                 <p><img src="images/Watering_Can.png">水</p>
                                 <p>水剩余： <span class="stress">100%</span></p>
@@ -274,8 +327,8 @@
                         </div>
                     </div>
                     <!--another device content-->
-                    <div class="ui two column device middle aligned vertical grid segment">
-                        <div class="column verborder" style="padding-left: 7em">
+                    <div class="ui two column device middle aligned vertical grid segment" style="width: 90%;margin: 22px auto">
+                        <div class="column verborder" style="padding-left: 12em">
                             <div class="ui info segment">
                                 <p><img src="images/Bottle_of_Water.png">营养液</p>
                                 <p>营养液剩余： <span class="stress">10%</span></p>

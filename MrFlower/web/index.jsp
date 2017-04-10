@@ -166,10 +166,10 @@
         <div class="grid_4">
             <h3>系统能做什么</h3>
             <ul class="list">
-                <li><a href="article.jsp#article1">系统的用户管理</a></li>
-                <li><a href="article.jsp#article2">盆栽的操作管理</a></li>
-                <li><a href="article.jsp#article3">数据的报表管理</a></li>
-                <li><a href="article.jsp#article4">盆栽的模式管理</a></li>
+                <li><a href="article.jsp#tab1">系统的用户管理</a></li>
+                <li><a href="article.jsp#tab2">盆栽的操作管理</a></li>
+                <li><a href="article.jsp#tab3">数据的报表管理</a></li>
+                <li><a href="article.jsp#tab4">盆栽的模式管理</a></li>
             </ul>
         </div>
     </div>
