@@ -212,33 +212,6 @@
         $('.tab-group').tabify();
     })
 </script>
-<!--div style="text-align: center;width: 750px;margin:auto;color: #7a7a7a;font: 14px/20px Arial, Helvetica, sans-serif;padding-bottom: 2em">
-    <div id="article1">
-        <h1>系统的用户管理</h1>
-        <p>
-            基本的账户登陆注册与注销，资料修改，通过手机号找回密码。
-        </p>
-    </div>
-    <div id="article2">
-        <h1>盆栽的操作管理</h1>
-        <p>
-            当前用户下盆栽添加删除与共享，浇灌指令发出，数据采集间隔设置，拍照指令的发出。
-        </p>
-    </div>
-    <div id="article3">
-        <h1>数据的报表管理</h1>
-        <p>
-            单一数据时序图，多种数据时序图，当前用户下多盆栽数据对比，根据采集数据提供养护<br>建议，植物生长警报，植物数据百科全书，数据实时刷新，生长记录相册。
-        </p>
-    </div>
-    <div id="article4">
-        <h1>盆栽的模式管理</h1>
-        <p>
-            模式选择，自定义模式，手动模式，无人托管模式，自动适应模式，已经模式的编辑添加与删除。
-        </p>
-    </div>
-</div-->
-
 
 <!--==============================footer=================================-->
 <footer style="background-color: #53534A">
