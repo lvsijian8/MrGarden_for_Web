@@ -21,9 +21,9 @@ public class plantDaoAndroid {
         boolean nullMark = false;
         Map wai = new HashMap();
         JSONArray array = new JSONArray();
-        con = DBConnection.getDBConnection();
         String sql = "select plant_id,chinese_name,english_name,image_url from plant LIMIT ?,?";
         try {
+            con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sql);
             prepstmt.setInt(1, id);
             prepstmt.setInt(2, next);
@@ -55,9 +55,9 @@ public class plantDaoAndroid {
         ResultSet rs = null;
         Map wai = new HashMap();
         JSONArray array = new JSONArray();
-        con = DBConnection.getDBConnection();
         String sql = "select chinese_name,english_name,watering,sunshine,temperature_min,temperature_max,fertilizer,text,brief from plant where plant_id=?";
         try {
+            con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sql);
             prepstmt.setInt(1, id);
             rs = prepstmt.executeQuery();

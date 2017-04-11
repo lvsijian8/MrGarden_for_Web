@@ -20,10 +20,10 @@ public class plantDaoWeb {
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
         JSONArray array = new JSONArray();
-        con = DBConnection.getDBConnection();
         String sql1="select COUNT(plant_id) from plant";
         String sql = "select plant_id,chinese_name,brief,image_url from plant LIMIT ?,?";
         try {
+            con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sql1);
             rs = prepstmt.executeQuery();
             while (rs.next()) {
@@ -56,9 +56,9 @@ public class plantDaoWeb {
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
         JSONArray array = new JSONArray();
-        con = DBConnection.getDBConnection();
         String sql = "select chinese_name,english_name,image_url,watering,sunshine,temperature_min,temperature_max,fertilizer,text from plant where plant_id=?";
         try {
+            con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sql);
             prepstmt.setInt(1, id);
             rs = prepstmt.executeQuery();

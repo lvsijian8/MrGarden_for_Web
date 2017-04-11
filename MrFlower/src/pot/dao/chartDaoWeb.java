@@ -21,21 +21,24 @@ public class chartDaoWeb {
         ResultSet rs = null;
         JSONArray array = new JSONArray();
         Map params = new HashMap();
-        con = DBConnection.getDBConnection();
         String sqlFindPots="SELECT pot_id FROM user_pot WHERE user_id=?;";
+        ArrayList<Integer> pot_ids=new ArrayList<Integer>();
+        ArrayList<String> pot_names=new ArrayList<String>();
+        ArrayList<Double> temperature=new ArrayList<Double>();//温度
+        ArrayList<Integer> humidity=new ArrayList<Integer>();//湿度
+        int checked=0;
+        String sqlFindPotName="SELECT flower_name FROM pot WHERE pot_id=?;";
+        String sql="SELECT out_temperature,out_humidity,water,fertilizer FROM pot_";
+        String sqlFdata="SELECT time,out_temperature,out_humidity FROM pot_";
+        DateFormat dateFormat =new SimpleDateFormat("dd");//获取当前天
         try {
+            con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sqlFindPots);
             prepstmt.setInt(1, user_id);
             rs = prepstmt.executeQuery();
-            int checked=0;
-            ArrayList<Integer> pot_ids=new ArrayList<Integer>();
-            ArrayList<String> pot_names=new ArrayList<String>();
-            ArrayList<Integer> temperature=new ArrayList<Integer>();//温度
-            ArrayList<Integer> humidity=new ArrayList<Integer>();//湿度
             while (rs.next()) {
                 pot_ids.add(rs.getInt("pot_id"));
             }
-            String sqlFindPotName="SELECT flower_name FROM pot WHERE pot_id=?;";
             prepstmt = con.prepareStatement(sqlFindPotName);
             for(int i=0;i<pot_ids.size();i++){
                 if(pot_ids.get(i)==pot_id)
@@ -50,7 +53,7 @@ public class chartDaoWeb {
                 checked=0;
                 pot_id=pot_ids.get(0);
             }
-            String sql="SELECT out_temperature,out_humidity,water,fertilizer FROM pot_"+pot_id+" ORDER BY time DESC limit 0,1";
+            sql=sql+pot_id+" ORDER BY time DESC limit 0,1";
             prepstmt = con.prepareStatement(sql);
             rs = prepstmt.executeQuery();
             while (rs.next()) {
@@ -59,7 +62,7 @@ public class chartDaoWeb {
                 params.put("water",rs.getInt(3));
                 params.put("fertilizer",rs.getInt(4));
             }
-            String sqlFdata="SELECT time,out_temperature,out_humidity FROM pot_"+pot_id+" ORDER BY time DESC limit 0,192";
+            sqlFdata=sqlFdata+pot_id+" ORDER BY time DESC limit 0,192";
             prepstmt = con.prepareStatement(sqlFdata);
             rs = prepstmt.executeQuery();
             int outT[]=new int[30];
@@ -67,7 +70,6 @@ public class chartDaoWeb {
             for (int j=0,d=0,mark=0,yesDay=0;rs.next()&&j<8;d++){//近8天的数据
                 int thisDay=0;
                 Date date=rs.getDate(1);
-                DateFormat dateFormat =new SimpleDateFormat("dd");//获取当前天
                 thisDay=Integer.parseInt(dateFormat.format(date));
                 if(mark==0){
                     yesDay=thisDay;
@@ -82,24 +84,28 @@ public class chartDaoWeb {
                         oH+=outH[k];outH[k]=0;
                     }
                     humidity.add(oH/d);
-                    temperature.add(oT/d);
+                    temperature.add((oT/d)+0.0);
                     d=0;
                 }
                 outT[d]=rs.getInt(2);
                 outH[d]=rs.getInt(3);
             }
-            Collections.reverse(humidity);
-            Collections.reverse(temperature);
-            params.put("checked",checked);
-            params.put("pot_names",pot_names);
-            params.put("pot_ids",pot_ids);
-            params.put("humidity",humidity);
-            params.put("temperature",temperature);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             DBConnection.closeDB(con, prepstmt, rs);
         }
+        Collections.reverse(humidity);
+        Collections.reverse(temperature);
+        //数据放大(25-10)/30*100
+        for(int i=0;i<temperature.size();i++){
+            temperature.set(i,((temperature.get(i)-10.0)/30.0)*100.0);
+        }
+        params.put("checked",checked);
+        params.put("pot_names",pot_names);
+        params.put("pot_ids",pot_ids);
+        params.put("humidity",humidity);
+        params.put("temperature",temperature);
         array.add(params);
         return array;
     }

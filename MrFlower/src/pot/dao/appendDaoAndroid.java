@@ -16,11 +16,11 @@ public class appendDaoAndroid {
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
         int state=0,pot_id=0;
-        con = DBConnection.getDBConnection();
         String sql="INSERT INTO pot (fid, flower_name, bottle_day, bottle_time, bottle_ml, water_day,water_time, water_ml) VALUES(?,?,?,?,?,?,?,?);";
         String sqlFind="select MAX(pot_id) from pot where fid=? AND flower_name=? AND bottle_day=? AND bottle_time=? AND bottle_ml=? AND water_day=? AND water_time=? AND water_ml=?;";
         String sqlPot="INSERT INTO user_pot (user_id,pot_id) VALUES(?,?);";
         try {
+            con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sql);
             prepstmt.setInt(1, fid);
             prepstmt.setString(2, fname);

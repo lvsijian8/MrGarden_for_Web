@@ -17,11 +17,11 @@ public class signupDaoAndroid {
         ResultSet rs = null;
         String state="";
         Boolean isAlready=false;
-        con = DBConnection.getDBConnection();
         String sqlAlready = "Select count(user_name) FROM user where user_name=?";
         String sql="INSERT INTO user (user_name,user_pwd,user_phone) VALUES (?,?,?)";
         String sqlFind="select user_id from user where user_name=?";
         try {
+            con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sqlAlready);
             prepstmt.setString(1, user_name);
             rs = prepstmt.executeQuery();

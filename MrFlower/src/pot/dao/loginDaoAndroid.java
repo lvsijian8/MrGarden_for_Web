@@ -17,10 +17,10 @@ public class loginDaoAndroid {
         ResultSet rs = null;
         String state="-3";//默认密码错误
         Boolean isAlready=false;
-        con = DBConnection.getDBConnection();
         String sqlAlready = "Select count(user_name) FROM user where user_name=?";
         String sql="select user_id from user where user_name=? AND user_pwd=?";
         try {
+            con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sqlAlready);
             prepstmt.setString(1, user_name);
             rs = prepstmt.executeQuery();

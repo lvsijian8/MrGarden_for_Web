@@ -209,7 +209,12 @@
                             <h4 class="panel-title">
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    选择您的花盆
+                                    <%
+                                        if ((Integer) Potchart.getJSONObject(0).get("checked") != 0)
+                                            out.print(pot_names.get((Integer) Potchart.getJSONObject(0).get("checked")));
+                                        else
+                                            out.print("选择您的花盆");
+                                    %>
                                 </a>
                             </h4>
                         </div>
