@@ -112,7 +112,7 @@ text=<%=SecondPlant.getJSONObject(0).get("text")%>
     </div>
 </footer>
 <div style="display:none">
-    <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+    <script src='https://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
 </div>
 
 </body>

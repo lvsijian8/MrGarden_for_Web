@@ -233,9 +233,6 @@
         <h1 style="font-size: 24px">设备状态</h1>
     </div>
     <div>
-        <!--figure>
-            <iframe src="guanli.html" width="80%" height="400px"></iframe>
-        </figure-->
         <div id="page-wrapper">
             <div class="graphs" style="width: 80%;margin:0 auto">
                 <div class="col_3" style="border-bottom-color: #e6e6e6;display:inline;">
@@ -394,7 +391,7 @@
     </div>
 </footer>
 <div style="display:none">
-    <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+    <script src='https://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
 </div>
 
 </body>
