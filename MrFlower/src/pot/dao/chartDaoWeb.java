@@ -36,9 +36,13 @@ public class chartDaoWeb {
             prepstmt = con.prepareStatement(sqlFindPots);
             prepstmt.setInt(1, user_id);
             rs = prepstmt.executeQuery();
+            boolean isKong=true;
             while (rs.next()) {
                 pot_ids.add(rs.getInt("pot_id"));
+                isKong=false;
             }
+            if (isKong)
+                return null;
             prepstmt = con.prepareStatement(sqlFindPotName);
             for(int i=0;i<pot_ids.size();i++){
                 if(pot_ids.get(i)==pot_id)

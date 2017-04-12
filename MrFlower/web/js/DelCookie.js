@@ -10,7 +10,7 @@ function foreach() {
             DelCookie(arr[0]);
     }
     alert("注销成功.");
-    window.location.reload();
+    window.location.href="index.jsp";
 }
 function DelCookie(name) {
     var exp = new Date();

@@ -1,6 +1,6 @@
-package pot.servlet;
+package pot.servlet.android;
 
-import pot.dao.plantDaoAndroid;
+import pot.dao.searchDaoAndroid;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,14 +12,14 @@ import java.io.PrintWriter;
 import java.util.Map;
 
 /**
- * Created by lvsijian8 on 2017/3/26.
+ * Created by lvsijian8 on 2017/4/11.
  */
-@WebServlet("/plantAndroid")
-public class plantAndroid extends HttpServlet {
+@WebServlet("/searchAndroid")
+public class searchAndroid extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String fid = new String(request.getParameter("fid").getBytes("ISO8859-1"), "UTF-8");
-        plantDaoAndroid plantDao = new plantDaoAndroid();
-        Map wai = plantDao.findFirst(Integer.parseInt(fid), 7);
+        String flower_name = new String(request.getParameter("flower_name").getBytes("ISO8859-1"), "UTF-8");
+        searchDaoAndroid searchDao = new searchDaoAndroid();
+        Map wai = searchDao.searchplant(flower_name);
         if (wai != null) {
             response.setContentType("text/json;charset=UTF-8");
             response.setCharacterEncoding("UTF-8");

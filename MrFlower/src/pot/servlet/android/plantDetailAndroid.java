@@ -1,7 +1,6 @@
-package pot.servlet;
+package pot.servlet.android;
 
-import pot.dao.loginDaoAndroid;
-import pot.dao.signupDaoAndroid;
+import pot.dao.plantDaoAndroid;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,20 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 /**
  * Created by lvsijian8 on 2017/3/27.
  */
-@WebServlet("/loginAndroid")
-public class loginAndroid extends HttpServlet {
+@WebServlet("/plantDetailAndroid")
+public class plantDetailAndroid extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String user_name = new String(request.getParameter("user_name").getBytes("ISO8859-1"), "UTF-8");
-        String user_pwd = new String(request.getParameter("user_pwd").getBytes("ISO8859-1"), "UTF-8");
-        loginDaoAndroid loginDao = new loginDaoAndroid();
+        String fid = new String(request.getParameter("fid").getBytes("ISO8859-1"), "UTF-8");
+        plantDaoAndroid plantDao = new plantDaoAndroid();
+        Map wai = plantDao.findSecond(Integer.parseInt(fid));
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        out.println(loginDao.findUser(user_name, user_pwd));
+        out.println(wai.toString().replaceAll( "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",""));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -18,11 +18,11 @@ import java.io.PrintWriter;
 @WebServlet("/chart")
 public class chart extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String pot_id = "";
+        int pot_id = -1;
         try {
-            pot_id = new String(request.getParameter("pot_id").getBytes("ISO8859-1"), "UTF-8");
+            pot_id = Integer.parseInt(new String(request.getParameter("pot_id").getBytes("ISO8859-1"), "UTF-8"));
         } catch (NullPointerException e) {
-            pot_id = "-1";
+            pot_id = -1;
         }
         int user_id = 0;
         Cookie cookie = null;
@@ -39,14 +39,17 @@ public class chart extends HttpServlet {
             }
         }
         chartDaoWeb chartDao = new chartDaoWeb();
-        JSONArray array = chartDao.findchart(Integer.parseInt(pot_id), user_id);
+        JSONArray array;
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-        request.setAttribute("Potchart", array);
+        if ((array = chartDao.findchart(pot_id, user_id)) != null) {
+            request.setAttribute("Potchart", array);
+            request.getRequestDispatcher("chart.jsp").forward(request, response);
+        } else {
+            request.setAttribute("error", "alert(\"您当前尚未添加花盆.请进入首页下方下载APP进行添加\");");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
 
-        /*PrintWriter out = response.getWriter();
-        out.println(array.toString());*/
-        request.getRequestDispatcher("chart.jsp").forward(request, response);
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

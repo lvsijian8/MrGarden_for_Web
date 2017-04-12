@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 
 /**
  * Created by lvsijian8 on 2017/3/30.
@@ -14,7 +15,7 @@ import java.io.PrintWriter;
 @WebServlet("/loginWeb")
 public class loginWeb extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String user_name = request.getParameter("user_name");
+        String user_name = new String(request.getParameter("user_name").getBytes("ISO8859-1"), "UTF-8");
         String user_pwd = new String(request.getParameter("user_pwd").getBytes("ISO8859-1"), "UTF-8");
         String remember = "";
         String user_id = "";
@@ -39,8 +40,8 @@ public class loginWeb extends HttpServlet {
             request.setAttribute("error", error);
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {//密码正确
-            Cookie user_idCo = new Cookie("user_id", user_id);
-            Cookie user_nameCo = new Cookie("user_name", user_name);
+            Cookie user_idCo = new Cookie("user_id", URLEncoder.encode(user_id, "UTF-8"));
+            Cookie user_nameCo = new Cookie("user_name", URLEncoder.encode(user_name, "UTF-8"));
             if (remember.equals("on")) {//记住密码
                 user_idCo.setMaxAge(60 * 60 * 24 * 14);   //设置Cookie有效期为14天
                 user_nameCo.setMaxAge(60 * 60 * 24 * 14);

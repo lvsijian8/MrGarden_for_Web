@@ -29,7 +29,7 @@ public class fdataDaoAndroid {
         DateFormat dateFormatyM = new SimpleDateFormat("yyyy-MM");
         DateFormat dateFormatd = new SimpleDateFormat("dd");//获取当前天
         String flower_name = "";
-        String sqlFdata = "SELECT time,out_temperature,out_humidity,in_humidity,light FROM pot_";
+//        String sqlFdata = "SELECT time,out_temperature,out_humidity,in_humidity,light FROM pot_";
         ArrayList<Integer> humidity = new ArrayList<Integer>();//湿度
         ArrayList<Integer> inhumidity = new ArrayList<Integer>();//土壤湿度
         ArrayList<Integer> sunshine = new ArrayList<Integer>();//光照
@@ -52,7 +52,7 @@ public class fdataDaoAndroid {
                 while (rs.next()) {
                     flower_name = rs.getString("flower_name");
                 }
-                sqlFdata = sqlFdata + pot_ids[i] + " ORDER BY time DESC limit 0,192";
+                String sqlFdata = "SELECT time,out_temperature,out_humidity,in_humidity,light FROM pot_" +pot_ids[i] + " ORDER BY time DESC limit 0,192";
                 prepstmt = con.prepareStatement(sqlFdata);
                 rs = prepstmt.executeQuery();
                 int outT[] = new int[30];
@@ -80,6 +80,8 @@ public class fdataDaoAndroid {
                     }
                     if (time[j] != thisDay) {//下一天
                         j++;
+                        if(j>=8)
+                            break;
                         time[j] = thisDay;
                         int oT = 0, oH = 0, iH = 0, li = 0;
                         for (int k = 0; k < d; k++) {//取出今天的所有数据并平均值

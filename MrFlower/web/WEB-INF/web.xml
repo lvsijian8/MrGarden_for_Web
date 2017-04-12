@@ -27,4 +27,14 @@
         <filter-name>checkLogin</filter-name>
         <url-pattern>/chart</url-pattern>
     </filter-mapping>
+    <servlet>
+        <servlet-name>sockets</servlet-name>
+        <servlet-class>pot.servlet.SocketServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>sockets</servlet-name>
+        <url-pattern>/socket</url-pattern>
+    </servlet-mapping>
 </web-app>

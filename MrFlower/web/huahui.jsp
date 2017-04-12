@@ -1,4 +1,5 @@
-<%@ page import="net.sf.json.JSONArray" %><%--
+<%@ page import="net.sf.json.JSONArray" %>
+<%@ page import="java.net.URLDecoder" %><%--
   Created by IntelliJ IDEA.
   User: desol
   Date: 2017/3/21
@@ -16,6 +17,9 @@
 %>
 <html>
 <head>
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon" />
     <title>花卉介绍</title>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no"/>
@@ -69,7 +73,7 @@
                                 for (int i = 0; i < cookies.length; i++) {//从cookie中获取当前已登陆用户
                                     cookie = cookies[i];
                                     if (cookie.getName().equals("user_name") && (cookie.getValue() != null)) {
-                                        out.print("<a style=\"float:left\" >" + cookie.getValue() + "</a>" + "|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
+                                        out.print("<a style=\"float:left\" >" + URLDecoder.decode(cookie.getValue(), "UTF-8") + "</a>" + "|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
                                         isLogin = true;
                                         break;
                                     }

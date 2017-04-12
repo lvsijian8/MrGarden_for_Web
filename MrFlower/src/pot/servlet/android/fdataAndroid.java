@@ -1,4 +1,4 @@
-package pot.servlet;
+package pot.servlet.android;
 
 import pot.dao.fdataDaoAndroid;
 

@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.net.URLDecoder" %><%--
   Created by IntelliJ IDEA.
   User: desol
   Date: 2017/3/9
@@ -8,6 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon" />
     <title>首页</title>
     <meta name="format-detection" content="telephone=no"/>
     <link rel="icon" href="images/favicon.ico">
@@ -26,6 +29,13 @@
     <script src="js/owl.carousel.js"></script>
     <script src="js/DelCookie.js"></script>
     <script>
+
+        window.onload = function () {
+            <%
+                out.print(request.getAttribute("error"));
+            %>
+        };
+
         $(document).ready(function () {
             $().UItoTop({easingType: 'easeOutQuart'});
             /*carousel*/
@@ -78,7 +88,7 @@
                                     for (int i = 0; i < cookies.length; i++) {//从cookie中获取当前已登陆用户
                                         cookie = cookies[i];
                                         if (cookie.getName().equals("user_name") && (cookie.getValue() != null)) {
-                                            out.print("<a style=\"float:left\" >" + cookie.getValue() + "</a>" + "|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
+                                            out.print("<a style=\"float:left\" >" + URLDecoder.decode(cookie.getValue(), "UTF-8") + "</a>" + "|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
                                             isLogin = true;
                                             break;
                                         }
@@ -209,10 +219,10 @@
         </div>
         <div class="grid_4 prefix_1">
             <h3>最新消息</h3>
-            <p class="col1">
-                <time datetime="2014-01-01">03.11.17</time>
+            <p class="col1" style="font-size: 15px" id="download">
+                <time datetime="2014-01-01">2017-03-12</time>
                 -
-                <a href="#">花盆</a>
+                    <a href="updata/MrFlower.apk">下载花伴安卓版</a>
             </p>
             花盆测试中。。。。。。
         </div>

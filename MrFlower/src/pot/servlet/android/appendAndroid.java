@@ -1,4 +1,4 @@
-package pot.servlet;
+package pot.servlet.android;
 
 import pot.dao.appendDaoAndroid;
 
@@ -16,8 +16,8 @@ import java.io.PrintWriter;
 @WebServlet("/appendAndroid")
 public class appendAndroid extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int user_id=Integer.parseInt(request.getParameter("user_id"));
-        int fid=Integer.parseInt(request.getParameter("fid"));
+        int user_id=Integer.parseInt(new String(request.getParameter("user_id").getBytes("ISO8859-1"), "UTF-8"));
+        int fid=Integer.parseInt(new String(request.getParameter("fid").getBytes("ISO8859-1"), "UTF-8"));
         String flowername = new String(request.getParameter("flowername").getBytes("ISO8859-1"), "UTF-8");
         int num_bottle_day=Integer.parseInt(request.getParameter("num_bottle_day"));
         int num_bottle_time=Integer.parseInt(request.getParameter("num_bottle_time"));

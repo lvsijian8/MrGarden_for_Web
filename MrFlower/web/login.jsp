@@ -59,7 +59,7 @@
             </div>
             <div class="cont_forms">
                 <div class="cont_img_back_"><img src="images/po.jpg" alt=""/></div>
-                <form action="loginWeb">
+                <form action="loginWeb" method="post">
                     <div class="cont_form_login"><a href="#" onClick="ocultar_login_sign_up()"><i
                             class="material-icons">&#xE5C4;</i></a>
                         <h2>登录</h2>
@@ -76,7 +76,7 @@
                         <%--<input class="btn_login" onClick="login()" type="submit" value="登录"/>--%>
                     </div>
                 </form>
-                <form action="signupWeb">
+                <form action="signupWeb" method="post">
                     <div class="cont_form_sign_up"><a href="#" onClick="ocultar_login_sign_up()"><i
                             class="material-icons">&#xE5C4;</i></a>
                         <h2>注册</h2>

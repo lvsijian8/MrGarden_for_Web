@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page import="net.sf.json.JSONArray" %>
+<%@ page import="java.net.URLDecoder" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
@@ -113,7 +114,7 @@
                                 for (int i = 0; i < cookies.length; i++) {//从cookie中获取当前已登陆用户
                                     cookie = cookies[i];
                                     if (cookie.getName().equals("user_name") && (cookie.getValue() != null)) {
-                                        out.print("<a style=\"float:left\" >" + cookie.getValue() + "</a>" + "|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
+                                        out.print("<a style=\"float:left\" >" + URLDecoder.decode(cookie.getValue(), "UTF-8") + "</a>" + "|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
                                         isLogin = true;
                                         break;
                                     }
