@@ -222,9 +222,9 @@
             <p class="col1" style="font-size: 15px" id="download">
                 <time datetime="2014-01-01">2017-03-12</time>
                 -
-                    <a href="updata/MrFlower.apk">下载花伴安卓版</a>
+                    <a href="updata/MrFlower.apk">花伴安卓版APP发布</a>
             </p>
-            花盆测试中。。。。。。
+            <img src="images/cli.png" style="width: 96px;height: auto">
         </div>
         <div class="grid_4">
             <h3>邮件订阅</h3>

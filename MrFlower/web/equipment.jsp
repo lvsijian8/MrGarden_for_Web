@@ -236,6 +236,14 @@
         <h1 style="font-size: 24px">设备状态</h1>
     </div>
     <div>
+        <!--div style="float: right;padding-right: 15em">
+            <img src="images/Light_On.png" style="width:30px;height: auto">设备在线
+        </div-->
+        <div style="float: right;padding-right: 15em">
+            <img src="images/Light_Off.png" style="width:30px;height: auto">设备离线
+        </div>
+    </div>
+    <div>
         <div id="page-wrapper">
             <div class="graphs" style="width: 80%;margin:0 auto">
                 <div class="col_3" style="border-bottom-color: #e6e6e6;display:inline;">
