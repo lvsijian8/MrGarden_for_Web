@@ -144,6 +144,19 @@
             z-index: 1;
         }
     </style>
+    <script type="text/javascript">
+        /*setTimeout(function(){
+            window.history.back();
+        },3000);*/
+        function hello(){
+            alert("hello");
+        }
+        //重复执行某个方法
+        var t1 = window.setInterval(hello,1000);
+        var t2 = window.setInterval("hello()",3000);
+        //去掉定时器的方法
+        window.clearInterval(t1);
+    </script>
     <script>
         $(document).ready(function () {
             $().UItoTop({easingType: 'easeOutQuart'});
