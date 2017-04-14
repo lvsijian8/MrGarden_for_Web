@@ -20,8 +20,8 @@ public class SocketServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        SocketListener socketArd=new SocketListener();
-        socketArd.start();
+        //SocketListener socketArd=new SocketListener();
+        //socketArd.start();
         //this.sockets=socketArd.getSocket();
     }
 

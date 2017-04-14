@@ -1,10 +1,26 @@
-<%@ page import="java.net.URLDecoder" %><%--
+<%@ page import="java.net.URLDecoder" %>
+<%@ page import="net.sf.json.JSONArray" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: desol
   Date: 2017/3/11
   Time: 16:46
   To change this template use File | Settings | File Templates.
 --%>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    JSONArray Potdevic = null;
+    if ((Potdevic = (JSONArray) request.getAttribute("Potdevic")) == null) {//若是直接访问chart.jsp则先跳转chart,再跳转回来
+%>
+<jsp:forward page="equipment"/>
+<%
+    }
+%>
+<%
+    List<String> pot_names = ((List<String>) Potdevic.getJSONObject(0).get("pot_names"));
+    List<Integer> pot_ids = ((List<Integer>) Potdevic.getJSONObject(0).get("pot_ids"));
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -207,7 +223,12 @@
                             <h4 class="panel-title">
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    选择您的花盆
+                                    <%
+                                        if ((Integer) Potdevic.getJSONObject(0).get("checked") != 0)
+                                            out.print(pot_names.get((Integer) Potdevic.getJSONObject(0).get("checked")));
+                                        else
+                                            out.print("选择您的花盆");
+                                    %>
                                 </a>
                             </h4>
                         </div>
@@ -215,9 +236,16 @@
                              aria-labelledby="headingTwo">
                             <div class="panel-body">
                                 <form class="form" method="post">
-                                    <input type="radio" id="hwl" name="radio" value="虎尾兰" checked><label
-                                        for="hwl">虎尾兰</label><br/>
-                                    <input type="radio" id="gyz" name="radio" value="观音竹"><label for="gyz">观音竹</label>
+                                    <%
+                                        for (int i = 0; i < pot_names.size(); i++) {
+                                            String checked1 = "";
+                                            if ((Integer) Potdevic.getJSONObject(0).get("checked") == i)
+                                                checked1 = "checked";
+                                            out.print("<input " + checked1 + " type=\"radio\" id=\"huahua" + i + "\" name=\"radio\" onclick=\"changePot(" + pot_ids.get(i) + ")\"><label for=\"huahua" + i + "\" onclick=\"changePot(" + pot_ids.get(i) + ")\">" + pot_names.get(i) + "</label>");
+                                            if (i + 1 < pot_names.size())
+                                                out.print("<br/>");
+                                        }
+                                    %>
                                 </form>
                             </div>
                         </div>
@@ -227,6 +255,11 @@
         </div>
     </div>
 </div>
+<script>
+    function changePot(id) {
+        window.location.href = "equipment?pot_id=" + id;
+    }
+</script>
 
 <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -315,10 +348,10 @@
                         <div class="column verborder" style="padding-left: 12em">
                             <div class="ui info segment">
                                 <p><img src="images/Watering_Can.png">水</p>
-                                <p>水剩余： <span class="stress">100%</span></p>
-                                <p>上次浇水时间： <span class="stress">1小时前</span></p>
-                                <p>建议浇水时间： <span class="stress">23小时后</span></p>
-                                <p>建议： <span class="stress">水量充足，不需要添加水</span></p>
+                                <p>水剩余： <span class="stress"><%= Potdevic.getJSONObject(0).get("water")%>%</span></p>
+                                <p>上次浇水时间： <span class="stress"><%= Potdevic.getJSONObject(0).get("lastWaterDate")%></span></p>
+                                <p>建议浇水时间： <span class="stress"><%= Potdevic.getJSONObject(0).get("recommendWaterTime")%></span></p>
+                                <p>建议： <span class="stress"><%= Potdevic.getJSONObject(0).get("recommendWater")%></span></p>
                             </div>
                         </div>
                         <div class="center aligned column">
@@ -339,10 +372,10 @@
                         <div class="column verborder" style="padding-left: 12em">
                             <div class="ui info segment">
                                 <p><img src="images/Bottle_of_Water.png">营养液</p>
-                                <p>营养液剩余： <span class="stress">10%</span></p>
-                                <p>上次加营养液时间： <span class="stress">1天前</span></p>
-                                <p>建议加营养液时间： <span class="stress">6天后</span></p>
-                                <p>建议： <span class="stress">营养液余量不足，需要添加营养液</span></p>
+                                <p>营养液剩余： <span class="stress"><%= Potdevic.getJSONObject(0).get("fertilizer")%>%</span></p>
+                                <p>上次加营养液时间： <span class="stress"><%= Potdevic.getJSONObject(0).get("lastFertilizerDate")%></span></p>
+                                <p>建议加营养液时间： <span class="stress"><%= Potdevic.getJSONObject(0).get("recommendFertilizerTime")%></span></p>
+                                <p>建议： <span class="stress"><%= Potdevic.getJSONObject(0).get("recommendFertilizer")%></span></p>
                             </div>
                         </div>
                         <div class="center aligned column">

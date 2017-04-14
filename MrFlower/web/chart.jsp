@@ -337,9 +337,6 @@
 
 <script src='js/snap.svg-min.js'></script>
 <script>
-
-    //--------------------------------------------------------------------------//
-    //曲线的值
     var chart_1_y = [
         //25, 25, 40, 30, 12, 20, 23, 25, 27, 23, 24, 28, 99, 101
         <%
@@ -357,7 +354,6 @@
         %>
     ];
 
-    //圆圆的值
     drawCircle('#chart-3', 1, <%= Potchart.getJSONObject(0).get("water")%>, '#circle-1');
     drawCircle('#chart-4', 2, <%= Potchart.getJSONObject(0).get("fertilizer")%>, '#circle-2');
     drawLineGraph('#chart-1', chart_1_y, '#graph-1-container', 1);
