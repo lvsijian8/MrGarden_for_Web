@@ -209,18 +209,31 @@
                                     document.getElementById("output").value = number;
                                 }
                             </script>
-                            <form id="testform">
-                                <input type="submit" style="float: right;padding:0 1em;margin-right: 5em" value="提&nbsp;&nbsp;交"><br>
+                            <form id="testform" action="setTimeMl?type=w&pot_id=<%=request.getParameter("pot_id")%>"
+                                  method="post">
+                                <input type="submit" style="float: right;padding:0 1em;margin-right: 5em"
+                                       value="提&nbsp;&nbsp;交"><br>
                                 <div style="display: inline">
                                     <input id="range" type="range" min="1" max="30" value="1"
-                                           style="float: left;width: 200px" onchange="value_change()">
+                                           style="float: left;width: 200px" onchange="value_change()" name="day">
                                     <output id="output">1</output>
                                 </div>
-                                <input type="reset" style="float: right;padding:0 1em;margin-right: 5em" value="重&nbsp;&nbsp;置">
+                                <input type="reset" style="float: right;padding:0 1em;margin-right: 5em"
+                                       value="重&nbsp;&nbsp;置">
                                 <h3>浇水时间设置</h3>
-                                <input name="time" type="time" value="10:00">
+                                <input name="time" type="text" value="10">点
+                                <span style="float: right;padding:0 1em;margin-right: 5em;font-size: 20px">
+                                    <%
+                                        try {
+                                            if (request.getAttribute("type").equals("w"))
+                                                out.print(request.getAttribute("speak"));
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    %>
+                                </span>
                                 <h3>浇水量(ml)</h3>
-                                <input name="number" type="number" value="50" min="10" max="200" step="10">
+                                <input name="ml" type="number" value="50" min="10" max="200" step="10">
                             </form>
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="Section2">
@@ -231,18 +244,32 @@
                                     document.getElementById("output1").value = number;
                                 }
                             </script>
-                            <form id="testform1" style="display: inline">
-                                <input type="submit" style="float: right;padding:0 1em;margin-right: 5em" value="提&nbsp;&nbsp;交"><br>
+                            <form id="testform1" style="display: inline"
+                                  action="setTimeMl?type=f&pot_id=<%=request.getParameter("pot_id")%>" method="post">
+                                <input type="submit" style="float: right;padding:0 1em;margin-right: 5em"
+                                       value="提&nbsp;&nbsp;交"><br>
                                 <div style="display: inline">
                                     <input id="range1" type="range" min="1" max="30" value="7"
-                                           style="float: left;width: 200px" onchange="value_change1()">
+                                           style="float: left;width: 200px" onchange="value_change1()" name="day">
                                     <output id="output1">7</output>
                                 </div>
-                                <input type="reset" style="float: right;padding:0 1em;margin-right: 5em" value="重&nbsp;&nbsp;置">
+                                <input type="reset" style="float: right;padding:0 1em;margin-right: 5em"
+                                       value="重&nbsp;&nbsp;置">
                                 <h3>施肥时间设置</h3>
-                                <input name="time" type="time" value="10:00">
+                                <input name="time" type="text" value="10">点
+                                <span style="float: right;padding:0 1em;margin-right: 5em;font-size: 20px">
+                                    <%
+                                        try {
+                                            if (request.getAttribute("type").equals("f"))
+                                                out.print(request.getAttribute("speak"));
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    %>
+                                </span>
+
                                 <h3>施肥量(ml)</h3>
-                                <input name="number" type="number" value="50" min="10" max="200" step="10">
+                                <input name="ml" type="number" value="50" min="10" max="200" step="10">
                             </form>
                         </div>
                     </div>

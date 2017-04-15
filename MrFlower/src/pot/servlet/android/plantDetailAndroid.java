@@ -1,6 +1,6 @@
 package pot.servlet.android;
 
-import pot.dao.plantDaoAndroid;
+import pot.dao.android.plantDaoAndroid;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +24,7 @@ public class plantDetailAndroid extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         out.println(wai.toString().replaceAll( "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",""));
+        out.close();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

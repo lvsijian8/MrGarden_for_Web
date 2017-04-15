@@ -1,6 +1,6 @@
 package pot.servlet.android;
 
-import pot.dao.searchDaoAndroid;
+import pot.dao.android.searchDaoAndroid;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,6 +25,7 @@ public class searchAndroid extends HttpServlet {
             response.setCharacterEncoding("UTF-8");
             PrintWriter out = response.getWriter();
             out.println(wai.toString());
+            out.close();
         }
     }
 

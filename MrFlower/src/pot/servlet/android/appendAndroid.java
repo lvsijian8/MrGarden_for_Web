@@ -1,6 +1,6 @@
 package pot.servlet.android;
 
-import pot.dao.appendDaoAndroid;
+import pot.dao.android.appendDaoAndroid;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,6 +30,7 @@ public class appendAndroid extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         out.println(appendDao.append(user_id,fid, flowername, num_bottle_day,num_bottle_time,num_bottle_ml,num_water_day,num_water_time,num_water_ml));
+        out.close();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

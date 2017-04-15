@@ -1,4 +1,4 @@
-package pot.dao;
+package pot.dao.android;
 
 import net.sf.json.JSONArray;
 import pot.util.DBConnection;

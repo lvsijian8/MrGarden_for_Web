@@ -24,9 +24,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon"/>
     <title>设备</title>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no"/>
@@ -145,17 +145,33 @@
         }
     </style>
     <script type="text/javascript">
-        /*setTimeout(function(){
-            window.history.back();
-        },3000);*/
-        function hello(){
-            alert("hello");
+        window.onload = function () {
+            ajaxS();
+        };
+        function ajaxS() {//左侧数据库连接列表点击事件
+            $.ajax({
+                method: "post",
+                url: 'deviceState',
+                data: {'pot_id': <%=pot_ids.get((Integer) Potdevic.getJSONObject(0).get("checked"))%>},//通过POST模式与deviceState交互
+                success: function (data) {//交互成功后将返回信息输出至HTML相应位置
+                    $('#now_temperature')[0].innerHTML = data.split('|')[0];
+                    $('#now_humidity')[0].innerHTML = data.split('|')[1];
+                    $('#now_power')[0].innerHTML = data.split('|')[2];
+                    $('#now_light')[0].innerHTML = data.split('|')[3];
+                    if(data.split('|')[4]==1){
+                        $('#isOnline')[0].innerHTML ="<img src=\"images/Light_On.png\" style=\"width:30px;height: auto\">设备在线";
+                        $('#green1').attr('onclick','time(this)');
+                        $('#green2').attr('onclick','time(this)');
+                    }else {
+                        $('#isOnline')[0].innerHTML ="<img src=\"images/Light_Off.png\" style=\"width:30px;height: auto\">设备离线";
+                        $('#green1').attr('onclick','unOnline()');
+                        $('#green2').attr('onclick','unOnline()');
+                    }
+                }
+            });
         }
         //重复执行某个方法
-        var t1 = window.setInterval(hello,1000);
-        var t2 = window.setInterval("hello()",3000);
-        //去掉定时器的方法
-        window.clearInterval(t1);
+        var t2 = window.setInterval("ajaxS()", 3000);
     </script>
     <script>
         $(document).ready(function () {
@@ -207,7 +223,7 @@
                                 for (int i = 0; i < cookies.length; i++) {//从cookie中获取当前已登陆用户
                                     cookie = cookies[i];
                                     if (cookie.getName().equals("user_name") && (cookie.getValue() != null)) {
-                                        out.print("<a style=\"float:left\" >" + URLDecoder.decode(cookie.getValue(), "UTF-8") +"</a>" + "|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
+                                        out.print("<a style=\"float:left\" >" + URLDecoder.decode(cookie.getValue(), "UTF-8") + "</a>" + "|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
                                         isLogin = true;
                                         break;
                                     }
@@ -282,22 +298,22 @@
         <h1 style="font-size: 24px">设备状态</h1>
     </div>
     <div>
-        <!--div style="float: right;padding-right: 15em">
-            <img src="images/Light_On.png" style="width:30px;height: auto">设备在线
-        </div-->
-        <div style="float: right;padding-right: 15em">
+        <div style="float: right;padding-right: 15em" id="isOnline">
             <img src="images/Light_Off.png" style="width:30px;height: auto">设备离线
         </div>
+        <%--<div style="float: right;padding-right: 15em">
+            <img src="images/Light_Off.png" style="width:30px;height: auto">设备离线
+        </div>--%>
     </div>
     <div>
         <div id="page-wrapper">
             <div class="graphs" style="width: 80%;margin:0 auto">
                 <div class="col_3" style="border-bottom-color: #e6e6e6;display:inline;">
-                    <div class="col-md-3 widget widget1" style="float: left" >
+                    <div class="col-md-3 widget widget1" style="float: left">
                         <div class="r3_counter_box">
                             <i class="fa"><img src="images/Temperature.png"> </i>
                             <div class="stats">
-                                <h5>30<span>°C</span></h5>
+                                <h5 id="now_temperature">25<span>°C</span></h5>
                                 <div class="grow grow3">
                                     <p>温度</p>
                                 </div>
@@ -308,7 +324,7 @@
                         <div class="r3_counter_box">
                             <i class="fa"><img src="images/Humidity.png"></i>
                             <div class="stats">
-                                <h5>30<span>%</span></h5>
+                                <h5 id="now_humidity">50<span>%</span></h5>
                                 <div class="grow grow1">
                                     <p>湿度</p>
                                 </div>
@@ -319,7 +335,7 @@
                         <div class="r3_counter_box">
                             <i class="fa"><img src="images/Battery_Full.png"> </i>
                             <div class="stats">
-                                <h5>100<span>%</span></h5>
+                                <h5 id="now_power">90<span>%</span></h5>
                                 <div class="grow">
                                     <p>电量</p>
                                 </div>
@@ -330,7 +346,7 @@
                         <div class="r3_counter_box">
                             <i class="fa"><img src="images/Sun.png"> </i>
                             <div class="stats">
-                                <h5>强<span></span></h5>
+                                <h5 id="now_light">合适<span></span></h5>
                                 <div class="grow grow2">
                                     <p>光照</p>
                                 </div>
@@ -357,21 +373,26 @@
                 <!--the Devicelist-->
                 <div class="twelve wide column">
                     <!--the device content-->
-                    <div class="ui device two column middle aligned vertical grid segment" style="width: 90%;margin: 22px auto">
+                    <div class="ui device two column middle aligned vertical grid segment"
+                         style="width: 90%;margin: 22px auto">
                         <div class="column verborder" style="padding-left: 12em">
                             <div class="ui info segment">
                                 <p><img src="images/Watering_Can.png">水</p>
                                 <p>水剩余： <span class="stress"><%= Potdevic.getJSONObject(0).get("water")%>%</span></p>
-                                <p>上次浇水时间： <span class="stress"><%= Potdevic.getJSONObject(0).get("lastWaterDate")%></span></p>
-                                <p>建议浇水时间： <span class="stress"><%= Potdevic.getJSONObject(0).get("recommendWaterTime")%></span></p>
-                                <p>建议： <span class="stress"><%= Potdevic.getJSONObject(0).get("recommendWater")%></span></p>
+                                <p>上次浇水时间： <span
+                                        class="stress"><%= Potdevic.getJSONObject(0).get("lastWaterDate")%></span></p>
+                                <p>建议浇水时间： <span
+                                        class="stress"><%= Potdevic.getJSONObject(0).get("recommendWaterTime")%></span>
+                                </p>
+                                <p>建议： <span class="stress"><%= Potdevic.getJSONObject(0).get("recommendWater")%></span>
+                                </p>
                             </div>
                         </div>
                         <div class="center aligned column">
                             <div class="ui buttons">
-                                <input type="button" id="green1" value="点击加水"
+                                <input type="button" id="green1" value="点击加水" onclick="unOnline()"
                                        style="height: 33px;border: 2px solid #f9f9f9;border-radius: 2px;background-color: transparent;"></input>
-                                <a class="ui tiny green button" href="manage.jsp"><i><img src="images/Settings.png"
+                                <a class="ui tiny green button" href="manage.jsp?&pot_id=<%=pot_ids.get((Integer) Potdevic.getJSONObject(0).get("checked"))%>"><i><img src="images/Settings.png"
                                                                                           width="14px" height="auto">
                                 </i>管 理</a>
                                 <a class="ui tiny blue button" href="history.jsp"><i><img src="images/Clock.png"
@@ -381,21 +402,29 @@
                         </div>
                     </div>
                     <!--another device content-->
-                    <div class="ui two column device middle aligned vertical grid segment" style="width: 90%;margin: 22px auto">
+                    <div class="ui two column device middle aligned vertical grid segment"
+                         style="width: 90%;margin: 22px auto">
                         <div class="column verborder" style="padding-left: 12em">
                             <div class="ui info segment">
                                 <p><img src="images/Bottle_of_Water.png">营养液</p>
-                                <p>营养液剩余： <span class="stress"><%= Potdevic.getJSONObject(0).get("fertilizer")%>%</span></p>
-                                <p>上次加营养液时间： <span class="stress"><%= Potdevic.getJSONObject(0).get("lastFertilizerDate")%></span></p>
-                                <p>建议加营养液时间： <span class="stress"><%= Potdevic.getJSONObject(0).get("recommendFertilizerTime")%></span></p>
-                                <p>建议： <span class="stress"><%= Potdevic.getJSONObject(0).get("recommendFertilizer")%></span></p>
+                                <p>营养液剩余： <span class="stress"><%= Potdevic.getJSONObject(0).get("fertilizer")%>%</span>
+                                </p>
+                                <p>上次加营养液时间： <span
+                                        class="stress"><%= Potdevic.getJSONObject(0).get("lastFertilizerDate")%></span>
+                                </p>
+                                <p>建议加营养液时间： <span
+                                        class="stress"><%= Potdevic.getJSONObject(0).get("recommendFertilizerTime")%></span>
+                                </p>
+                                <p>建议： <span
+                                        class="stress"><%= Potdevic.getJSONObject(0).get("recommendFertilizer")%></span>
+                                </p>
                             </div>
                         </div>
                         <div class="center aligned column">
                             <div class="ui buttons">
-                                <input type="button" id="green2" value="点击施肥"
+                                <input type="button" id="green2" value="点击施肥" onclick="unOnline()"
                                        style="height: 33px;border: 2px solid #f9f9f9;border-radius: 2px;background-color: transparent;"></input>
-                                <a class="ui tiny green button" href="#"><i><img src="images/Settings.png" width="14px"
+                                <a class="ui tiny green button" href="manage.jsp?&pot_id=<%=pot_ids.get((Integer) Potdevic.getJSONObject(0).get("checked"))%>"><i><img src="images/Settings.png" width="14px"
                                                                                  height="auto"> </i>管 理</a>
                                 <a class="ui tiny blue button" href="history.jsp"><i><img src="images/Clock.png"
                                                                                           width="14px"
@@ -426,12 +455,15 @@
                     1000)
             }
         }
-        document.getElementById("green1").onclick = function () {
+        function unOnline(){
+            alert("设备离线,无法执行.");
+        }
+        /*document.getElementById("green1").onclick = function () {
             time(this);
         };
         document.getElementById("green2").onclick = function () {
             time(this);
-        }
+        }*/
     </script>
 
 

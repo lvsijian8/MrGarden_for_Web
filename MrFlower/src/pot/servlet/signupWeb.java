@@ -1,12 +1,11 @@
 package pot.servlet;
 
-import pot.dao.signupDaoAndroid;
+import pot.dao.android.signupDaoAndroid;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URLEncoder;
 
 /**
@@ -22,7 +21,6 @@ public class signupWeb extends HttpServlet {
         signupDaoAndroid signupDao = new signupDaoAndroid();
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-        PrintWriter out = response.getWriter();
         if ((user_id = signupDao.writeUser(user_name, user_pwd, user_phone)) == "-1") {
             request.setAttribute("error", "alert(\"用户名已存在.\")");
             request.getRequestDispatcher("login.jsp").forward(request, response);

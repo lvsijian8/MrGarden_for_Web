@@ -1,6 +1,6 @@
 package pot.servlet.android;
 
-import pot.dao.fdataDaoAndroid;
+import pot.dao.android.fdataDaoAndroid;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,10 +20,13 @@ public class fdataAndroid extends HttpServlet {
         String user_id = new String(request.getParameter("user_id").getBytes("ISO8859-1"), "UTF-8");
         fdataDaoAndroid fdataDao=new fdataDaoAndroid();
         Map wai = fdataDao.getfdata(Integer.parseInt(user_id));
-        response.setContentType("text/json;charset=UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        PrintWriter out = response.getWriter();
-        out.println(wai.toString());
+        if (wai != null) {
+            response.setContentType("text/json;charset=UTF-8");
+            response.setCharacterEncoding("UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println(wai.toString());
+            out.close();
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

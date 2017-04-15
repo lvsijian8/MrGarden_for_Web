@@ -48,7 +48,6 @@ public class chart extends HttpServlet {
         } else {
             request.setAttribute("error", "alert(\"您当前尚未添加花盆.请进入首页下方下载APP进行添加\");");
             request.getRequestDispatcher("index.jsp").forward(request, response);
-
         }
     }
 

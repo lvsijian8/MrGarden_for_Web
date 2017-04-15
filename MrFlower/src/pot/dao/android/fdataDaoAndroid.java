@@ -1,4 +1,4 @@
-package pot.dao;
+package pot.dao.android;
 
 import net.sf.json.JSONArray;
 import pot.util.DBConnection;
@@ -35,6 +35,7 @@ public class fdataDaoAndroid {
         ArrayList<Integer> sunshine = new ArrayList<Integer>();//光照
         ArrayList<Integer> temperature = new ArrayList<Integer>();//温度
         ArrayList<Integer> days = new ArrayList<Integer>();//日期
+        Boolean nullMark=false;
         try {
             prepstmt = con.prepareStatement(sqlFindPots);
             prepstmt.setInt(1, user_id);
@@ -42,6 +43,7 @@ public class fdataDaoAndroid {
             for (int i = 0; rs.next(); i++) {
                 pot_ids[i] = rs.getInt("pot_id");
                 leng++;
+                nullMark=true;
             }
             for (int i = 0; i < leng; i++) {
                 Map params = new HashMap();
@@ -148,7 +150,10 @@ public class fdataDaoAndroid {
             DBConnection.closeDB(con, prepstmt, rs);
         }
         wai.put("data", array);
-        return wai;
+        if (nullMark)
+            return wai;
+        else
+            return null;
     }
 
     private int isUpMinWei(ArrayList<Integer> s, int Min) {

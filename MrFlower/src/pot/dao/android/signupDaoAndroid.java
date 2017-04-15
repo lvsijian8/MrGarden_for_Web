@@ -1,4 +1,4 @@
-package pot.dao;
+package pot.dao.android;
 
 import pot.util.DBConnection;
 

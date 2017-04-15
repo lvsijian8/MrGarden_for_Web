@@ -1,4 +1,4 @@
-package pot.dao;
+package pot.dao.android;
 
 import net.sf.json.JSONArray;
 import pot.util.DBConnection;
@@ -56,12 +56,14 @@ public class plantDaoAndroid {
         Map wai = new HashMap();
         JSONArray array = new JSONArray();
         String sql = "select chinese_name,english_name,watering,sunshine,temperature_min,temperature_max,fertilizer,text,brief from plant where plant_id=?";
+        Boolean nullMark=false;
         try {
             con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sql);
             prepstmt.setInt(1, id);
             rs = prepstmt.executeQuery();
             while (rs.next()) {
+                nullMark=true;
                 Map params = new HashMap();
                 params.put("chinese_name", rs.getString(1));
                 params.put("english_name", rs.getString(2));
@@ -80,7 +82,10 @@ public class plantDaoAndroid {
             DBConnection.closeDB(con, prepstmt, rs);
         }
         wai.put("data", array);
-        return wai;
+        if (nullMark)
+            return wai;
+        else
+            return null;
     }
 
 
