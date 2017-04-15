@@ -103,7 +103,7 @@ public class chartDaoWeb {
         Collections.reverse(temperature);
         //数据放大(25-10)/30*100
         for(int i=0;i<temperature.size();i++){
-            temperature.set(i,(double)Math.floor(((temperature.get(i)-10.0)/30.0)*100.0));
+            temperature.set(i, Math.floor(((temperature.get(i)-10.0)/30.0)*100.0));
         }
         params.put("checked",checked);
         params.put("pot_names",pot_names);

@@ -159,10 +159,13 @@
         </div>
     </form>
 </div>
-
+<script>
+    var sel=document.getElementById("sel");
+    sel.onchange=function(){
+        alert(sel.options[sel.selectedIndex].value);
+    }
+</script>
 <script src='js/jquery.js'></script>
-<script src='js/jquery.js'></script>
-<script src="js/xiala_index.js"></script>
 </body>
 
 <div id="say">
