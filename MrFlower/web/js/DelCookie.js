@@ -9,7 +9,6 @@ function foreach() {
         if (arr.length > 0)
             DelCookie(arr[0]);
     }
-    alert("注销成功.");
     window.location.href="index.jsp";
 }
 function DelCookie(name) {

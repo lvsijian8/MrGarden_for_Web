@@ -117,6 +117,19 @@
                 border: none;
             }
         }
+
+        .delectPot {
+            border: none;
+            width: 205px;
+            height: 54px;
+            line-height: 24px;
+            padding: 0 2px 4px 0;
+            *padding-bottom: 0;
+            background: url(images/bg1.png) no-repeat;
+            font: 26px/35px "Microsoft YaHei", Verdana, Geneva, sans-serif;
+            color: #fff;
+            cursor: pointer;
+        }
     </style>
     <script>
         $(document).ready(function () {
@@ -228,7 +241,6 @@
                                             if (request.getAttribute("type").equals("w"))
                                                 out.print(request.getAttribute("speak"));
                                         } catch (Exception e) {
-                                            e.printStackTrace();
                                         }
                                     %>
                                 </span>
@@ -263,13 +275,22 @@
                                             if (request.getAttribute("type").equals("f"))
                                                 out.print(request.getAttribute("speak"));
                                         } catch (Exception e) {
-                                            e.printStackTrace();
                                         }
                                     %>
                                 </span>
 
                                 <h3>施肥量(ml)</h3>
                                 <input name="ml" type="number" value="50" min="10" max="200" step="10">
+                            </form>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Section3">
+                            <form id="testform2" action="" method="post">
+                                <h3>点击删除按钮删除花盆</h3>
+                                <div style="padding: 10px 0">
+                                    <input value="删&nbsp;&nbsp;除" class="delectPot" type="button">
+                                </div>
+                                <br>
+                                <span style="padding:0 1em"><font color="red">*删除成功！</font></span>
                             </form>
                         </div>
                     </div>
@@ -283,7 +304,7 @@
 <script src="js/bootstrap.min.js"></script>
 
 <!--==============================footer=================================-->
-<footer>
+<footer style="background-color: #53534a;">
     <div class="container_12">
         <div class="grid_12 ">
             <div class="copy">

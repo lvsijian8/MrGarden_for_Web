@@ -51,11 +51,15 @@ public class deviceDaoAndroid {
                 while (rs.next()) {
                     date = rs.getTimestamp("heartBeat_time");
                     params.put("power",rs.getInt("now_power"));
-                    if (rs.getInt("now_light") > 500)
-                        params.put("warning","近期光照过强.");
+                    if (rs.getInt("now_light") > 600)
+                        params.put("warning","近期光照过强");
+                    else if (rs.getInt("now_light") < 300)
+                        params.put("warning","近期光照过弱");
                     else
-                        params.put("warning","近期光照过弱.");
+                        params.put("warning","近期光照正常");
                 }
+                if(date==null)
+                    date=new Timestamp(new java.util.Date().getTime()-6000);
                 if (((now.getTime() - date.getTime()) / 1000) > 5)
                     params.put("state",0);
                 else

@@ -1,4 +1,4 @@
-package pot.dao;
+package pot.dao.web;
 
 import net.sf.json.JSONArray;
 import pot.util.DBConnection;

@@ -2,10 +2,7 @@ package pot.dao.android;
 
 import pot.util.DBConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Created by lvsijian8 on 2017/3/27.
@@ -20,6 +17,8 @@ public class signupDaoAndroid {
         String sqlAlready = "Select count(user_name) FROM user where user_name=?";
         String sql="INSERT INTO user (user_name,user_pwd,user_phone) VALUES (?,?,?)";
         String sqlFind="select user_id from user where user_name=?";
+        String sqlAddHistory="INSERT INTO history (user_id, time, handle) VALUES(?,?,?);";
+        Timestamp now = new Timestamp(new java.util.Date().getTime());
         try {
             con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sqlAlready);
@@ -43,6 +42,11 @@ public class signupDaoAndroid {
                 while(rs.next()){
                     state=""+rs.getInt(1);
                 }
+                prepstmt = con.prepareStatement(sqlAddHistory);
+                prepstmt.setInt(1,Integer.parseInt(state));
+                prepstmt.setTimestamp(2,now);
+                prepstmt.setString(3,"signup");
+                prepstmt.executeUpdate();
             }
         } catch (SQLException e) {
             e.printStackTrace();

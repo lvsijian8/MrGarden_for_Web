@@ -1,7 +1,7 @@
-package pot.servlet;
+package pot.servlet.web;
 
 import net.sf.json.JSONArray;
-import pot.dao.plantDaoWeb;
+import pot.dao.web.plantDaoWeb;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  * Created by lvsijian8 on 2017/3/25.

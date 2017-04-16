@@ -1,7 +1,7 @@
-package pot.servlet;
+package pot.servlet.web;
 
 import net.sf.json.JSONArray;
-import pot.dao.potDataDaoWeb;
+import pot.dao.web.chartDaoWeb;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by lvsijian8 on 2017/4/13.
+ * Created by lvsijian8 on 2017/4/8.
  */
-@WebServlet("/equipment")
-public class equipment extends HttpServlet {
+@WebServlet("/chart")
+public class chart extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int pot_id = -1;
         try {
@@ -37,21 +37,20 @@ public class equipment extends HttpServlet {
                 }
             }
         }
-        potDataDaoWeb deviceDao = new potDataDaoWeb();
+        chartDaoWeb chartDao = new chartDaoWeb();
         JSONArray array;
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-        if ((array = deviceDao.findPotData(pot_id, user_id)) != null) {
-            request.setAttribute("Potdevic", array);
-            request.getRequestDispatcher("equipment.jsp").forward(request, response);
+        if ((array = chartDao.findchart(pot_id, user_id)) != null) {
+            request.setAttribute("Potchart", array);
+            request.getRequestDispatcher("chart.jsp").forward(request, response);
         } else {
             request.setAttribute("error", "alert(\"您当前尚未添加花盆.请进入首页下方下载APP进行添加\");");
             request.getRequestDispatcher("index.jsp").forward(request, response);
-
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+        doPost(request, response);
     }
 }

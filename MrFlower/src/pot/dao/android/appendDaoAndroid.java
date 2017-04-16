@@ -2,10 +2,7 @@ package pot.dao.android;
 
 import pot.util.DBConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Created by lvsijian8 on 2017/4/6.
@@ -19,6 +16,8 @@ public class appendDaoAndroid {
         String sql="INSERT INTO pot (fid, flower_name, bottle_day, bottle_time, bottle_ml, water_day,water_time, water_ml) VALUES(?,?,?,?,?,?,?,?);";
         String sqlFind="select MAX(pot_id) from pot where fid=? AND flower_name=? AND bottle_day=? AND bottle_time=? AND bottle_ml=? AND water_day=? AND water_time=? AND water_ml=?;";
         String sqlPot="INSERT INTO user_pot (user_id,pot_id) VALUES(?,?);";
+        String sqlAddHistory="INSERT INTO history (pot_id, user_id, device, time, handle,detail) VALUES(?,?,?,?,?,?);";
+        Timestamp now = new Timestamp(new java.util.Date().getTime());
         try {
             con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sql);
@@ -59,6 +58,14 @@ public class appendDaoAndroid {
                     "PRIMARY KEY (`time`)" +
                     ") DEFAULT CHARACTER SET utf8 COMMENT='';";
             prepstmt = con.prepareStatement(sqlTable);
+            prepstmt.executeUpdate();
+            prepstmt = con.prepareStatement(sqlAddHistory);
+            prepstmt.setInt(1,pot_id);
+            prepstmt.setInt(2,user_id);
+            prepstmt.setString(3,"android");
+            prepstmt.setTimestamp(4,now);
+            prepstmt.setString(5,"add_pot");
+            prepstmt.setString(6,"本次创建花盆名称为:"+fname+",施肥间隔:"+bday+"天,施肥时间:"+bbtime+"点,施肥量:"+bml+"ml,浇水间隔:"+wday+",浇水时间:"+wtime+",浇水量:"+wml);
             prepstmt.executeUpdate();
         }catch (SQLException e){e.printStackTrace();}
         finally {

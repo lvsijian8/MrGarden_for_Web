@@ -1,4 +1,4 @@
-package pot.servlet;
+package pot.servlet.web;
 
 import pot.dao.android.loginDaoAndroid;
 
@@ -47,7 +47,7 @@ public class loginWeb extends HttpServlet {
             }
             response.addCookie(user_idCo);
             response.addCookie(user_nameCo);//保存用户名以及ID
-            request.setAttribute("error", "alert(\"登录成功\");window.location.href=\"index.jsp\";");
+            request.setAttribute("error", "window.location.href=\"index.jsp\";");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }

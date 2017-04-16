@@ -148,24 +148,47 @@
         window.onload = function () {
             ajaxS();
         };
-        function ajaxS() {//左侧数据库连接列表点击事件
+        function ajaxS() {//点击事件
             $.ajax({
                 method: "post",
                 url: 'deviceState',
-                data: {'pot_id': <%=pot_ids.get((Integer) Potdevic.getJSONObject(0).get("checked"))%>},//通过POST模式与deviceState交互
+                data: {
+                    'user_id':<%= Potdevic.getJSONObject(0).get("user_id")%>,
+                    'pot_id': <%=pot_ids.get((Integer) Potdevic.getJSONObject(0).get("checked"))%>
+                },//通过POST模式与deviceState交互
                 success: function (data) {//交互成功后将返回信息输出至HTML相应位置
                     $('#now_temperature')[0].innerHTML = data.split('|')[0];
                     $('#now_humidity')[0].innerHTML = data.split('|')[1];
                     $('#now_power')[0].innerHTML = data.split('|')[2];
                     $('#now_light')[0].innerHTML = data.split('|')[3];
-                    if(data.split('|')[4]==1){
-                        $('#isOnline')[0].innerHTML ="<img src=\"images/Light_On.png\" style=\"width:30px;height: auto\">设备在线";
-                        $('#green1').attr('onclick','time(this)');
-                        $('#green2').attr('onclick','time(this)');
-                    }else {
-                        $('#isOnline')[0].innerHTML ="<img src=\"images/Light_Off.png\" style=\"width:30px;height: auto\">设备离线";
-                        $('#green1').attr('onclick','unOnline()');
-                        $('#green2').attr('onclick','unOnline()');
+                    $('#waterml')[0].innerHTML = data.split('|')[7] + "%";
+                    $('#fertilizerml')[0].innerHTML = data.split('|')[8] + "%";
+                    $('#recommendWater')[0].innerHTML = data.split('|')[9];
+                    $('#recommendFertilizer')[0].innerHTML = data.split('|')[10];
+                    $('#lastWaterDate')[0].innerHTML = data.split('|')[11];
+                    $('#recommendWaterTime')[0].innerHTML = data.split('|')[12];
+                    $('#lastFertilizerDate')[0].innerHTML = data.split('|')[13];
+                    $('#recommendFertilizerTime')[0].innerHTML = data.split('|')[14];
+                    if (data.split('|')[4] == 1) {
+                        $('#isOnline')[0].innerHTML = "<img src=\"images/Light_On.png\" style=\"width:30px;height: auto\">设备在线";
+                        if ((data.split('|')[7] * 1.0 / 100.0) * 1218.0 >= data.split('|')[5]) {
+                            var watered = data.split('|')[7] - data.split('|')[5] / 12.18;
+                            $('#green1').attr('onclick', 'ajaxWater(this,\'w\',' + Math.floor(watered) + ')');
+                        }
+                        else {
+                            $('#green1').attr('onclick', 'unWater()');
+                        }
+                        if ((data.split('|')[8] * 1.0 / 100.0) * 1218.0 >= data.split('|')[6]) {
+                            var watered = data.split('|')[8] - data.split('|')[6] / 12.18;
+                            $('#green2').attr('onclick', 'ajaxWater(this,\'f\',' + Math.floor(watered) + ')');
+                        }
+                        else {
+                            $('#green2').attr('onclick', 'unFertilizer()');
+                        }
+                    } else {
+                        $('#isOnline')[0].innerHTML = "<img src=\"images/Light_Off.png\" style=\"width:30px;height: auto\">设备离线";
+                        $('#green1').attr('onclick', 'unOnline()');
+                        $('#green2').attr('onclick', 'unOnline()');
                     }
                 }
             });
@@ -263,7 +286,7 @@
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
                              aria-labelledby="headingTwo">
-                            <div class="panel-body">
+                            <div class="panel-body" style="padding-left: 2em">
                                 <form class="form" method="post">
                                     <%
                                         for (int i = 0; i < pot_names.size(); i++) {
@@ -276,6 +299,8 @@
                                         }
                                     %>
                                 </form>
+                                <br/>
+                                <a href="#" style="text-decoration:underline;"><img src="images/Add.png" style="width: 24px;height: auto"><font size="24" color="red">添加花盆</font></a>
                             </div>
                         </div>
                     </div>
@@ -378,13 +403,13 @@
                         <div class="column verborder" style="padding-left: 12em">
                             <div class="ui info segment">
                                 <p><img src="images/Watering_Can.png">水</p>
-                                <p>水剩余： <span class="stress"><%= Potdevic.getJSONObject(0).get("water")%>%</span></p>
+                                <p>水剩余： <span class="stress" id="waterml"></span></p>
                                 <p>上次浇水时间： <span
-                                        class="stress"><%= Potdevic.getJSONObject(0).get("lastWaterDate")%></span></p>
+                                        class="stress" id="lastWaterDate"></span></p>
                                 <p>建议浇水时间： <span
-                                        class="stress"><%= Potdevic.getJSONObject(0).get("recommendWaterTime")%></span>
+                                        class="stress" id="recommendWaterTime"></span>
                                 </p>
-                                <p>建议： <span class="stress"><%= Potdevic.getJSONObject(0).get("recommendWater")%></span>
+                                <p>建议： <span class="stress" id="recommendWater"></span>
                                 </p>
                             </div>
                         </div>
@@ -392,8 +417,10 @@
                             <div class="ui buttons">
                                 <input type="button" id="green1" value="点击加水" onclick="unOnline()"
                                        style="height: 33px;border: 2px solid #f9f9f9;border-radius: 2px;background-color: transparent;"></input>
-                                <a class="ui tiny green button" href="manage.jsp?&pot_id=<%=pot_ids.get((Integer) Potdevic.getJSONObject(0).get("checked"))%>"><i><img src="images/Settings.png"
-                                                                                          width="14px" height="auto">
+                                <a class="ui tiny green button"
+                                   href="manage.jsp?&pot_id=<%=pot_ids.get((Integer) Potdevic.getJSONObject(0).get("checked"))%>"><i><img
+                                        src="images/Settings.png"
+                                        width="14px" height="auto">
                                 </i>管 理</a>
                                 <a class="ui tiny blue button" href="history.jsp"><i><img src="images/Clock.png"
                                                                                           width="14px"
@@ -407,16 +434,16 @@
                         <div class="column verborder" style="padding-left: 12em">
                             <div class="ui info segment">
                                 <p><img src="images/Bottle_of_Water.png">营养液</p>
-                                <p>营养液剩余： <span class="stress"><%= Potdevic.getJSONObject(0).get("fertilizer")%>%</span>
+                                <p>营养液剩余： <span class="stress" id="fertilizerml"></span>
                                 </p>
                                 <p>上次加营养液时间： <span
-                                        class="stress"><%= Potdevic.getJSONObject(0).get("lastFertilizerDate")%></span>
+                                        class="stress" id="lastFertilizerDate"></span>
                                 </p>
                                 <p>建议加营养液时间： <span
-                                        class="stress"><%= Potdevic.getJSONObject(0).get("recommendFertilizerTime")%></span>
+                                        class="stress" id="recommendFertilizerTime"></span>
                                 </p>
                                 <p>建议： <span
-                                        class="stress"><%= Potdevic.getJSONObject(0).get("recommendFertilizer")%></span>
+                                        class="stress" id="recommendFertilizer"></span>
                                 </p>
                             </div>
                         </div>
@@ -424,8 +451,10 @@
                             <div class="ui buttons">
                                 <input type="button" id="green2" value="点击施肥" onclick="unOnline()"
                                        style="height: 33px;border: 2px solid #f9f9f9;border-radius: 2px;background-color: transparent;"></input>
-                                <a class="ui tiny green button" href="manage.jsp?&pot_id=<%=pot_ids.get((Integer) Potdevic.getJSONObject(0).get("checked"))%>"><i><img src="images/Settings.png" width="14px"
-                                                                                 height="auto"> </i>管 理</a>
+                                <a class="ui tiny green button"
+                                   href="manage.jsp?&pot_id=<%=pot_ids.get((Integer) Potdevic.getJSONObject(0).get("checked"))%>"><i><img
+                                        src="images/Settings.png" width="14px"
+                                        height="auto"> </i>管 理</a>
                                 <a class="ui tiny blue button" href="history.jsp"><i><img src="images/Clock.png"
                                                                                           width="14px"
                                                                                           height="auto"></i>历 史</a>
@@ -437,6 +466,24 @@
         </div>
     </div>
     <script type="text/javascript">
+        function ajaxWater(i, type, watered) {//左侧数据库连接列表点击事件
+            $.ajax({
+                method: "post",
+                url: 'wateringWeb',
+                data: {
+                    'user_id':<%= Potdevic.getJSONObject(0).get("user_id")%>,
+                    'pot_id': <%=pot_ids.get((Integer) Potdevic.getJSONObject(0).get("checked"))%>,
+                    'type': type,
+                    'watered': watered
+                },//通过POST模式与deviceState交互
+                success: function (data) {
+                    if (data == 0)
+                        alert("执行失败,请重试.");
+                    else
+                        time(i);
+                }
+            });
+        }
         var wait = 10;
         function time(i) {
             if (wait == 0) {
@@ -455,15 +502,21 @@
                     1000)
             }
         }
-        function unOnline(){
+        function unOnline() {
             alert("设备离线,无法执行.");
         }
+        function unWater() {
+            alert("水量不足,请加水后再执行.");
+        }
+        function unFertilizer() {
+            alert("营养液量不足,请添加营养液后再执行.");
+        }
         /*document.getElementById("green1").onclick = function () {
-            time(this);
-        };
-        document.getElementById("green2").onclick = function () {
-            time(this);
-        }*/
+         time(this);
+         };
+         document.getElementById("green2").onclick = function () {
+         time(this);
+         }*/
     </script>
 
 
