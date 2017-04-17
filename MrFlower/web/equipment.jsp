@@ -47,6 +47,7 @@
 
     <link type="text/css" rel="stylesheet" href="css/framework.css"/>
     <link type="text/css" rel="stylesheet" href="css/main.css"/>
+
     <style type="text/css">
         a:hover, a:focus {
             text-decoration: none;
@@ -300,7 +301,7 @@
                                     %>
                                 </form>
                                 <br/>
-                                <a href="#" style="text-decoration:underline;"><img src="images/Add.png" style="width: 24px;height: auto"><font size="24" color="red">添加花盆</font></a>
+                                <a href="addPot.jsp" style="text-decoration:underline;"><img src="images/Add.png" style="width: 24px;height: auto"><font size="24" color="red">添加花盆</font></a>
                             </div>
                         </div>
                     </div>
