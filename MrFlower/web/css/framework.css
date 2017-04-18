@@ -6684,9 +6684,9 @@ i.massive.basic.icon {
 
 /* Positioning */
 
-.ui.header:first-child {
+/*.ui.header:first-child {
   margin-top: 0em;
-}
+}*/
 
 .ui.header:last-child {
   margin-bottom: 0em;

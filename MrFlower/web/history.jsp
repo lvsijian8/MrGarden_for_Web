@@ -235,6 +235,7 @@
     pot_handles.onchange = function () {
         window.location.href = "history?pot_id=" + pot_names.options[pot_names.selectedIndex].value + "&pot_device=" + pot_devices.options[pot_devices.selectedIndex].value + "&pot_handle=" + pot_handles.options[pot_handles.selectedIndex].value;
     }
+
 </script>
 <script src='js/jquery.js'></script>
 </body>
