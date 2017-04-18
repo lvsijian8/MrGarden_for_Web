@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon"/>
     <title>首页</title>
     <meta name="format-detection" content="telephone=no"/>
     <link rel="icon" href="images/favicon.ico">
@@ -222,7 +222,7 @@
             <p class="col1" style="font-size: 15px" id="download">
                 <time datetime="2014-01-01">2017-03-12</time>
                 -
-                    <a href="updata/MrFlower.apk">花伴安卓版APP发布</a>
+                <a href="updata/MrFlower.apk">花伴安卓版APP发布</a>
             </p>
             <img src="images/cli.png" style="width: 96px;height: auto">
         </div>

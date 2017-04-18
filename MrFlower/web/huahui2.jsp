@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -268,7 +268,9 @@
         <div id="second">
             <h1><%=request.getParameter("english_name")%>
             </h1>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#7a7a7a" style="line-height: 25px"><%=request.getParameter("text")%></font>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#7a7a7a"
+                                                                     style="line-height: 25px"><%=request.getParameter("text")%>
+            </font>
             </p>
         </div>
         <div id="third">

@@ -1,7 +1,6 @@
 package pot.filters;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,8 +15,8 @@ public class checkLogin implements Filter {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
-        HttpServletRequest request=(HttpServletRequest) req;
-        HttpServletResponse response=(HttpServletResponse) resp;
+        HttpServletRequest request = (HttpServletRequest) req;
+        HttpServletResponse response = (HttpServletResponse) resp;
 
         boolean isLogin = false;
         Cookie cookie = null;
@@ -33,11 +32,10 @@ public class checkLogin implements Filter {
                 }
             }
         }
-        if (!isLogin){
+        if (!isLogin) {
             request.setAttribute("error", "alert(\"请先登录\");");
             request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
-        else
+        } else
             chain.doFilter(req, resp);
     }
 

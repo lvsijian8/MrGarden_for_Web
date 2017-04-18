@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon"/>
     <title>联系我们</title>
     <meta name="format-detection" content="telephone=no"/>
     <link rel="icon" href="images/favicon.ico">
@@ -153,7 +153,7 @@
                             东莞市麻涌镇<br>
                             沿江西一路7号
                         </dt>
-                        <dd><span>联系方式:</span>13554773703 </dd>
+                        <dd><span>联系方式:</span>13554773703</dd>
                         <dd>E-mail: 499365864@qq.com</dd>
                     </dl>
                 </address>

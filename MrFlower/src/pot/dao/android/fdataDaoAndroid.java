@@ -35,7 +35,7 @@ public class fdataDaoAndroid {
         ArrayList<Integer> sunshine = new ArrayList<Integer>();//光照
         ArrayList<Integer> temperature = new ArrayList<Integer>();//温度
         ArrayList<Integer> days = new ArrayList<Integer>();//日期
-        Boolean nullMark=false;
+        Boolean nullMark = false;
         try {
             prepstmt = con.prepareStatement(sqlFindPots);
             prepstmt.setInt(1, user_id);
@@ -43,7 +43,7 @@ public class fdataDaoAndroid {
             for (int i = 0; rs.next(); i++) {
                 pot_ids[i] = rs.getInt("pot_id");
                 leng++;
-                nullMark=true;
+                nullMark = true;
             }
             for (int i = 0; i < leng; i++) {
                 Map params = new HashMap();
@@ -54,7 +54,7 @@ public class fdataDaoAndroid {
                 while (rs.next()) {
                     flower_name = rs.getString("flower_name");
                 }
-                String sqlFdata = "SELECT time,out_temperature,out_humidity,in_humidity,light FROM pot_" +pot_ids[i] + " ORDER BY time DESC limit 0,192";
+                String sqlFdata = "SELECT time,out_temperature,out_humidity,in_humidity,light FROM pot_" + pot_ids[i] + " ORDER BY time DESC limit 0,192";
                 prepstmt = con.prepareStatement(sqlFdata);
                 rs = prepstmt.executeQuery();
                 int outT[] = new int[30];
@@ -82,7 +82,7 @@ public class fdataDaoAndroid {
                     }
                     if (time[j] != thisDay) {//下一天
                         j++;
-                        if(j>=8)
+                        if (j >= 8)
                             break;
                         time[j] = thisDay;
                         int oT = 0, oH = 0, iH = 0, li = 0;
@@ -119,23 +119,23 @@ public class fdataDaoAndroid {
                 params.put("temperature", temperature);
                 params.put("days", days);
                 String msg = "您的植物近期生长状况不错,再接再厉哦.";
-                int warn=-1;
-                if((warn=isOutMaxWei(humidity,90))!=-1){
-                    msg="您的植物在"+days.get(warn)+"日环境湿度过高对植物生长不利,请进行将花盆移至合适处！";
-                }else if((warn=isUpMinWei(humidity,10))!=-1){
-                    msg="您的植物在"+days.get(warn)+"日环境湿度过低对植物生长不利,请进行将花盆移至合适处！";
-                }else if((warn=isOutMaxWei(inhumidity,95))!=-1){
-                    msg="您的植物在"+days.get(warn)+"日土壤湿度过高对植物生长不利,请进行将花盆移至合适处！";
-                }else if((warn=isUpMinWei(inhumidity,10))!=-1){
-                    msg="您的植物在"+days.get(warn)+"日土壤湿度过低对植物生长不利,请进行将花盆移至合适处！";
-                }else if((warn=isOutMaxWei(sunshine,30))!=-1){
-                    msg="您的植物在"+days.get(warn)+"日光照过强对植物生长不利,请进行将花盆移至合适处！";//----------------光照数据待确认
-                }else if((warn=isUpMinWei(sunshine,10))!=-1){
-                    msg="您的植物在"+days.get(warn)+"日光照过低对植物生长不利,请进行将花盆移至合适处！";
-                }else if((warn=isOutMaxWei(temperature,30))!=-1){
-                    msg="您的植物在"+days.get(warn)+"日温度过高对植物生长不利,请进行将花盆移至合适处！";
-                }else if((warn=isUpMinWei(temperature,10))!=-1){
-                    msg="您的植物在"+days.get(warn)+"日温度过低对植物生长不利,请进行将花盆移至合适处！";
+                int warn = -1;
+                if ((warn = isOutMaxWei(humidity, 90)) != -1) {
+                    msg = "您的植物在" + days.get(warn) + "日环境湿度过高对植物生长不利,请进行将花盆移至合适处！";
+                } else if ((warn = isUpMinWei(humidity, 10)) != -1) {
+                    msg = "您的植物在" + days.get(warn) + "日环境湿度过低对植物生长不利,请进行将花盆移至合适处！";
+                } else if ((warn = isOutMaxWei(inhumidity, 95)) != -1) {
+                    msg = "您的植物在" + days.get(warn) + "日土壤湿度过高对植物生长不利,请进行将花盆移至合适处！";
+                } else if ((warn = isUpMinWei(inhumidity, 10)) != -1) {
+                    msg = "您的植物在" + days.get(warn) + "日土壤湿度过低对植物生长不利,请进行将花盆移至合适处！";
+                } else if ((warn = isOutMaxWei(sunshine, 30)) != -1) {
+                    msg = "您的植物在" + days.get(warn) + "日光照过强对植物生长不利,请进行将花盆移至合适处！";//----------------光照数据待确认
+                } else if ((warn = isUpMinWei(sunshine, 10)) != -1) {
+                    msg = "您的植物在" + days.get(warn) + "日光照过低对植物生长不利,请进行将花盆移至合适处！";
+                } else if ((warn = isOutMaxWei(temperature, 30)) != -1) {
+                    msg = "您的植物在" + days.get(warn) + "日温度过高对植物生长不利,请进行将花盆移至合适处！";
+                } else if ((warn = isUpMinWei(temperature, 10)) != -1) {
+                    msg = "您的植物在" + days.get(warn) + "日温度过低对植物生长不利,请进行将花盆移至合适处！";
                 }
                 params.put("msg", msg);
                 params.put("month", month);
@@ -157,28 +157,28 @@ public class fdataDaoAndroid {
     }
 
     private int isUpMinWei(ArrayList<Integer> s, int Min) {
-        int minWei = -1, min = -1,wei=-1;
+        int minWei = -1, min = -1, wei = -1;
         for (int i = 0; i < s.size(); i++) {
-            if(s.get(i)<min){
-                wei=i;
-                min=s.get(i);
+            if (s.get(i) < min) {
+                wei = i;
+                min = s.get(i);
             }
         }
-        if(min<=Min)
-            minWei=wei;
+        if (min <= Min)
+            minWei = wei;
         return minWei;
     }
 
     private int isOutMaxWei(ArrayList<Integer> s, int Max) {
-        int maxWei = -1, max = -1,wei=-1;
+        int maxWei = -1, max = -1, wei = -1;
         for (int i = 0; i < s.size(); i++) {
-            if(s.get(i)>max){
-                wei=i;
-                max=s.get(i);
+            if (s.get(i) > max) {
+                wei = i;
+                max = s.get(i);
             }
         }
-        if(max>=Max)
-            maxWei=wei;
+        if (max >= Max)
+            maxWei = wei;
         return maxWei;
     }
 

@@ -15,6 +15,15 @@ import java.io.PrintWriter;
  */
 @WebServlet("/signupAndroid")
 public class signupAndroid extends HttpServlet {
+    public String getRemoteAddress(HttpServletRequest request) {
+        String ip = request.getHeader("x-forwarded-for");
+        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) ip = request.getHeader("Proxy-Client-IP");
+        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown"))
+            ip = request.getHeader("WL-Proxy-Client-IP");
+        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) ip = request.getRemoteAddr();
+        return ip;
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String user_name = new String(request.getParameter("user_name").getBytes("ISO8859-1"), "UTF-8");
         String user_pwd = new String(request.getParameter("user_pwd").getBytes("ISO8859-1"), "UTF-8");
@@ -23,7 +32,7 @@ public class signupAndroid extends HttpServlet {
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        out.println(signupDao.writeUser(user_name, user_pwd, user_phone));
+        out.println(signupDao.writeUser(user_name, user_pwd, user_phone, getRemoteAddress(request), "android"));
         out.close();
     }
 

@@ -26,7 +26,7 @@ public class deviceState extends HttpServlet {
         deviceStateDaoWeb deviceStateDao = new deviceStateDaoWeb();
         response.setContentType("text/html;charset=utf-8");//打印至HTML页面
         PrintWriter out = response.getWriter();
-        out.print(deviceStateDao.findState(pot_id,user_id));
+        out.print(deviceStateDao.findState(pot_id, user_id));
         out.close();
     }
 

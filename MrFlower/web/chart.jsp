@@ -1,6 +1,6 @@
 <%@ page import="net.sf.json.JSONArray" %>
-<%@ page import="java.util.List" %>
 <%@ page import="java.net.URLDecoder" %>
+<%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
   User: desol
@@ -25,9 +25,9 @@
 %>
 <html>
 <head>
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon"/>
     <title>图表</title>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no"/>
@@ -608,7 +608,6 @@
     }
 
     //
-
 
 
 </script>

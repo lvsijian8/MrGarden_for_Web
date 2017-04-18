@@ -148,7 +148,8 @@
                                  alt="">
                         </dt>
                         <dd>
-                            <p class="dd_text_1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=FirstPlant.getJSONObject(1).get("brief")%>
+                            <p class="dd_text_1">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=FirstPlant.getJSONObject(1).get("brief")%>
                             </p>
                         </dd>
                         <div class="clear"></div>
@@ -165,7 +166,8 @@
                                  alt="">
                         </dt>
                         <dd>
-                            <p class="dd_text_1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=FirstPlant.getJSONObject(2).get("brief")%>
+                            <p class="dd_text_1">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=FirstPlant.getJSONObject(2).get("brief")%>
                             </p>
                         </dd>
                         <div class="clear"></div>
@@ -182,7 +184,8 @@
                                  alt="">
                         </dt>
                         <dd>
-                            <p class="dd_text_1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=FirstPlant.getJSONObject(3).get("brief")%>
+                            <p class="dd_text_1">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=FirstPlant.getJSONObject(3).get("brief")%>
                             </p>
                         </dd>
                         <div class="clear"></div>
@@ -199,7 +202,8 @@
                                  alt="">
                         </dt>
                         <dd>
-                            <p class="dd_text_1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=FirstPlant.getJSONObject(4).get("brief")%>
+                            <p class="dd_text_1">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=FirstPlant.getJSONObject(4).get("brief")%>
                             </p>
                         </dd>
                         <div class="clear"></div>
@@ -217,7 +221,6 @@
         <%
             int pageThis = (int) request.getAttribute("page");
             int pageMax = (int) FirstPlant.getJSONObject(0).get("pageMax");
-            out.println(pageMax);
             int pagePrev = pageThis - 1;
             int pageNext = pageThis + 1;
             if (pageThis != 1)

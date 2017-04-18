@@ -23,7 +23,7 @@ public class plantDetailAndroid extends HttpServlet {
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        out.println(wai.toString().replaceAll( "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",""));
+        out.println(wai.toString().replaceAll("<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", ""));
         out.close();
     }
 

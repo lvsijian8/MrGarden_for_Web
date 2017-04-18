@@ -1,6 +1,5 @@
 package pot.servlet.android;
 
-import pot.dao.android.deviceDaoAndroid;
 import pot.dao.android.deviceDetailDaoAndroid;
 
 import javax.servlet.ServletException;
@@ -31,6 +30,6 @@ public class deviceDetailAndroid extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+        doPost(request, response);
     }
 }

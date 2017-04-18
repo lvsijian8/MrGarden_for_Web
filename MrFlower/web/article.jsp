@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon"/>
     <title>文章</title>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no"/>
@@ -62,6 +62,7 @@
             margin-top: 2.5em;
             border-radius: 0 0 10px 10px;
         }
+
         .tab-group section {
             opacity: 0;
             height: 0;
@@ -69,6 +70,7 @@
             overflow: hidden;
             transition: opacity 0.4s ease, height 0.4s ease;
         }
+
         .tab-group section.active {
             opacity: 1;
             height: auto;
@@ -82,9 +84,11 @@
             height: 2.5em;
             overflow: hidden;
         }
+
         .tab-nav li {
             display: inline;
         }
+
         .tab-nav li a {
             top: 1px;
             position: relative;
@@ -100,6 +104,7 @@
             margin-right: 1px;
             transition: background .2s ease, line-height .2s ease, margin .2s ease;
         }
+
         .tab-nav li.active a {
             background: #6EB590;
             color: #5F604B;
@@ -210,7 +215,7 @@
 <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/jquery-tab.js"></script>
 <script type="text/javascript">
-    $(function(){
+    $(function () {
         // Calling the plugin
         $('.tab-group').tabify();
     })

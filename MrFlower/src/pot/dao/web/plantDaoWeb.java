@@ -14,13 +14,14 @@ import java.util.Map;
  * Created by lvsijian8 on 2017/3/26.
  */
 public class plantDaoWeb {
-    public JSONArray findFirst(int page, int next) {//处理Web植物第一界面
-        page=(page-1)*4;
+    public JSONArray findFirst(int page) {//处理Web植物第一界面
+        int next = 4;
+        page = (page - 1) * next;
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
         JSONArray array = new JSONArray();
-        String sql1="select COUNT(plant_id) from plant";
+        String sql1 = "select COUNT(plant_id) from plant";
         String sql = "select plant_id,chinese_name,brief,image_url from plant LIMIT ?,?";
         try {
             con = DBConnection.getDBConnection();
@@ -28,7 +29,7 @@ public class plantDaoWeb {
             rs = prepstmt.executeQuery();
             while (rs.next()) {
                 Map params = new HashMap();
-                params.put("pageMax",((rs.getInt(1)-1)/next+1));
+                params.put("pageMax", ((rs.getInt(1) - 1) / next + 1));
                 array.add(params);
             }
             prepstmt = con.prepareStatement(sql);

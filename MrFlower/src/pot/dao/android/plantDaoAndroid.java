@@ -56,22 +56,22 @@ public class plantDaoAndroid {
         Map wai = new HashMap();
         JSONArray array = new JSONArray();
         String sql = "select chinese_name,english_name,watering,sunshine,temperature_min,temperature_max,fertilizer,text,brief from plant where plant_id=?";
-        Boolean nullMark=false;
+        Boolean nullMark = false;
         try {
             con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sql);
             prepstmt.setInt(1, id);
             rs = prepstmt.executeQuery();
             while (rs.next()) {
-                nullMark=true;
+                nullMark = true;
                 Map params = new HashMap();
                 params.put("chinese_name", rs.getString(1));
                 params.put("english_name", rs.getString(2));
-                params.put("watering", "/water_"+rs.getString(3)+".png");
-                params.put("sunshine", "/sun_"+rs.getString(4)+".png");
+                params.put("watering", "/water_" + rs.getString(3) + ".png");
+                params.put("sunshine", "/sun_" + rs.getString(4) + ".png");
                 params.put("temperature_min", Integer.parseInt(rs.getString(5)));
                 params.put("temperature_max", Integer.parseInt(rs.getString(6)));
-                params.put("fertilizer", "/ye_"+rs.getString(7)+".png");
+                params.put("fertilizer", "/ye_" + rs.getString(7) + ".png");
                 params.put("text", rs.getString(8));
                 params.put("brief", rs.getString(9));
                 array.add(params);

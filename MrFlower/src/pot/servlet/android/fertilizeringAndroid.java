@@ -16,16 +16,16 @@ import java.io.PrintWriter;
 @WebServlet("/fertilizeringAndroid")
 public class fertilizeringAndroid extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int pot_id= Integer.parseInt(new String(request.getParameter("pot_id").getBytes("ISO8859-1"), "UTF-8"));
-        int user_id= Integer.parseInt(new String(request.getParameter("user_id").getBytes("ISO8859-1"), "UTF-8"));
+        int pot_id = Integer.parseInt(new String(request.getParameter("pot_id").getBytes("ISO8859-1"), "UTF-8"));
+        int user_id = Integer.parseInt(new String(request.getParameter("user_id").getBytes("ISO8859-1"), "UTF-8"));
         fertilizeringDaoAndroid fertilizeringDao = new fertilizeringDaoAndroid();
         response.setContentType("text/html;charset=utf-8");//打印至HTML页面
         PrintWriter out = response.getWriter();
-        out.print(fertilizeringDao.fertilizering(user_id,pot_id));
+        out.print(fertilizeringDao.fertilizering(user_id, pot_id));
         out.close();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+        doPost(request, response);
     }
 }

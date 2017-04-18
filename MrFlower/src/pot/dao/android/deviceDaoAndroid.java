@@ -4,13 +4,14 @@ import net.sf.json.JSONArray;
 import pot.util.DBConnection;
 
 import java.sql.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by lvsijian8 on 2017/4/15.
  */
 public class deviceDaoAndroid {
-    public Map finddevice(int user_id){
+    public Map finddevice(int user_id) {
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
@@ -22,10 +23,10 @@ public class deviceDaoAndroid {
         String sqlFindPots = "SELECT pot_id FROM user_pot WHERE user_id=?;";
         String sqlFindPotName = "SELECT flower_name FROM pot WHERE pot_id=?;";
         String sqlState = "SELECT heartBeat_time,now_power,now_light FROM pot WHERE pot_id=?;";
-        String sqlUpdataLook="UPDATE pot SET look_time=? WHERE pot_id=?;";
-        Timestamp date = null;
+        String sqlUpdataLook = "UPDATE pot SET look_time=? WHERE pot_id=?;";
+        Timestamp date = new Timestamp(new java.util.Date().getTime() - 10000);
         Timestamp now = new Timestamp(new java.util.Date().getTime());
-        Boolean nullMark=false;
+        Boolean nullMark = false;
         try {
             con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sqlFindPots);
@@ -34,7 +35,7 @@ public class deviceDaoAndroid {
             for (int i = 0; rs.next(); i++) {
                 pot_ids[i] = rs.getInt("pot_id");
                 leng++;
-                nullMark=true;
+                nullMark = true;
             }
             for (int i = 0; i < leng; i++) {
                 Map params = new HashMap();
@@ -50,25 +51,25 @@ public class deviceDaoAndroid {
                 rs = prepstmt.executeQuery();
                 while (rs.next()) {
                     date = rs.getTimestamp("heartBeat_time");
-                    params.put("power",rs.getInt("now_power"));
+                    params.put("power", rs.getInt("now_power"));
                     if (rs.getInt("now_light") > 600)
-                        params.put("warning","近期光照过强");
+                        params.put("warning", "近期光照过强");
                     else if (rs.getInt("now_light") < 300)
-                        params.put("warning","近期光照过弱");
+                        params.put("warning", "近期光照过弱");
                     else
-                        params.put("warning","近期光照正常");
+                        params.put("warning", "近期光照正常");
                 }
-                if(date==null)
-                    date=new Timestamp(new java.util.Date().getTime()-6000);
+                if (date == null)
+                    date = new Timestamp(new java.util.Date().getTime() - 10000);
                 if (((now.getTime() - date.getTime()) / 1000) > 5)
-                    params.put("state",0);
+                    params.put("state", 0);
                 else
-                    params.put("state",1);
-                params.put("pot_id",pot_ids[i]);
-                params.put("name",flower_name);
+                    params.put("state", 1);
+                params.put("pot_id", pot_ids[i]);
+                params.put("name", flower_name);
                 array.add(params);
                 prepstmt = con.prepareStatement(sqlUpdataLook);
-                prepstmt.setTimestamp(1,now);
+                prepstmt.setTimestamp(1, now);
                 prepstmt.setInt(2, pot_ids[i]);
                 prepstmt.executeUpdate();
             }

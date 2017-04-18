@@ -21,7 +21,7 @@ public class searchDaoAndroid {
         boolean nullMark = false;
         Map wai = new HashMap();
         JSONArray array = new JSONArray();
-        String sql = "select plant_id,chinese_name,english_name,image_url from plant WHERE chinese_name like '%"+flower_name+"%'";
+        String sql = "select plant_id,chinese_name,english_name,image_url from plant WHERE chinese_name like '%" + flower_name + "%'";
         try {
             con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sql);

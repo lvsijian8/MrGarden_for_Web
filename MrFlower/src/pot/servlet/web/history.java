@@ -1,6 +1,6 @@
 package pot.servlet.web;
 
-import pot.dao.web.setTimeDaoWeb;
+import pot.dao.web.historyDaoWeb;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,16 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by lvsijian8 on 2017/4/15.
+ * Created by lvsijian8 on 2017/4/17.
  */
-@WebServlet("/setTimeMl")
-public class setTimeMl extends HttpServlet {
+@WebServlet("/history")
+public class history extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String pot_id = new String(request.getParameter("pot_id").getBytes("ISO8859-1"), "UTF-8");
-        String type = new String(request.getParameter("type").getBytes("ISO8859-1"), "UTF-8");
-        String day = new String(request.getParameter("day").getBytes("ISO8859-1"), "UTF-8");
-        String time = new String(request.getParameter("time").getBytes("ISO8859-1"), "UTF-8");
-        String ml = new String(request.getParameter("ml").getBytes("ISO8859-1"), "UTF-8");
+        String pot_device = new String(request.getParameter("pot_device").getBytes("ISO8859-1"), "UTF-8");
+        String pot_handle = new String(request.getParameter("pot_handle").getBytes("ISO8859-1"), "UTF-8");
         int user_id = 0;
         Cookie cookie = null;
         Cookie[] cookies = null;
@@ -35,12 +33,21 @@ public class setTimeMl extends HttpServlet {
                 }
             }
         }
-        setTimeDaoWeb setTimeDao = new setTimeDaoWeb();
-        response.setContentType("text/html;charset=UTF-8");
+        String page = null;
+        try {
+            page = new String(request.getParameter("page").getBytes("ISO8859-1"), "UTF-8");
+        } catch (NullPointerException e1) {
+            page = "1";
+        }
+        historyDaoWeb historyDao = new historyDaoWeb();
+        response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-        request.setAttribute("type", type);
-        request.setAttribute("speak", setTimeDao.setTime(user_id, Integer.parseInt(pot_id), type, Integer.parseInt(day), Integer.parseInt(time), Integer.parseInt(ml)));
-        request.getRequestDispatcher("manage.jsp").forward(request, response);
+        request.setAttribute("History", historyDao.findHistory(user_id, pot_id, pot_device, pot_handle, Integer.parseInt(page), 8));
+        request.setAttribute("pot_id1", pot_id);
+        request.setAttribute("pot_device1", pot_device);
+        request.setAttribute("pot_handle1", pot_handle);
+        request.setAttribute("page", Integer.parseInt(page));
+        request.getRequestDispatcher("history.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

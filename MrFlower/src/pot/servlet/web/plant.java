@@ -32,7 +32,7 @@ public class plant extends HttpServlet {
                 page = "1";
             }
             plantDaoWeb plantDao = new plantDaoWeb();
-            JSONArray array = plantDao.findFirst(Integer.parseInt(page), 4);
+            JSONArray array = plantDao.findFirst(Integer.parseInt(page));
             response.setContentType("text/json;charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
             request.setAttribute("page", Integer.parseInt(page));

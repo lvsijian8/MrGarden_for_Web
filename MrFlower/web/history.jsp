@@ -1,4 +1,6 @@
-<%@ page import="java.net.URLDecoder" %><%--
+<%@ page import="net.sf.json.JSONArray" %>
+<%@ page import="java.net.URLDecoder" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: desol
   Date: 2017/3/18
@@ -6,11 +8,26 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    JSONArray History = null;
+    if ((History = (JSONArray) request.getAttribute("History")) == null) {//若是直接访问chart.jsp则先跳转chart,再跳转回来
+%>
+<jsp:forward page="history?pot_id=-1&pot_device=-1&pot_handle=-1"/>
+<%
+    }
+%>
+<%
+    List<String> pot_names = ((List<String>) History.getJSONObject(0).get("pot_names"));
+    List<Integer> pot_ids = ((List<Integer>) History.getJSONObject(0).get("pot_ids"));
+    List<String> pot_details = ((List<String>) History.getJSONObject(0).get("pot_details"));
+    List<String> pot_times = ((List<String>) History.getJSONObject(0).get("pot_times"));
+
+%>
 <html>
 <head>
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon"/>
     <title>历史记录</title>
     <meta name="format-detection" content="telephone=no"/>
     <link rel="icon" href="images/favicon.ico">
@@ -31,6 +48,44 @@
 
     <link rel="stylesheet" href="css/his_index.css"/>
     <link rel="stylesheet" href="css/his_style.css"/>
+    <style>
+        div.page_normal {
+            color: #a5a6a8;
+            text-align: center;
+            font-size: 0px;
+            background-color: #FFFFFF;
+        }
+
+        .page_normal a, .page_normal .page_current, .page_normal .page_prev {
+            margin-left: 10px;
+            padding: 5px 7px;
+            border: 1px solid #cdcdcd;
+            border-radius: 3px;
+            width: 25px;
+            height: 20px;
+            font-size: 18px;
+            display: inline-block;
+        }
+
+        .page_normal a:hover {
+            color: #ffffff;
+            background-color: #f9f9f9;
+        }
+
+        .page_normal a {
+            color: #a5a6a8;
+            text-decoration: none;
+        }
+
+        .page_normal .page_current {
+            color: #ffffff;
+            background-color: #f9f9f9;
+        }
+
+        .page_normal .page_prev {
+            color: #a5a6a8;
+        }
+    </style>
     <style>
         select {
             /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
@@ -132,38 +187,53 @@
     <form>
         <div>
             <div class="selectStyle">
-                花盆：<select class="select">
-                <option value="all">全部</option>
-                <option value="hwl">虎尾兰</option>
-                <option value="gyz">观音竹</option>
+                花盆：<select class="select" id="pot_names">
+                <option value="-1">全部</option>
+                <%
+                    for (int i = 0; i < pot_ids.size(); i++) {
+                        out.println("<option value=\"" + pot_ids.get(i) + "\" id=\"" + pot_ids.get(i) + "1\">" + pot_names.get(i) + "</option>");
+                    }
+                %>
             </select>
             </div>
             <div class="selectStyle">
-                操作：<select class="select">
-                <option value="all">全部</option>
-                <option value="hwl">浇水</option>
-                <option value="gyz">施肥</option>
+                来源：<select class="select" id="pot_devices">
+                <option value="-1">全部</option>
+                <option value="android" id="android1">android</option>
+                <option value="web" id="web1">web</option>
             </select>
             </div>
             <div class="selectStyle">
-                时间：<input name="datetimelocal" type="datetime-local"
-                          style="width: 170px;height: 20px;border-radius:10%">
-            </div>
-            <div class="selectStyle">
-                来源：<select class="select">
-                <option value="all">全部</option>
-                <option value="hwl">XXX的app</option>
-                <option value="gyz">XXX的web</option>
+                操作：<select class="select" id="pot_handles">
+                <option value="-1" id="-1">全部</option>
+                <option value="watering" id="watering1">浇水</option>
+                <option value="fertilizering" id="fertilizering1">施肥</option>
+                <option value="delete_pot" id="delete_pot1">删除花盆</option>
+                <option value="set" id="set1">设置操作</option>
+                <option value="login" id="login1">登陆</option>
+                <option value="signup" id="signup1">注册</option>
             </select>
             </div>
         </div>
     </form>
 </div>
 <script>
-    var sel=document.getElementById("sel");
-    sel.onchange=function(){
-        alert(sel.options[sel.selectedIndex].value);
-
+    window.onload = function () {
+        $('#'+<%=request.getAttribute("pot_id1")%>+'1').attr("selected", "selected");
+        $('#' + '<%=request.getAttribute("pot_device1")%>' + '1').attr("selected", "selected");
+        $('#' + '<%=request.getAttribute("pot_handle1")%>' + '1').attr("selected", "selected");
+    };
+    var pot_names = document.getElementById("pot_names");
+    var pot_devices = document.getElementById("pot_devices");
+    var pot_handles = document.getElementById("pot_handles");
+    pot_names.onchange = function () {
+        window.location.href = "history?pot_id=" + pot_names.options[pot_names.selectedIndex].value + "&pot_device=" + pot_devices.options[pot_devices.selectedIndex].value + "&pot_handle=" + pot_handles.options[pot_handles.selectedIndex].value;
+    };
+    pot_devices.onchange = function () {
+        window.location.href = "history?pot_id=" + pot_names.options[pot_names.selectedIndex].value + "&pot_device=" + pot_devices.options[pot_devices.selectedIndex].value + "&pot_handle=" + pot_handles.options[pot_handles.selectedIndex].value;
+    };
+    pot_handles.onchange = function () {
+        window.location.href = "history?pot_id=" + pot_names.options[pot_names.selectedIndex].value + "&pot_device=" + pot_devices.options[pot_devices.selectedIndex].value + "&pot_handle=" + pot_handles.options[pot_handles.selectedIndex].value;
     }
 </script>
 <script src='js/jquery.js'></script>
@@ -171,32 +241,40 @@
 
 <div id="say">
     <div class="weizi">
-        <ul class="say_box">
-            <div class="sy">
-                <p>浇水100ml</p>
-            </div>
-            <span class="dateview">2017-5-16</span>
-        </ul>
-        <ul class="say_box">
-            <div class="sy">
-                <p>浇水150ml</p>
-            </div>
-            <span class="dateview">2017-4-30</span>
-        </ul>
-        <ul class="say_box">
-            <div class="sy">
-                <p> 浇水100ml，施肥50ml</p>
-            </div>
-            <span class="dateview">2017-4-16</span>
-        </ul>
-        <ul class="say_box">
-            <div class="sy">
-                <p>浇水100ml</p>
-            </div>
-            <span class="dateview">2017-3-31</span>
-        </ul>
+        <%
+            for (int i = 0; i < pot_times.size(); i++) {
+                out.println("<ul class=\"say_box\"><div class=\"sy\"><p>" + pot_details.get(i) + "</p></div><span class=\"dateview\">" + pot_times.get(i) + "</span></ul>");
+            }
+            if (pot_times.size() == 0)
+                out.println("<p style=\"text-align: center; font-size: 24px\">当前选项尚无任何操作</p><br>");
+        %>
+        <%--<ul class="say_box"><div class="sy"><p>浇水100ml</p></div><span class="dateview">2017-5-16</span></ul>--%>
     </div>
 </div>
+
+<div style="padding-bottom: 2em;padding-top: 3em;background-color: #FFFFFF;">
+    <div class="page_normal">
+        <%
+            int pageThis = (int) request.getAttribute("page");
+            int pageMax = (int) History.getJSONObject(0).get("pageMax");
+            int pagePrev = pageThis - 1;
+            int pageNext = pageThis + 1;
+            if (pageThis != 1)
+                out.print("<a href=\"history?pot_id=" + request.getAttribute("pot_id1") + "&pot_device=" + request.getAttribute("pot_device1") + "&pot_handle=" + request.getAttribute("pot_handle1") + "&page=" + pagePrev + "\" class=\"page_prev\">&lt;</a>");//判断是否第一页,是则不显示前一页
+            for (int i = 1; i <= pageMax; i++) {
+                if (i == pageThis) {
+                    out.print("<a class=\"page_current\">" + pageThis + "</a>");//为当前页加特效
+                    continue;
+                }
+                out.print("<a href=\"history?pot_id=" + request.getAttribute("pot_id1") + "&pot_device=" + request.getAttribute("pot_device1") + "&pot_handle=" + request.getAttribute("pot_handle1") + "&page=" + i + "\">" + i + "</a>");
+            }
+            if (pageThis != pageMax)
+                out.print("<a href=\"history?pot_id=" + request.getAttribute("pot_id1") + "&pot_device=" + request.getAttribute("pot_device1") + "&pot_handle=" + request.getAttribute("pot_handle1") + "&page=" + pageNext + "\" class=\"page_next\">&gt;</a>");//判断是否最后一页,是则不显示下一页
+        %>
+    </div>
+</div>
+
+
 <!--==============================footer=================================-->
 <footer>
     <div class="container_12">
