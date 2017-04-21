@@ -1,7 +1,6 @@
 package pot.servlet.web;
 
-import net.sf.json.JSONArray;
-import pot.dao.web.chartDaoWeb;
+import pot.dao.android.deletepotDaoAndroid;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,17 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by lvsijian8 on 2017/4/8.
+ * Created by lvsijian8 on 2017/4/18.
  */
-@WebServlet("/chart")
-public class chart extends HttpServlet {
+@WebServlet("/deletepot")
+public class deletepot extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int pot_id = -1;
-        try {
-            pot_id = Integer.parseInt(new String(request.getParameter("pot_id").getBytes("ISO8859-1"), "UTF-8"));
-        } catch (NullPointerException e) {
-            pot_id = -1;
-        }
+        int pot_id = Integer.parseInt(new String(request.getParameter("pot_id").getBytes("ISO8859-1"), "UTF-8"));
         int user_id = 0;
         Cookie cookie = null;
         Cookie[] cookies = null;
@@ -37,16 +31,12 @@ public class chart extends HttpServlet {
                 }
             }
         }
-        chartDaoWeb chartDao = new chartDaoWeb();
-        JSONArray array;
-        response.setContentType("text/json;charset=UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        if ((array = chartDao.findchart(pot_id, user_id)) != null) {
-            request.setAttribute("Potchart", array);
-            request.getRequestDispatcher("chart.jsp").forward(request, response);
+        deletepotDaoAndroid wateringDao = new deletepotDaoAndroid();
+        if (1 == wateringDao.deletepot(user_id, pot_id)) {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         } else {
-            request.setAttribute("error", "alert(\"您当前尚未添加花盆.请先进行添加\");");
-            request.getRequestDispatcher("addPot.jsp").forward(request, response);
+            request.setAttribute("error", "alert(\"删除失败,请重试.\");");
+            request.getRequestDispatcher("manage.jsp").forward(request, response);
         }
     }
 

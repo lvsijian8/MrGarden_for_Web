@@ -23,14 +23,11 @@ public class historyDaoWeb {
         JSONArray array = new JSONArray();
         Map params = new HashMap();
         String sqlFindName = "SELECT pot.pot_id,pot.flower_name FROM user_pot left join pot ON pot.pot_id=user_pot.pot_id WHERE user_id=?;";
-        //String sqlhistory = "SELECT " +
-        //        "FROM history AS H left join pot ON pot.pot_id=H.pot_id WHERE H.user_id=?";
         String sqlhistory = "SELECT COUNT(H.user_id) " +
                 "FROM history AS H left join pot ON pot.pot_id=H.pot_id WHERE H.user_id=?";
 
         boolean mark = true;
         if (pot_handle.equals("login") || pot_handle.equals("signup") || pot_handle.equals("delete_pot")) {
-            //sqlhistory = "SELECT device,handle,detail,time FROM history WHERE user_id=?";
             sqlhistory = "SELECT COUNT(user_id) FROM history WHERE user_id=?";
             mark = false;
         }

@@ -1,7 +1,6 @@
 package pot.servlet.web;
 
-import net.sf.json.JSONArray;
-import pot.dao.web.chartDaoWeb;
+import pot.dao.android.appendDaoAndroid;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,17 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by lvsijian8 on 2017/4/8.
+ * Created by lvsijian8 on 2017/4/18.
  */
-@WebServlet("/chart")
-public class chart extends HttpServlet {
+@WebServlet("/append")
+public class append extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int pot_id = -1;
-        try {
-            pot_id = Integer.parseInt(new String(request.getParameter("pot_id").getBytes("ISO8859-1"), "UTF-8"));
-        } catch (NullPointerException e) {
-            pot_id = -1;
-        }
         int user_id = 0;
         Cookie cookie = null;
         Cookie[] cookies = null;
@@ -37,15 +30,22 @@ public class chart extends HttpServlet {
                 }
             }
         }
-        chartDaoWeb chartDao = new chartDaoWeb();
-        JSONArray array;
+        int fid = Integer.parseInt(new String(request.getParameter("fid").getBytes("ISO8859-1"), "UTF-8"));
+        String flowername = new String(request.getParameter("flowername").getBytes("ISO8859-1"), "UTF-8");
+        int num_bottle_day = Integer.parseInt(request.getParameter("num_bottle_day"));
+        int num_bottle_time = Integer.parseInt(request.getParameter("num_bottle_time"));
+        int num_bottle_ml = Integer.parseInt(request.getParameter("num_bottle_ml"));
+        int num_water_day = Integer.parseInt(request.getParameter("num_water_day"));
+        int num_water_time = Integer.parseInt(request.getParameter("num_water_time"));
+        int num_water_ml = Integer.parseInt(request.getParameter("num_water_ml"));
+        appendDaoAndroid appendDao = new appendDaoAndroid();
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-        if ((array = chartDao.findchart(pot_id, user_id)) != null) {
-            request.setAttribute("Potchart", array);
-            request.getRequestDispatcher("chart.jsp").forward(request, response);
+        String state = appendDao.append(user_id, fid, flowername, num_bottle_day, num_bottle_time, num_bottle_ml, num_water_day, num_water_time, num_water_ml);
+        if (state.equals("success")) {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         } else {
-            request.setAttribute("error", "alert(\"您当前尚未添加花盆.请先进行添加\");");
+            request.setAttribute("error", "alert(\"添加失败,请重试.\")");
             request.getRequestDispatcher("addPot.jsp").forward(request, response);
         }
     }

@@ -50,9 +50,12 @@ public class deviceStateDaoWeb {
             }
             prepstmt = con.prepareStatement(sqlFindWater);
             rs = prepstmt.executeQuery();
-            while (rs.next()) {
+            if (rs.next()) {
                 state += ((water = rs.getInt("water")) + "|");
                 state += ((fertilizer = rs.getInt("fertilizer")) + "|");
+            } else {
+                state += "0|";
+                state += "0|";
             }
 
             if (water > 50)

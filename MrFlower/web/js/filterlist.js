@@ -11,17 +11,17 @@
     // ====================================
 
     var FilterSelect = function (element, options) {
-        this.$element  = $(element)
-        this.options   = $.extend({}, this.defaults(), options)
+        this.$element  = $(element);
+        this.options   = $.extend({}, this.defaults(), options);
         this.structure = $.extend({}, this.parts())
-    }
+    };
 
-    FilterSelect.VERSION  = '1.0.0'
+    FilterSelect.VERSION  = '1.0.0';
 
     FilterSelect.DEFAULTS = {
         method : 'recursive',
         items  : '.items'
-    }
+    };
 
     FilterSelect.prototype.defaults = function() {
         return {
@@ -29,13 +29,13 @@
             method      : this.$element.attr('data-method') || FilterSelect.DEFAULTS.method,
             items       : this.$element.attr('data-items') || FilterSelect.DEFAULTS.items
         }
-    }
+    };
 
     FilterSelect.prototype.parts = function() {
         return {
             $items : $(this.options.items, this.$element)
         }
-    }
+    };
 
     FilterSelect.prototype.filter = function( section, select, val ) {
         alert(section+' - '+select+' - '+val);
@@ -58,7 +58,7 @@
 
         if ( $('.live-filtering', $select).data('liveFilter') )
             $('.live-filtering', $select).liveFilter('initAC');
-    }
+    };
 
     FilterSelect.prototype.filterItem = function( section, select, val, method ) {
         this.structure.$items.each(function(){
@@ -110,7 +110,7 @@
                 $(this).removeClass('disabled').show();
             }
         });
-    }
+    };
 
 
     // SELECT FILTER PLUGIN DEFINITION
@@ -143,19 +143,19 @@
         })
     }
 
-    var old = $.fn.selectFilter
+    var old = $.fn.selectFilter;
 
-    $.fn.selectFilter             = Plugin
-    $.fn.selectFilter.Constructor = FilterSelect
+    $.fn.selectFilter             = Plugin;
+    $.fn.selectFilter.Constructor = FilterSelect;
 
 
     // SELECT FILTER NO CONFLICT
     // ========================
 
     $.fn.toggle.noConflict = function () {
-        $.fn.selectFilter = old
+        $.fn.selectFilter = old;
         return this
-    }
+    };
 
 
     // SELECT FILTER DATA-API

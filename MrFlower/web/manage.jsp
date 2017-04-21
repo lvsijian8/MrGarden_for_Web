@@ -132,6 +132,13 @@
         }
     </style>
     <script>
+
+        window.onload = function () {
+            <%
+                out.print(request.getAttribute("error"));
+            %>
+        };
+
         $(document).ready(function () {
             $().UItoTop({easingType: 'easeOutQuart'});
             /*carousel*/
@@ -211,6 +218,8 @@
                                                                   data-toggle="tab">浇水设置</a></li>
                         <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab"
                                                    data-toggle="tab">施肥设置</a></li>
+                        <li role="presentation"><a href="#Section3" aria-controls="profile" role="tab"
+                                                   data-toggle="tab">删除花盆</a></li>
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content tabs">
@@ -238,7 +247,7 @@
                                 <span style="float: right;padding:0 1em;margin-right: 5em;font-size: 20px">
                                     <%
                                         try {
-                                            if (request.getAttribute("type").equals("w"))
+                                            if (request.getAttribute("speak") != null && request.getAttribute("type").equals("w"))
                                                 out.print(request.getAttribute("speak"));
                                         } catch (Exception e) {
                                         }
@@ -272,7 +281,7 @@
                                 <span style="float: right;padding:0 1em;margin-right: 5em;font-size: 20px">
                                     <%
                                         try {
-                                            if (request.getAttribute("type").equals("f"))
+                                            if (request.getAttribute("speak") != null && request.getAttribute("type").equals("f"))
                                                 out.print(request.getAttribute("speak"));
                                         } catch (Exception e) {
                                         }
@@ -284,13 +293,13 @@
                             </form>
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="Section3">
-                            <form id="testform2" action="" method="post">
+                            <form id="testform2" action="deletepot?pot_id=<%=request.getParameter("pot_id")%>"
+                                  method="post">
                                 <h3>点击删除按钮删除花盆</h3>
                                 <div style="padding: 10px 0">
-                                    <input value="删&nbsp;&nbsp;除" class="delectPot" type="button">
+                                    <input value="删&nbsp;&nbsp;除" class="delectPot" type="submit">
                                 </div>
                                 <br>
-                                <span style="padding:0 1em"><font color="red">*删除成功！</font></span>
                             </form>
                         </div>
                     </div>

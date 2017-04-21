@@ -2,7 +2,10 @@ package pot.dao.android;
 
 import pot.util.DBConnection;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -23,6 +26,12 @@ public class deletepotDaoAndroid {
         String flower_name = "";
         try {
             con = DBConnection.getDBConnection();
+            prepstmt = con.prepareStatement(sqlFindPotName);
+            prepstmt.setInt(1, pot_id);
+            rs = prepstmt.executeQuery();
+            while (rs.next()) {
+                flower_name = rs.getString("flower_name");
+            }
             prepstmt = con.prepareStatement(sqldelete);
             prepstmt.setInt(1, pot_id);
             state = prepstmt.executeUpdate();
@@ -32,12 +41,6 @@ public class deletepotDaoAndroid {
             state = prepstmt.executeUpdate();
             prepstmt = con.prepareStatement(sqltable);
             prepstmt.executeUpdate();
-            prepstmt = con.prepareStatement(sqlFindPotName);
-            prepstmt.setInt(1, pot_id);
-            rs = prepstmt.executeQuery();
-            while (rs.next()) {
-                flower_name = rs.getString("flower_name");
-            }
             prepstmt = con.prepareStatement(sqlAddHistory);
             prepstmt.setInt(1, pot_id);
             prepstmt.setInt(2, user_id);
@@ -46,11 +49,14 @@ public class deletepotDaoAndroid {
             prepstmt.setString(5, "delete_pot");
             prepstmt.setString(6, "被删除的花盆为:" + flower_name);
             prepstmt.executeUpdate();
-        } catch (SQLException e) {
+        } catch (Exception e) {
+            System.out.println("<<<删除花盆出错.");
             e.printStackTrace();
+            System.out.println("删除花盆出错.>>>");
+            state = 0;
         } finally {
             DBConnection.closeDB(con, prepstmt, rs);
+            return state;
         }
-        return state;
     }
 }

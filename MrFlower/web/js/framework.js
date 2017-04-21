@@ -433,9 +433,8 @@ $.extend( $.easing, {
  *
  */
 
-;(function ( $, window, document, undefined ) {
-
-  $.api = $.fn.api = function(parameters) {
+(function ($, window, document, undefined) {
+    $.api = $.fn.api = function(parameters) {
 
     var
       settings       = $.extend(true, {}, $.api.settings, parameters),
@@ -1067,9 +1066,8 @@ $.extend( $.easing, {
  *
  */
 
-;(function ( $, window, document, undefined ) {
-
-  $.fn.colorize = function(parameters) {
+(function ($, window, document, undefined) {
+    $.fn.colorize = function(parameters) {
     var
       settings        = $.extend(true, {}, $.fn.colorize.settings, parameters),
       // hoist arguments
@@ -1338,9 +1336,8 @@ $.extend( $.easing, {
  *
  */
 
-;(function ( $, window, document, undefined ) {
-
-$.fn.form = function(fields, parameters) {
+(function ($, window, document, undefined) {
+    $.fn.form = function(fields, parameters) {
   var
     $allModules     = $(this),
 
@@ -2036,9 +2033,8 @@ $.fn.form.settings = {
  *
  */
 
-;(function ( $, window, document, undefined ) {
-
-$.fn.state = function(parameters) {
+(function ($, window, document, undefined) {
+    $.fn.state = function(parameters) {
   var
     $allModules     = $(this),
     settings        = $.extend(true, {}, $.fn.state.settings, parameters),
@@ -2762,9 +2758,8 @@ $.fn.state.settings = {
  *
  */
 
-;(function ($, window, document, undefined) {
-
-$.fn.chatroom = function(parameters) {
+(function ($, window, document, undefined) {
+    $.fn.chatroom = function(parameters) {
   var
     $allModules    = $(this),
     moduleSelector = $allModules.selector || '',
@@ -3536,9 +3531,8 @@ $.fn.chatroom = function(parameters) {
  *
  */
 
-;(function ( $, window, document, undefined ) {
-
-$.fn.checkbox = function(parameters) {
+(function ($, window, document, undefined) {
+    $.fn.checkbox = function(parameters) {
   var
     $allModules    = $(this),
     moduleSelector = $allModules.selector || '',
@@ -3882,9 +3876,8 @@ $.fn.checkbox.settings = {
  *
  */
 
-;(function ( $, window, document, undefined ) {
-
-$.fn.dimmer = function(parameters) {
+(function ($, window, document, undefined) {
+    $.fn.dimmer = function(parameters) {
   var
     $allModules     = $(this),
 
@@ -4474,9 +4467,8 @@ $.fn.dimmer.settings = {
  * http://opensource.org/licenses/MIT
  *
  */
-;(function ( $, window, document, undefined ) {
-
-$.fn.dropdown = function(parameters) {
+(function ($, window, document, undefined) {
+    $.fn.dropdown = function(parameters) {
     var
     $allModules    = $(this),
     $document      = $(document),
@@ -5306,9 +5298,8 @@ $.fn.dropdown.settings = {
  *
  */
 
-;(function ( $, window, document, undefined ) {
-
-$.fn.modal = function(parameters) {
+(function ($, window, document, undefined) {
+    $.fn.modal = function(parameters) {
   var
     $allModules = $(this),
     $window     = $(window),
@@ -5989,9 +5980,8 @@ $.fn.modal.settings = {
  *
  */
 
-;(function ($, window, document, undefined) {
-
-$.fn.nag = function(parameters) {
+(function ($, window, document, undefined) {
+    $.fn.nag = function(parameters) {
   var
     $allModules     = $(this),
     moduleSelector  = $allModules.selector || '',
@@ -6533,9 +6523,8 @@ $.fn.nag.settings = {
  *
  */
 
-;(function ($, window, document, undefined) {
-
-$.fn.popup = function(parameters) {
+(function ($, window, document, undefined) {
+    $.fn.popup = function(parameters) {
   var
     $allModules     = $(this),
     $document       = $(document),
@@ -7353,9 +7342,8 @@ $.fn.popup.settings = {
  *
  */
 
-;(function ($, window, document, undefined) {
-
-$.fn.rating = function(parameters) {
+(function ($, window, document, undefined) {
+    $.fn.rating = function(parameters) {
   var
     $allModules     = $(this),
     moduleSelector  = $allModules.selector || '',
@@ -7760,9 +7748,8 @@ $.fn.rating.settings = {
  *
  */
 
-;(function ($, window, document, undefined) {
-
-$.fn.search = function(source, parameters) {
+(function ($, window, document, undefined) {
+    $.fn.search = function(source, parameters) {
   var
     $allModules     = $(this),
     moduleSelector  = $allModules.selector || '',
@@ -8526,9 +8513,8 @@ $.fn.search.settings = {
  *
  */
 
-;(function ( $, window, document, undefined ) {
-
-$.fn.shape = function(parameters) {
+(function ($, window, document, undefined) {
+    $.fn.shape = function(parameters) {
   var
     $allModules     = $(this),
     $body           = $('body'),
@@ -9313,9 +9299,8 @@ $.fn.shape.settings = {
  *
  */
 
-;(function ( $, window, document, undefined ) {
-
-$.fn.sidebar = function(parameters) {
+(function ($, window, document, undefined) {
+    $.fn.sidebar = function(parameters) {
   var
     $allModules    = $(this),
     $body          = $('body'),
@@ -9826,9 +9811,8 @@ $.fn.sidebar.settings = {
  */
 
 
-;(function ($, window, document, undefined) {
-
-  $.fn.tab = function(parameters) {
+(function ($, window, document, undefined) {
+    $.fn.tab = function(parameters) {
 
     var
       settings        = $.extend(true, {}, $.fn.tab.settings, parameters),
@@ -10534,9 +10518,8 @@ $.fn.sidebar.settings = {
  *
  */
 
-;(function ( $, window, document, undefined ) {
-
-$.fn.transition = function() {
+(function ($, window, document, undefined) {
+    $.fn.transition = function() {
   var
     $allModules     = $(this),
     moduleSelector  = $allModules.selector || '',
@@ -11196,9 +11179,8 @@ $.fn.transition.settings = {
 
 ******************************  */
 
-;(function ($, window, document, undefined) {
-
-$.fn.video = function(parameters) {
+(function ($, window, document, undefined) {
+    $.fn.video = function(parameters) {
 
   var
     $allModules     = $(this),

@@ -3,10 +3,24 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <servlet>
+        <servlet-name>sockets</servlet-name>
+        <servlet-class>pot.servlet.SocketServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sockets</servlet-name>
+        <url-pattern>/socket</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>checkLogin</filter-name>
         <filter-class>pot.filters.checkLogin</filter-class>
     </filter>
+    <filter-mapping>
+        <filter-name>checkLogin</filter-name>
+        <url-pattern>/addPot.jsp</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>checkLogin</filter-name>
         <url-pattern>/chart.jsp</url-pattern>
@@ -17,24 +31,47 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>checkLogin</filter-name>
-        <url-pattern>/manage.jsp</url-pattern>
+        <url-pattern>/history.jsp</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>checkLogin</filter-name>
-        <url-pattern>/history.jsp</url-pattern>
+        <url-pattern>/manage.jsp</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>checkLogin</filter-name>
+        <url-pattern>/append</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>checkLogin</filter-name>
         <url-pattern>/chart</url-pattern>
     </filter-mapping>
-    <servlet>
-        <servlet-name>sockets</servlet-name>
-        <servlet-class>pot.servlet.SocketServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>sockets</servlet-name>
-        <url-pattern>/socket</url-pattern>
-    </servlet-mapping>
+    <filter-mapping>
+        <filter-name>checkLogin</filter-name>
+        <url-pattern>/deletepot</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>checkLogin</filter-name>
+        <url-pattern>/deviceState</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>checkLogin</filter-name>
+        <url-pattern>/equipment</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>checkLogin</filter-name>
+        <url-pattern>/getPlant</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>checkLogin</filter-name>
+        <url-pattern>/history</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>checkLogin</filter-name>
+        <url-pattern>/setTimeMlequipment</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>checkLogin</filter-name>
+        <url-pattern>/wateringWeb</url-pattern>
+    </filter-mapping>
 </web-app>

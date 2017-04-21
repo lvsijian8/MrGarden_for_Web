@@ -15,8 +15,8 @@ public class fertilizeringDaoAndroid {
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
         Timestamp now = new Timestamp(new Date().getTime());
-        String sql = "SELECT bottle_ml FROM pot WHERE pot_id=?;";
         int fertilizer = 0;
+        String sql = "SELECT bottle_ml FROM pot WHERE pot_id=?;";
         String sqlFindfertilizer = "SELECT fertilizer FROM pot_" + pot_id + " ORDER BY time DESC limit 0,1;";
         String sqltime = "UPDATE pot SET bottleing_time=? WHERE pot_id=?;";
         String sqlUpdatafertilizer = "update pot_" + pot_id + " set fertilizer=? where time=(select max(time) FROM (SELECT time FROM pot_1) AS something);";

@@ -219,7 +219,7 @@
 </div>
 <script>
     window.onload = function () {
-        $('#'+<%=request.getAttribute("pot_id1")%>+'1').attr("selected", "selected");
+        $('#'+'<%=request.getAttribute("pot_id1")%>'+'1').attr("selected", "selected");
         $('#' + '<%=request.getAttribute("pot_device1")%>' + '1').attr("selected", "selected");
         $('#' + '<%=request.getAttribute("pot_handle1")%>' + '1').attr("selected", "selected");
     };

@@ -21,7 +21,6 @@
     List<String> pot_names = ((List<String>) Potdevic.getJSONObject(0).get("pot_names"));
     List<Integer> pot_ids = ((List<Integer>) Potdevic.getJSONObject(0).get("pot_ids"));
 %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
@@ -301,7 +300,9 @@
                                     %>
                                 </form>
                                 <br/>
-                                <a href="addPot.jsp" style="text-decoration:underline;"><img src="images/Add.png" style="width: 24px;height: auto"><font size="24" color="red">添加花盆</font></a>
+                                <a href="addPot.jsp" style="text-decoration:underline;"><img src="images/Add.png"
+                                                                                             style="width: 24px;height: auto"><font
+                                        size="24" color="red">添加花盆</font></a>
                             </div>
                         </div>
                     </div>

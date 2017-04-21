@@ -1,5 +1,7 @@
 package pot.servlet;
 
+import pot.util.SocketListener;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,8 +19,8 @@ public class SocketServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        //SocketListener socketArd=new SocketListener();
-        //socketArd.start();
+        SocketListener socketListener = new SocketListener();
+        socketListener.start();
         //this.sockets=socketArd.getSocket();
     }
 
