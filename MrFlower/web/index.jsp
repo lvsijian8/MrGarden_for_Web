@@ -187,11 +187,11 @@
 <div class="bottom_block">
     <div class="container_12">
         <div class="grid_3">
-            <h3>顶级项目</h3>
+            <h3>其他项目</h3>
             <div id="owl1">
                 <div class="item">
                     <div class="img_block ib1">
-                        <img src="images/car_img1.jpg" alt="" class=" img_inner">
+                        <img src="images/car_img1.jpg" style="width: 129px" title="在线数据库管理系统" class=" img_inner" onclick="window.location.href='https://lvsijian.cn/OnlineDB'">
                         <span class="l"></span>
                         <span class="ll"></span>
                         <span class="r"></span>
@@ -204,7 +204,7 @@
                 </div>
                 <div class="item">
                     <div class="img_block ib1">
-                        <img src="images/car_img2.jpg" alt="" class="img_inner">
+                        <img src="images/car_img2.jpg" style="width: 129px" title="移动开发与数据计算实验室管理系统" class="img_inner" onclick="window.location.href='https://lvsijian.cn/MDACD'">
                         <span class="l"></span>
                         <span class="ll"></span>
                         <span class="r"></span>
@@ -224,7 +224,7 @@
                 -
                 <a href="updata/MrFlower.apk">花伴安卓版APP发布</a>
             </p>
-            <img src="images/cli.png" style="width: 96px;height: auto">
+            <img src="images/cli.png" title="扫码下载app" style="width: 96px;height: auto">
         </div>
         <div class="grid_4">
             <h3>邮件订阅</h3>
