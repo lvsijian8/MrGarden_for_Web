@@ -34,29 +34,43 @@ public class headBeatDao {
                 waterdate = rs.getTimestamp("watering_time");
                 bottledate = rs.getTimestamp("bottleing_time");
             }
+            if (lookdate == null)
+                lookdate = new Timestamp(new java.util.Date().getTime() - 10000);
+            if (((now.getTime() - lookdate.getTime()) / 1000) <= 5)
+                state += "LlookUpdata|";
+            else
+                state += "12345678901|";
+            if (waterdate == null)
+                waterdate = new Timestamp(new java.util.Date().getTime() - 10000);
+            if (((now.getTime() - waterdate.getTime()) / 1000) <= 5){
+                Timestamp waterdated = new Timestamp(waterdate.getTime() - 10000);
+                String sqlUpdataWater = "UPDATE pot SET watering_time=? WHERE pot_id=?;";
+                prepstmt = con.prepareStatement(sqlUpdataWater);
+                prepstmt.setTimestamp(1, waterdated);
+                prepstmt.setInt(2, pot_id);
+                prepstmt.executeUpdate();
+                state += "Wwatering|";
+            }
+            else
+                state += "123456789|";
+            if (bottledate == null)
+                bottledate = new Timestamp(new java.util.Date().getTime() - 10000);
+            if (((now.getTime() - bottledate.getTime()) / 1000) <= 5){
+                Timestamp bottledated = new Timestamp(bottledate.getTime() - 10000);
+                String sqlUpdataBottle = "UPDATE pot SET bottleing_time=? WHERE pot_id=?;";
+                prepstmt = con.prepareStatement(sqlUpdataBottle);
+                prepstmt.setTimestamp(1, bottledated);
+                prepstmt.setInt(2, pot_id);
+                prepstmt.executeUpdate();
+                state += "Bbottleing|";
+            }
+            else
+                state += "1234567890|";
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             DBConnection.closeDB(con, prepstmt, rs);
         }
-        if (lookdate == null)
-            lookdate = new Timestamp(new java.util.Date().getTime() - 10000);
-        if (((now.getTime() - lookdate.getTime()) / 1000) <= 5)
-            state += "LlookUpdata|";
-        else
-            state += "12345678901|";
-        if (waterdate == null)
-            waterdate = new Timestamp(new java.util.Date().getTime() - 10000);
-        if (((now.getTime() - waterdate.getTime()) / 1000) <= 5)
-            state += "Wwatering|";
-        else
-            state += "123456789|";
-        if (bottledate == null)
-            bottledate = new Timestamp(new java.util.Date().getTime() - 10000);
-        if (((now.getTime() - bottledate.getTime()) / 1000) <= 5)
-            state += "Bbottleing|";
-        else
-            state += "1234567890|";
         return state;
     }
 }

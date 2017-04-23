@@ -35,8 +35,10 @@ public class deviceStateDaoWeb {
                 state += rs.getInt("now_temperature") + "<span>°C</span>|";
                 state += rs.getInt("now_humidity") + "<span>%</span>|";
                 state += rs.getInt("now_power") + "<span>%</span>|";
-                if (rs.getInt("now_light") > 50)
+                if (rs.getInt("now_light") > 70)
                     state += "强|";
+                else if (rs.getInt("now_light") > 40)
+                    state += "适中|";
                 else
                     state += "弱|";
                 if (date == null)
