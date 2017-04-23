@@ -34,8 +34,6 @@ public class updataDao {
 
                 state += "";
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

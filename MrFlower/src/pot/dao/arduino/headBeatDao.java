@@ -42,15 +42,21 @@ public class headBeatDao {
         if (lookdate == null)
             lookdate = new Timestamp(new java.util.Date().getTime() - 10000);
         if (((now.getTime() - lookdate.getTime()) / 1000) <= 5)
-            state += "lookUpdata|";
+            state += "LlookUpdata|";
+        else
+            state += "12345678901|";
         if (waterdate == null)
             waterdate = new Timestamp(new java.util.Date().getTime() - 10000);
         if (((now.getTime() - waterdate.getTime()) / 1000) <= 5)
-            state += "watering|";
+            state += "Wwatering|";
+        else
+            state += "123456789|";
         if (bottledate == null)
             bottledate = new Timestamp(new java.util.Date().getTime() - 10000);
         if (((now.getTime() - bottledate.getTime()) / 1000) <= 5)
-            state += "bottleing|";
+            state += "Bbottleing|";
+        else
+            state += "1234567890|";
         return state;
     }
 }

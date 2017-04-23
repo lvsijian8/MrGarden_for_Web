@@ -33,7 +33,7 @@ public class SocketReader implements Runnable {
         try {
             String content = null;
             while ((content = br.readLine()) != null) {
-                System.out.println(2);
+                //System.out.println(2);
 //                System.out.print(content);
                 switch (content.split("\\|")[0]) {
                     case "headBeat": {
@@ -66,7 +66,8 @@ public class SocketReader implements Runnable {
                     }
                     case "setTime":{
                         setTimeDao setTime=new setTimeDao();
-                        os.write((setTime.setTime() + "\n").getBytes("utf-8"));
+                        int pot_id = Integer.parseInt(content.split("\\|")[1]);
+                        os.write((setTime.setTime(pot_id) + "\n").getBytes("utf-8"));
                         break;
                     }
                 }

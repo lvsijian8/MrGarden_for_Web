@@ -38,7 +38,10 @@ public class deviceDetailDaoAndroid {
                 params.put("temperature", rs.getInt(7));
                 params.put("humidity", rs.getInt(8));
                 params.put("power", rs.getInt(9));
-                params.put("light", rs.getInt(10));
+                if(rs.getInt(10)> 50)
+                    params.put("light", "强");
+                else
+                    params.put("light", "弱");
                 array.add(params);
             }
             prepstmt = con.prepareStatement(sqlUpdataLook);

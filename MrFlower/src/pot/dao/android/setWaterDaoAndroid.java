@@ -9,6 +9,8 @@ import java.sql.*;
  */
 public class setWaterDaoAndroid {
     public int setWater(int user_id, int pot_id, int wday, int wtime, int wml) {
+        wml/=10;
+        wml*=10;
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;

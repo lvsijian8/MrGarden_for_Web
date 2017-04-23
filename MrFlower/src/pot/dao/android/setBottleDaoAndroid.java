@@ -9,6 +9,8 @@ import java.sql.*;
  */
 public class setBottleDaoAndroid {
     public int setBottle(int user_id, int pot_id, int bday, int btime, int bml) {
+        bml/=10;
+        bml*=10;
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;

@@ -14,7 +14,7 @@ public class SocketListener extends Thread {
             ss = new ServerSocket(6605);
             while (true) {
                 Socket s = ss.accept();
-                System.out.println(1);
+                //System.out.println(1);
                 new Thread(new SocketReader(s)).start();
             }
         } catch (IOException e) {

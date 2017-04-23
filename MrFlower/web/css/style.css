@@ -2,9 +2,10 @@
 @import "grid.css";
 @import "font-awesome.css";
 @import "superfish.css";
-@import url(https://fonts.googleapis.com/css?family=Marvel:400);
+/*@import url(https://fonts.googleapis.com/css?family=Marvel:400);
 @import url(https://fonts.googleapis.com/css?family=Marvel:700);
-@import url(https://fonts.googleapis.com/css?family=Yellowtail);
+@import url(https://fonts.googleapis.com/css?family=Yellowtail);*/
+@import "fonts.css";
 html {
 	width: 100%;
 }
