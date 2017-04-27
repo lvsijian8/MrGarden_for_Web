@@ -220,11 +220,16 @@
         <div class="grid_4 prefix_1">
             <h3>最新消息</h3>
             <p class="col1" style="font-size: 15px" id="download">
-                <time datetime="2014-01-01">2017-03-12</time>
+                <time datetime="2017-04-12">2017-04-12</time>
                 -
-                <a href="updata/MrFlower.apk">花伴安卓版APP发布</a>
+                <a href="http://android.myapp.com/myapp/detail.htm?apkName=com.lvsijian8.flowerpot">花伴安卓版APP发布(PC版应用宝地址)</a>
             </p>
-            <img src="images/cli.png" title="扫码下载app" style="width: 96px;height: auto">
+            <p class="col1" style="font-size: 15px" id="download1">
+                <time datetime="2017-04-12">2017-04-12</time>
+                -
+                <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.lvsijian8.flowerpot">花伴安卓版APP发布(手机版应用宝地址)</a>
+            </p>
+            <img src="images/appdownload.png" title="扫码下载app" style="width: 96px;height: auto">
         </div>
         <div class="grid_4">
             <h3>邮件订阅</h3>
