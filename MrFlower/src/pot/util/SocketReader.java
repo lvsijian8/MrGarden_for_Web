@@ -8,38 +8,38 @@ import pot.dao.arduino.updataDao;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
  * Created by lvsijian8 on 2017/4/11.
  */
 public class SocketReader implements Runnable {
-    Socket s = null;
-    BufferedReader br = null;
-    OutputStream os = null;
+    private Socket socket = null;
 
-    public SocketReader(Socket s) {
-        this.s = s;
-        try {
-            br = new BufferedReader(new InputStreamReader(s.getInputStream(), "utf-8"));
-            os = s.getOutputStream();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public SocketReader(Socket socket) {
+        this.socket = socket;
     }
 
     public void run() {
+        BufferedReader in = null;
+        //OutputStream out = null;
+        PrintWriter out = null;
         try {
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
+            //out = socket.getOutputStream();
+            out = new PrintWriter(socket.getOutputStream(), true);
             String content = null;
-            while ((content = br.readLine()) != null) {
+            while ((content = in.readLine()) != null) {
                 //System.out.println(2);
                 //System.out.println(content);//-----------
                 switch (content.split("\\|")[0]) {
                     case "headBeat": {
                         int pot_id = Integer.parseInt(content.split("\\|")[1]);
                         headBeatDao headBeat = new headBeatDao();
-                        os.write((headBeat.headBeat(pot_id) + "\n").getBytes("utf-8"));
+                        //out.write((headBeat.headBeat(pot_id) + "\n").getBytes("utf-8"));
+                        out.println((headBeat.headBeat(pot_id) + "\n"));
+                        out.flush();
                         break;
                     }
                     case "lookUpdata": {
@@ -61,19 +61,32 @@ public class SocketReader implements Runnable {
                         int light = Integer.parseInt(content.split("\\|")[6]);
                         int fertilizer = Integer.parseInt(content.split("\\|")[7]);
                         updataDao updata = new updataDao();
-                        os.write((updata.Updata(pot_id, out_temperature, out_humidity, in_humidity, water, light, fertilizer) + "\n").getBytes("utf-8"));
+                        //out.write((updata.Updata(pot_id, out_temperature, out_humidity, in_humidity, water, light, fertilizer) + "\n").getBytes("utf-8"));
+                        out.println((updata.Updata(pot_id, out_temperature, out_humidity, in_humidity, water, light, fertilizer) + "\n"));
+                        out.flush();
+
                         break;
                     }
-                    case "setTime":{
-                        setTimeDao setTime=new setTimeDao();
+                    case "setTime": {
+                        setTimeDao setTime = new setTimeDao();
                         int pot_id = Integer.parseInt(content.split("\\|")[1]);
-                        os.write((setTime.setTime(pot_id) + "\n").getBytes("utf-8"));
+                        //out.write((setTime.setTime(pot_id) + "\n").getBytes("utf-8"));
+                        out.println((setTime.setTime(pot_id) + "\n"));
+                        out.flush();
                         break;
                     }
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                out.close();
+                in.close();
+                socket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
