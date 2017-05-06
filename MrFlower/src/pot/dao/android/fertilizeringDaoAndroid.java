@@ -17,9 +17,9 @@ public class fertilizeringDaoAndroid {
         Timestamp now = new Timestamp(new Date().getTime());
         int fertilizer = 0;
         String sql = "SELECT bottle_ml FROM pot WHERE pot_id=?;";
-        String sqlFindfertilizer = "SELECT fertilizer FROM pot_" + pot_id + " ORDER BY time DESC limit 0,1;";
+        String sqlFindfertilizer = "SELECT now_bottle FROM pot WHERE pot_id=?;";
         String sqltime = "UPDATE pot SET bottleing_time=? WHERE pot_id=?;";
-        String sqlUpdatafertilizer = "update pot_" + pot_id + " set fertilizer=? where time=(select max(time) FROM (SELECT time FROM pot_1) AS something);";
+        String sqlUpdatafertilizer = "update pot set now_bottle=? where pot_id=?;";
         String sqlAddHistory = "INSERT INTO history (pot_id, user_id, device, time, handle,detail) VALUES(?,?,?,?,?,?);";
         try {
             con = DBConnection.getDBConnection();
@@ -30,9 +30,10 @@ public class fertilizeringDaoAndroid {
                 fertilizer = rs.getInt("bottle_ml");
             }
             prepstmt = con.prepareStatement(sqlFindfertilizer);
+            prepstmt.setInt(1,pot_id);
             rs = prepstmt.executeQuery();
             while (rs.next()) {
-                fertilizer = rs.getInt("fertilizer") - (int) ((fertilizer * 1.0) / 12.18);
+                fertilizer = rs.getInt("now_bottle") - (int) ((fertilizer * 1.0) / 12.18);
             }
             if (fertilizer <= 0)
                 return -1;
@@ -45,6 +46,7 @@ public class fertilizeringDaoAndroid {
                 state = 0;
             prepstmt = con.prepareStatement(sqlUpdatafertilizer);
             prepstmt.setInt(1, fertilizer);
+            prepstmt.setInt(2,pot_id);
             prepstmt.executeUpdate();
             prepstmt = con.prepareStatement(sqlAddHistory);
             prepstmt.setInt(1, pot_id);

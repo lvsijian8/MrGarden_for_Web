@@ -59,12 +59,11 @@ public class SocketReader implements Runnable {
                         int in_humidity = Integer.parseInt(content.split("\\|")[4]);
                         int water = Integer.parseInt(content.split("\\|")[5]);
                         int light = Integer.parseInt(content.split("\\|")[6]);
-                        int fertilizer = Integer.parseInt(content.split("\\|")[7]);
+                        int bottle = Integer.parseInt(content.split("\\|")[7]);
                         updataDao updata = new updataDao();
                         //out.write((updata.Updata(pot_id, out_temperature, out_humidity, in_humidity, water, light, fertilizer) + "\n").getBytes("utf-8"));
-                        out.println((updata.Updata(pot_id, out_temperature, out_humidity, in_humidity, water, light, fertilizer) + "\n"));
+                        out.println((updata.Updata(pot_id, out_temperature, out_humidity, in_humidity, water, light, bottle) + "\n"));
                         out.flush();
-
                         break;
                     }
                     case "setTime": {

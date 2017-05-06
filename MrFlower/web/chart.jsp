@@ -356,13 +356,13 @@
     ];
 
     drawCircle('#chart-3', 1, <%
-            if(Potchart.getJSONObject(0).get("water")==null)
+            if(Potchart.getJSONObject(0).get("water")==null||Potchart.getJSONObject(0).get("water").equals("0"))
                 out.print("1");
             else
                 out.print(Potchart.getJSONObject(0).get("water"));
         %>, '#circle-1');
     drawCircle('#chart-4', 2, <%
-            if(Potchart.getJSONObject(0).get("fertilizer")==null)
+            if(Potchart.getJSONObject(0).get("fertilizer")==null||Potchart.getJSONObject(0).get("fertilizer").equals("0"))
                 out.print("1");
             else
                 out.print(Potchart.getJSONObject(0).get("fertilizer"));

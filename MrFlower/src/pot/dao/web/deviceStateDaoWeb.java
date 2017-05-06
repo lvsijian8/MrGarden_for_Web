@@ -19,7 +19,7 @@ public class deviceStateDaoWeb {
         Timestamp now = new Timestamp(new Date().getTime());
         String sql = "SELECT heartBeat_time,now_temperature,now_humidity,now_power,now_light,water_ml,bottle_ml FROM pot WHERE pot_id=?;";
         String sqlUpdataLook = "UPDATE pot SET look_time=? WHERE pot_id=?;";
-        String sqlFindWater = "SELECT water,fertilizer FROM pot_" + pot_id + " ORDER BY time DESC limit 0,1;";
+        String sqlFindWaterFertilizer = "SELECT now_water,now_bottle FROM pot WHERE pot_id=?;";
         int water = 0, fertilizer = 0;
         String sqlFindHandleTime = "SELECT time FROM history WHERE handle=? AND pot_id=? AND user_id=? ORDER BY time DESC limit 0,1;";
         Date lastWaterDate = null, lastFertilizerDate = null;
@@ -50,11 +50,12 @@ public class deviceStateDaoWeb {
                 state += (rs.getInt("water_ml") + "|");
                 state += (rs.getInt("bottle_ml") + "|");
             }
-            prepstmt = con.prepareStatement(sqlFindWater);
+            prepstmt = con.prepareStatement(sqlFindWaterFertilizer);
+            prepstmt.setInt(1,pot_id);
             rs = prepstmt.executeQuery();
             if (rs.next()) {
-                state += ((water = rs.getInt("water")) + "|");
-                state += ((fertilizer = rs.getInt("fertilizer")) + "|");
+                state += ((water = rs.getInt("now_water")) + "|");
+                state += ((fertilizer = rs.getInt("now_bottle")) + "|");
             } else {
                 state += "0|";
                 state += "0|";

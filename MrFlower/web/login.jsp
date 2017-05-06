@@ -10,8 +10,8 @@
 <head>
     <title>登录|注册</title>
     <link rel="stylesheet" href="css/login_style.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+    <link href="css/fonts.css" rel="stylesheet">
+    <link rel='stylesheet prefetch' href="css/fonts.css">
 
 
     <script language="javascript">

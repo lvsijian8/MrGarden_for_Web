@@ -468,7 +468,7 @@
         </div>
     </div>
     <script type="text/javascript">
-        function ajaxWater(i, type, watered) {//左侧数据库连接列表点击事件
+        function ajaxWater(i, type, watered) {
             $.ajax({
                 method: "post",
                 url: 'wateringWeb',

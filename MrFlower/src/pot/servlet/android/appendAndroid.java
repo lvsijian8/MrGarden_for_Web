@@ -29,7 +29,7 @@ public class appendAndroid extends HttpServlet {
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        out.println(appendDao.append(user_id, fid, flowername, num_bottle_day, num_bottle_time, num_bottle_ml, num_water_day, num_water_time, num_water_ml));
+        out.println(appendDao.append(user_id, fid, flowername, num_bottle_day, num_bottle_time, num_bottle_ml, num_water_day, num_water_time, num_water_ml,"android"));
         out.close();
     }
 

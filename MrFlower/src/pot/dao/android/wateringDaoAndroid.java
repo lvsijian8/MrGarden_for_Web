@@ -17,9 +17,9 @@ public class wateringDaoAndroid {
         Timestamp now = new Timestamp(new Date().getTime());
         String sql = "SELECT water_ml FROM pot WHERE pot_id=?;";
         int water = 0;
-        String sqlFindWater = "SELECT water FROM pot_" + pot_id + " ORDER BY time DESC limit 0,1;";
+        String sqlFindWater = "SELECT now_water FROM pot WHERE pot_id=?;";
         String sqltime = "UPDATE pot SET watering_time=? WHERE pot_id=?;";
-        String sqlUpdataWater = "update pot_" + pot_id + " set water=? where time=(select max(time) FROM (SELECT time FROM pot_1) AS something);";
+        String sqlUpdataWater = "update pot set now_water=? where pot_id=?;";
         String sqlAddHistory = "INSERT INTO history (pot_id, user_id, device, time, handle,detail) VALUES(?,?,?,?,?,?);";
         try {
             con = DBConnection.getDBConnection();
@@ -30,9 +30,10 @@ public class wateringDaoAndroid {
                 water = rs.getInt("water_ml");
             }
             prepstmt = con.prepareStatement(sqlFindWater);
+            prepstmt.setInt(1,pot_id);
             rs = prepstmt.executeQuery();
             while (rs.next()) {
-                water = rs.getInt("water") - (int) ((water * 1.0) / 12.18);
+                water = rs.getInt("now_water") - (int) ((water * 1.0) / 12.18);
             }
             if (water <= 0)
                 return -1;
@@ -45,6 +46,7 @@ public class wateringDaoAndroid {
                 state = 0;
             prepstmt = con.prepareStatement(sqlUpdataWater);
             prepstmt.setInt(1, water);
+            prepstmt.setInt(2,pot_id);
             prepstmt.executeUpdate();
             prepstmt = con.prepareStatement(sqlAddHistory);
             prepstmt.setInt(1, pot_id);

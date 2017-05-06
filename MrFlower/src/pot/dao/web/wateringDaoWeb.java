@@ -20,10 +20,10 @@ public class wateringDaoWeb {
         String sqlAddHistory = "INSERT INTO history (pot_id, user_id, device, time, handle,detail) VALUES(?,?,?,?,?,?);";
         if (type.equals("w")) {
             sqltime = "UPDATE pot SET watering_time=? WHERE pot_id=?;";
-            sqlUpdataWater = "update pot_" + pot_id + " set water=? where time=(select max(time) FROM (SELECT time FROM pot_1) AS something);";
+            sqlUpdataWater = "update pot set now_water=? where pot_id=?;";
         } else {
             sqltime = "UPDATE pot SET bottleing_time=? WHERE pot_id=?;";
-            sqlUpdataWater = "update pot_" + pot_id + " set fertilizer=? where time=(select max(time) FROM (SELECT time FROM pot_1) AS something);";
+            sqlUpdataWater = "update pot set now_bottle=? where pot_id=?;";
         }
         try {
             con = DBConnection.getDBConnection();
@@ -36,6 +36,7 @@ public class wateringDaoWeb {
                 state = 0;
             prepstmt = con.prepareStatement(sqlUpdataWater);
             prepstmt.setInt(1, watered);
+            prepstmt.setInt(2,pot_id);
             prepstmt.executeUpdate();
             prepstmt = con.prepareStatement(sqlAddHistory);
             prepstmt.setInt(1, pot_id);

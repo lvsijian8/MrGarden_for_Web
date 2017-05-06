@@ -28,7 +28,8 @@ public class chartDaoWeb {
         ArrayList<Integer> humidity = new ArrayList<Integer>();//湿度
         int checked = 0;
         String sqlFindPotName = "SELECT flower_name FROM pot WHERE pot_id=?;";
-        String sql = "SELECT out_temperature,out_humidity,water,fertilizer FROM pot_";
+        String sql = "SELECT out_temperature,out_humidity FROM pot_";
+        String sqlFindWaterFertilizer = "SELECT now_water,now_bottle FROM pot WHERE pot_id=?;";
         String sqlFdata = "SELECT time,out_temperature,out_humidity FROM pot_";
         DateFormat dateFormat = new SimpleDateFormat("dd");//获取当前天
         try {
@@ -63,8 +64,19 @@ public class chartDaoWeb {
             while (rs.next()) {
                 params.put("out_t", rs.getInt(1));
                 params.put("out_h", rs.getInt(2));
-                params.put("water", rs.getInt(3));
-                params.put("fertilizer", rs.getInt(4));
+            }
+            prepstmt = con.prepareStatement(sqlFindWaterFertilizer);
+            prepstmt.setInt(1,pot_id);
+            rs = prepstmt.executeQuery();
+            while (rs.next()) {
+                if(rs.getInt("now_water")==0)
+                    params.put("water",1);
+                else
+                    params.put("water", rs.getInt("now_water"));
+                if(rs.getInt("now_bottle")==0)
+                    params.put("fertilizer",1);
+                else
+                    params.put("fertilizer", rs.getInt("now_bottle"));
             }
             sqlFdata = sqlFdata + pot_id + " ORDER BY time DESC limit 0,192";
             prepstmt = con.prepareStatement(sqlFdata);

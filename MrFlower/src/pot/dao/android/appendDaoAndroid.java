@@ -8,7 +8,7 @@ import java.sql.*;
  * Created by lvsijian8 on 2017/4/6.
  */
 public class appendDaoAndroid {
-    public String append(int user_id, int fid, String fname, int bday, int bbtime, int bml, int wday, int wtime, int wml) {
+    public String append(int user_id, int fid, String fname, int bday, int bbtime, int bml, int wday, int wtime, int wml, String device) {
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
@@ -52,9 +52,7 @@ public class appendDaoAndroid {
                     "`out_temperature` int(3) DEFAULT NULL," +
                     "`out_humidity` int(3) DEFAULT NULL," +
                     "`in_humidity` int(3) DEFAULT NULL," +
-                    "`water` int(5) DEFAULT NULL," +
                     "`light` int(4) DEFAULT NULL," +
-                    "`fertilizer` int(5) DEFAULT NULL," +
                     "PRIMARY KEY (`time`)" +
                     ") DEFAULT CHARACTER SET utf8 COMMENT='';";
             prepstmt = con.prepareStatement(sqlTable);
@@ -62,7 +60,7 @@ public class appendDaoAndroid {
             prepstmt = con.prepareStatement(sqlAddHistory);
             prepstmt.setInt(1, pot_id);
             prepstmt.setInt(2, user_id);
-            prepstmt.setString(3, "android");
+            prepstmt.setString(3, device);
             prepstmt.setTimestamp(4, now);
             prepstmt.setString(5, "add_pot");
             prepstmt.setString(6, "本次创建花盆名称为:" + fname + ",施肥间隔:" + bday + "天,施肥时间:" + bbtime + "点,施肥量:" + bml + "ml,浇水间隔:" + wday + ",浇水时间:" + wtime + ",浇水量:" + wml);
