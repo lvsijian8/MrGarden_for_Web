@@ -1,6 +1,6 @@
 package pot.servlet.android;
 
-import pot.dao.android.signupDaoAndroid;
+import pot.dao.android.signupDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +28,7 @@ public class signupAndroid extends HttpServlet {
         String user_name = new String(request.getParameter("user_name").getBytes("ISO8859-1"), "UTF-8");
         String user_pwd = new String(request.getParameter("user_pwd").getBytes("ISO8859-1"), "UTF-8");
         String user_phone = new String(request.getParameter("user_phone").getBytes("ISO8859-1"), "UTF-8");
-        signupDaoAndroid signupDao = new signupDaoAndroid();
+        signupDao signupDao = new signupDao();
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();

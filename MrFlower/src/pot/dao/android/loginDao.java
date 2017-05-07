@@ -8,16 +8,15 @@ import java.sql.*;
 /**
  * Created by lvsijian8 on 2017/3/27.
  */
-public class loginDaoAndroid {
+public class loginDao {
     public String findUser(String user_name, String user_pwd, String ip, String device) {
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
         String state = "-3";//默认密码错误
         Boolean isAlready = false;
-        String sqlAlready = "Select count(user_name) FROM user where user_name=?";
-        String sql = "select user_id from user where user_name=? AND user_pwd=?";
-        String sqlFind = "select user_id from user where user_name=?";
+        String sqlAlready = "Select count(user_name) FROM user where user_name=?;";
+        String sql = "select user_id from user where user_name=? AND user_pwd=?;";
         String sqlAddHistory = "INSERT INTO history (user_id, time, handle,detail,device) VALUES(?,?,?,?,?);";
         Timestamp now = new Timestamp(new java.util.Date().getTime());
         try {

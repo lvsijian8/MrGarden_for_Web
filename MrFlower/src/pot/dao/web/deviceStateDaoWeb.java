@@ -21,7 +21,7 @@ public class deviceStateDaoWeb {
         String sqlUpdataLook = "UPDATE pot SET look_time=? WHERE pot_id=?;";
         String sqlFindWaterFertilizer = "SELECT now_water,now_bottle FROM pot WHERE pot_id=?;";
         int water = 0, fertilizer = 0;
-        String sqlFindHandleTime = "SELECT time FROM history WHERE handle=? AND pot_id=? AND user_id=? ORDER BY time DESC limit 0,1;";
+        String sqlFindHandleTime = "SELECT time FROM history WHERE handle=? AND user_id=? AND pot_id=? ORDER BY time DESC limit 0,1;";
         Date lastWaterDate = null, lastFertilizerDate = null;
         int recommendWaterTime = 0, recommendFertilizerTime = 0;
         String sqlFindDay = "SELECT water_day,bottle_day FROM pot WHERE pot_id=?;";

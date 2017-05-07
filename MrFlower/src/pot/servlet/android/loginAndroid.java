@@ -1,6 +1,6 @@
 package pot.servlet.android;
 
-import pot.dao.android.loginDaoAndroid;
+import pot.dao.android.loginDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,7 +27,7 @@ public class loginAndroid extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String user_name = new String(request.getParameter("user_name").getBytes("ISO8859-1"), "UTF-8");
         String user_pwd = new String(request.getParameter("user_pwd").getBytes("ISO8859-1"), "UTF-8");
-        loginDaoAndroid loginDao = new loginDaoAndroid();
+        loginDao loginDao = new loginDao();
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();

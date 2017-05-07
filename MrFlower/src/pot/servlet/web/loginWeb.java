@@ -1,6 +1,6 @@
 package pot.servlet.web;
 
-import pot.dao.android.loginDaoAndroid;
+import pot.dao.android.loginDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,7 +35,7 @@ public class loginWeb extends HttpServlet {
         } catch (Exception e) {
             remember = "off";
         }
-        loginDaoAndroid loginDao = new loginDaoAndroid();
+        loginDao loginDao = new loginDao();
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         String error = "";

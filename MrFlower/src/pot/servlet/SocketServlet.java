@@ -13,7 +13,7 @@ import java.io.IOException;
 /**
  * Created by lvsijian8 on 2017/4/11.
  */
-@WebServlet(name = "SocketServlet")
+//@WebServlet(name = "SocketServlet")
 public class SocketServlet extends HttpServlet {
     //private Socket sockets;
     @Override

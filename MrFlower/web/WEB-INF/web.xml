@@ -37,6 +37,10 @@
         <filter-name>checkLogin</filter-name>
         <url-pattern>/manage.jsp</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>checkLogin</filter-name>
+        <url-pattern>/editInfo.jsp</url-pattern>
+    </filter-mapping>
 
     <filter-mapping>
         <filter-name>checkLogin</filter-name>

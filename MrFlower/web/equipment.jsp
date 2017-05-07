@@ -2,7 +2,7 @@
 <%@ page import="java.net.URLDecoder" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
-  User: desol
+  User: lvsijian8
   Date: 2017/3/11
   Time: 16:46
   To change this template use File | Settings | File Templates.
@@ -246,7 +246,7 @@
                                 for (int i = 0; i < cookies.length; i++) {//从cookie中获取当前已登陆用户
                                     cookie = cookies[i];
                                     if (cookie.getName().equals("user_name") && (cookie.getValue() != null)) {
-                                        out.print("<a style=\"float:left\" >" + URLDecoder.decode(cookie.getValue(), "UTF-8") + "</a>" + "|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
+                                        out.print("<a style=\"float:left\" href=\"editInfo.jsp\">" + URLDecoder.decode(cookie.getValue(), "UTF-8") + "</a>" + "|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
                                         isLogin = true;
                                         break;
                                     }
@@ -489,7 +489,6 @@
         var wait = 10;
         function time(i) {
             if (wait == 0) {
-
                 i.removeAttribute("disabled");
                 i.value = "继续添加";
                 wait = 10;
@@ -513,12 +512,6 @@
         function unFertilizer() {
             alert("营养液量不足,请添加营养液后再执行.");
         }
-        /*document.getElementById("green1").onclick = function () {
-         time(this);
-         };
-         document.getElementById("green2").onclick = function () {
-         time(this);
-         }*/
     </script>
 
 

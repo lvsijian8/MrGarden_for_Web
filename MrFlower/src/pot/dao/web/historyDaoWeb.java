@@ -118,7 +118,7 @@ public class historyDaoWeb {
                 if (rs.getString("detail") != null)
                     detail += "操作后状态为:" + rs.getString("detail") + ".";
                 pot_details.add(detail);
-                pot_times.add(rs.getTimestamp("time").toString());
+                pot_times.add(rs.getTimestamp("time").toString().split("\\.")[0]);
             }
         } catch (SQLException e) {
             e.printStackTrace();

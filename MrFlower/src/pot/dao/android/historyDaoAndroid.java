@@ -46,7 +46,7 @@ public class historyDaoAndroid {
                 Map params = new HashMap();
 
                 params.put("pot_detail", detail);
-                params.put("pot_time", rs.getTimestamp("time").toString());
+                params.put("pot_time", rs.getTimestamp("time").toString().split("\\.")[0]);
                 array.add(params);
             }
         } catch (SQLException e) {

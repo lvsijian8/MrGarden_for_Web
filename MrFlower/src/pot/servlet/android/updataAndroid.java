@@ -1,4 +1,3 @@
-/*
 package pot.servlet.android;
 
 
@@ -10,12 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-*/
 /**
  * Created by lvsijian8 on 2017/4/7.
- *//*
+ */
 
-@WebServlet(name = "updataAndroid")
+@WebServlet("/updataAndroid")
 public class updataAndroid extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String up = "{\"apkUrl\":\"updata/MrFlower.apk\",\"versioncode\":\"1.0\"}";
@@ -30,4 +28,3 @@ public class updataAndroid extends HttpServlet {
         doPost(request, response);
     }
 }
-*/

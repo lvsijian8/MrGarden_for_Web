@@ -1,7 +1,7 @@
 <%@ page import="net.sf.json.JSONArray" %>
 <%@ page import="java.net.URLDecoder" %><%--
   Created by IntelliJ IDEA.
-  User: desol
+  User: lvsijian8
   Date: 2017/3/21
   Time: 18:55
   To change this template use File | Settings | File Templates.
@@ -73,7 +73,7 @@
                                 for (int i = 0; i < cookies.length; i++) {//从cookie中获取当前已登陆用户
                                     cookie = cookies[i];
                                     if (cookie.getName().equals("user_name") && (cookie.getValue() != null)) {
-                                        out.print("<a style=\"float:left\" >" + URLDecoder.decode(cookie.getValue(), "UTF-8") + "</a>" + "|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
+                                        out.print("<a style=\"float:left\" href=\"editInfo.jsp\">" + URLDecoder.decode(cookie.getValue(), "UTF-8") + "</a>" + "|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
                                         isLogin = true;
                                         break;
                                     }

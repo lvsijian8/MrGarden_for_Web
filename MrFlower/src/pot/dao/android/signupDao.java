@@ -8,15 +8,15 @@ import java.sql.*;
 /**
  * Created by lvsijian8 on 2017/3/27.
  */
-public class signupDaoAndroid {
+public class signupDao {
     public String writeUser(String user_name, String user_pwd, String user_phone, String ip, String device) {
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
         String state = "";
         Boolean isAlready = false;
-        String sqlAlready = "Select count(user_name) FROM user where user_name=?";
-        String sql = "INSERT INTO user (user_name,user_pwd,user_phone) VALUES (?,?,?)";
+        String sqlAlready = "Select count(user_name) FROM user where user_name=?;";
+        String sql = "INSERT INTO user (user_name,user_pwd,user_phone) VALUES (?,?,?);";
         String sqlFind = "select user_id from user where user_name=?";
         String sqlAddHistory = "INSERT INTO history (user_id, time, handle,detail,device) VALUES(?,?,?,?,?);";
         Timestamp now = new Timestamp(new java.util.Date().getTime());
