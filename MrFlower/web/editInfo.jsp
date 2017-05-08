@@ -107,7 +107,7 @@
                 out.print(request.getAttribute("error"));
             %>
             $().UItoTop({easingType: 'easeOutQuart'});
-        })
+        });
 
         function pd() {
             var psw1 = document.getElementById("edit_pwd2").value;
