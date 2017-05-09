@@ -77,7 +77,7 @@
                         <li><a href="equipment.jsp">设备</a></li>
                         <li><a href="plant">花卉</a></li>
                         <li><a href="Contacts.jsp">联系</a></li>
-                        <li>&nbsp;
+                        <li>
                             <%
                                 boolean isLogin = false;
                                 Cookie cookie = null;
@@ -191,8 +191,7 @@
             <div id="owl1">
                 <div class="item">
                     <div class="img_block ib1">
-                        <a href='https://lvsijian.cn/OnlineDB'><img src="images/car_img1.jpg" style="width: 129px" title="在线数据库管理系统" class=" img_inner"></a>
-                        <span class="l"></span>
+                        <a href='https://lvsijian.cn/OnlineDB'><img src="images/car_img1.jpg" style="width: 129px" title="在线数据库管理系统" class=" img_inner"></a><span class="l"></span>
                         <span class="ll"></span>
                         <span class="r"></span>
                         <span class="rr"></span>
@@ -204,8 +203,7 @@
                 </div>
                 <div class="item">
                     <div class="img_block ib1">
-                        <a href='https://lvsijian.cn/MDACD'><img src="images/car_img2.jpg" style="width: 129px" title="移动开发与数据计算实验室管理系统" class="img_inner"></a>
-                        <span class="l"></span>
+                        <a href='https://lvsijian.cn/MDACD'><img src="images/car_img2.jpg" style="width: 129px" title="移动开发与数据计算实验室管理系统" class="img_inner"></a><span class="l"></span>
                         <span class="ll"></span>
                         <span class="r"></span>
                         <span class="rr"></span>
@@ -220,7 +218,7 @@
         <div class="grid_4 prefix_1">
             <h3>最新消息</h3>
             <p class="col1" style="font-size: 15px" id="download">
-                <time datetime="2017-04-12">2017-04-12</time>
+                <time datetime="2014-01-01">2017-03-12</time>
                 -
                 <a href="http://android.myapp.com/myapp/detail.htm?apkName=com.lvsijian8.flowerpot">花伴安卓版APP发布(PC版应用宝地址)</a>
             </p>

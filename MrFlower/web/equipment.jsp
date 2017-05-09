@@ -246,7 +246,7 @@
                                 for (int i = 0; i < cookies.length; i++) {//从cookie中获取当前已登陆用户
                                     cookie = cookies[i];
                                     if (cookie.getName().equals("user_name") && (cookie.getValue() != null)) {
-                                        out.print("<a style=\"float:left\" href=\"editInfo.jsp\">" + URLDecoder.decode(cookie.getValue(), "UTF-8") + "</a>" + "|<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
+                                       out.print("<a style=\"float:left\" href=\"editInfo.jsp\">" + URLDecoder.decode(cookie.getValue(), "UTF-8") + "</a>" + "&nbsp;&nbsp;|&nbsp;&nbsp;<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
                                         isLogin = true;
                                         break;
                                     }
@@ -303,6 +303,9 @@
                                 <a href="addPot.jsp" style="text-decoration:underline;"><img src="images/Add.png"
                                                                                              style="width: 24px;height: auto"><font
                                         size="24" color="red">添加花盆</font></a>
+                                <a href="manage_all.jsp" style="text-decoration:underline;float: right;padding-right: 2em"><img src="images/Setting.png"
+                                                                                                 style="width: 24px;height: auto"><font
+                                        size="24" color="#5fe18c">管理全部花盆</font></a>
                             </div>
                         </div>
                     </div>
@@ -468,7 +471,7 @@
         </div>
     </div>
     <script type="text/javascript">
-        function ajaxWater(i, type, watered) {
+        function ajaxWater(i, type, watered) {//左侧数据库连接列表点击事件
             $.ajax({
                 method: "post",
                 url: 'wateringWeb',
@@ -489,6 +492,7 @@
         var wait = 10;
         function time(i) {
             if (wait == 0) {
+
                 i.removeAttribute("disabled");
                 i.value = "继续添加";
                 wait = 10;
@@ -512,6 +516,12 @@
         function unFertilizer() {
             alert("营养液量不足,请添加营养液后再执行.");
         }
+        /*document.getElementById("green1").onclick = function () {
+         time(this);
+         };
+         document.getElementById("green2").onclick = function () {
+         time(this);
+         }*/
     </script>
 
 
