@@ -1,7 +1,6 @@
 package pot.servlet.android;
 
-import pot.dao.android.signupDao;
-import pot.util.Findipid;
+import pot.dao.web.getUserDaoWeb;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,21 +11,17 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Created by lvsijian8 on 2017/3/27.
+ * Created by lvsijian8 on 2017/5/9.
  */
-@WebServlet("/signupAndroid")
-public class signupAndroid extends HttpServlet {
-
-
+@WebServlet("/getUserAndroid")
+public class getUserAndroid extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String user_name = new String(request.getParameter("user_name").getBytes("ISO8859-1"), "UTF-8");
-        String user_pwd = new String(request.getParameter("user_pwd").getBytes("ISO8859-1"), "UTF-8");
-        String user_phone = new String(request.getParameter("user_phone").getBytes("ISO8859-1"), "UTF-8");
-        signupDao signupDao = new signupDao();
+        int user_id =Integer.parseInt(new String(request.getParameter("user_id").getBytes("ISO8859-1"), "UTF-8"));
+        getUserDaoWeb getUser=new getUserDaoWeb();
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        out.println(signupDao.writeUser(user_name, user_pwd, user_phone, Findipid.getRemoteAddress(request), "android"));
+        out.println(getUser.getUser(user_id));
         out.close();
     }
 

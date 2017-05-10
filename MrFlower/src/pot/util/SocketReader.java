@@ -38,7 +38,7 @@ public class SocketReader implements Runnable {
                         int pot_id = Integer.parseInt(content.split("\\|")[1]);
                         headBeatDao headBeat = new headBeatDao();
                         //out.write((headBeat.headBeat(pot_id) + "\n").getBytes("utf-8"));
-                        out.println((headBeat.headBeat(pot_id) + "\n"));
+                        out.println((headBeat.headBeat(pot_id)));
                         out.flush();
                         break;
                     }
@@ -62,7 +62,7 @@ public class SocketReader implements Runnable {
                         int bottle = Integer.parseInt(content.split("\\|")[7]);
                         updataDao updata = new updataDao();
                         //out.write((updata.Updata(pot_id, out_temperature, out_humidity, in_humidity, water, light, fertilizer) + "\n").getBytes("utf-8"));
-                        out.println((updata.Updata(pot_id, out_temperature, out_humidity, in_humidity, water, light, bottle) + "\n"));
+                        out.println((updata.Updata(pot_id, out_temperature, out_humidity, in_humidity, water, light, bottle)));
                         out.flush();
                         break;
                     }
@@ -70,7 +70,7 @@ public class SocketReader implements Runnable {
                         setTimeDao setTime = new setTimeDao();
                         int pot_id = Integer.parseInt(content.split("\\|")[1]);
                         //out.write((setTime.setTime(pot_id) + "\n").getBytes("utf-8"));
-                        out.println((setTime.setTime(pot_id) + "\n"));
+                        out.println((setTime.setTime(pot_id)));
                         out.flush();
                         break;
                     }

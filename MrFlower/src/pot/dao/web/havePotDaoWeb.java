@@ -8,29 +8,29 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Created by lvsijian8 on 2017/5/6.
+ * Created by lvsijian8 on 2017/5/10.
  */
-public class getUserDao {
-    public String getUser(int user_id) {
+public class havePotDaoWeb {
+    public Boolean havePot(int user_id) {
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
-        String phone="";
-        String sql="SELECT user_name,user_phone FROM user WHERE user_id=?;";
+        Boolean stats=false;
+        String sql="SELECT COUNT(pot_id) FROM user_pot WHERE user_id=?;";
         try {
             con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sql);
             prepstmt.setInt(1, user_id);
             rs = prepstmt.executeQuery();
             while (rs.next()) {
-                phone += rs.getString(1)+"|";
-                phone += rs.getString(2)+"|";
+                if(rs.getInt(1)>0)
+                    stats=true;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             DBConnection.closeDB(con, prepstmt, rs);
         }
-        return phone;
+        return stats;
     }
 }

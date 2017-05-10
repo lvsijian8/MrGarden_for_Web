@@ -1,6 +1,7 @@
 package pot.servlet.web;
 
 import pot.dao.android.loginDao;
+import pot.util.Findipid;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,14 +17,7 @@ import java.net.URLEncoder;
  */
 @WebServlet("/loginWeb")
 public class loginWeb extends HttpServlet {
-    public String getRemoteAddress(HttpServletRequest request) {
-        String ip = request.getHeader("x-forwarded-for");
-        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) ip = request.getHeader("Proxy-Client-IP");
-        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown"))
-            ip = request.getHeader("WL-Proxy-Client-IP");
-        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) ip = request.getRemoteAddr();
-        return ip;
-    }
+
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String user_name = new String(request.getParameter("user_name").getBytes("ISO8859-1"), "UTF-8");
@@ -39,7 +33,7 @@ public class loginWeb extends HttpServlet {
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         String error = "";
-        switch (user_id = loginDao.findUser(user_name, user_pwd, getRemoteAddress(request), "web")) {
+        switch (user_id = loginDao.findUser(user_name, user_pwd, Findipid.getRemoteAddress(request), "web")) {
             case "-3":
                 error = "alert(\"密码错误,请重新登陆.\")";
                 break;

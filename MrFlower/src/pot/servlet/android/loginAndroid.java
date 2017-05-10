@@ -1,6 +1,7 @@
 package pot.servlet.android;
 
 import pot.dao.android.loginDao;
+import pot.util.Findipid;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,14 +16,7 @@ import java.io.PrintWriter;
  */
 @WebServlet("/loginAndroid")
 public class loginAndroid extends HttpServlet {
-    public String getRemoteAddress(HttpServletRequest request) {
-        String ip = request.getHeader("x-forwarded-for");
-        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) ip = request.getHeader("Proxy-Client-IP");
-        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown"))
-            ip = request.getHeader("WL-Proxy-Client-IP");
-        if (ip == null || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) ip = request.getRemoteAddr();
-        return ip;
-    }
+
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String user_name = new String(request.getParameter("user_name").getBytes("ISO8859-1"), "UTF-8");
@@ -31,7 +25,7 @@ public class loginAndroid extends HttpServlet {
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        out.println(loginDao.findUser(user_name, user_pwd, getRemoteAddress(request), "android"));
+        out.println(loginDao.findUser(user_name, user_pwd, Findipid.getRemoteAddress(request), "android"));
         out.close();
     }
 
