@@ -21,7 +21,7 @@ public class wateringAndroid extends HttpServlet {
         wateringDaoAndroid wateringDao = new wateringDaoAndroid();
         response.setContentType("text/html;charset=utf-8");//打印至HTML页面
         PrintWriter out = response.getWriter();
-        out.print(wateringDao.watering(user_id, pot_id));
+        out.print(wateringDao.watering(user_id, pot_id,"android"));
         out.close();
     }
 

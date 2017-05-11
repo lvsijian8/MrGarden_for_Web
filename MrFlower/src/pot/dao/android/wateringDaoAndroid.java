@@ -9,7 +9,7 @@ import java.util.Date;
  * Created by lvsijian8 on 2017/4/16.
  */
 public class wateringDaoAndroid {
-    public int watering(int user_id, int pot_id) {
+    public int watering(int user_id, int pot_id,String device) {
         int state = 0;
         Connection con = null;
         PreparedStatement prepstmt = null;
@@ -51,7 +51,7 @@ public class wateringDaoAndroid {
             prepstmt = con.prepareStatement(sqlAddHistory);
             prepstmt.setInt(1, pot_id);
             prepstmt.setInt(2, user_id);
-            prepstmt.setString(3, "android");
+            prepstmt.setString(3, device);
             prepstmt.setTimestamp(4, now);
             prepstmt.setString(5, "watering");
             prepstmt.setString(6, "浇水完成后剩余" + water + "%");

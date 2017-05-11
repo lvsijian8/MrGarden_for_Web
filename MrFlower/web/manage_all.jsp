@@ -1,4 +1,6 @@
+<%@ page import="net.sf.json.JSONArray" %>
 <%@ page import="java.net.URLDecoder" %>
+<%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
   User: lvsijian8
@@ -7,6 +9,23 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    JSONArray getManage = null;
+    if ((getManage = (JSONArray) request.getAttribute("getManage")) == null) {//若是直接访问chart.jsp则先跳转chart,再跳转回来
+%>
+<jsp:forward page="getManageAll"/>
+<%
+    }
+%>
+<%
+    List<String> pot_names = ((List<String>) getManage.getJSONObject(0).get("pot_names"));
+    List<Integer> pot_ids = ((List<Integer>) getManage.getJSONObject(0).get("pot_ids"));
+    List<Integer> pot_waters = ((List<Integer>) getManage.getJSONObject(0).get("pot_waters"));
+    List<Integer> pot_bottles = ((List<Integer>) getManage.getJSONObject(0).get("pot_bottles"));
+    List<Integer> pot_online = ((List<Integer>) getManage.getJSONObject(0).get("pot_online"));
+    List<String> lastWaterDates = ((List<String>) getManage.getJSONObject(0).get("lastWaterDates"));
+    List<String> lastFertilizerDates = ((List<String>) getManage.getJSONObject(0).get("lastFertilizerDates"));
+%>
 <html>
 <head>
     <title>管理全部花盆</title>
@@ -134,12 +153,12 @@
     </style>
 
 
-<script>
+    <script>
 
-    $(document).ready(function () {
-        $().UItoTop({easingType: 'easeOutQuart'});
-    })
-</script>
+        $(document).ready(function () {
+            $().UItoTop({easingType: 'easeOutQuart'});
+        })
+    </script>
 </head>
 <body id="top">
 
@@ -214,16 +233,22 @@
                              aria-labelledby="headingTwo">
                             <div class="panel-body" style="padding-left: 2em">
                                 <form class="form" method="post">
-                                    <input type="radio" id="hwl" name="radio" value="虎尾兰"><label
-                                        for="hwl">虎尾兰</label><br/>
-                                    <input type="radio" id="gyz" name="radio" value="观音竹"><label for="gyz">观音竹</label>
+                                    <%
+                                        for (int i = 0; i < pot_names.size(); i++) {
+                                            out.print("<input type=\"radio\" id=\"huahua" + i + "\" name=\"radio\" onclick=\"changePot(" + pot_ids.get(i) + ")\"><label for=\"huahua" + i + "\" onclick=\"changePot(" + pot_ids.get(i) + ")\">" + pot_names.get(i) + "</label>");
+                                            if (i + 1 < pot_names.size())
+                                                out.print("<br/>");
+                                        }
+                                    %>
                                 </form>
                                 <br/>
                                 <a href="addPot.jsp" style="text-decoration:underline;"><img src="images/Add.png"
                                                                                              style="width: 24px;height: auto"><font
                                         size="24" color="red">添加花盆</font></a>
-                                <a href="manage_all.jsp" style="text-decoration:underline;float: right;padding-right: 2em"><img src="images/Setting.png"
-                                                                                             style="width: 24px;height: auto"><font
+                                <a href="manage_all.jsp"
+                                   style="text-decoration:underline;float: right;padding-right: 2em"><img
+                                        src="images/Setting.png"
+                                        style="width: 24px;height: auto"><font
                                         size="24" color="#5fe18c">管理全部花盆</font></a>
                             </div>
                         </div>
@@ -233,15 +258,23 @@
         </div>
     </div>
 </div>
+<script>
+    function changePot(id) {
+        window.location.href = "equipment?pot_id=" + id;
+    }
+</script>
 <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"></script>
 
 <div style="background-color: #f9f9f9;padding-bottom: 2em">
     <form id="manage_form" action="" method="post">
         <div style="padding:0em 50em 1em 1em;">
-            <a name="manage_btn" onclick="nockeck()" style="color: #FFFFFF;padding: 4px 50px;margin-right: 0.6em" class="btn btn-primary radius">
+            <a id="submit11" name="manage_btn" onclick="nockeck()"
+               style="color: #FFFFFF;padding: 4px 50px;margin-right: 0.6em"
+               class="btn btn-primary radius">
                 <img src="images/Watering_all.png" width="16px">&nbsp;&nbsp;浇&nbsp;水</a>
-            <a name="manage_btn" onclick="nockeck()" style="color: #FFFFFF;padding: 4px 50px;" class="btn btn-primary radius">
+            <a id="submit22" name="manage_btn" onclick="nockeck()" style="color: #FFFFFF;padding: 4px 50px;"
+               class="btn btn-primary radius">
                 <img src="images/Bottle_all.png" width="16px">&nbsp;&nbsp;施&nbsp;肥</a>
         </div>
 
@@ -252,15 +285,23 @@
 
             function ckeckall() {
                 var cks = document.querySelectorAll("input[type=checkbox]:checked");
-                if(cks.length>0) {
-                    $("a").attr("onclick","submit1()");
+                if (cks.length > 0) {
+                    $("#submit11").attr("onclick", "submit1()");
+                    $("#submit22").attr("onclick", "submit2()");
                 }
-                else{
-                    $("a").remove("onclick");
+                else {
+                    $("#submit11").remove("onclick");
+                    $("#submit22").remove("onclick");
                 }
             }
 
             function submit1() {
+                $("#manage_form").attr("action", "waterAll");
+                document.getElementById('manage_form').submit();
+            }
+
+            function submit2() {
+                $("#manage_form").attr("action", "");
                 document.getElementById('manage_form').submit();
             }
 
@@ -279,230 +320,65 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th><input type="checkbox" name="check" onclick="ckeckall()"></th>
-                <td>
-                    <div>花盆1</div>
-                </td>
-                <td>
-                    <img src="images/Light_On.png" alt="在线" style="height:24px;">在线
-                </td>
-                <td>
-                    <div class="clearfix">
-                        <div class="float-left">
-                            <strong>50%</strong>
-                        </div>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </td>
-                <td>
-                    <div class="clearfix">
-                        <div class="float-left">
-                            <strong>20%</strong>
-                        </div>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </td>
-                <td>
-                    <strong>10秒前</strong>
-                </td>
-                <td>
-                    <strong>10秒前</strong>
-                </td>
-            </tr>
-            <tr>
-                <th><input type="checkbox" name="check" onclick="ckeckall()"></th>
-                <td>
-                    <div>花盆2</div>
-                </td>
-                <td>
-                    <img src="images/Light_On.png" alt="在线" style="height:24px;">在线
-                </td>
-                <td>
-                    <div class="clearfix">
-                        <div class="float-left">
-                            <strong>10%</strong>
-                        </div>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </td>
-                <td>
-                    <div class="clearfix">
-                        <div class="float-left">
-                            <strong>40%</strong>
-                        </div>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </td>
-                <td>
-                    <strong>5分钟前</strong>
-                </td>
-                <td>
-                    <strong>5分钟前</strong>
-                </td>
-            </tr>
-            <tr>
-                <th><input type="checkbox" name="check" onclick="ckeckall()"></th>
-                <td>
-                    <div>花盆3</div>
-                </td>
-                <td>
-                    <img src="images/Light_On.png" alt="在线" style="height:24px;">在线
-                </td>
-                <td>
-                    <div class="clearfix">
-                        <div class="float-left">
-                            <strong>74%</strong>
-                        </div>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 74%" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </td>
-                <td>
-                    <div class="clearfix">
-                        <div class="float-left">
-                            <strong>41%</strong>
-                        </div>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 41%" aria-valuenow="41" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </td>
-                <td>
-                    <strong>1小时前</strong>
-                </td>
-                <td>
-                    <strong>1小时前</strong>
-                </td>
-            </tr>
-            <tr>
-                <th><input type="checkbox" name="check" onclick="ckeckall()"></th>
-                <td>
-                    <div>花盆4</div>
-                </td>
-                <td>
-                    <img src="images/Light_On.png" alt="在线" style="height:24px;">在线
-                </td>
-                <td>
-                    <div class="clearfix">
-                        <div class="float-left">
-                            <strong>98%</strong>
-                        </div>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 98%" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </td>
-                <td>
-                    <div class="clearfix">
-                        <div class="float-left">
-                            <strong>62%</strong>
-                        </div>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 62%" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </td>
-                <td>
-                    <strong>5小时前</strong>
-                </td>
-                <td>
-                    <strong>5小时前</strong>
-                </td>
-            </tr>
-            <tr>
-                <th><input type="checkbox" name="check" onclick="ckeckall()"></th>
-                <td>
-                    <div>花盆5</div>
-                </td>
-                <td>
-                    <img src="images/Light_On.png" alt="在线" style="height:24px;">在线
-                </td>
-                <td>
-                    <div class="clearfix">
-                        <div class="float-left">
-                            <strong>22%</strong>
-                        </div>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 22%" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </td>
-                <td>
-                    <div class="clearfix">
-                        <div class="float-left">
-                            <strong>82%</strong>
-                        </div>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </td>
-                <td>
-                    <strong>10小时前</strong>
-                </td>
-                <td>
-                    <strong>10小时前</strong>
-                </td>
-            </tr>
-            <tr>
-                <th><input type="checkbox" name="check" onclick="ckeckall()"></th>
-                <td>
-                    <div>花盆6</div>
-                </td>
-                <td>
-                    <img src="images/Light_On.png" alt="在线" style="height:24px;">在线
-                </td>
-                <td>
-                    <div class="clearfix">
-                        <div class="float-left">
-                            <strong>43%</strong>
-                        </div>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </td>
-                <td>
-                    <div class="clearfix">
-                        <div class="float-left">
-                            <strong>66%</strong>
-                        </div>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </td>
-                <td>
-                    <strong>24小时前</strong>
-                </td>
-                <td>
-                    <strong>24小时前</strong>
-                </td>
-            </tr>
+            <%
+                for (int i = 0; i < pot_ids.size(); i++) {
+                    String online;
+                    if (pot_online.get(i) == 1)
+                        online = "<img src=\"images/Light_On.png\" alt=\"在线\" style=\"height:24px;\">在线\n";
+                    else
+                        online = "<img src=\"images/Light_Off.png\" alt=\"离线\" style=\"height:24px;\">离线\n";
+                    out.print("<tr>\n" +
+                            "                <th><input type=\"checkbox\" name=\"" + pot_ids.get(i) + "\" onclick=\"ckeckall()\"></th>\n" +
+                            "                <td>\n" +
+                            "                    <div>" + pot_names.get(i) + "</div>\n" +
+                            "                </td>\n" +
+                            "                <td>\n" +
+                            online +
+                            "                </td>\n" +
+                            "                <td>\n" +
+                            "                    <div class=\"clearfix\">\n" +
+                            "                        <div class=\"float-left\">\n" +
+                            "                            <strong>" + pot_waters.get(i) + "%</strong>\n" +
+                            "                        </div>\n" +
+                            "                    </div>\n" +
+                            "                    <div class=\"progress progress-xs\">\n" +
+                            "                        <div class=\"progress-bar bg-success\" role=\"progressbar\" style=\"width: " + pot_waters.get(i) + "%\" aria-valuenow=\"" + pot_waters.get(i) + "\"\n" +
+                            "                             aria-valuemin=\"0\" aria-valuemax=\"100\"></div>\n" +
+                            "                    </div>\n" +
+                            "                </td>\n" +
+                            "                <td>\n" +
+                            "                    <div class=\"clearfix\">\n" +
+                            "                        <div class=\"float-left\">\n" +
+                            "                            <strong>" + pot_bottles.get(i) + "%</strong>\n" +
+                            "                        </div>\n" +
+                            "                    </div>\n" +
+                            "                    <div class=\"progress progress-xs\">\n" +
+                            "                        <div class=\"progress-bar bg-success\" role=\"progressbar\" style=\"width: " + pot_bottles.get(i) + "%\" aria-valuenow=\"" + pot_bottles.get(i) + "\"\n" +
+                            "                             aria-valuemin=\"0\" aria-valuemax=\"100\"></div>\n" +
+                            "                    </div>\n" +
+                            "                </td>\n" +
+                            "                <td>\n" +
+                            "                    <strong>" + lastWaterDates.get(i) + "</strong>\n" +
+                            "                </td>\n" +
+                            "                <td>\n" +
+                            "                    <strong>" + lastFertilizerDates.get(i) + "</strong>\n" +
+                            "                </td>\n" +
+                            "            </tr>");
+                }
+            %>
             </tbody>
-
         </table>
     </form>
 </div>
 <script>
 
-    $("#ckAll").click(function() {
+    $("#ckAll").click(function () {
         $("input[name='check']").prop("checked", this.checked);
     });
 
-    $("input[name='check']").click(function() {
+    $("input[name='check']").click(function () {
         var $subs = $("input[name='check']");
-        $("#ckAll").prop("checked" , $subs.length == $subs.filter(":checked").length ? true :false);
+        $("#ckAll").prop("checked", $subs.length == $subs.filter(":checked").length ? true : false);
     });
 
 </script>

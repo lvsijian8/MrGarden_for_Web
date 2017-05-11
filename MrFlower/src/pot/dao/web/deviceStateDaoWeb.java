@@ -77,7 +77,6 @@ public class deviceStateDaoWeb {
             while (rs.next()) {
                 lastWaterDate = rs.getTimestamp("time");
             }
-            prepstmt = con.prepareStatement(sqlFindHandleTime);
             prepstmt.setString(1, "fertilizering");
             prepstmt.setInt(2, user_id);
             prepstmt.setInt(3, pot_id);

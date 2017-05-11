@@ -21,7 +21,7 @@ public class fertilizeringAndroid extends HttpServlet {
         fertilizeringDaoAndroid fertilizeringDao = new fertilizeringDaoAndroid();
         response.setContentType("text/html;charset=utf-8");//打印至HTML页面
         PrintWriter out = response.getWriter();
-        out.print(fertilizeringDao.fertilizering(user_id, pot_id));
+        out.print(fertilizeringDao.fertilizering(user_id, pot_id,"android"));
         out.close();
     }
 
