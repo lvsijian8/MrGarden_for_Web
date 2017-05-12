@@ -1,7 +1,7 @@
 package pot.servlet.web;
 
 import net.sf.json.JSONArray;
-import pot.dao.android.wateringDaoAndroid;
+import pot.dao.android.fertilizeringDaoAndroid;
 import pot.dao.web.getManageAllDaoWeb;
 import pot.util.Findipid;
 
@@ -15,21 +15,21 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 
 /**
- * Created by lvsijian8 on 2017/5/11.
+ * Created by lvsijian8 on 2017/5/12.
  */
-@WebServlet("/waterAll")
-public class waterAll extends HttpServlet {
+@WebServlet("/bottleAll")
+public class bottleAll extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int user_id = Findipid.finduser_id(request.getCookies());
         String key = "speak";
         String speak = "操作成功";
-        wateringDaoAndroid wateringDao = new wateringDaoAndroid();
         Enumeration paramNames = request.getParameterNames();
+        fertilizeringDaoAndroid fertilizeringDao =new fertilizeringDaoAndroid();
         ArrayList<Integer> pot_unids = new ArrayList<Integer>();
         paramNames.hasMoreElements();
-        while (paramNames.hasMoreElements()) {
-            int pot_id = Integer.parseInt((String) paramNames.nextElement());
-            if(-1==wateringDao.watering(user_id, pot_id, "web")){
+        while(paramNames.hasMoreElements()) {
+            int pot_id = Integer.parseInt((String)paramNames.nextElement());
+            if(-1==fertilizeringDao.fertilizering(user_id, pot_id,"web")){
                 speak="no";
                 pot_unids.add(pot_id);
             }
@@ -43,7 +43,7 @@ public class waterAll extends HttpServlet {
         if(speak.equals("no"))
             request.setAttribute("pot_unids", pot_unids);
         request.setAttribute(key, speak);
-        request.setAttribute("type", "w");
+        request.setAttribute("type", "b");
         request.getRequestDispatcher("manage_all.jsp").forward(request, response);
     }
 

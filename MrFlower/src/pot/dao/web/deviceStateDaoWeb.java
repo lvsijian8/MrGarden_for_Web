@@ -17,14 +17,12 @@ public class deviceStateDaoWeb {
         ResultSet rs = null;
         Timestamp date = new Timestamp(new java.util.Date().getTime() - 10000);
         Timestamp now = new Timestamp(new Date().getTime());
-        String sql = "SELECT heartBeat_time,now_temperature,now_humidity,now_power,now_light,water_ml,bottle_ml FROM pot WHERE pot_id=?;";
+        String sql = "SELECT heartBeat_time,now_temperature,now_humidity,now_power,now_light,water_ml,bottle_ml,now_water,now_bottle,water_day,bottle_day FROM pot WHERE pot_id=?;";
         String sqlUpdataLook = "UPDATE pot SET look_time=? WHERE pot_id=?;";
-        String sqlFindWaterFertilizer = "SELECT now_water,now_bottle FROM pot WHERE pot_id=?;";
         int water = 0, fertilizer = 0;
         String sqlFindHandleTime = "SELECT time FROM history WHERE handle=? AND user_id=? AND pot_id=? ORDER BY time DESC limit 0,1;";
         Date lastWaterDate = null, lastFertilizerDate = null;
         int recommendWaterTime = 0, recommendFertilizerTime = 0;
-        String sqlFindDay = "SELECT water_day,bottle_day FROM pot WHERE pot_id=?;";
         try {
             con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sql);
@@ -49,16 +47,10 @@ public class deviceStateDaoWeb {
                     state += "1|";
                 state += (rs.getInt("water_ml") + "|");
                 state += (rs.getInt("bottle_ml") + "|");
-            }
-            prepstmt = con.prepareStatement(sqlFindWaterFertilizer);
-            prepstmt.setInt(1,pot_id);
-            rs = prepstmt.executeQuery();
-            if (rs.next()) {
                 state += ((water = rs.getInt("now_water")) + "|");
                 state += ((fertilizer = rs.getInt("now_bottle")) + "|");
-            } else {
-                state += "0|";
-                state += "0|";
+                recommendWaterTime = rs.getInt("water_day");
+                recommendFertilizerTime = rs.getInt("bottle_day");
             }
 
             if (water > 50)
@@ -83,13 +75,6 @@ public class deviceStateDaoWeb {
             rs = prepstmt.executeQuery();
             while (rs.next()) {
                 lastFertilizerDate = rs.getTimestamp("time");
-            }
-            prepstmt = con.prepareStatement(sqlFindDay);
-            prepstmt.setInt(1, pot_id);
-            rs = prepstmt.executeQuery();
-            while (rs.next()) {
-                recommendWaterTime = rs.getInt("water_day");
-                recommendFertilizerTime = rs.getInt("bottle_day");
             }
             prepstmt = con.prepareStatement(sqlUpdataLook);
             prepstmt.setTimestamp(1, now);

@@ -25,6 +25,16 @@
     List<Integer> pot_online = ((List<Integer>) getManage.getJSONObject(0).get("pot_online"));
     List<String> lastWaterDates = ((List<String>) getManage.getJSONObject(0).get("lastWaterDates"));
     List<String> lastFertilizerDates = ((List<String>) getManage.getJSONObject(0).get("lastFertilizerDates"));
+    List<Integer> pot_unids = null;
+    String type = "";
+    String speak = null;
+    try {
+        if ((speak = (String) request.getAttribute("speak")) != null) {
+            pot_unids = ((List<Integer>) request.getAttribute("pot_unids"));
+            type = (String) request.getAttribute("type");
+        }
+    } catch (Exception e) {
+    }
 %>
 <html>
 <head>
@@ -268,7 +278,7 @@
 
 <div style="background-color: #f9f9f9;padding-bottom: 2em">
     <form id="manage_form" action="" method="post">
-        <div style="padding:0em 50em 1em 1em;">
+        <div style="padding:0em 40em 1em 1em;">
             <a id="submit11" name="manage_btn" onclick="nockeck()"
                style="color: #FFFFFF;padding: 4px 50px;margin-right: 0.6em"
                class="btn btn-primary radius">
@@ -276,6 +286,10 @@
             <a id="submit22" name="manage_btn" onclick="nockeck()" style="color: #FFFFFF;padding: 4px 50px;"
                class="btn btn-primary radius">
                 <img src="images/Bottle_all.png" width="16px">&nbsp;&nbsp;施&nbsp;肥</a>
+            <%
+                if (speak != null && speak.equals("操作成功"))
+                    out.print("<a style=\" background-color:#F9F9F9; border: 0; color: green;padding: 4px 50px; cursor: inherit\" disabled=\"disable\" class=\"btn btn-primary radius\">操作成功</a>");
+            %>
         </div>
 
         <script>
@@ -290,8 +304,8 @@
                     $("#submit22").attr("onclick", "submit2()");
                 }
                 else {
-                    $("#submit11").remove("onclick");
-                    $("#submit22").remove("onclick");
+                    $("#submit11").attr("onclick", "nockeck()");
+                    $("#submit22").attr("onclick", "nockeck()");
                 }
             }
 
@@ -301,7 +315,7 @@
             }
 
             function submit2() {
-                $("#manage_form").attr("action", "");
+                $("#manage_form").attr("action", "bottleAll");
                 document.getElementById('manage_form').submit();
             }
 
@@ -310,7 +324,7 @@
         <table class="table table-hover table-outline mb-0 hidden-sm-down" style="width: 80%; margin: 0 auto">
             <thead class="thead-default">
             <tr>
-                <th style="width: 2em"><input type="checkbox" id="ckAll" onclick="ckeckall()"></th>
+                <th style="width: 2em"><input type="checkbox" id="ckAll" onchange="ckeckall()"></th>
                 <th style="width: 10em">花盆名</th>
                 <th style="width: 6em">在线状态</th>
                 <th style="width: 18em" class="text-center">水量</th>
@@ -322,15 +336,37 @@
             <tbody>
             <%
                 for (int i = 0; i < pot_ids.size(); i++) {
-                    String online;
-                    if (pot_online.get(i) == 1)
+                    String online = "";
+                    String unwater = "";
+                    String unbottle = "";
+                    String disabled="";
+                    String classed="";
+                    String span="";
+                    if (pot_online.get(i) == 1){
                         online = "<img src=\"images/Light_On.png\" alt=\"在线\" style=\"height:24px;\">在线\n";
-                    else
+                        classed="class=\"check\"";
+                    }
+                    else{
                         online = "<img src=\"images/Light_Off.png\" alt=\"离线\" style=\"height:24px;\">离线\n";
+                        disabled="disabled=\"disabled\"";
+                        span="离线不可选";
+                    }
+                    if (speak != null && speak.equals("no")) {
+                        for (int j = 0; j < pot_unids.size(); j++) {
+                            if (pot_unids.get(j) == pot_ids.get(i)) {
+                                if (type.equals("w"))
+                                    unwater = "<span style=\"color: red;padding-left:4em\">水量不足，浇水失败</span>";
+                                else
+                                    unbottle = "<span style=\"color: red;padding-left:4em\">营养液不足，施肥失败</span>";
+                            }
+                        }
+
+                    }
                     out.print("<tr>\n" +
-                            "                <th><input type=\"checkbox\" name=\"" + pot_ids.get(i) + "\" onclick=\"ckeckall()\"></th>\n" +
+                            "                <th><input "+disabled+" type=\"checkbox\" id=\"pot"+pot_ids.get(i)+"\" "+classed+" name=\"" + pot_ids.get(i) + "\" onclick=\"ckeckall()\"></th>\n" +
                             "                <td>\n" +
                             "                    <div>" + pot_names.get(i) + "</div>\n" +
+                            "<span style=\"font-size: 14px;color:red\">"+span+"</span>"+
                             "                </td>\n" +
                             "                <td>\n" +
                             online +
@@ -339,6 +375,7 @@
                             "                    <div class=\"clearfix\">\n" +
                             "                        <div class=\"float-left\">\n" +
                             "                            <strong>" + pot_waters.get(i) + "%</strong>\n" +
+                            unwater +
                             "                        </div>\n" +
                             "                    </div>\n" +
                             "                    <div class=\"progress progress-xs\">\n" +
@@ -350,6 +387,7 @@
                             "                    <div class=\"clearfix\">\n" +
                             "                        <div class=\"float-left\">\n" +
                             "                            <strong>" + pot_bottles.get(i) + "%</strong>\n" +
+                            unbottle +
                             "                        </div>\n" +
                             "                    </div>\n" +
                             "                    <div class=\"progress progress-xs\">\n" +
@@ -371,13 +409,12 @@
     </form>
 </div>
 <script>
-
     $("#ckAll").click(function () {
-        $("input[name='check']").prop("checked", this.checked);
+        $("input[class='check']").prop("checked", this.checked);
     });
 
-    $("input[name='check']").click(function () {
-        var $subs = $("input[name='check']");
+    $("input[class='check']").click(function () {
+        var $subs = $("input[class='check']");
         $("#ckAll").prop("checked", $subs.length == $subs.filter(":checked").length ? true : false);
     });
 
