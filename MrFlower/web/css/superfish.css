@@ -13,7 +13,7 @@
 }
 
 .menu_block nav {
-	padding-left: 73px;
+	padding-left: 110px;
     font-family: 'Marvel', sans-serif;
 }
 
@@ -35,7 +35,7 @@ nav{ position:relative;padding: 0px 0 0 0;}
 }
 
 .sf-menu>li+li {
-	margin-left: 100px;
+	margin-left: 70px;
 }
 
 .sf-menu>li+li:after {
@@ -43,7 +43,7 @@ nav{ position:relative;padding: 0px 0 0 0;}
 	width: 7px;
 	height: 7px;
 	top: 12px;
-	left: -70px;
+	left: -40px;
 	content: '';
 	position: absolute;
 	display: block;

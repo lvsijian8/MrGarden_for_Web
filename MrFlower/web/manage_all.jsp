@@ -211,7 +211,7 @@
                                     }
                                 }
                                 if (!isLogin)
-                                    out.print("<a href=\"login.jsp\">登录|注册</a>");
+                                    out.print("<a href=\"login.jsp\">登录&nbsp;&nbsp;|&nbsp;&nbsp注册</a>");
                             %>
                         </li>
                     </ul>
@@ -339,17 +339,16 @@
                     String online = "";
                     String unwater = "";
                     String unbottle = "";
-                    String disabled="";
-                    String classed="";
-                    String span="";
-                    if (pot_online.get(i) == 1){
+                    String disabled = "";
+                    String classed = "";
+                    String span = "";
+                    if (pot_online.get(i) == 1) {
                         online = "<img src=\"images/Light_On.png\" alt=\"在线\" style=\"height:24px;\">在线\n";
-                        classed="class=\"check\"";
-                    }
-                    else{
+                        classed = "class=\"check\"";
+                    } else {
                         online = "<img src=\"images/Light_Off.png\" alt=\"离线\" style=\"height:24px;\">离线\n";
-                        disabled="disabled=\"disabled\"";
-                        span="离线不可选";
+                        disabled = "disabled=\"disabled\"";
+                        span = "离线不可选";
                     }
                     if (speak != null && speak.equals("no")) {
                         for (int j = 0; j < pot_unids.size(); j++) {
@@ -363,10 +362,10 @@
 
                     }
                     out.print("<tr>\n" +
-                            "                <th><input "+disabled+" type=\"checkbox\" id=\"pot"+pot_ids.get(i)+"\" "+classed+" name=\"" + pot_ids.get(i) + "\" onclick=\"ckeckall()\"></th>\n" +
+                            "                <th><input " + disabled + " type=\"checkbox\" id=\"pot" + pot_ids.get(i) + "\" " + classed + " name=\"" + pot_ids.get(i) + "\" onclick=\"ckeckall()\"></th>\n" +
                             "                <td>\n" +
                             "                    <div>" + pot_names.get(i) + "</div>\n" +
-                            "<span style=\"font-size: 14px;color:red\">"+span+"</span>"+
+                            "<span style=\"font-size: 14px;color:red\">" + span + "</span>" +
                             "                </td>\n" +
                             "                <td>\n" +
                             online +

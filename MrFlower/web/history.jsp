@@ -165,14 +165,14 @@
                                 for (int i = 0; i < cookies.length; i++) {//从cookie中获取当前已登陆用户
                                     cookie = cookies[i];
                                     if (cookie.getName().equals("user_name") && (cookie.getValue() != null)) {
-                                       out.print("<a style=\"float:left\" href=\"editInfo.jsp\">" + URLDecoder.decode(cookie.getValue(), "UTF-8") + "</a>" + "&nbsp;&nbsp;|&nbsp;&nbsp;<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
+                                        out.print("<a style=\"float:left\" href=\"editInfo.jsp\">" + URLDecoder.decode(cookie.getValue(), "UTF-8") + "</a>" + "&nbsp;&nbsp;|&nbsp;&nbsp;<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
                                         isLogin = true;
                                         break;
                                     }
                                 }
                             }
                             if (!isLogin)
-                                out.print("<a href=\"login.jsp\">登录|注册</a>");
+                                out.print("<a href=\"login.jsp\">登录&nbsp;&nbsp;|&nbsp;&nbsp注册</a>");
                         %></li>
                     </ul>
                 </nav>
@@ -219,7 +219,7 @@
 </div>
 <script>
     window.onload = function () {
-        $('#'+'<%=request.getAttribute("pot_id1")%>'+'1').attr("selected", "selected");
+        $('#' + '<%=request.getAttribute("pot_id1")%>1').attr("selected", "selected");
         $('#' + '<%=request.getAttribute("pot_device1")%>' + '1').attr("selected", "selected");
         $('#' + '<%=request.getAttribute("pot_handle1")%>' + '1').attr("selected", "selected");
     };
@@ -260,14 +260,22 @@
             int pageMax = (int) History.getJSONObject(0).get("pageMax");
             int pagePrev = pageThis - 1;
             int pageNext = pageThis + 1;
-            if (pageThis != 1)
+            Boolean mark = true;
+            if (pageThis != 1)//<a >...</a>
                 out.print("<a href=\"history?pot_id=" + request.getAttribute("pot_id1") + "&pot_device=" + request.getAttribute("pot_device1") + "&pot_handle=" + request.getAttribute("pot_handle1") + "&page=" + pagePrev + "\" class=\"page_prev\">&lt;</a>");//判断是否第一页,是则不显示前一页
             for (int i = 1; i <= pageMax; i++) {
-                if (i == pageThis) {
-                    out.print("<a class=\"page_current\">" + pageThis + "</a>");//为当前页加特效
-                    continue;
+                if(i==1&&1<=pageThis-4)
+                    out.print("<a href=\"history?pot_id=" + request.getAttribute("pot_id1") + "&pot_device=" + request.getAttribute("pot_device1") + "&pot_handle=" + request.getAttribute("pot_handle1") + "&page=" + 1 + "\">1</a><a >...</a>");
+                if (i > pageThis - 4 && i < pageThis + 4) {
+                    if (i == pageThis) {
+                        out.print("<a class=\"page_current\">" + pageThis + "</a>");//为当前页加特效
+                        continue;
+                    }
+                    out.print("<a href=\"history?pot_id=" + request.getAttribute("pot_id1") + "&pot_device=" + request.getAttribute("pot_device1") + "&pot_handle=" + request.getAttribute("pot_handle1") + "&page=" + i + "\">" + i + "</a>");
                 }
-                out.print("<a href=\"history?pot_id=" + request.getAttribute("pot_id1") + "&pot_device=" + request.getAttribute("pot_device1") + "&pot_handle=" + request.getAttribute("pot_handle1") + "&page=" + i + "\">" + i + "</a>");
+                if(i==pageMax&&pageMax>=pageThis+4)
+                    out.print("<a >...</a><a href=\"history?pot_id=" + request.getAttribute("pot_id1") + "&pot_device=" + request.getAttribute("pot_device1") + "&pot_handle=" + request.getAttribute("pot_handle1") + "&page=" + pageMax + "\">" + pageMax + "</a>");
+
             }
             if (pageThis != pageMax)
                 out.print("<a href=\"history?pot_id=" + request.getAttribute("pot_id1") + "&pot_device=" + request.getAttribute("pot_device1") + "&pot_handle=" + request.getAttribute("pot_handle1") + "&page=" + pageNext + "\" class=\"page_next\">&gt;</a>");//判断是否最后一页,是则不显示下一页
