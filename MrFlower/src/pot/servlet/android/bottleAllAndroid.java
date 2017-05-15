@@ -29,6 +29,10 @@ public class bottleAllAndroid extends HttpServlet {
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
+        if(pot_unids.equals(""))
+            pot_unids="success&";
+        else
+            pot_unids="fail&"+pot_unids;
         out.println(pot_unids);
         out.close();
     }
