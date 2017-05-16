@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 /**
  * Created by lvsijian8 on 2017/4/11.
  */
-public class SocketListener extends Thread {
+public class SocketListener implements Runnable {
     public void run() {
         ServerSocket serverSocket = null;
         try {

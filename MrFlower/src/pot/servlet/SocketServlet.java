@@ -19,8 +19,7 @@ public class SocketServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        SocketListener socketListener = new SocketListener();
-        socketListener.start();
+        new Thread(new SocketListener()).start();
         //this.sockets=socketArd.getSocket();
     }
 
