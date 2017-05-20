@@ -35,7 +35,7 @@ public class signupWeb extends HttpServlet {
             Cookie user_nameCo = new Cookie("user_name", URLEncoder.encode(user_name, "UTF-8"));
             response.addCookie(user_idCo);
             response.addCookie(user_nameCo);//保存用户名以及ID
-            request.setAttribute("error", "window.location.href=\"index.jsp\";");
+            request.setAttribute("error", "window.location.href=\"addPot.jsp\";");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
