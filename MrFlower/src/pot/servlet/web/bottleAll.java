@@ -24,13 +24,13 @@ public class bottleAll extends HttpServlet {
         String key = "speak";
         String speak = "操作成功";
         Enumeration paramNames = request.getParameterNames();
-        fertilizeringDaoAndroid fertilizeringDao =new fertilizeringDaoAndroid();
+        fertilizeringDaoAndroid fertilizeringDao = new fertilizeringDaoAndroid();
         ArrayList<Integer> pot_unids = new ArrayList<Integer>();
         paramNames.hasMoreElements();
-        while(paramNames.hasMoreElements()) {
-            int pot_id = Integer.parseInt((String)paramNames.nextElement());
-            if(-1==fertilizeringDao.fertilizering(user_id, pot_id,"web")){
-                speak="no";
+        while (paramNames.hasMoreElements()) {
+            int pot_id = Integer.parseInt((String) paramNames.nextElement());
+            if (-1 == fertilizeringDao.fertilizering(user_id, pot_id, "web")) {
+                speak = "no";
                 pot_unids.add(pot_id);
             }
         }
@@ -40,7 +40,7 @@ public class bottleAll extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         array = getManageAllDao.findAllPot(user_id);
         request.setAttribute("getManage", array);
-        if(speak.equals("no"))
+        if (speak.equals("no"))
             request.setAttribute("pot_unids", pot_unids);
         request.setAttribute(key, speak);
         request.setAttribute("type", "b");

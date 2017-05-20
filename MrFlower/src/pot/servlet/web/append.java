@@ -5,7 +5,6 @@ import pot.util.Findipid;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,7 +28,7 @@ public class append extends HttpServlet {
         appendDaoAndroid appendDao = new appendDaoAndroid();
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-        String state = appendDao.append(user_id, fid, flowername, num_bottle_day, num_bottle_time, num_bottle_ml, num_water_day, num_water_time, num_water_ml,"web");
+        String state = appendDao.append(user_id, fid, flowername, num_bottle_day, num_bottle_time, num_bottle_ml, num_water_day, num_water_time, num_water_ml, "web");
         if (state.equals("success")) {
             request.getRequestDispatcher("index.jsp").forward(request, response);
         } else {

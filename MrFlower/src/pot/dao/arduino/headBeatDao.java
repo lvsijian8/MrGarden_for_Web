@@ -42,7 +42,7 @@ public class headBeatDao {
                 state += "12345678901|";
             if (waterdate == null)
                 waterdate = new Timestamp(new java.util.Date().getTime() - 10000);
-            if (((now.getTime() - waterdate.getTime()) / 1000) <= 5){
+            if (((now.getTime() - waterdate.getTime()) / 1000) <= 5) {
                 Timestamp waterdated = new Timestamp(waterdate.getTime() - 10000);
                 String sqlUpdataWater = "UPDATE pot SET watering_time=? WHERE pot_id=?;";
                 prepstmt = con.prepareStatement(sqlUpdataWater);
@@ -50,12 +50,11 @@ public class headBeatDao {
                 prepstmt.setInt(2, pot_id);
                 prepstmt.executeUpdate();
                 state += "Wwatering|";
-            }
-            else
+            } else
                 state += "123456789|";
             if (bottledate == null)
                 bottledate = new Timestamp(new java.util.Date().getTime() - 10000);
-            if (((now.getTime() - bottledate.getTime()) / 1000) <= 5){
+            if (((now.getTime() - bottledate.getTime()) / 1000) <= 5) {
                 Timestamp bottledated = new Timestamp(bottledate.getTime() - 10000);
                 String sqlUpdataBottle = "UPDATE pot SET bottleing_time=? WHERE pot_id=?;";
                 prepstmt = con.prepareStatement(sqlUpdataBottle);
@@ -63,8 +62,7 @@ public class headBeatDao {
                 prepstmt.setInt(2, pot_id);
                 prepstmt.executeUpdate();
                 state += "Bbottleing|";
-            }
-            else
+            } else
                 state += "1234567890|";
         } catch (SQLException e) {
             e.printStackTrace();

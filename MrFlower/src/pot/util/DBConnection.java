@@ -7,15 +7,15 @@ import java.util.ResourceBundle;
  * Created by lvsijian8 on 2017/3/25.
  */
 public class DBConnection {
-    private static String driverClass = "com.mysql.jdbc.Driver";
+    private static String driverClass = "";
     private static String url = "";
     private static String user = "";
     private static String password = "";
-    private static String url1 = "?useUnicode=true&characterEncoding=UTF-8&verifyServerCertificate=false&useSSL=false&autoReconnect=true";
 
     static {
         ResourceBundle rB = ResourceBundle.getBundle("db");//获取本地db.properties配置文件
-        url = rB.getString("url") + url1;
+        driverClass = rB.getString("driverClass");
+        url = rB.getString("url") + rB.getString("url1");
         user = rB.getString("user");
         password = rB.getString("password");
         try {

@@ -61,7 +61,8 @@
             <div class="cont_forms">
                 <div class="cont_img_back_"><img src="images/po.jpg" alt=""/></div>
                 <form action="loginWeb" method="post">
-                    <div class="cont_form_login"><a href="#" onClick="ocultar_login_sign_up()"><img src="images/back.png" width="22px"></a>
+                    <div class="cont_form_login"><a href="#" onClick="ocultar_login_sign_up()"><img
+                            src="images/back.png" width="22px"></a>
                         <h2>登录</h2>
                         <input type="text" placeholder="用户名" required onkeyup="this.value=this.value.replace(' ','')"
                                name="user_name"/>
@@ -77,7 +78,8 @@
                     </div>
                 </form>
                 <form action="signupWeb" method="post">
-                    <div class="cont_form_sign_up"><a href="#" onClick="ocultar_login_sign_up()"><img src="images/back.png" width="22px"></a>
+                    <div class="cont_form_sign_up"><a href="#" onClick="ocultar_login_sign_up()"><img
+                            src="images/back.png" width="22px"></a>
                         <h2>注册</h2>
                         <input type="tel" id="tel" placeholder="手机号" pattern="[0-9]{11}"
                                onkeyup="this.value=this.value.replace(' ','')" name="user_phone"/>

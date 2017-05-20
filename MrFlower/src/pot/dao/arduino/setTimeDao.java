@@ -22,12 +22,12 @@ public class setTimeDao {
             prepstmt.setInt(1, pot_id);
             rs = prepstmt.executeQuery();
             while (rs.next()) {
-                state = state + " "+rs.getInt(1);
-                state = state + " "+rs.getInt(2);
-                state = state + " "+rs.getInt(3);
-                state = state + " "+rs.getInt(4);
-                state = state + " "+rs.getInt(5);
-                state = state + " "+rs.getInt(6);
+                state = state + " " + rs.getInt(1);
+                state = state + " " + rs.getInt(2);
+                state = state + " " + rs.getInt(3);
+                state = state + " " + rs.getInt(4);
+                state = state + " " + rs.getInt(5);
+                state = state + " " + rs.getInt(6);
             }
         } catch (SQLException e) {
             e.printStackTrace();

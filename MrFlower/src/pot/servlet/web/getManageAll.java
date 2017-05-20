@@ -2,7 +2,6 @@ package pot.servlet.web;
 
 import net.sf.json.JSONArray;
 import pot.dao.web.getManageAllDaoWeb;
-import pot.dao.web.potDataDaoWeb;
 import pot.util.Findipid;
 
 import javax.servlet.ServletException;

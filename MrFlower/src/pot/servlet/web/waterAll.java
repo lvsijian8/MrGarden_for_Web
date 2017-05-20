@@ -29,8 +29,8 @@ public class waterAll extends HttpServlet {
         paramNames.hasMoreElements();
         while (paramNames.hasMoreElements()) {
             int pot_id = Integer.parseInt((String) paramNames.nextElement());
-            if(-1==wateringDao.watering(user_id, pot_id, "web")){
-                speak="no";
+            if (-1 == wateringDao.watering(user_id, pot_id, "web")) {
+                speak = "no";
                 pot_unids.add(pot_id);
             }
         }
@@ -40,7 +40,7 @@ public class waterAll extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         array = getManageAllDao.findAllPot(user_id);
         request.setAttribute("getManage", array);
-        if(speak.equals("no"))
+        if (speak.equals("no"))
             request.setAttribute("pot_unids", pot_unids);
         request.setAttribute(key, speak);
         request.setAttribute("type", "w");

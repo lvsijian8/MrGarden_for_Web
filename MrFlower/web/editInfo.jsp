@@ -191,7 +191,8 @@
             </tr>
             <tr>
                 <th scope="row" style="width:120px;">手机号</th>
-                <td><input name="user_phone" id="edit_tel" type="tel" value="<%=UserPhone.split("\\|")[1]%>" pattern="[0-9]{11}"
+                <td><input name="user_phone" id="edit_tel" type="tel" value="<%=UserPhone.split("\\|")[1]%>"
+                           pattern="[0-9]{11}"
                            onkeyup="this.value=this.value.replace(' ','')"></td>
             </tr>
             <tr id="tr1">

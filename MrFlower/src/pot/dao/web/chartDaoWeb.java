@@ -62,15 +62,15 @@ public class chartDaoWeb {
                 params.put("out_h", rs.getInt(2));
             }
             prepstmt = con.prepareStatement(sqlFindWaterFertilizer);
-            prepstmt.setInt(1,pot_id);
+            prepstmt.setInt(1, pot_id);
             rs = prepstmt.executeQuery();
             while (rs.next()) {
-                if(rs.getInt("now_water")==0)
-                    params.put("water",1);
+                if (rs.getInt("now_water") == 0)
+                    params.put("water", 1);
                 else
                     params.put("water", rs.getInt("now_water"));
-                if(rs.getInt("now_bottle")==0)
-                    params.put("fertilizer",1);
+                if (rs.getInt("now_bottle") == 0)
+                    params.put("fertilizer", 1);
                 else
                     params.put("fertilizer", rs.getInt("now_bottle"));
             }

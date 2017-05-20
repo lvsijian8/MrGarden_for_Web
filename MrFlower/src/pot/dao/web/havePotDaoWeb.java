@@ -15,16 +15,16 @@ public class havePotDaoWeb {
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
-        Boolean stats=false;
-        String sql="SELECT COUNT(pot_id) FROM user_pot WHERE user_id=?;";
+        Boolean stats = false;
+        String sql = "SELECT COUNT(pot_id) FROM user_pot WHERE user_id=?;";
         try {
             con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sql);
             prepstmt.setInt(1, user_id);
             rs = prepstmt.executeQuery();
             while (rs.next()) {
-                if(rs.getInt(1)>0)
-                    stats=true;
+                if (rs.getInt(1) > 0)
+                    stats = true;
             }
         } catch (SQLException e) {
             e.printStackTrace();

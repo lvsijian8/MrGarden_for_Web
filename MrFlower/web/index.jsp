@@ -194,7 +194,9 @@
             <div id="owl1">
                 <div class="item">
                     <div class="img_block ib1">
-                        <a href='https://lvsijian.cn/OnlineDB'><img src="images/car_img1.jpg" style="width: 129px" title="在线数据库管理系统" class=" img_inner"></a><span class="l"></span>
+                        <a href='https://lvsijian.cn/OnlineDB'><img src="images/car_img1.jpg" style="width: 129px"
+                                                                    title="在线数据库管理系统" class=" img_inner"></a><span
+                            class="l"></span>
                         <span class="ll"></span>
                         <span class="r"></span>
                         <span class="rr"></span>
@@ -206,7 +208,9 @@
                 </div>
                 <div class="item">
                     <div class="img_block ib1">
-                        <a href='https://lvsijian.cn/MDACD'><img src="images/car_img2.jpg" style="width: 129px" title="移动开发与数据计算实验室管理系统" class="img_inner"></a><span class="l"></span>
+                        <a href='https://lvsijian.cn/MDACD'><img src="images/car_img2.jpg" style="width: 129px"
+                                                                 title="移动开发与数据计算实验室管理系统" class="img_inner"></a><span
+                            class="l"></span>
                         <span class="ll"></span>
                         <span class="r"></span>
                         <span class="rr"></span>

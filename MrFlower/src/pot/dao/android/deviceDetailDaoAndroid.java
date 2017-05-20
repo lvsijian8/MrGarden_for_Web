@@ -38,9 +38,9 @@ public class deviceDetailDaoAndroid {
                 params.put("temperature", rs.getInt(7));
                 params.put("humidity", rs.getInt(8));
                 params.put("power", rs.getInt(9));
-                if(rs.getInt(10)> 70)
+                if (rs.getInt(10) > 70)
                     params.put("light", "强");
-                else if(rs.getInt(10)> 40)
+                else if (rs.getInt(10) > 40)
                     params.put("light", "适中");
                 else
                     params.put("light", "弱");

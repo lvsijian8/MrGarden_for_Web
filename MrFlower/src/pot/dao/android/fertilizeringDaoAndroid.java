@@ -9,7 +9,7 @@ import java.util.Date;
  * Created by lvsijian8 on 2017/4/16.
  */
 public class fertilizeringDaoAndroid {
-    public int fertilizering(int user_id, int pot_id,String device) {
+    public int fertilizering(int user_id, int pot_id, String device) {
         int state = 0;
         Connection con = null;
         PreparedStatement prepstmt = null;
@@ -33,7 +33,7 @@ public class fertilizeringDaoAndroid {
                 prepstmt = con.prepareStatement(sqlUpdatafertilizer);
                 prepstmt.setTimestamp(1, now);
                 prepstmt.setInt(2, fertilizer);
-                prepstmt.setInt(3,pot_id);
+                prepstmt.setInt(3, pot_id);
                 if (prepstmt.executeUpdate() != 0)
                     state = 1;
                 else

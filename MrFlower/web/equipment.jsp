@@ -246,7 +246,7 @@
                                 for (int i = 0; i < cookies.length; i++) {//从cookie中获取当前已登陆用户
                                     cookie = cookies[i];
                                     if (cookie.getName().equals("user_name") && (cookie.getValue() != null)) {
-                                       out.print("<a style=\"float:left\" href=\"editInfo.jsp\">" + URLDecoder.decode(cookie.getValue(), "UTF-8") + "</a>" + "&nbsp;&nbsp;|&nbsp;&nbsp;<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
+                                        out.print("<a style=\"float:left\" href=\"editInfo.jsp\">" + URLDecoder.decode(cookie.getValue(), "UTF-8") + "</a>" + "&nbsp;&nbsp;|&nbsp;&nbsp;<a style=\"float:right\" onclick=\"foreach()\">注销</a>");
                                         isLogin = true;
                                         break;
                                     }
@@ -303,8 +303,10 @@
                                 <a href="addPot.jsp" style="text-decoration:underline;"><img src="images/Add.png"
                                                                                              style="width: 24px;height: auto"><font
                                         size="24" color="red">添加花盆</font></a>
-                                <a href="manage_all.jsp" style="text-decoration:underline;float: right;padding-right: 2em"><img src="images/Setting.png"
-                                                                                                 style="width: 24px;height: auto"><font
+                                <a href="manage_all.jsp"
+                                   style="text-decoration:underline;float: right;padding-right: 2em"><img
+                                        src="images/Setting.png"
+                                        style="width: 24px;height: auto"><font
                                         size="24" color="#5fe18c">管理全部花盆</font></a>
                             </div>
                         </div>

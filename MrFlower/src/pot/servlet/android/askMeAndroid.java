@@ -20,11 +20,11 @@ public class askMeAndroid extends HttpServlet {
         int user_id = Integer.parseInt(new String(request.getParameter("user_id").getBytes("ISO8859-1"), "UTF-8"));
         String opinion = new String(request.getParameter("opinion").getBytes("ISO8859-1"), "UTF-8");
         String phone = new String(request.getParameter("phone").getBytes("ISO8859-1"), "UTF-8");
-        askMeDaoAndroid askMeDao=new askMeDaoAndroid();
+        askMeDaoAndroid askMeDao = new askMeDaoAndroid();
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        out.println(askMeDao.askMe(user_id,opinion,phone, Findipid.getRemoteAddress(request)));
+        out.println(askMeDao.askMe(user_id, opinion, phone, Findipid.getRemoteAddress(request)));
         out.close();
     }
 

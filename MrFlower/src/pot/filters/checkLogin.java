@@ -13,7 +13,7 @@ import java.net.URLDecoder;
 /**
  * Created by lvsijian8 on 2017/3/31.
  */
-@WebFilter({"/addPot.jsp","/chart.jsp","/equipment.jsp","/history.jsp","/manage.jsp","/editInfo.jsp","/manage_all.jsp","/append","/changeUser","/chart","/deletepot","/deviceState","/equipment","/getManageAll","/getPlant","/getUser","/history","/setTimeMl","/wateringWeb"})
+@WebFilter({"/addPot.jsp", "/chart.jsp", "/equipment.jsp", "/history.jsp", "/manage.jsp", "/editInfo.jsp", "/manage_all.jsp", "/append", "/changeUser", "/chart", "/deletepot", "/deviceState", "/equipment", "/getManageAll", "/getPlant", "/getUser", "/history", "/setTimeMl", "/wateringWeb"})
 public class checkLogin implements Filter {
     public void destroy() {
     }
@@ -21,9 +21,9 @@ public class checkLogin implements Filter {
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
-        String user_name="";
+        String user_name = "";
         boolean isLogin = false;
-        int user_id=0;
+        int user_id = 0;
         Cookie cookie = null;
         Cookie[] cookies = null;
         // 获取cookies的数据,是一个数组
@@ -31,18 +31,17 @@ public class checkLogin implements Filter {
         if (cookies != null) {
             for (int i = 0; i < cookies.length; i++) {//从cookie中获取当前已登陆用户
                 cookie = cookies[i];
-                if(user_id!=0&&!user_name.equals(""))
+                if (user_id != 0 && !user_name.equals(""))
                     break;
                 if (cookie.getName().equals("user_name") && (cookie.getValue() != null)) {
-                    user_name=URLDecoder.decode(cookie.getValue(), "UTF-8");
-                }
-                else if (cookie.getName().equals("user_id") && (cookie.getValue() != null)) {
-                    user_id=Integer.parseInt(URLDecoder.decode(cookie.getValue(), "UTF-8"));
+                    user_name = URLDecoder.decode(cookie.getValue(), "UTF-8");
+                } else if (cookie.getName().equals("user_id") && (cookie.getValue() != null)) {
+                    user_id = Integer.parseInt(URLDecoder.decode(cookie.getValue(), "UTF-8"));
                 }
             }
         }
-        checkLoginDaoWeb checkLogin=new checkLoginDaoWeb();
-        isLogin = checkLogin.checkLogin(user_id,user_name);
+        checkLoginDaoWeb checkLogin = new checkLoginDaoWeb();
+        isLogin = checkLogin.checkLogin(user_id, user_name);
         if (!isLogin) {
             cookie = new Cookie("user_id", null);
             cookie.setMaxAge(0);

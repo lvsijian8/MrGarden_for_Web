@@ -10,8 +10,8 @@ import java.sql.*;
  */
 public class changeUserDaoWeb {
     public int changeUser(int user_id, String user_name, String user_pwd, String user_newpwd, String user_phone, String ip, String device) {
-        if(user_newpwd.equals(""))
-            user_newpwd=user_pwd;
+        if (user_newpwd.equals(""))
+            user_newpwd = user_pwd;
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;

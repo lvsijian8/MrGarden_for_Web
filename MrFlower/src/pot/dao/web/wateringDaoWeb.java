@@ -36,7 +36,7 @@ public class wateringDaoWeb {
                 state = 0;
             prepstmt = con.prepareStatement(sqlUpdataWater);
             prepstmt.setInt(1, watered);
-            prepstmt.setInt(2,pot_id);
+            prepstmt.setInt(2, pot_id);
             prepstmt.executeUpdate();
             prepstmt = con.prepareStatement(sqlAddHistory);
             prepstmt.setInt(1, pot_id);

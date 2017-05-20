@@ -15,8 +15,8 @@ public class updataDao {
         ResultSet rs = null;
         Timestamp now = new Timestamp(new java.util.Date().getTime());
         String sqlUpdata = "INSERT INTO pot_" + pot_id + " (time, out_temperature, out_humidity, in_humidity, light) VALUES (?,?,?,?,?);";
-        String sqlWater="UPDATE pot SET now_water=? WHERE pot_id=?;";
-        String sqlBottl="UPDATE pot SET now_bottle=? WHERE pot_id=?;";
+        String sqlWater = "UPDATE pot SET now_water=? WHERE pot_id=?;";
+        String sqlBottl = "UPDATE pot SET now_bottle=? WHERE pot_id=?;";
         String sqlFindset = "SELECT bottle_day,bottle_time,bottle_ml,water_day,water_time,water_ml FROM pot WHERE pot_id=?";
         try {
             con = DBConnection.getDBConnection();
@@ -27,13 +27,13 @@ public class updataDao {
             prepstmt.setInt(4, in_humidity);
             prepstmt.setInt(5, light);
             prepstmt.executeUpdate();
-            if(water==0){
+            if (water == 0) {
                 prepstmt = con.prepareStatement(sqlWater);//判断还有没有水
                 prepstmt.setInt(1, 0);
                 prepstmt.setInt(2, pot_id);
                 prepstmt.executeUpdate();
             }
-            if(bottle==0){
+            if (bottle == 0) {
                 prepstmt = con.prepareStatement(sqlBottl);
                 prepstmt.setInt(1, 0);
                 prepstmt.setInt(2, pot_id);

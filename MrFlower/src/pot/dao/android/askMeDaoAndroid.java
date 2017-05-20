@@ -29,7 +29,7 @@ public class askMeDaoAndroid {
                 e.printStackTrace();
             }
             prepstmt.setTimestamp(5, now);
-            state=prepstmt.executeUpdate();
+            state = prepstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

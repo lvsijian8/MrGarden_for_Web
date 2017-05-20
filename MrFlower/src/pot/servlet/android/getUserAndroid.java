@@ -16,8 +16,8 @@ import java.io.PrintWriter;
 @WebServlet("/getUserAndroid")
 public class getUserAndroid extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int user_id =Integer.parseInt(new String(request.getParameter("user_id").getBytes("ISO8859-1"), "UTF-8"));
-        getUserDaoWeb getUser=new getUserDaoWeb();
+        int user_id = Integer.parseInt(new String(request.getParameter("user_id").getBytes("ISO8859-1"), "UTF-8"));
+        getUserDaoWeb getUser = new getUserDaoWeb();
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
