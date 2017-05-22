@@ -1,11 +1,11 @@
-MrFlower/*
+MrGarden/*
 
-!MrFlower/src/
+!MrGarden/src/
 
-MrFlower/src/db.properties
+MrGarden/src/db.properties
 
-!MrFlower/web/
+!MrGarden/web/
 
-MrFlower/web/WEB-INF/classes
+MrGarden/web/WEB-INF/classes
 
 *.apk
