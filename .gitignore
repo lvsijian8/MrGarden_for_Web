@@ -7,3 +7,5 @@ MrFlower/src/db.properties
 !MrFlower/web/
 
 MrFlower/web/WEB-INF/classes
+
+*.apk
