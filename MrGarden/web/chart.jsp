@@ -267,17 +267,6 @@
 <div id="someline2"></div>
 <div class="cricle">
     <div id="content">
-        <div class="legend">
-            <h1>余量:</h1>
-            <div class="surplus">
-                <ul>
-                    <li class="area1">区域1</li>
-                    <li class="area2">区域2</li>
-                    <li class="area3">区域3</li>
-                    <li class="area4">区域4</li>
-                </ul>
-            </div>
-        </div>
         <div id="diagram"></div>
         <div class="get">
             <div class="arc">
@@ -299,6 +288,18 @@
                 <span class="text">区域4</span>
                 <input type="hidden" class="percent" value="53" />
                 <input type="hidden" class="color" value="#BEDBE9" />
+            </div>
+        </div>
+
+        <div class="legend">
+            <h1>余量:</h1>
+            <div class="surplus">
+                <ul>
+                    <li class="area1">区域1</li>
+                    <li class="area2">区域2</li>
+                    <li class="area3">区域3</li>
+                    <li class="area4">区域4</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -331,7 +332,7 @@
 </div>
 
 <!--==============================footer=================================-->
-<footer style="background-color: #53534A">
+<footer style="display: block;position: relative;z-index: 10;text-align: left; padding-bottom: 50px;background-color: #53534A">
     <div class="container_12">
         <div class="grid_12 ">
             <div class="copy">
