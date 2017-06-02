@@ -1,0 +1,102 @@
+@import url("reset.css");
+
+/* ------ layout
+-----------------------------------------------*/
+
+.cricle{
+    width: 100%;
+    margin: 2em auto;
+}
+
+#content {
+/*position:absolute;*/
+/*top:50%;*/
+/*left:50%;*/
+    /*margin:-340px 0 0 -450px;*/
+    width:80%;
+    height: 600px;;
+    margin: 2em auto;
+}
+
+#content {
+    /*position:absolute;*/
+    /*top:50%;*/
+    /*left:50%;*/
+    /*margin:-340px 0 0 -450px;*/
+    width:80%;
+    height: 600px;;
+    margin: 2em auto;
+}
+
+.legend {
+float:left;
+width:50px;
+margin-top:140px;
+}
+
+#content h1 {
+font-family:'Cabin Sketch', arial, serif;
+text-shadow:3px 3px 0 #ddd;
+color:#193340;
+font-size:20px;
+margin-bottom:20px;
+text-align:left;
+}
+
+.surplus {
+float:left;
+clear:both;
+width:100%;
+}
+
+.surplus ul,
+.surplus li {
+display:block;
+list-style:none;
+margin:0;
+padding:0;
+}
+
+.surplus li {
+float:right;
+clear:both;
+padding:0 15px;
+height:35px;
+    width: 80px;
+line-height:35px;
+color:#fff;
+margin-bottom:1px;
+font-size:18px;
+}
+
+.surplus .area1 {
+background:#97BE0D;
+}
+
+.surplus .area2 {
+background:#D84F5F;
+}
+
+.surplus .area3 {
+background:#88B8E6;
+}
+
+.surplus .area4 {
+background:#BEDBE9;
+}
+
+
+#diagram {
+     float:left;
+     /*width:600px;*/
+     /*height:600px;*/
+ }
+
+.get {
+display:none;
+}
+
+.get2 {
+    display:none;
+}
+

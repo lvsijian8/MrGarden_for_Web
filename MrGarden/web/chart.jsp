@@ -34,7 +34,10 @@
     <link rel="icon" href="images/favicon.ico">
     <link rel="shortcut icon" href="images/favicon.ico"/>
     <link rel="stylesheet" href="css/style.css">
+    <link href="css/circle_default.css" rel="stylesheet" type="text/css" />
+    <script src="js/raphael.js" type="text/javascript"></script>
     <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/echarts-all.js" ></script>
     <script src="js/jquery-migrate-1.1.1.js"></script>
     <script src="js/script.js"></script>
     <script src="js/jquery.ui.totop.js"></script>
@@ -42,8 +45,6 @@
     <script src="js/jquery.equalheights.js"></script>
     <script src="js/jquery.mobilemenu.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
-    <link rel="stylesheet" href="css/chart_reset.css">
-    <link rel="stylesheet" href="css/chart_style.css" media="screen" type="text/css"/>
     <script src="js/modernizr.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -144,16 +145,25 @@
             border-top: none;
             z-index: 1;
         }
+
+        #someline{
+            width:70%;
+            height:40%;
+            margin: 2em auto;
+        }
+
+        #someline2{
+            width:70%;
+            height:40%;
+            margin: 2em auto;
+        }
+
     </style>
-    <script>
-        $(document).ready(function () {
-            $().UItoTop({easingType: 'easeOutQuart'});
-        })
-    </script>
+
 </head>
 <body id="top">
 
-<header>
+<header style="display: block;padding: 100px 0 0">
     <div class="container_12">
         <div class="grid_12">
             <h1>
@@ -253,375 +263,72 @@
 <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"></script>
 
-<div class="charts-container cf" style="padding-bottom: 3em">
-    <div class="chart" id="graph-1-container">
-        <h2 class="title">温度(0-90°C)</h2>
-        <div class="chart-svg">
-            <svg class="chart-line" id="chart-1" viewBox="0 0 80 40">
-                <defs>
-                    <clipPath id="clip" x="0" y="0" width="80" height="40">
-                        <rect id="clip-rect" x="-80" y="0" width="77" height="38.7"/>
-                    </clipPath>
-
-                    <linearGradient id="gradient-1">
-                        <stop offset="0" stop-color="#00d5bd"/>
-                        <stop offset="100" stop-color="#24c1ed"/>
-                    </linearGradient>
-
-                    <linearGradient id="gradient-2">
-                        <stop offset="0" stop-color="#954ce9"/>
-                        <stop offset="0.3" stop-color="#954ce9"/>
-                        <stop offset="0.6" stop-color="#24c1ed"/>
-                        <stop offset="1" stop-color="#24c1ed"/>
-                    </linearGradient>
-
-                    <linearGradient id="gradient-3" x1="0%" y1="0%" x2="0%" y2="100%">>
-                        <stop offset="0" stop-color="rgba(0, 213, 189, 1)" stop-opacity="0.07"/>
-                        <stop offset="0.5" stop-color="rgba(0, 213, 189, 1)" stop-opacity="0.13"/>
-                        <stop offset="1" stop-color="rgba(0, 213, 189, 1)" stop-opacity="0"/>
-                    </linearGradient>
-
-                    <linearGradient id="gradient-4" x1="0%" y1="0%" x2="0%" y2="100%">>
-                        <stop offset="0" stop-color="rgba(149, 76, 233, 1)" stop-opacity="0.07"/>
-                        <stop offset="0.5" stop-color="rgba(149, 76, 233, 1)" stop-opacity="0.13"/>
-                        <stop offset="1" stop-color="rgba(149, 76, 233, 1)" stop-opacity="0"/>
-                    </linearGradient>
-
-                </defs>
-            </svg>
-            <h3 class="valueX">时间/天</h3>
+<div id="someline"></div>
+<div id="someline2"></div>
+<div class="cricle">
+    <div id="content">
+        <div class="legend">
+            <h1>余量:</h1>
+            <div class="surplus">
+                <ul>
+                    <li class="area1">区域1</li>
+                    <li class="area2">区域2</li>
+                    <li class="area3">区域3</li>
+                    <li class="area4">区域4</li>
+                </ul>
+            </div>
         </div>
-        <div class="chart-values">
-            <p class="h-value"><%= Potchart.getJSONObject(0).get("out_t")%>°C</p><%------------------%>
-            <p class="percentage-value"></p>
-            <p class="total-gain"></p>
+        <div id="diagram"></div>
+        <div class="get">
+            <div class="arc">
+                <span class="text">区域1</span>
+                <input type="hidden" class="percent" value="95" />
+                <input type="hidden" class="color" value="#97BE0D" />
+            </div>
+            <div class="arc">
+                <span class="text">区域2</span>
+                <input type="hidden" class="percent" value="90" />
+                <input type="hidden" class="color" value="#D84F5F" />
+            </div>
+            <div class="arc">
+                <span class="text">区域3</span>
+                <input type="hidden" class="percent" value="80" />
+                <input type="hidden" class="color" value="#88B8E6" />
+            </div>
+            <div class="arc">
+                <span class="text">区域4</span>
+                <input type="hidden" class="percent" value="53" />
+                <input type="hidden" class="color" value="#BEDBE9" />
+            </div>
         </div>
-        <div class="triangle green"></div>
     </div>
-    <div class="chart" id="graph-2-container">
-        <h2 class="title">湿度(0-90%)</h2>
-        <div class="chart-svg">
-            <svg class="chart-line" id="chart-2" viewBox="0 0 80 40">
-            </svg>
-            <h3 class="valueX">时间/天</h3>
+    <div id="content2">
+        <div id="diagram2"></div>
+        <div class="get2">
+            <div class="arc">
+                <span class="text">区域1</span>
+                <input type="hidden" class="percent" value="88" />
+                <input type="hidden" class="color" value="#97BE0D" />
+            </div>
+            <div class="arc">
+                <span class="text">区域2</span>
+                <input type="hidden" class="percent" value="77" />
+                <input type="hidden" class="color" value="#D84F5F" />
+            </div>
+            <div class="arc">
+                <span class="text">区域3</span>
+                <input type="hidden" class="percent" value="66" />
+                <input type="hidden" class="color" value="#88B8E6" />
+            </div>
+            <div class="arc">
+                <span class="text">区域4</span>
+                <input type="hidden" class="percent" value="55" />
+                <input type="hidden" class="color" value="#BEDBE9" />
+            </div>
         </div>
-        <div class="chart-values">
-            <p class="h-value"><%= Potchart.getJSONObject(0).get("out_h")%>%</p><%------------------%>
-            <p class="percentage-value"></p>
-            <p class="total-gain"></p>
-        </div>
-        <div class="triangle red"></div>
     </div>
-    <div class="chart circle" id="circle-1">
-        <h2 class="title">水位</h2>
-        <div class="chart-svg align-center">
-            <h2 class="circle-percentage"></h2>
-            <svg class="chart-circle" id="chart-3" width="50%" viewBox="0 0 100 100">
-                <path class="underlay" d="M5,50 A45,45,0 1 1 95,50 A45,45,0 1 1 5,50"/>
-            </svg>
-        </div>
-        <div class="triangle green"></div>
-    </div>
-    <div class="chart circle" id="circle-2">
-        <h2 class="title">营养液</h2>
-        <div class="chart-svg align-center">
-            <h2 class="circle-percentage"></h2>
-            <svg class="chart-circle" id="chart-4" width="50%" viewBox="0 0 100 100">
-                <path class="underlay" d="M5,50 A45,45,0 1 1 95,50 A45,45,0 1 1 5,50"/>
-            </svg>
-        </div>
-        <div class="triangle red"></div>
-    </div>
+
 </div>
-
-
-<script src='js/snap.svg-min.js'></script>
-<script>
-    var chart_1_y = [
-        //25, 25, 40, 30, 12, 20, 23, 25, 27, 23, 24, 28, 99, 101
-        <%
-
-            for(int i=0;i<temperature.size();i++){
-                out.print(temperature.get(i)+",");
-            }
-        %>
-    ];
-    var chart_2_y = [
-//        80, 65, 65, 40, 55, 34, 54, 50, 60, 64, 55, 27, 24, 30,
-        <%
-            for(int i=0;i<humidity.size();i++){
-                out.print(humidity.get(i)+",");
-            }
-        %>
-    ];
-
-    drawCircle('#chart-3', 1, <%
-            if(Potchart.getJSONObject(0).get("water")==null||Potchart.getJSONObject(0).get("water").equals("0"))
-                out.print("1");
-            else
-                out.print(Potchart.getJSONObject(0).get("water"));
-        %>, '#circle-1');
-    drawCircle('#chart-4', 2, <%
-            if(Potchart.getJSONObject(0).get("fertilizer")==null||Potchart.getJSONObject(0).get("fertilizer").equals("0"))
-                out.print("1");
-            else
-                out.print(Potchart.getJSONObject(0).get("fertilizer"));
-        %>, '#circle-2');
-    drawLineGraph('#chart-1', chart_1_y, '#graph-1-container', 1);
-    drawLineGraph('#chart-2', chart_2_y, '#graph-2-container', 2);
-
-    var chart_h = 40;
-    var chart_w = 80;
-    var stepX = 77 / 14;
-
-    //
-
-    function point(x, y) {
-        0;
-        0;
-    }
-    /* DRAW GRID */
-    function drawGrid(graph) {
-        var graph = Snap(graph);
-        var g = graph.g();
-        g.attr('id', 'grid');
-        for (i = 0; i <= stepX + 2; i++) {
-            var horizontalLine = graph.path(
-                "M" + 0 + "," + stepX * i + " " +
-                "L" + 77 + "," + stepX * i);
-            horizontalLine.attr('class', 'horizontal');
-            g.add(horizontalLine);
-        }
-        for (i = 0; i <= 14; i++) {
-            var horizontalLine = graph.path(
-                "M" + stepX * i + "," + 38.7 + " " +
-                "L" + stepX * i + "," + 0);
-            horizontalLine.attr('class', 'vertical');
-            g.add(horizontalLine);
-        }
-    }
-    drawGrid('#chart-2');
-    drawGrid('#chart-1');
-
-    function drawLineGraph(graph, points, container, id) {
-
-
-        var graph = Snap(graph);
-
-
-        /*END DRAW GRID*/
-
-        /* PARSE POINTS */
-        var myPoints = [];
-        var shadowPoints = [];
-
-        function parseData(points) {
-            for (i = 0; i < points.length; i++) {
-                var p = new point();
-                var pv = points[i] / 100 * 40;
-                p.x = 83.7 / points.length * i + 1;
-                p.y = 40 - pv;
-                if (p.x > 78) {
-                    p.x = 78;
-                }
-                myPoints.push(p);
-            }
-        }
-
-        var segments = [];
-
-        function createSegments(p_array) {
-            for (i = 0; i < p_array.length; i++) {
-                var seg = "L" + p_array[i].x + "," + p_array[i].y;
-                if (i === 0) {
-                    seg = "M" + p_array[i].x + "," + p_array[i].y;
-                }
-                segments.push(seg);
-            }
-        }
-
-        function joinLine(segments_array, id) {
-            var line = segments_array.join(" ");
-            var line = graph.path(line);
-            line.attr('id', 'graph-' + id);
-            var lineLength = line.getTotalLength();
-
-            line.attr({
-                'stroke-dasharray': lineLength,
-                'stroke-dashoffset': lineLength
-            });
-        }
-
-        function calculatePercentage(points, graph) {
-            var initValue = points[0];
-            var endValue = points[points.length - 1];
-            var sum = endValue - initValue;
-            var prefix;
-            var percentageGain;
-            var stepCount = 1300 / sum;
-
-            function findPrefix() {
-                if (sum > 0) {
-                    prefix = "+";
-                } else {
-                    prefix = "";
-                }
-            }
-
-            var percentagePrefix = "";
-
-            function percentageChange() {
-                percentageGain = initValue / endValue * 100;
-
-                if (percentageGain > 100) {
-                    console.log('over100');
-                    percentageGain = Math.round(percentageGain * 100 * 10) / 100;
-                } else if (percentageGain < 100) {
-                    console.log('under100');
-                    percentageGain = Math.round(percentageGain * 10) / 10;
-                }
-                if (initValue > endValue) {
-
-                    percentageGain = endValue / initValue * 100 - 100;
-                    percentageGain = percentageGain.toFixed(2);
-
-                    percentagePrefix = "";
-                    $(graph).find('.percentage-value').addClass('negative');
-                } else {
-                    percentagePrefix = "+";
-                }
-                if (endValue > initValue) {
-                    percentageGain = endValue / initValue * 100;
-                    percentageGain = Math.round(percentageGain);
-                }
-            }
-
-            percentageChange();
-            findPrefix();
-
-            var percentage = $(graph).find('.percentage-value');
-            var totalGain = $(graph).find('.total-gain');
-            var hVal = $(graph).find('.h-value');
-
-            function count(graph, sum) {
-                var totalGain = $(graph).find('.total-gain');
-                var i = 0;
-                var time = 1300;
-                var intervalTime = Math.abs(time / sum);
-                var timerID = 0;
-                if (sum > 0) {
-                    var timerID = setInterval(function () {
-                        i++;
-                        totalGain.text(percentagePrefix + i);
-                        if (i === sum) clearInterval(timerID);
-                    }, intervalTime);
-                } else if (sum < 0) {
-                    var timerID = setInterval(function () {
-                        i--;
-                        totalGain.text(percentagePrefix + i);
-                        if (i === sum) clearInterval(timerID);
-                    }, intervalTime);
-                }
-            }
-
-            count(graph, sum);
-
-            percentage.text(percentagePrefix + percentageGain + "%");
-            totalGain.text("0%");
-            setTimeout(function () {
-                percentage.addClass('visible');
-                hVal.addClass('visible');
-            }, 1300);
-
-        }
-
-
-        function showValues() {
-            var val1 = $(graph).find('.h-value');
-            var val2 = $(graph).find('.percentage-value');
-            val1.addClass('visible');
-            val2.addClass('visible');
-        }
-
-        function drawPolygon(segments, id) {
-            var lastel = segments[segments.length - 1];
-            var polySeg = segments.slice();
-            polySeg.push([78, 38.4], [1, 38.4]);
-            var polyLine = polySeg.join(' ').toString();
-            var replacedString = polyLine.replace(/L/g, '').replace(/M/g, "");
-
-            var poly = graph.polygon(replacedString);
-            var clip = graph.rect(-80, 0, 80, 40);
-            poly.attr({
-                'id': 'poly-' + id,
-                /*'clipPath':'url(#clip)'*/
-                'clipPath': clip
-            });
-            clip.animate({
-                transform: 't80,0'
-            }, 1300, mina.linear);
-        }
-
-        parseData(points);
-
-        createSegments(myPoints);
-        calculatePercentage(points, container);
-        joinLine(segments, id);
-
-        drawPolygon(segments, id);
-
-
-        /*$('#poly-'+id).attr('class','show');*/
-
-        /* function drawPolygon(segments,id){
-         var polySeg = segments;
-         polySeg.push([80,40],[0,40]);
-         var polyLine = segments.join(' ').toString();
-         var replacedString = polyLine.replace(/L/g,'').replace(/M/g,"");
-         var poly = graph.polygon(replacedString);
-         poly.attr('id','poly-'+id)
-         }
-         drawPolygon(segments,id);*/
-    }
-    function drawCircle(container, id, progress, parent) {
-        var paper = Snap(container);
-        var prog = paper.path("M5,50 A45,45,0 1 1 95,50 A45,45,0 1 1 5,50");
-        var lineL = prog.getTotalLength();
-        var oneUnit = lineL / 100;
-        var toOffset = lineL - oneUnit * progress;
-        var myID = 'circle-graph-' + id;
-        prog.attr({
-            'stroke-dashoffset': lineL,
-            'stroke-dasharray': lineL,
-            'id': myID
-        });
-
-        var animTime = 1300;
-        /*progress / 100*/
-
-        prog.animate({
-            'stroke-dashoffset': toOffset
-        }, animTime, mina.easein);
-
-        function countCircle(animtime, parent, progress) {
-            var textContainer = $(parent).find('.circle-percentage');
-            var i = 0;
-            var time = 1300;
-            var intervalTime = Math.abs(time / progress);
-            var timerID = setInterval(function () {
-                i++;
-                textContainer.text(i + "%");
-                if (i === progress) clearInterval(timerID);
-            }, intervalTime);
-        }
-
-        countCircle(animTime, parent, progress);
-    }
-
-    //
-
-
-</script>
 
 <!--==============================footer=================================-->
 <footer style="background-color: #53534A">
@@ -634,9 +341,416 @@
         <div class="clear"></div>
     </div>
 </footer>
-<div style="display:none">
-    <script src='https://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
-</div>
+
+<script src="js/init.js" type="text/javascript"></script>
+
+<script>
+
+    $(document).ready(function(){
+        var chart1 = document.getElementById("someline");
+        var echart1 = echarts.init(chart1);
+        var option1 = {
+            title: {
+                text: '温度'
+            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['区域1','区域2','区域3','区域4'],
+                inactiveColor: '#999',
+                //selectedMode: 'single',
+//                selected: {
+//                    '区域2': false,
+//                    '区域3': false,
+//                    '区域4': false
+//                }
+            },
+            toolbox: {
+                show : true,
+                orient: 'horizontal',      // 布局方式，默认为水平布局，可选为：
+                                           // 'horizontal' ¦ 'vertical'
+                x: 'right',                // 水平安放位置，默认为全图右对齐，可选为：
+                                           // 'center' ¦ 'left' ¦ 'right'
+                                           // ¦ {number}（x坐标，单位px）
+                y: 'top',                  // 垂直安放位置，默认为全图顶端，可选为：
+                                           // 'top' ¦ 'bottom' ¦ 'center'
+                                           // ¦ {number}（y坐标，单位px）
+                color : ['#1e90ff','#22bb22','#4b0082','#d2691e'],
+                backgroundColor: 'rgba(0,0,0,0)', // 工具箱背景颜色
+                borderColor: '#ccc',       // 工具箱边框颜色
+                borderWidth: 0,            // 工具箱边框线宽，单位px，默认为0（无边框）
+                padding: 5,                // 工具箱内边距，单位px，默认各方向内边距为5，
+                showTitle: true,
+                feature : {
+                    dataZoom : {
+                        show : true,
+                        title : {
+                            dataZoom : '区域缩放',
+                            dataZoomReset : '区域缩放-后退'
+                        }
+                    },
+                    dataView : {
+                        show : true,
+                        title : '数据视图',
+                        readOnly: true,
+                        lang : ['数据视图', '关闭', '刷新'],
+                        optionToContent: function(opt) {
+                            var axisData = opt.xAxis[0].data;
+                            var series = opt.series;
+                            var table = '<table style="width:100%;text-align:center"><tbody><tr>'
+                                + '<td>时间</td>'
+                                + '<td>' + series[0].name + '</td>'
+                                + '<td>' + series[1].name + '</td>'
+                                + '</tr>';
+                            for (var i = 0, l = axisData.length; i < l; i++) {
+                                table += '<tr>'
+                                    + '<td>' + axisData[i] + '</td>'
+                                    + '<td>' + series[0].data[i] + '</td>'
+                                    + '<td>' + series[1].data[i] + '</td>'
+                                    + '</tr>';
+                            }
+                            table += '</tbody></table>';
+                            return table;
+                        }
+                    },
+                    magicType: {
+                        show : true,
+                        title : {
+                            line : '动态类型切换-折线图',
+                            bar : '动态类型切换-柱形图',
+                            stack : '动态类型切换-堆积',
+                            tiled : '动态类型切换-平铺'
+                        },
+                        type : ['line', 'bar', 'stack', 'tiled']
+                    },
+                    restore : {
+                        show : true,
+                        title : '还原',
+                        color : 'black'
+                    },
+                    saveAsImage : {
+                        show : true,
+                        title : '保存为图片',
+                        type : 'jpeg',
+                        lang : ['点击本地保存']
+                    }
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            calculable : true,
+            dataZoom : {
+                show : true,
+                realtime : true,
+                start : 20,
+                end : 80
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    boundaryGap : false,
+                    data : function (){
+                        var list = [];
+                        for (var i = 1; i <= 30; i++) {
+                            list.push('2017-06-' + i);
+                        }
+                        return list;
+                    }()
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+//							echarts图表的y轴刻度分段默认为5，因为yAxis的splitNumber默认为5
+						splitNumber:4
+                }
+            ],
+            series : [
+                {
+                    name:'区域1',
+                    type:'line',
+                    stack: '水量',
+                    areaStyle: {normal: {}},
+                    data:function (){
+                        var list = [];
+                        for (var i = 1; i <= 30; i++) {
+                            list.push(Math.round(Math.random()* 10));
+                        }
+                        return list;
+                    }(),
+                    markLine : {
+                        data : [
+                            {type : 'average', name: '平均值'}
+                        ]
+                    }
+                },
+                {
+                    name:'区域2',
+                    type:'line',
+                    stack: '水量',
+                    areaStyle: {normal: {}},
+                    data:function (){
+                        var list = [];
+                        for (var i = 1; i <= 30; i++) {
+                            list.push(Math.round(Math.random()* 10));
+                        }
+                        return list;
+                    }(),
+                    markLine : {
+                        data : [
+                            {type : 'average', name: '平均值'}
+                        ]
+                    }
+                },
+                {
+                    name:'区域3',
+                    type:'line',
+                    stack: '水量',
+                    areaStyle: {normal: {}},
+                    data:function (){
+                        var list = [];
+                        for (var i = 1; i <= 30; i++) {
+                            list.push(Math.round(Math.random()* 10));
+                        }
+                        return list;
+                    }(),
+                    markLine : {
+                        data : [
+                            {type : 'average', name: '平均值'}
+                        ]
+                    }
+                },
+                {
+                    name:'区域4',
+                    type:'line',
+                    stack: '水量',
+                    areaStyle: {normal: {}},
+                    data:function (){
+                        var list = [];
+                        for (var i = 1; i <= 30; i++) {
+                            list.push(Math.round(Math.random()* 10));
+                        }
+                        return list;
+                    }(),
+                    markLine : {
+                        data : [
+                            {type : 'average', name: '平均值'}
+                        ]
+                    }
+                }
+            ]
+        };
+
+        echart1.setOption(option1);
+        var chart2 = document.getElementById("someline2");
+        var echart2 = echarts.init(chart2);
+        var option2 = {
+            title: {
+                text: '湿度'
+            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['区域1','区域2','区域3','区域4'],
+                inactiveColor: '#999',
+                //selectedMode: 'single',
+//                selected: {
+//                    '区域2': false,
+//                    '区域3': false,
+//                    '区域4': false
+//                }
+            },
+            toolbox: {
+                show : true,
+                orient: 'horizontal',      // 布局方式，默认为水平布局，可选为：
+                                           // 'horizontal' ¦ 'vertical'
+                x: 'right',                // 水平安放位置，默认为全图右对齐，可选为：
+                                           // 'center' ¦ 'left' ¦ 'right'
+                                           // ¦ {number}（x坐标，单位px）
+                y: 'top',                  // 垂直安放位置，默认为全图顶端，可选为：
+                                           // 'top' ¦ 'bottom' ¦ 'center'
+                                           // ¦ {number}（y坐标，单位px）
+                color : ['#1e90ff','#22bb22','#4b0082','#d2691e'],
+                backgroundColor: 'rgba(0,0,0,0)', // 工具箱背景颜色
+                borderColor: '#ccc',       // 工具箱边框颜色
+                borderWidth: 0,            // 工具箱边框线宽，单位px，默认为0（无边框）
+                padding: 5,                // 工具箱内边距，单位px，默认各方向内边距为5，
+                showTitle: true,
+                feature : {
+                    dataZoom : {
+                        show : true,
+                        title : {
+                            dataZoom : '区域缩放',
+                            dataZoomReset : '区域缩放-后退'
+                        }
+                    },
+                    dataView : {
+                        show : true,
+                        title : '数据视图',
+                        readOnly: true,
+                        lang : ['数据视图', '关闭', '刷新'],
+                        optionToContent: function(opt) {
+                            var axisData = opt.xAxis[0].data;
+                            var series = opt.series;
+                            var table = '<table style="width:100%;text-align:center"><tbody><tr>'
+                                + '<td>时间</td>'
+                                + '<td>' + series[0].name + '</td>'
+                                + '<td>' + series[1].name + '</td>'
+                                + '</tr>';
+                            for (var i = 0, l = axisData.length; i < l; i++) {
+                                table += '<tr>'
+                                    + '<td>' + axisData[i] + '</td>'
+                                    + '<td>' + series[0].data[i] + '</td>'
+                                    + '<td>' + series[1].data[i] + '</td>'
+                                    + '</tr>';
+                            }
+                            table += '</tbody></table>';
+                            return table;
+                        }
+                    },
+                    magicType: {
+                        show : true,
+                        title : {
+                            line : '动态类型切换-折线图',
+                            bar : '动态类型切换-柱形图',
+                            stack : '动态类型切换-堆积',
+                            tiled : '动态类型切换-平铺'
+                        },
+                        type : ['line', 'bar', 'stack', 'tiled']
+                    },
+                    restore : {
+                        show : true,
+                        title : '还原',
+                        color : 'black'
+                    },
+                    saveAsImage : {
+                        show : true,
+                        title : '保存为图片',
+                        type : 'jpeg',
+                        lang : ['点击本地保存']
+                    }
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            calculable : true,
+            dataZoom : {
+                show : true,
+                realtime : true,
+                start : 20,
+                end : 80
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    boundaryGap : false,
+                    data : function (){
+                        var list = [];
+                        for (var i = 1; i <= 30; i++) {
+                            list.push('2017-06-' + i);
+                        }
+                        return list;
+                    }()
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+//							echarts图表的y轴刻度分段默认为5，因为yAxis的splitNumber默认为5
+                    splitNumber:4
+                }
+            ],
+            series : [
+                {
+                    name:'区域1',
+                    type:'line',
+                    stack: '水量',
+                    areaStyle: {normal: {}},
+                    data:function (){
+                        var list = [];
+                        for (var i = 1; i <= 30; i++) {
+                            list.push(Math.round(Math.random()* 10));
+                        }
+                        return list;
+                    }(),
+                    markLine : {
+                        data : [
+                            {type : 'average', name: '平均值'}
+                        ]
+                    }
+                },
+                {
+                    name:'区域2',
+                    type:'line',
+                    stack: '水量',
+                    areaStyle: {normal: {}},
+                    data:function (){
+                        var list = [];
+                        for (var i = 1; i <= 30; i++) {
+                            list.push(Math.round(Math.random()* 10));
+                        }
+                        return list;
+                    }(),
+                    markLine : {
+                        data : [
+                            {type : 'average', name: '平均值'}
+                        ]
+                    }
+                },
+                {
+                    name:'区域3',
+                    type:'line',
+                    stack: '水量',
+                    areaStyle: {normal: {}},
+                    data:function (){
+                        var list = [];
+                        for (var i = 1; i <= 30; i++) {
+                            list.push(Math.round(Math.random()* 10));
+                        }
+                        return list;
+                    }(),
+                    markLine : {
+                        data : [
+                            {type : 'average', name: '平均值'}
+                        ]
+                    }
+                },
+                {
+                    name:'区域4',
+                    type:'line',
+                    stack: '水量',
+                    areaStyle: {normal: {}},
+                    data:function (){
+                        var list = [];
+                        for (var i = 1; i <= 30; i++) {
+                            list.push(Math.round(Math.random()* 10));
+                        }
+                        return list;
+                    }(),
+                    markLine : {
+                        data : [
+                            {type : 'average', name: '平均值'}
+                        ]
+                    }
+                }
+            ]
+        };
+
+        echart2.setOption(option2);
+
+    });
+
+</script>
 
 </body>
 </html>
