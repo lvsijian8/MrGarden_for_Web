@@ -58,7 +58,7 @@ nav{ position:relative;padding: 0px 0 0 0;}
 
 .sf-menu>li>a{
 	text-align: center;
-	display: block;
+	/*display: block;*/
 	position: relative;
 	z-index: 999;
 	color: #5f604b;
