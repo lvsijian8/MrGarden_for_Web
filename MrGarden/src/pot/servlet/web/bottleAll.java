@@ -1,7 +1,7 @@
 package pot.servlet.web;
 
 import net.sf.json.JSONArray;
-import pot.dao.android.fertilizeringDaoAndroid;
+import pot.dao.androidWeb.fertilizeringDao;
 import pot.dao.web.getManageAllDaoWeb;
 import pot.util.Findipid;
 
@@ -24,7 +24,7 @@ public class bottleAll extends HttpServlet {
         String key = "speak";
         String speak = "操作成功";
         Enumeration paramNames = request.getParameterNames();
-        fertilizeringDaoAndroid fertilizeringDao = new fertilizeringDaoAndroid();
+        fertilizeringDao fertilizeringDao = new fertilizeringDao();
         ArrayList<Integer> pot_unids = new ArrayList<Integer>();
         paramNames.hasMoreElements();
         while (paramNames.hasMoreElements()) {

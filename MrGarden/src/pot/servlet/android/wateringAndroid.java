@@ -1,6 +1,6 @@
 package pot.servlet.android;
 
-import pot.dao.android.wateringDaoAndroid;
+import pot.dao.androidWeb.wateringDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +18,7 @@ public class wateringAndroid extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int pot_id = Integer.parseInt(new String(request.getParameter("pot_id").getBytes("ISO8859-1"), "UTF-8"));
         int user_id = Integer.parseInt(new String(request.getParameter("user_id").getBytes("ISO8859-1"), "UTF-8"));
-        wateringDaoAndroid wateringDao = new wateringDaoAndroid();
+        wateringDao wateringDao = new wateringDao();
         response.setContentType("text/html;charset=utf-8");//打印至HTML页面
         PrintWriter out = response.getWriter();
         out.print(wateringDao.watering(user_id, pot_id, "android"));

@@ -1,6 +1,6 @@
 package pot.servlet.web;
 
-import pot.dao.android.loginDao;
+import pot.dao.androidWeb.loginDao;
 import pot.util.Findipid;
 
 import javax.servlet.ServletException;

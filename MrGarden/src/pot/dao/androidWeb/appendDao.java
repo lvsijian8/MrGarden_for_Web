@@ -1,4 +1,4 @@
-package pot.dao.android;
+package pot.dao.androidWeb;
 
 import pot.util.DBConnection;
 
@@ -7,7 +7,7 @@ import java.sql.*;
 /**
  * Created by lvsijian8 on 2017/4/6.
  */
-public class appendDaoAndroid {
+public class appendDao {
     public String append(int user_id, int fid, String fname, int bday, int bbtime, int bml, int wday, int wtime, int wml, String device) {
         Connection con = null;
         PreparedStatement prepstmt = null;

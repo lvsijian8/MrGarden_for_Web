@@ -1,6 +1,6 @@
 package pot.servlet.web;
 
-import pot.dao.web.changeUserDaoWeb;
+import pot.dao.androidWeb.changeUserDao;
 import pot.util.Findipid;
 
 import javax.servlet.ServletException;
@@ -23,7 +23,7 @@ public class changeUser extends HttpServlet {
         String user_newpwd = new String(request.getParameter("user_newpwd").getBytes("ISO8859-1"), "UTF-8");
         String user_phone = new String(request.getParameter("user_phone").getBytes("ISO8859-1"), "UTF-8");
         int user_id = Findipid.finduser_id(request.getCookies());
-        changeUserDaoWeb changeUser = new changeUserDaoWeb();
+        changeUserDao changeUser = new changeUserDao();
         int state = changeUser.changeUser(user_id, user_name, user_pwd, user_newpwd, user_phone, Findipid.getRemoteAddress(request), "web");
         if (state == -3)
             request.setAttribute("error", "alert(\"原密码错误.\")");

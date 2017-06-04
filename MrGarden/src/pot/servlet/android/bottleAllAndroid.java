@@ -1,6 +1,6 @@
 package pot.servlet.android;
 
-import pot.dao.android.fertilizeringDaoAndroid;
+import pot.dao.androidWeb.fertilizeringDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +20,7 @@ public class bottleAllAndroid extends HttpServlet {
         String pot_ids = new String(request.getParameter("pot_ids").getBytes("ISO8859-1"), "UTF-8");
         String pot_id[] = pot_ids.split("&");
         String pot_unids = "";
-        fertilizeringDaoAndroid fertilizeringDao = new fertilizeringDaoAndroid();
+        fertilizeringDao fertilizeringDao = new fertilizeringDao();
         for (int i = 0; i < pot_id.length; i++) {
             if (-1 == fertilizeringDao.fertilizering(user_id, Integer.parseInt(pot_id[i]), "android")) {
                 pot_unids += pot_id[i] + "&";

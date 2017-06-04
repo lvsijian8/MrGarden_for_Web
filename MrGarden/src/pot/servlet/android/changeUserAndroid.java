@@ -1,6 +1,6 @@
 package pot.servlet.android;
 
-import pot.dao.web.changeUserDaoWeb;
+import pot.dao.androidWeb.changeUserDao;
 import pot.util.Findipid;
 
 import javax.servlet.ServletException;
@@ -24,7 +24,7 @@ public class changeUserAndroid extends HttpServlet {
         String user_newpwd = new String(request.getParameter("newpsw").getBytes("ISO8859-1"), "UTF-8");
         String user_phone = new String(request.getParameter("phone").getBytes("ISO8859-1"), "UTF-8");
         int user_id = Integer.parseInt(new String(request.getParameter("user_id").getBytes("ISO8859-1"), "UTF-8"));
-        changeUserDaoWeb changeUser = new changeUserDaoWeb();
+        changeUserDao changeUser = new changeUserDao();
         int state = changeUser.changeUser(user_id, user_name, user_pwd, user_newpwd, user_phone, Findipid.getRemoteAddress(request), "android");
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");

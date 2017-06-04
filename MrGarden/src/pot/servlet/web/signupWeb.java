@@ -1,6 +1,6 @@
 package pot.servlet.web;
 
-import pot.dao.android.signupDao;
+import pot.dao.androidWeb.signupDao;
 import pot.util.Findipid;
 
 import javax.servlet.ServletException;
@@ -17,8 +17,6 @@ import java.net.URLEncoder;
  */
 @WebServlet("/signupWeb")
 public class signupWeb extends HttpServlet {
-
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String user_name = new String(request.getParameter("user_name").getBytes("ISO8859-1"), "UTF-8");
         String user_pwd = new String(request.getParameter("user_pwd").getBytes("ISO8859-1"), "UTF-8");

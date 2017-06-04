@@ -1,6 +1,6 @@
 package pot.servlet.web;
 
-import pot.dao.android.appendDaoAndroid;
+import pot.dao.androidWeb.appendDao;
 import pot.util.Findipid;
 
 import javax.servlet.ServletException;
@@ -25,7 +25,7 @@ public class append extends HttpServlet {
         int num_water_day = Integer.parseInt(request.getParameter("num_water_day"));
         int num_water_time = Integer.parseInt(request.getParameter("num_water_time"));
         int num_water_ml = Integer.parseInt(request.getParameter("num_water_ml"));
-        appendDaoAndroid appendDao = new appendDaoAndroid();
+        appendDao appendDao = new appendDao();
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         String state = appendDao.append(user_id, fid, flowername, num_bottle_day, num_bottle_time, num_bottle_ml, num_water_day, num_water_time, num_water_ml, "web");

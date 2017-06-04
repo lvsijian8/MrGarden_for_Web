@@ -1,4 +1,4 @@
-package pot.dao.android;
+package pot.dao.androidWeb;
 
 import pot.util.AddressUtils;
 import pot.util.DBConnection;

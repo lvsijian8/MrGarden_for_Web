@@ -1,7 +1,7 @@
 package pot.servlet.web;
 
 import net.sf.json.JSONArray;
-import pot.dao.android.wateringDaoAndroid;
+import pot.dao.androidWeb.wateringDao;
 import pot.dao.web.getManageAllDaoWeb;
 import pot.util.Findipid;
 
@@ -23,7 +23,7 @@ public class waterAll extends HttpServlet {
         int user_id = Findipid.finduser_id(request.getCookies());
         String key = "speak";
         String speak = "操作成功";
-        wateringDaoAndroid wateringDao = new wateringDaoAndroid();
+        wateringDao wateringDao = new wateringDao();
         Enumeration paramNames = request.getParameterNames();
         ArrayList<Integer> pot_unids = new ArrayList<Integer>();
         paramNames.hasMoreElements();

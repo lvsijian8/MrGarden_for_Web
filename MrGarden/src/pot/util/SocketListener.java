@@ -11,7 +11,7 @@ public class SocketListener implements Runnable {
     public void run() {
         ServerSocket serverSocket = null;
         try {
-            serverSocket = new ServerSocket(6605);
+            serverSocket = new ServerSocket(6606);
             while (true) {
                 //Socket s = serverSocket.accept();
                 //System.out.println(1);
