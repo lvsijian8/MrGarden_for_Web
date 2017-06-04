@@ -2,20 +2,20 @@
   Created by IntelliJ IDEA.
   User: desol
   Date: 2017/6/4
-  Time: 20:25
+  Time: 21:07
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>register</title>
+    <title>找回密码</title>
     <link rel="stylesheet" href="css/signup_style.css" />
 </head>
 <body>
 
 <div id="main">
 
-    <h1>注册</h1>
+    <h1>找回密码</h1>
 
     <form class="" method="post" action="">
 
@@ -30,7 +30,7 @@
         </div>
 
         <div class="row pass">
-            <input type="password" id="password1" name="password1" placeholder="密码" onkeyup="this.value=this.value.replace(' ','')" required/>
+            <input type="password" id="password1" name="password1" placeholder="新密码" onkeyup="this.value=this.value.replace(' ','')" required/>
             <img id="demo_img" onclick="hideShowPsw()" src="images/Invisible.png" width="20px">
         </div>
 
@@ -45,9 +45,8 @@
 
         <p class="meterText">Password Meter</p>
 
-        <input type="submit" value="注册" />
+        <input type="submit" value="提交" />
 
-        <a href="login.jsp" style="float:left;padding: 0.6em 0 0 1em">已有账号？点击登录</a>
 
     </form>
 </div>
@@ -59,7 +58,6 @@
 <script src="js/jquery-1.8.3.min.js"></script>
 <script src="js/jquery.complexify.js"></script>
 <script src="js/signup.js"></script>
-
 
 </body>
 </html>

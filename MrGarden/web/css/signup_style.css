@@ -73,8 +73,7 @@ h1{
 	position:relative;
 }
 
-#main form .row.error:after,
-#main form .row.success:after{
+#main form .row.error:after{
 	content:'';
 	
 	position:absolute;

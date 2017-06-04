@@ -25,7 +25,7 @@
 
 <div id="main">
 
-    <h1>Login, jion us!</h1>
+    <h1>登录</h1>
 
     <form class="" method="post" action="">
 
@@ -46,10 +46,10 @@
 
         <p class="meterText">Password Meter</p>
         <br/><br/><br/>
-        <input type="submit" value="Login" />
+        <input type="submit" value="登录" />
 
-        <a href="signup.jsp" style="float:left;padding-left: 1em">没有账号？点击注册</a>
-
+        <a href="signup.jsp" style="float:left;padding: 0.6em 0 0 1em">新用户注册</a>
+        <a href="forget.jsp" style="float:right;padding: 0.6em 1em 0 0">忘记密码？</a>
     </form>
 </div>
 <footer>
