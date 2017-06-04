@@ -54,7 +54,7 @@
                     <ul class="sf-menu">
                         <li><a href="index.jsp">首页</a></li>
                         <li><a href="chart.jsp">图表</a></li>
-                        <li><a href="equipment.jsp">设备</a></li>
+                        <li><a href="manage_all.jsp">设备</a></li>
                         <li><a href="plant">花卉</a></li>
                         <li><a href="Contacts.jsp">联系</a></li>
                         <li><%

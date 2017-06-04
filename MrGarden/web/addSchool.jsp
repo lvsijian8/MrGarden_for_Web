@@ -1,31 +1,20 @@
 <%@ page import="net.sf.json.JSONArray" %>
 <%@ page import="java.net.URLDecoder" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%--
   Created by IntelliJ IDEA.
-  User: lvsijian8
-  Date: 2017/4/17
-  Time: 14:54
+  User: desol
+  Date: 2017/6/3
+  Time: 12:50
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    JSONArray PlantList = null;
-    if ((PlantList = (JSONArray) request.getAttribute("PlantList")) == null) {//若是直接访问chart.jsp则先跳转chart,再跳转回来
-%>
-<jsp:forward page="getPlant"/>
-<%
-    }
-%>
-<%
-    List<String> plant_names = ((List<String>) PlantList.getJSONObject(0).get("plant_names"));
-    List<Integer> plant_ids = ((List<Integer>) PlantList.getJSONObject(0).get("plant_ids"));
-%>
 <html>
 <head>
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
     <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon"/>
-    <title>添加花盆</title>
+    <title>添加学校</title>
     <meta name="format-detection" content="telephone=no"/>
     <link rel="icon" href="images/favicon.ico">
     <link rel="shortcut icon" href="images/favicon.ico"/>
@@ -56,33 +45,9 @@
             padding: 1em;
         }
     </style>
-    <script>
-
-        window.onload = function () {
-            <%
-                out.print(request.getAttribute("error"));
-            %>
-        };
-
-        $(document).ready(function () {
-            $().UItoTop({easingType: 'easeOutQuart'});
-            /*carousel*/
-            var owl = $("#owl");
-            owl.owlCarousel({
-                items: 1, //10 items above 1000px browser width
-                navigation: true,
-                pagination: false
-            });
-            var owl = $("#owl1");
-            owl.owlCarousel({
-                items: 1, //10 items above 1000px browser width
-                navigation: true,
-                pagination: false
-            });
-        })
-    </script>
 </head>
 <body>
+
 <header>
     <div class="container_12">
         <div class="grid_12">
@@ -140,7 +105,7 @@
             <div class="segment">
                 <h3 class="ui dividing header">
                     <div class="content" style="padding: 20px 0">
-                        <img src="images/Plus_Math.png" width="30px" height="auto">添加花盆
+                        <img src="images/Plus_Math.png" width="30px" height="auto">添加学校
                         <div class="sub header">将您的设备连接到云端</div>
                     </div>
                 </h3>
@@ -150,12 +115,12 @@
             <form name="form" action="append" method="post">
                 <div class="two fields">
                     <div class="field">
-                        <h5 style="color: #555555;">选择花的类型</h5>
+                        <h5 style="color: #555555;">选择学校</h5>
                         <div class="col-sm-8">
                             <div id="bts-ex-4" class="selectpicker" data-live="true">
                                 <button data-id="prov" type="button"
                                         class="btn btn-lg btn-block btn-default dropdown-toggle">
-                                    <span class="placeholder">Choose an option</span>
+                                    <span class="placeholder">选择学校</span>
                                     <span class="caret"></span>
                                 </button>
                                 <div class="dropdown-menu">
@@ -175,12 +140,7 @@
                                         </div>
                                         <div class="list-to-filter">
                                             <ul class="list-unstyled" id="test" style="padding-left: 1em">
-                                                <%
-                                                    for (int i = 0; i < plant_names.size(); i++) {
-                                                        out.print("<li class=\"filter-item items\" data-filter=\"" + plant_names.get(i) + "\" onclick=\"tofid(" + plant_ids.get(i) + ")\">" + plant_names.get(i) + "</li>");
-                                                    }
-                                                %>
-                                                <%--<li class="filter-item items" data-filter="item 1" onclick="tofid(1)">item 1</li>--%>
+                                                <li class="filter-item items" data-filter="item 1" onclick="tofid(1)">item 1</li>
                                             </ul>
                                             <div class="no-search-results">
                                                 <div class="alert alert-warning" role="alert"><i
@@ -198,61 +158,8 @@
                 </div>
                 <div class="two fields">
                     <div class="field">
-                        <h5 style="color: #555555;">花盆名</h5>
-                        <div class="ui small left labeled icon input">
-                            <input type="text" placeholder="给您的花盆起个名,您容易记住就行，30个字符内……" id="device_title"
-                                   name="flowername" required/>
-                        </div>
-                    </div>
-                    <div class="field"></div>
-                </div>
-                <div class="two fields">
-                    <div class="field">
                         <h5 style="color: #555555;">描述</h5>
                         <textarea placeholder="不超过30个字符……"></textarea>
-                    </div>
-                </div>
-                <div class="two fields">
-                    <div class="field">
-                        <h5 style="color: #555555;">事件设置</h5>
-                        <table style="width: 800px">
-                            <tr>
-                                <td colspan="2">浇水设置</td>
-                                <td colspan="2">施肥设置</td>
-                            </tr>
-                            <tr>
-                                <td>浇水时间间隔设置(天)</td>
-                                <td><input id="range" type="range" min="1" max="30" value="1"
-                                           style="float: left;width: 200px" onchange="value_change()"
-                                           name="num_water_day">
-                                    <output id="output">1</output>
-                                </td>
-                                <td>施肥时间间隔设置(天)</td>
-                                <td><input id="range1" type="range" min="1" max="30" value="1"
-                                           style="float: left;width: 200px" onchange="value_change1()"
-                                           name="num_bottle_day">
-                                    <output id="output1">1</output>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>浇水时间设置</td>
-                                <td><input name="num_water_time" type="number" value="10"
-                                           style="width: 100px;height: 30px">点
-                                </td>
-                                <td>施肥时间设置</td>
-                                <td><input name="num_bottle_time" type="number" value="10"
-                                           style="width: 100px;height: 30px">点
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>浇水量(ml)</td>
-                                <td><input name="num_water_ml" type="number" value="50" min="10" max="200" step="10"
-                                           style="width: 120px;height: 30px"></td>
-                                <td>施肥量(ml)</td>
-                                <td><input name="num_bottle_ml" type="number" value="50" min="10" max="200" step="10"
-                                           style="width: 120px;height: 30px"></td>
-                            </tr>
-                        </table>
                     </div>
                 </div>
                 <input class="ui small blue submit button" type="submit" value="保存">
@@ -294,5 +201,6 @@
         <div class="clear"></div>
     </div>
 </footer>
+
 </body>
 </html>

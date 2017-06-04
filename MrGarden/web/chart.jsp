@@ -80,7 +80,7 @@
             display: block;
             font-size: 16px;
             font-weight: bold;
-            background: #212833;
+            background: #88B8E6;
             color: #FFFFFF;
             padding: 15px 25px;
             position: relative;
@@ -89,7 +89,7 @@
         }
 
         #accordion .panel-title a.collapsed {
-            background: #1A3D41;
+            background: #BEDBE9;
             color: #FFFFFF;
             margin-left: 0;
             transition: all 0.3s ease 0s;
@@ -97,7 +97,7 @@
 
         #accordion .panel-title a:before {
             content: "";
-            border-left: 24px solid #212833;
+            border-left: 24px solid #88B8E6;
             border-top: 24px solid transparent;
             border-bottom: 24px solid transparent;
             position: absolute;
@@ -107,7 +107,7 @@
         }
 
         #accordion .panel-title a.collapsed:before {
-            border-left-color: #1A3D41;
+            border-left-color: #BEDBE9;
         }
 
         #accordion .panel-title a:after {
@@ -131,7 +131,7 @@
 
         #accordion .panel-collapse.in:before {
             content: "";
-            border-right: 24px solid #1A3D41;
+            border-right: 24px solid #BEDBE9;
             border-bottom: 18px solid transparent;
             position: absolute;
             top: 0;
@@ -147,13 +147,13 @@
         }
 
         #someline{
-            width:70%;
+            width:80%;
             height:40%;
             margin: 2em auto;
         }
 
         #someline2{
-            width:70%;
+            width:80%;
             height:40%;
             margin: 2em auto;
         }
@@ -181,7 +181,7 @@
                     <ul class="sf-menu">
                         <li><a href="index.jsp">首页</a></li>
                         <li><a href="chart.jsp">图表</a></li>
-                        <li><a href="equipment.jsp">设备</a></li>
+                        <li><a href="manage_all.jsp">设备</a></li>
                         <li><a href="plant">花卉</a></li>
                         <li><a href="Contacts.jsp">联系</a></li>
                         <li><%
