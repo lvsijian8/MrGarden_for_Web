@@ -27,7 +27,7 @@
 
     <h1>登录</h1>
 
-    <form class="" method="post" action="">
+    <form class="" method="post" action="loginWeb">
 
         <div class="row usernmae">
             <input type="text" id="username" name="usernmae" placeholder="用户名" onkeyup="this.value=this.value.replace(' ','')" required/>

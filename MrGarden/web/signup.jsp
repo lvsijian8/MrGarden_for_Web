@@ -17,7 +17,7 @@
 
     <h1>注册</h1>
 
-    <form class="" method="post" action="">
+    <form class="" method="post" action="loginWeb">
 
         <div class="row usernmae">
             <input type="text" id="username" name="username" placeholder="用户名" onkeyup="this.value=this.value.replace(' ','')" required/>

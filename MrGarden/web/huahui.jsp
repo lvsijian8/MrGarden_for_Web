@@ -80,7 +80,7 @@
                                 }
                             }
                             if (!isLogin)
-                                out.print("<a href=\"login.jsp\">登录&nbsp;&nbsp;|&nbsp;&nbsp注册</a>");
+                                out.print("<a href=\"login.jsp\">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp<a href=\"signup.jsp\">注册</a>");
                         %></li>
                     </ul>
                 </nav>
