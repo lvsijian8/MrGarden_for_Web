@@ -34,10 +34,10 @@
     <link rel="icon" href="images/favicon.ico">
     <link rel="shortcut icon" href="images/favicon.ico"/>
     <link rel="stylesheet" href="css/style.css">
-    <link href="css/circle_default.css" rel="stylesheet" type="text/css" />
+    <link href="css/circle_default.css" rel="stylesheet" type="text/css"/>
     <script src="js/raphael.js" type="text/javascript"></script>
     <script src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/echarts-all.js" ></script>
+    <script type="text/javascript" src="js/echarts-all.js"></script>
     <script src="js/jquery-migrate-1.1.1.js"></script>
     <script src="js/script.js"></script>
     <script src="js/jquery.ui.totop.js"></script>
@@ -146,15 +146,15 @@
             z-index: 1;
         }
 
-        #someline{
-            width:80%;
-            height:40%;
+        #someline {
+            width: 80%;
+            height: 40%;
             margin: 2em auto;
         }
 
-        #someline2{
-            width:80%;
-            height:40%;
+        #someline2 {
+            width: 80%;
+            height: 40%;
             margin: 2em auto;
         }
 
@@ -271,23 +271,23 @@
         <div class="get">
             <div class="arc">
                 <span class="text">区域1</span>
-                <input type="hidden" class="percent" value="95" />
-                <input type="hidden" class="color" value="#97BE0D" />
+                <input type="hidden" class="percent" value="95"/>
+                <input type="hidden" class="color" value="#97BE0D"/>
             </div>
             <div class="arc">
                 <span class="text">区域2</span>
-                <input type="hidden" class="percent" value="90" />
-                <input type="hidden" class="color" value="#D84F5F" />
+                <input type="hidden" class="percent" value="90"/>
+                <input type="hidden" class="color" value="#D84F5F"/>
             </div>
             <div class="arc">
                 <span class="text">区域3</span>
-                <input type="hidden" class="percent" value="80" />
-                <input type="hidden" class="color" value="#88B8E6" />
+                <input type="hidden" class="percent" value="80"/>
+                <input type="hidden" class="color" value="#88B8E6"/>
             </div>
             <div class="arc">
                 <span class="text">区域4</span>
-                <input type="hidden" class="percent" value="53" />
-                <input type="hidden" class="color" value="#BEDBE9" />
+                <input type="hidden" class="percent" value="53"/>
+                <input type="hidden" class="color" value="#BEDBE9"/>
             </div>
         </div>
 
@@ -308,23 +308,23 @@
         <div class="get2">
             <div class="arc">
                 <span class="text">区域1</span>
-                <input type="hidden" class="percent" value="88" />
-                <input type="hidden" class="color" value="#97BE0D" />
+                <input type="hidden" class="percent" value="88"/>
+                <input type="hidden" class="color" value="#97BE0D"/>
             </div>
             <div class="arc">
                 <span class="text">区域2</span>
-                <input type="hidden" class="percent" value="77" />
-                <input type="hidden" class="color" value="#D84F5F" />
+                <input type="hidden" class="percent" value="77"/>
+                <input type="hidden" class="color" value="#D84F5F"/>
             </div>
             <div class="arc">
                 <span class="text">区域3</span>
-                <input type="hidden" class="percent" value="66" />
-                <input type="hidden" class="color" value="#88B8E6" />
+                <input type="hidden" class="percent" value="66"/>
+                <input type="hidden" class="color" value="#88B8E6"/>
             </div>
             <div class="arc">
                 <span class="text">区域4</span>
-                <input type="hidden" class="percent" value="55" />
-                <input type="hidden" class="color" value="#BEDBE9" />
+                <input type="hidden" class="percent" value="55"/>
+                <input type="hidden" class="color" value="#BEDBE9"/>
             </div>
         </div>
     </div>
@@ -347,18 +347,18 @@
 
 <script>
 
-    $(document).ready(function(){
+    $(document).ready(function () {
         var chart1 = document.getElementById("someline");
         var echart1 = echarts.init(chart1);
         var option1 = {
             title: {
                 text: '温度'
             },
-            tooltip : {
+            tooltip: {
                 trigger: 'axis'
             },
             legend: {
-                data:['区域1','区域2','区域3','区域4'],
+                data: ['区域1', '区域2', '区域3', '区域4'],
                 inactiveColor: '#999',
                 //selectedMode: 'single',
 //                selected: {
@@ -368,7 +368,7 @@
 //                }
             },
             toolbox: {
-                show : true,
+                show: true,
                 orient: 'horizontal',      // 布局方式，默认为水平布局，可选为：
                                            // 'horizontal' ¦ 'vertical'
                 x: 'right',                // 水平安放位置，默认为全图右对齐，可选为：
@@ -377,26 +377,26 @@
                 y: 'top',                  // 垂直安放位置，默认为全图顶端，可选为：
                                            // 'top' ¦ 'bottom' ¦ 'center'
                                            // ¦ {number}（y坐标，单位px）
-                color : ['#1e90ff','#22bb22','#4b0082','#d2691e'],
+                color: ['#1e90ff', '#22bb22', '#4b0082', '#d2691e'],
                 backgroundColor: 'rgba(0,0,0,0)', // 工具箱背景颜色
                 borderColor: '#ccc',       // 工具箱边框颜色
                 borderWidth: 0,            // 工具箱边框线宽，单位px，默认为0（无边框）
                 padding: 5,                // 工具箱内边距，单位px，默认各方向内边距为5，
                 showTitle: true,
-                feature : {
-                    dataZoom : {
-                        show : true,
-                        title : {
-                            dataZoom : '区域缩放',
-                            dataZoomReset : '区域缩放-后退'
+                feature: {
+                    dataZoom: {
+                        show: true,
+                        title: {
+                            dataZoom: '区域缩放',
+                            dataZoomReset: '区域缩放-后退'
                         }
                     },
-                    dataView : {
-                        show : true,
-                        title : '数据视图',
+                    dataView: {
+                        show: true,
+                        title: '数据视图',
                         readOnly: true,
-                        lang : ['数据视图', '关闭', '刷新'],
-                        optionToContent: function(opt) {
+                        lang: ['数据视图', '关闭', '刷新'],
+                        optionToContent: function (opt) {
                             var axisData = opt.xAxis[0].data;
                             var series = opt.series;
                             var table = '<table style="width:100%;text-align:center"><tbody><tr>'
@@ -416,25 +416,25 @@
                         }
                     },
                     magicType: {
-                        show : true,
-                        title : {
-                            line : '动态类型切换-折线图',
-                            bar : '动态类型切换-柱形图',
-                            stack : '动态类型切换-堆积',
-                            tiled : '动态类型切换-平铺'
+                        show: true,
+                        title: {
+                            line: '动态类型切换-折线图',
+                            bar: '动态类型切换-柱形图',
+                            stack: '动态类型切换-堆积',
+                            tiled: '动态类型切换-平铺'
                         },
-                        type : ['line', 'bar', 'stack', 'tiled']
+                        type: ['line', 'bar', 'stack', 'tiled']
                     },
-                    restore : {
-                        show : true,
-                        title : '还原',
-                        color : 'black'
+                    restore: {
+                        show: true,
+                        title: '还原',
+                        color: 'black'
                     },
-                    saveAsImage : {
-                        show : true,
-                        title : '保存为图片',
-                        type : 'jpeg',
-                        lang : ['点击本地保存']
+                    saveAsImage: {
+                        show: true,
+                        title: '保存为图片',
+                        type: 'jpeg',
+                        lang: ['点击本地保存']
                     }
                 }
             },
@@ -444,18 +444,18 @@
                 bottom: '3%',
                 containLabel: true
             },
-            calculable : true,
-            dataZoom : {
-                show : true,
-                realtime : true,
-                start : 20,
-                end : 80
+            calculable: true,
+            dataZoom: {
+                show: true,
+                realtime: true,
+                start: 20,
+                end: 80
             },
-            xAxis : [
+            xAxis: [
                 {
-                    type : 'category',
-                    boundaryGap : false,
-                    data : function (){
+                    type: 'category',
+                    boundaryGap: false,
+                    data: function () {
                         var list = [];
                         for (var i = 1; i <= 30; i++) {
                             list.push('2017-06-' + i);
@@ -464,83 +464,83 @@
                     }()
                 }
             ],
-            yAxis : [
+            yAxis: [
                 {
-                    type : 'value',
+                    type: 'value',
 //							echarts图表的y轴刻度分段默认为5，因为yAxis的splitNumber默认为5
-						splitNumber:4
+                    splitNumber: 4
                 }
             ],
-            series : [
+            series: [
                 {
-                    name:'区域1',
-                    type:'line',
+                    name: '区域1',
+                    type: 'line',
                     stack: '水量',
                     areaStyle: {normal: {}},
-                    data:function (){
+                    data: function () {
                         var list = [];
                         for (var i = 1; i <= 30; i++) {
-                            list.push(Math.round(Math.random()* 10));
+                            list.push(Math.round(Math.random() * 10));
                         }
                         return list;
                     }(),
-                    markLine : {
-                        data : [
-                            {type : 'average', name: '平均值'}
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
                         ]
                     }
                 },
                 {
-                    name:'区域2',
-                    type:'line',
+                    name: '区域2',
+                    type: 'line',
                     stack: '水量',
                     areaStyle: {normal: {}},
-                    data:function (){
+                    data: function () {
                         var list = [];
                         for (var i = 1; i <= 30; i++) {
-                            list.push(Math.round(Math.random()* 10));
+                            list.push(Math.round(Math.random() * 10));
                         }
                         return list;
                     }(),
-                    markLine : {
-                        data : [
-                            {type : 'average', name: '平均值'}
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
                         ]
                     }
                 },
                 {
-                    name:'区域3',
-                    type:'line',
+                    name: '区域3',
+                    type: 'line',
                     stack: '水量',
                     areaStyle: {normal: {}},
-                    data:function (){
+                    data: function () {
                         var list = [];
                         for (var i = 1; i <= 30; i++) {
-                            list.push(Math.round(Math.random()* 10));
+                            list.push(Math.round(Math.random() * 10));
                         }
                         return list;
                     }(),
-                    markLine : {
-                        data : [
-                            {type : 'average', name: '平均值'}
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
                         ]
                     }
                 },
                 {
-                    name:'区域4',
-                    type:'line',
+                    name: '区域4',
+                    type: 'line',
                     stack: '水量',
                     areaStyle: {normal: {}},
-                    data:function (){
+                    data: function () {
                         var list = [];
                         for (var i = 1; i <= 30; i++) {
-                            list.push(Math.round(Math.random()* 10));
+                            list.push(Math.round(Math.random() * 10));
                         }
                         return list;
                     }(),
-                    markLine : {
-                        data : [
-                            {type : 'average', name: '平均值'}
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
                         ]
                     }
                 }
@@ -554,11 +554,11 @@
             title: {
                 text: '湿度'
             },
-            tooltip : {
+            tooltip: {
                 trigger: 'axis'
             },
             legend: {
-                data:['区域1','区域2','区域3','区域4'],
+                data: ['区域1', '区域2', '区域3', '区域4'],
                 inactiveColor: '#999',
                 //selectedMode: 'single',
 //                selected: {
@@ -568,7 +568,7 @@
 //                }
             },
             toolbox: {
-                show : true,
+                show: true,
                 orient: 'horizontal',      // 布局方式，默认为水平布局，可选为：
                                            // 'horizontal' ¦ 'vertical'
                 x: 'right',                // 水平安放位置，默认为全图右对齐，可选为：
@@ -577,26 +577,26 @@
                 y: 'top',                  // 垂直安放位置，默认为全图顶端，可选为：
                                            // 'top' ¦ 'bottom' ¦ 'center'
                                            // ¦ {number}（y坐标，单位px）
-                color : ['#1e90ff','#22bb22','#4b0082','#d2691e'],
+                color: ['#1e90ff', '#22bb22', '#4b0082', '#d2691e'],
                 backgroundColor: 'rgba(0,0,0,0)', // 工具箱背景颜色
                 borderColor: '#ccc',       // 工具箱边框颜色
                 borderWidth: 0,            // 工具箱边框线宽，单位px，默认为0（无边框）
                 padding: 5,                // 工具箱内边距，单位px，默认各方向内边距为5，
                 showTitle: true,
-                feature : {
-                    dataZoom : {
-                        show : true,
-                        title : {
-                            dataZoom : '区域缩放',
-                            dataZoomReset : '区域缩放-后退'
+                feature: {
+                    dataZoom: {
+                        show: true,
+                        title: {
+                            dataZoom: '区域缩放',
+                            dataZoomReset: '区域缩放-后退'
                         }
                     },
-                    dataView : {
-                        show : true,
-                        title : '数据视图',
+                    dataView: {
+                        show: true,
+                        title: '数据视图',
                         readOnly: true,
-                        lang : ['数据视图', '关闭', '刷新'],
-                        optionToContent: function(opt) {
+                        lang: ['数据视图', '关闭', '刷新'],
+                        optionToContent: function (opt) {
                             var axisData = opt.xAxis[0].data;
                             var series = opt.series;
                             var table = '<table style="width:100%;text-align:center"><tbody><tr>'
@@ -616,25 +616,25 @@
                         }
                     },
                     magicType: {
-                        show : true,
-                        title : {
-                            line : '动态类型切换-折线图',
-                            bar : '动态类型切换-柱形图',
-                            stack : '动态类型切换-堆积',
-                            tiled : '动态类型切换-平铺'
+                        show: true,
+                        title: {
+                            line: '动态类型切换-折线图',
+                            bar: '动态类型切换-柱形图',
+                            stack: '动态类型切换-堆积',
+                            tiled: '动态类型切换-平铺'
                         },
-                        type : ['line', 'bar', 'stack', 'tiled']
+                        type: ['line', 'bar', 'stack', 'tiled']
                     },
-                    restore : {
-                        show : true,
-                        title : '还原',
-                        color : 'black'
+                    restore: {
+                        show: true,
+                        title: '还原',
+                        color: 'black'
                     },
-                    saveAsImage : {
-                        show : true,
-                        title : '保存为图片',
-                        type : 'jpeg',
-                        lang : ['点击本地保存']
+                    saveAsImage: {
+                        show: true,
+                        title: '保存为图片',
+                        type: 'jpeg',
+                        lang: ['点击本地保存']
                     }
                 }
             },
@@ -644,18 +644,18 @@
                 bottom: '3%',
                 containLabel: true
             },
-            calculable : true,
-            dataZoom : {
-                show : true,
-                realtime : true,
-                start : 20,
-                end : 80
+            calculable: true,
+            dataZoom: {
+                show: true,
+                realtime: true,
+                start: 20,
+                end: 80
             },
-            xAxis : [
+            xAxis: [
                 {
-                    type : 'category',
-                    boundaryGap : false,
-                    data : function (){
+                    type: 'category',
+                    boundaryGap: false,
+                    data: function () {
                         var list = [];
                         for (var i = 1; i <= 30; i++) {
                             list.push('2017-06-' + i);
@@ -664,83 +664,83 @@
                     }()
                 }
             ],
-            yAxis : [
+            yAxis: [
                 {
-                    type : 'value',
+                    type: 'value',
 //							echarts图表的y轴刻度分段默认为5，因为yAxis的splitNumber默认为5
-                    splitNumber:4
+                    splitNumber: 4
                 }
             ],
-            series : [
+            series: [
                 {
-                    name:'区域1',
-                    type:'line',
+                    name: '区域1',
+                    type: 'line',
                     stack: '水量',
                     areaStyle: {normal: {}},
-                    data:function (){
+                    data: function () {
                         var list = [];
                         for (var i = 1; i <= 30; i++) {
-                            list.push(Math.round(Math.random()* 10));
+                            list.push(Math.round(Math.random() * 10));
                         }
                         return list;
                     }(),
-                    markLine : {
-                        data : [
-                            {type : 'average', name: '平均值'}
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
                         ]
                     }
                 },
                 {
-                    name:'区域2',
-                    type:'line',
+                    name: '区域2',
+                    type: 'line',
                     stack: '水量',
                     areaStyle: {normal: {}},
-                    data:function (){
+                    data: function () {
                         var list = [];
                         for (var i = 1; i <= 30; i++) {
-                            list.push(Math.round(Math.random()* 10));
+                            list.push(Math.round(Math.random() * 10));
                         }
                         return list;
                     }(),
-                    markLine : {
-                        data : [
-                            {type : 'average', name: '平均值'}
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
                         ]
                     }
                 },
                 {
-                    name:'区域3',
-                    type:'line',
+                    name: '区域3',
+                    type: 'line',
                     stack: '水量',
                     areaStyle: {normal: {}},
-                    data:function (){
+                    data: function () {
                         var list = [];
                         for (var i = 1; i <= 30; i++) {
-                            list.push(Math.round(Math.random()* 10));
+                            list.push(Math.round(Math.random() * 10));
                         }
                         return list;
                     }(),
-                    markLine : {
-                        data : [
-                            {type : 'average', name: '平均值'}
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
                         ]
                     }
                 },
                 {
-                    name:'区域4',
-                    type:'line',
+                    name: '区域4',
+                    type: 'line',
                     stack: '水量',
                     areaStyle: {normal: {}},
-                    data:function (){
+                    data: function () {
                         var list = [];
                         for (var i = 1; i <= 30; i++) {
-                            list.push(Math.round(Math.random()* 10));
+                            list.push(Math.round(Math.random() * 10));
                         }
                         return list;
                     }(),
-                    markLine : {
-                        data : [
-                            {type : 'average', name: '平均值'}
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
                         ]
                     }
                 }

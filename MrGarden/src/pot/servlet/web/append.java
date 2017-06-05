@@ -30,7 +30,7 @@ public class append extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         String state = appendDao.append(user_id, fid, flowername, num_bottle_day, num_bottle_time, num_bottle_ml, num_water_day, num_water_time, num_water_ml, "web");
         if (state.equals("success")) {
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            response.sendRedirect("index.jsp");
         } else {
             request.setAttribute("error", "alert(\"添加失败,请重试.\")");
             request.getRequestDispatcher("addPot.jsp").forward(request, response);

@@ -53,8 +53,7 @@ public class loginWeb extends HttpServlet {
             }
             response.addCookie(user_idCo);
             response.addCookie(user_nameCo);//保存用户名以及ID
-            request.setAttribute("error", "window.location.href=\"index.jsp\";");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            response.sendRedirect("index.jsp");
         }
     }
 

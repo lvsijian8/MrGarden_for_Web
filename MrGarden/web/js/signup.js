@@ -16,8 +16,6 @@ $(function(){
 		// Is everything entered correctly?
 		if($('#main .row.success').length == $('#main .row').length){
 
-			alert("Success!");
-			
 		}
 		else{
 			
@@ -132,9 +130,9 @@ function hideShowPsw2(){
 /*************************叉叉*****************/
 $(function(){
 	$("#clear1").click(function() {
-        $("input[name='usernmae']").val("").focus(); // 清空并获得焦点
+        $("input[name='user_name']").val("").focus(); // 清空并获得焦点
     });
     $("#clear2").click(function() {
-        $("input[name='phone']").val("").focus(); // 清空并获得焦点
+        $("input[name='user_phone']").val("").focus(); // 清空并获得焦点
     });
 }) 

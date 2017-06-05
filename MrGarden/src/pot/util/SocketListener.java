@@ -19,7 +19,7 @@ public class SocketListener implements Runnable {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Could not listen on port: 6605.");
+            System.err.println("Could not listen on port: 6606.");
         } finally {
             try {
                 serverSocket.close();

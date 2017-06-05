@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: desol
+  User: lvsijian8
   Date: 2017/6/4
   Time: 20:25
   To change this template use File | Settings | File Templates.
@@ -8,8 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>register</title>
+    <title>注册</title>
     <link rel="stylesheet" href="css/signup_style.css" />
+    <script language="javascript">
+        window.onload = function () {
+            <%
+                out.print(request.getAttribute("error"));
+            %>
+        };
+    </script>
 </head>
 <body>
 
@@ -17,20 +24,20 @@
 
     <h1>注册</h1>
 
-    <form class="" method="post" action="loginWeb">
+    <form class="" method="post" action="signupWeb">
 
-        <div class="row usernmae">
-            <input type="text" id="username" name="username" placeholder="用户名" onkeyup="this.value=this.value.replace(' ','')" required/>
+        <div class="row username">
+            <input type="text" id="username" name="user_name" placeholder="用户名" onkeyup="this.value=this.value.replace(' ','')" required/>
             <img id="clear1" src="images/icon_delete.png" width="20px"/>
         </div>
 
         <div class="row phone">
-            <input type="text" id="phone" name="phone" placeholder="手机号" onkeyup="this.value=this.value.replace(' ','')" required/>
+            <input type="text" id="phone" name="user_phone" placeholder="手机号" onkeyup="this.value=this.value.replace(' ','')" required/>
             <img id="clear2" src="images/icon_delete.png" width="20px"/>
         </div>
 
         <div class="row pass">
-            <input type="password" id="password1" name="password1" placeholder="密码" onkeyup="this.value=this.value.replace(' ','')" required/>
+            <input type="password" id="password1" name="user_pwd" placeholder="密码" onkeyup="this.value=this.value.replace(' ','')" required/>
             <img id="demo_img" onclick="hideShowPsw()" src="images/Invisible.png" width="20px">
         </div>
 
@@ -38,7 +45,6 @@
             <input type="password" id="password2" name="password2" placeholder="重输密码" onkeyup="this.value=this.value.replace(' ','')" disabled="disable" required/>
             <img id="demo_img2" onclick="hideShowPsw2()" src="images/Invisible.png" width="20px">
         </div>
-        <span>111</span>
         <!-- The rotating arrow -->
         <div class="arrowCap"></div>
         <div class="arrow"></div>

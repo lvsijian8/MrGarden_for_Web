@@ -20,7 +20,7 @@ public class deletepot extends HttpServlet {
         int user_id = Findipid.finduser_id(request.getCookies());
         deletepotDaoAndroid wateringDao = new deletepotDaoAndroid();
         if (1 == wateringDao.deletepot(user_id, pot_id)) {
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            response.sendRedirect("index.jsp");
         } else {
             request.setAttribute("error", "alert(\"删除失败,请重试.\");");
             request.getRequestDispatcher("manage.jsp").forward(request, response);

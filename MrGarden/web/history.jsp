@@ -212,6 +212,9 @@
                 <option value="set" id="set1">设置操作</option>
                 <option value="login" id="login1">登陆</option>
                 <option value="signup" id="signup1">注册</option>
+                <option value="findPwd" id="findPwd1">找回密码</option>
+                <option value="changeUser" id="changeUser1">修改信息</option>
+
             </select>
             </div>
         </div>

@@ -27,7 +27,7 @@ public class historyDaoWeb {
                 "FROM history AS H left join pot ON pot.pot_id=H.pot_id WHERE H.user_id=?";
 
         boolean mark = true;
-        if (pot_handle.equals("login") || pot_handle.equals("signup") || pot_handle.equals("delete_pot")) {
+        if (pot_handle.equals("login") || pot_handle.equals("signup") || pot_handle.equals("delete_pot") || pot_handle.equals("findPwd")  || pot_handle.equals("changeUser") ) {
             sqlhistory = "SELECT COUNT(user_id) FROM history WHERE user_id=?";
             mark = false;
         }
@@ -87,6 +87,7 @@ public class historyDaoWeb {
                 sqlhistory = sqlhistory.replace("COUNT(user_id) ", "device,handle,detail,time ");
             }
             sqlhistory = sqlhistory.replace(";", "LIMIT ?,?;");
+            System.out.print(sqlhistory);
             prepstmt = con.prepareStatement(sqlhistory);
             prepstmt.setInt(1, user_id);
             leng = 1;
@@ -106,6 +107,7 @@ public class historyDaoWeb {
             prepstmt.setInt(leng, page);
             leng++;
             prepstmt.setInt(leng, next);
+            System.out.println(pot_handle+"..."+page+"..."+next);
             rs = prepstmt.executeQuery();
             while (rs.next()) {
                 String detail = "";

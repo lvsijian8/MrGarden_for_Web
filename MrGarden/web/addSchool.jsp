@@ -3,7 +3,7 @@
 <%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
-  User: desol
+  User: lvsijian8
   Date: 2017/6/3
   Time: 12:50
   To change this template use File | Settings | File Templates.
@@ -86,7 +86,7 @@
                                 }
                             }
                             if (!isLogin)
-                                out.print("<a href="login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp<a href="signup.jsp">注册</a>");
+                                out.print("<a href=\"login.jsp\">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp<a href=\"signup.jsp\">注册</a>");
                         %></li>
                     </ul>
                 </nav>

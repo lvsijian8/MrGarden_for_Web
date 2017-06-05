@@ -27,14 +27,13 @@ public class signupWeb extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         if ((user_id = signupDao.writeUser(user_name, user_pwd, user_phone, Findipid.getRemoteAddress(request), "web")) == "-1") {
             request.setAttribute("error", "alert(\"用户名已存在.\")");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
         } else {
             Cookie user_idCo = new Cookie("user_id", URLEncoder.encode(user_id, "UTF-8"));
             Cookie user_nameCo = new Cookie("user_name", URLEncoder.encode(user_name, "UTF-8"));
             response.addCookie(user_idCo);
             response.addCookie(user_nameCo);//保存用户名以及ID
-            request.setAttribute("error", "window.location.href=\"addPot.jsp\";");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            response.sendRedirect("addSchool.jsp");
         }
     }
 
