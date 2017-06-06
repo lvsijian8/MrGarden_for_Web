@@ -179,7 +179,7 @@
 </head>
 <body id="top">
 
-<header>
+<header style="display: block;padding: 100px 0 0">
     <div class="container_12">
         <div class="grid_12">
             <h1>
@@ -516,15 +516,12 @@
     <div class="container_12">
         <div class="grid_12 ">
             <div class="copy">
-                Copyright &copy; 2017.Mr.Flower All rights reserved.
+                Copyright &copy; 2017.MrGarden All rights reserved.
             </div>
         </div>
         <div class="clear"></div>
     </div>
 </footer>
-<div style="display:none">
-    <script src='https://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
-</div>
 
 </body>
 </html>

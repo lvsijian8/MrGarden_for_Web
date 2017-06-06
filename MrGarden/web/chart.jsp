@@ -13,15 +13,15 @@
     JSONArray Potchart = null;
     if ((Potchart = (JSONArray) request.getAttribute("Potchart")) == null) {//若是直接访问chart.jsp则先跳转chart,再跳转回来
 %>
-<jsp:forward page="chart"/>
+<%--<jsp:forward page="chart"/>--%>
 <%
     }
 %>
 <%
-    List<String> pot_names = ((List<String>) Potchart.getJSONObject(0).get("pot_names"));
+   /* List<String> pot_names = ((List<String>) Potchart.getJSONObject(0).get("pot_names"));
     List<Integer> pot_ids = ((List<Integer>) Potchart.getJSONObject(0).get("pot_ids"));
     List<Integer> humidity = ((List<Integer>) Potchart.getJSONObject(0).get("humidity"));
-    List<Integer> temperature = ((List<Integer>) Potchart.getJSONObject(0).get("temperature"));
+    List<Integer> temperature = ((List<Integer>) Potchart.getJSONObject(0).get("temperature"));*/
 %>
 <html>
 <head>
@@ -157,7 +157,11 @@
             height: 40%;
             margin: 2em auto;
         }
-
+        ul.a{width:100%;cursor:pointer;padding:0 0px;color:white;}
+        ul.a li{list-style-type:none;cursor:pointer;padding:5px 0 0 60px;color:black;width:90%;background:url("images/circle.png") no-repeat 40px;background-size:8px;display:none}
+        .treelist{width:222px;}
+        ul.a div{height:34px;width:100%;padding-left:27px;background:url("images/arrow_right.png") no-repeat;background-size:30px;padding-top:6px;color:#333333;font-weight:bold;font-size:15px}
+        .shows{display:block}
     </style>
 
 </head>
@@ -224,9 +228,9 @@
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     <%
-                                        if ((Integer) Potchart.getJSONObject(0).get("checked") != 0)
-                                            out.print(pot_names.get((Integer) Potchart.getJSONObject(0).get("checked")));
-                                        else
+                                      /*  if ((Integer) Potchart.getJSONObject(0).get("checked") != 0)
+                                            //out.print(pot_names.get((Integer) Potchart.getJSONObject(0).get("checked")));
+                                        else*/
                                             out.print("选择您的花盆");
                                     %>
                                 </a>
@@ -235,18 +239,62 @@
                         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
                              aria-labelledby="headingTwo">
                             <div class="panel-body">
-                                <form>
-                                    <%
-                                        for (int i = 0; i < pot_names.size(); i++) {
-                                            String checked1 = "";
-                                            if ((Integer) Potchart.getJSONObject(0).get("checked") == i)
-                                                checked1 = "checked";
-                                            out.print("<input " + checked1 + " type=\"radio\" id=\"huahua" + i + "\" name=\"radio\" onclick=\"changePot(" + pot_ids.get(i) + ")\"><label for=\"huahua" + i + "\" onclick=\"changePot(" + pot_ids.get(i) + ")\">" + pot_names.get(i) + "</label>");
-                                            if (i + 1 < pot_names.size())
-                                                out.print("<br/>");
+                                <div class="treelist">
+                                    <ul class="a">
+                                        <div><a class="ul" href="chart.jsp">ccccc</a></div>
+                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
+                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
+                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
+                                    </ul>
+
+                                    <ul class="a">
+                                        <div><a class="ul" href="chart.jsp">ccccc</a></div>
+                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
+                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
+                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
+                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
+                                    </ul>
+
+                                    <ul class="a">
+                                        <div><a class="ul" href="chart.jsp">ccccc</a></div>
+                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
+                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
+                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
+                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
+                                    </ul>
+                                </div>
+
+                                <span style="float: right;color: #FFFFFF">*点击符号展开列表</span>
+
+                                <script>
+
+                                    $(".ul").click(function(event){
+//                                        return false;
+                                    })
+
+                                    $(".a").click(function(){
+                                        $(this).find("li").click(function(event){
+//                                            return false;
+                                        })
+
+
+                                        if($(this).hasClass("shows")){
+                                            $(this).removeClass("shows");
+                                            $(this).find("li").find("ul").removeClass("shows");
+                                            $(this).find("li").hide();
+                                            $(this).find("div").css("background","url(images/arrow_right.png) no-repeat").css("background-size","30px");
+
+
+                                        }else{
+                                            $(this).addClass("shows");
+                                            $(this).find("li").show();
+                                            $(this).find("li").find("ul").find("li").hide();
+                                            $(this).show();
+                                            $(this).find("div").eq(0).css("background","url(images/arrow_down.png) no-repeat").css("background-size","30px");
                                         }
-                                    %>
-                                </form>
+
+                                    })
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -336,7 +384,7 @@
     <div class="container_12">
         <div class="grid_12 ">
             <div class="copy">
-                Copyright &copy; 2017.Mr.Flower All rights reserved.
+                Copyright &copy; 2017.MrGarden All rights reserved.
             </div>
         </div>
         <div class="clear"></div>

@@ -30,7 +30,7 @@ public class chart extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         array = chartDao.findchart(pot_id, user_id);
         request.setAttribute("Potchart", array);
-        request.getRequestDispatcher("chart.jsp").forward(request, response);
+        request.getRequestDispatcher("charts_pot.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

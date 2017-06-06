@@ -229,7 +229,7 @@
     <div class="container_12">
         <div class="grid_12 ">
             <div class="copy">
-                Copyright &copy; 2017.Mr.Flower All rights reserved.
+                Copyright &copy; 2017.MrGarden All rights reserved.
             </div>
         </div>
         <div class="clear"></div>

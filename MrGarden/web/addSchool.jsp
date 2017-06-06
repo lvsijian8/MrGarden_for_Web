@@ -171,14 +171,6 @@
     </div>
 </div>
 <script>
-    function value_change() {
-        var number = document.getElementById("range").value;
-        document.getElementById("output").value = number;
-    }
-    function value_change1() {
-        var number = document.getElementById("range1").value;
-        document.getElementById("output1").value = number;
-    }
     function tofid(fid) {
         document.getElementById("fromfid").value = fid;
     }
@@ -195,7 +187,7 @@
     <div class="container_12">
         <div class="grid_12 ">
             <div class="copy">
-                Copyright &copy; 2017.Mr.Flower All rights reserved.
+                Copyright &copy; 2017.MrGarden All rights reserved.
             </div>
         </div>
         <div class="clear"></div>
