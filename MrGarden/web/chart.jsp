@@ -10,18 +10,17 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    JSONArray Potchart = null;
-    if ((Potchart = (JSONArray) request.getAttribute("Potchart")) == null) {//若是直接访问chart.jsp则先跳转chart,再跳转回来
+    JSONArray Groupchart = null;
+    if ((Groupchart = (JSONArray) request.getAttribute("Groupchart")) == null) {//若是直接访问chart.jsp则先跳转chart,再跳转回来
 %>
-<%--<jsp:forward page="chart"/>--%>
+<jsp:forward page="chartGroup"/>
 <%
     }
 %>
 <%
-   /* List<String> pot_names = ((List<String>) Potchart.getJSONObject(0).get("pot_names"));
-    List<Integer> pot_ids = ((List<Integer>) Potchart.getJSONObject(0).get("pot_ids"));
-    List<Integer> humidity = ((List<Integer>) Potchart.getJSONObject(0).get("humidity"));
-    List<Integer> temperature = ((List<Integer>) Potchart.getJSONObject(0).get("temperature"));*/
+    List<String> group_names = ((List<String>) Groupchart.getJSONObject(0).get("group_names"));
+    List<Integer> group_ids = ((List<Integer>) Groupchart.getJSONObject(0).get("group_ids"));
+    List<String> pot_names = ((List<String>) Groupchart.getJSONObject(0).get(Groupchart.getJSONObject(0).get("top_name")+"_names"));
 %>
 <html>
 <head>
@@ -227,12 +226,7 @@
                             <h4 class="panel-title">
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <%
-                                      /*  if ((Integer) Potchart.getJSONObject(0).get("checked") != 0)
-                                            //out.print(pot_names.get((Integer) Potchart.getJSONObject(0).get("checked")));
-                                        else*/
-                                            out.print("选择您的花盆");
-                                    %>
+                                    <%=Groupchart.getJSONObject(0).get("top_name")%>
                                 </a>
                             </h4>
                         </div>
@@ -240,42 +234,34 @@
                              aria-labelledby="headingTwo">
                             <div class="panel-body">
                                 <div class="treelist">
-                                    <ul class="a">
-                                        <div><a class="ul" href="chart.jsp">ccccc</a></div>
-                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                    </ul>
-
-                                    <ul class="a">
-                                        <div><a class="ul" href="chart.jsp">ccccc</a></div>
-                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                    </ul>
-
-                                    <ul class="a">
-                                        <div><a class="ul" href="chart.jsp">ccccc</a></div>
-                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                        <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                    </ul>
+                                    <%
+                                        for(int i=0;i<group_ids.size();i++){
+                                            out.print("\n" +
+                                                    "                                    <ul class=\"a\">\n" +
+                                                    "                                        <div><a class=\"ul\" href=\"chartGroup?group_id="+group_ids.get(i)+"\">"+group_names.get(i)+"</a></div>\n");
+                                            List<Integer> p_ids = ((List<Integer>) Groupchart.getJSONObject(0).get(group_names.get(i)+"_ids"));
+                                            List<String> p_names = ((List<String>) Groupchart.getJSONObject(0).get(group_names.get(i)+"_names"));
+                                            for (int j=0;j<p_ids.size();j++){
+                                                out.print("<li><a class=\"li\" href=\"chart?pot_id="+p_ids.get(j)+"\">"+p_names.get(j)+"</a></li>");
+                                            }
+                                            out.print("\n" +
+                                                    "                                    </ul>");
+                                        }
+                                    %>
                                 </div>
 
-                                <span style="float: right;color: #FFFFFF">*点击符号展开列表</span>
+                                <span style="float: right;color: #FFFFFF">*点击箭头展开列表</span>
 
                                 <script>
 
                                     $(".ul").click(function(event){
 //                                        return false;
-                                    })
+                                    });
 
                                     $(".a").click(function(){
                                         $(this).find("li").click(function(event){
 //                                            return false;
-                                        })
+                                        });
 
 
                                         if($(this).hasClass("shows")){
@@ -303,11 +289,6 @@
         </div>
     </div>
 </div>
-<script>
-    function changePot(id) {
-        window.location.href = "chart?pot_id=" + id;
-    }
-</script>
 <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"></script>
 
@@ -317,36 +298,27 @@
     <div id="content">
         <div id="diagram"></div>
         <div class="get">
-            <div class="arc">
-                <span class="text">区域1</span>
-                <input type="hidden" class="percent" value="95"/>
-                <input type="hidden" class="color" value="#97BE0D"/>
-            </div>
-            <div class="arc">
-                <span class="text">区域2</span>
-                <input type="hidden" class="percent" value="90"/>
-                <input type="hidden" class="color" value="#D84F5F"/>
-            </div>
-            <div class="arc">
-                <span class="text">区域3</span>
-                <input type="hidden" class="percent" value="80"/>
-                <input type="hidden" class="color" value="#88B8E6"/>
-            </div>
-            <div class="arc">
-                <span class="text">区域4</span>
-                <input type="hidden" class="percent" value="53"/>
-                <input type="hidden" class="color" value="#BEDBE9"/>
-            </div>
+            <%
+                String colors[]={"97BE0D","88B8E6","D84F5F","BEDBE9"};
+                for(int i=0;i<pot_names.size();i++){
+                    out.print("<div class=\"arc\">\n" +
+                            "                <span class=\"text\">"+pot_names.get(i)+"</span>\n" +
+                            "                <input type=\"hidden\" class=\"percent\" value=\""+Groupchart.getJSONObject(i+1).get("water")+"\"/>\n" +
+                            "                <input type=\"hidden\" class=\"color\" value=\"#"+colors[i%colors.length]+"\"/>\n" +
+                            "            </div>");
+                }
+            %>
         </div>
 
         <div class="legend">
             <h1>余量:</h1>
             <div class="surplus">
                 <ul>
-                    <li class="area1">区域1</li>
-                    <li class="area2">区域2</li>
-                    <li class="area3">区域3</li>
-                    <li class="area4">区域4</li>
+                    <%
+                        for(int i=0;i<pot_names.size();i++){
+                            out.print("<li style=\"background: #"+colors[i%colors.length]+"\">"+pot_names.get(i)+"</li>");
+                        }
+                    %>
                 </ul>
             </div>
         </div>
@@ -354,26 +326,15 @@
     <div id="content2">
         <div id="diagram2"></div>
         <div class="get2">
-            <div class="arc">
-                <span class="text">区域1</span>
-                <input type="hidden" class="percent" value="88"/>
-                <input type="hidden" class="color" value="#97BE0D"/>
-            </div>
-            <div class="arc">
-                <span class="text">区域2</span>
-                <input type="hidden" class="percent" value="77"/>
-                <input type="hidden" class="color" value="#D84F5F"/>
-            </div>
-            <div class="arc">
-                <span class="text">区域3</span>
-                <input type="hidden" class="percent" value="66"/>
-                <input type="hidden" class="color" value="#88B8E6"/>
-            </div>
-            <div class="arc">
-                <span class="text">区域4</span>
-                <input type="hidden" class="percent" value="55"/>
-                <input type="hidden" class="color" value="#BEDBE9"/>
-            </div>
+            <%
+                for(int i=0;i<pot_names.size();i++){
+                    out.print("<div class=\"arc\">\n" +
+                            "                <span class=\"text\">"+pot_names.get(i)+"</span>\n" +
+                            "                <input type=\"hidden\" class=\"percent\" value=\""+Groupchart.getJSONObject(i+1).get("fertilizer")+"\"/>\n" +
+                            "                <input type=\"hidden\" class=\"color\" value=\"#"+colors[i%colors.length]+"\"/>\n" +
+                            "            </div>");
+                }
+            %>
         </div>
     </div>
 
@@ -400,13 +361,19 @@
         var echart1 = echarts.init(chart1);
         var option1 = {
             title: {
-                text: '温度'
+                text: '每日平均温度'
             },
             tooltip: {
                 trigger: 'axis'
             },
             legend: {
-                data: ['区域1', '区域2', '区域3', '区域4'],
+                data: [<%
+                for (int i=0;i<pot_names.size();i++){
+                    out.print("\'"+pot_names.get(i)+"\'");
+                    if (i<pot_names.size()-1)
+                        out.print(",");
+                }
+                %>],
                 inactiveColor: '#999',
                 //selectedMode: 'single',
 //                selected: {
@@ -504,7 +471,7 @@
                     type: 'category',
                     boundaryGap: false,
                     data: function () {
-                        var list = [];
+                        var list = [];//------------
                         for (var i = 1; i <= 30; i++) {
                             list.push('2017-06-' + i);
                         }
@@ -526,10 +493,10 @@
                     stack: '水量',
                     areaStyle: {normal: {}},
                     data: function () {
-                        var list = [];
-                        for (var i = 1; i <= 30; i++) {
+                        var list = [,,,,,22,23,34,43,32,21,12,23];
+                       /* for (var i = 1; i <= 30; i++) {
                             list.push(Math.round(Math.random() * 10));
-                        }
+                        }*/
                         return list;
                     }(),
                     markLine: {
@@ -537,7 +504,7 @@
                             {type: 'average', name: '平均值'}
                         ]
                     }
-                },
+                }/*,
                 {
                     name: '区域2',
                     type: 'line',
@@ -555,58 +522,35 @@
                             {type: 'average', name: '平均值'}
                         ]
                     }
-                },
-                {
-                    name: '区域3',
-                    type: 'line',
-                    stack: '水量',
-                    areaStyle: {normal: {}},
-                    data: function () {
-                        var list = [];
-                        for (var i = 1; i <= 30; i++) {
-                            list.push(Math.round(Math.random() * 10));
-                        }
-                        return list;
-                    }(),
-                    markLine: {
-                        data: [
-                            {type: 'average', name: '平均值'}
-                        ]
-                    }
-                },
-                {
-                    name: '区域4',
-                    type: 'line',
-                    stack: '水量',
-                    areaStyle: {normal: {}},
-                    data: function () {
-                        var list = [];
-                        for (var i = 1; i <= 30; i++) {
-                            list.push(Math.round(Math.random() * 10));
-                        }
-                        return list;
-                    }(),
-                    markLine: {
-                        data: [
-                            {type: 'average', name: '平均值'}
-                        ]
-                    }
-                }
+                }*/
             ]
         };
 
+
+
+
+
+
+        //---------------
         echart1.setOption(option1);
+
         var chart2 = document.getElementById("someline2");
         var echart2 = echarts.init(chart2);
         var option2 = {
             title: {
-                text: '湿度'
+                text: '每日平均湿度'
             },
             tooltip: {
                 trigger: 'axis'
             },
             legend: {
-                data: ['区域1', '区域2', '区域3', '区域4'],
+                data: [<%
+                for (int i=0;i<pot_names.size();i++){
+                    out.print("\'"+pot_names.get(i)+"\'");
+                    if (i<pot_names.size()-1)
+                        out.print(",");
+                }
+                %>],
                 inactiveColor: '#999',
                 //selectedMode: 'single',
 //                selected: {
@@ -723,7 +667,7 @@
                 {
                     name: '区域1',
                     type: 'line',
-                    stack: '水量',
+                    stack: 'stack',
                     areaStyle: {normal: {}},
                     data: function () {
                         var list = [];
@@ -741,7 +685,7 @@
                 {
                     name: '区域2',
                     type: 'line',
-                    stack: '水量',
+                    stack: 'stack',
                     areaStyle: {normal: {}},
                     data: function () {
                         var list = [];
@@ -759,7 +703,7 @@
                 {
                     name: '区域3',
                     type: 'line',
-                    stack: '水量',
+                    stack: 'stack',
                     areaStyle: {normal: {}},
                     data: function () {
                         var list = [];
@@ -777,7 +721,7 @@
                 {
                     name: '区域4',
                     type: 'line',
-                    stack: '水量',
+                    stack: 'stack',
                     areaStyle: {normal: {}},
                     data: function () {
                         var list = [];

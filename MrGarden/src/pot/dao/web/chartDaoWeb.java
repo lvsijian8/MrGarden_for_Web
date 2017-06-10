@@ -15,7 +15,7 @@ import java.util.*;
  * Created by lvsijian8 on 2017/4/8.
  */
 public class chartDaoWeb {
-    public JSONArray findchart(int pot_id, int user_id) {
+    public JSONArray findchart(int user_id, int pot_id) {
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;

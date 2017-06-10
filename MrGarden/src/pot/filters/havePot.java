@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Created by lvsijian8 on 2017/5/10.
  */
-@WebFilter({"/chart.jsp", "/equipment.jsp", "/manage.jsp", "/manage_all.jsp", "/history.jsp", "/chart", "/equipment", "/deletepot", "/setTimeMl", "/history", "/wateringWeb"})
+@WebFilter({"/chart.jsp","/charts_pot.jsp", "/equipment.jsp", "/manage.jsp", "/manage_all.jsp", "/history.jsp", "/chart", "/equipment", "/deletepot", "/setTimeMl", "/history", "/wateringWeb"})
 public class havePot implements Filter {
     public void destroy() {
     }
@@ -25,7 +25,7 @@ public class havePot implements Filter {
         if (havePotDao.havePot(user_id))
             chain.doFilter(req, resp);
         else {
-            request.setAttribute("error", "alert(\"您当前尚未添加花盆.请先进行添加\");");
+            request.setAttribute("error", "alert(\"您当前尚未添加节点.请先进行添加\");");
             request.getRequestDispatcher("addPot.jsp").forward(request, response);
         }
     }

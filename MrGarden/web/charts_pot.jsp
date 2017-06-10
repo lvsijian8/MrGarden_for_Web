@@ -265,12 +265,12 @@
                                     $("span").click(function(event){
 //                                        window.location.href="chart.jsp";
                                         return false;
-                                    })
+                                    });
 
                                     $(".a").click(function(){
                                         $(this).find("li").click(function(event){
 //                                            window.location.href="chart.jsp";
-                                        })
+                                        });
 
 
                                         if($(this).hasClass("shows")){
