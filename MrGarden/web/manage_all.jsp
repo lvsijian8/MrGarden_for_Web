@@ -159,7 +159,11 @@
             border-top: none;
             z-index: 1;
         }
-
+        ul.a{width:100%;cursor:pointer;padding:0 0px;color:white;}
+        ul.a li{list-style-type:none;cursor:pointer;padding:5px 0 0 60px;color:black;width:90%;background:url("images/circle.png") no-repeat 40px;background-size:8px;display:none}
+        .treelist{width:222px;}
+        ul.a div{height:34px;width:100%;padding-left:27px;background:url("images/arrow_right.png") no-repeat;background-size:30px;padding-top:6px;color:#333333;font-weight:bold;font-size:15px}
+        .shows{display:block}
         /*tr:nth-child(even) {*/
             /*background: #d8ebfa;*/
         /*}*/
@@ -249,7 +253,7 @@
                         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
                              aria-labelledby="headingTwo">
                             <div class="panel-body" style="padding-left: 2em">
-                                <form class="form" method="post">
+                                <%--<form class="form" method="post">
                                     <%
                                         for (int i = 0; i < pot_names.size(); i++) {
                                             out.print("<input type=\"radio\" id=\"huahua" + i + "\" name=\"radio\" onclick=\"changePot(" + pot_ids.get(i) + ")\"><label for=\"huahua" + i + "\" onclick=\"changePot(" + pot_ids.get(i) + ")\">" + pot_names.get(i) + "</label>");
@@ -257,16 +261,72 @@
                                                 out.print("<br/>");
                                         }
                                     %>
-                                </form>
+                                </form>--%>
+                                    <div class="treelist">
+                                        <ul class="a">
+                                            <div><a class="ul" href="manage_all.jsp">ccccc</a></div>
+                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
+                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
+                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
+                                        </ul>
+
+                                        <ul class="a">
+                                            <div><a class="ul" href="manage_all.jsp">ccccc</a></div>
+                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
+                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
+                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
+                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
+                                        </ul>
+
+                                        <ul class="a">
+                                            <div><a class="ul" href="manage_all.jsp">ccccc</a></div>
+                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
+                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
+                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
+                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <script>
+
+                                        $(".ul").click(function(event){
+//                                        return false;
+                                        })
+
+                                        $(".a").click(function(){
+                                            $(this).find("li").click(function(event){
+//                                            return false;
+                                            })
+
+
+                                            if($(this).hasClass("shows")){
+                                                $(this).removeClass("shows");
+                                                $(this).find("li").find("ul").removeClass("shows");
+                                                $(this).find("li").hide();
+                                                $(this).find("div").css("background","url(images/arrow_right.png) no-repeat").css("background-size","30px");
+
+
+                                            }else{
+                                                $(this).addClass("shows");
+                                                $(this).find("li").show();
+                                                $(this).find("li").find("ul").find("li").hide();
+                                                $(this).show();
+                                                $(this).find("div").eq(0).css("background","url(images/arrow_down.png) no-repeat").css("background-size","30px");
+                                            }
+
+                                        })
+                                    </script>
                                 <br/>
-                                <a href="addSchool.jsp" style="text-decoration:underline;"><img src="images/Add.png"
+                                <a href="addGroup.jsp" style="text-decoration:underline;"><img src="images/PlusGreen.png"
                                                                                              style="width: 24px;height: auto"><font
-                                        size="24" color="red">添加学校</font></a>
-                                <a href="manage_all.jsp"
+                                        size="24" color="#5fe18c">添加组</font></a>
+                                <a href="#"
                                    style="text-decoration:underline;float: right;padding-right: 2em"><img
-                                        src="images/Setting.png"
+                                        src="images/Cancelred.png"
                                         style="width: 24px;height: auto"><font
-                                        size="24" color="#5fe18c">管理全部花盆</font></a>
+                                        size="24" color="#FC1717">删除组</font></a>
+                                    <br/>
+                                    <span style="float: right;color: #FFFFFF">*点击箭头展开列表</span>
                             </div>
                         </div>
                     </div>

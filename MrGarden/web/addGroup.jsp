@@ -14,7 +14,7 @@
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
     <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon"/>
-    <title>添加学校</title>
+    <title>添加组</title>
     <meta name="format-detection" content="telephone=no"/>
     <link rel="icon" href="images/favicon.ico">
     <link rel="shortcut icon" href="images/favicon.ico"/>
@@ -105,7 +105,7 @@
             <div class="segment">
                 <h3 class="ui dividing header">
                     <div class="content" style="padding: 20px 0">
-                        <img src="images/Plus_Math.png" width="30px" height="auto">添加学校
+                        <img src="images/Plus_Math.png" width="30px" height="auto">添加组
                         <div class="sub header">将您的设备连接到云端</div>
                     </div>
                 </h3>
@@ -115,51 +115,17 @@
             <form name="form" action="append" method="post">
                 <div class="two fields">
                     <div class="field">
-                        <h5 style="color: #555555;">选择学校</h5>
-                        <div class="col-sm-8">
-                            <div id="bts-ex-4" class="selectpicker" data-live="true">
-                                <button data-id="prov" type="button"
-                                        class="btn btn-lg btn-block btn-default dropdown-toggle">
-                                    <span class="placeholder">选择学校</span>
-                                    <span class="caret"></span>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <div class="live-filtering" data-clear="true" data-autocomplete="true"
-                                         data-keys="true">
-                                        <label class="sr-only" for="input-bts-ex-4">Search in the list</label>
-                                        <div class="search-box">
-                                            <div class="input-group">
-											<span class="input-group-addon" id="search-icon3">
-											<span class="fa fa-search"></span>
-											<a href="#" class="fa fa-times hide filter-clear"><span class="sr-only">Clear filter</span></a>
-											</span>
-                                                <input type="text" placeholder="Search in the list" id="input-bts-ex-4"
-                                                       class="form-control live-search" aria-describedby="search-icon3"
-                                                       tabindex="1"/>
-                                            </div>
-                                        </div>
-                                        <div class="list-to-filter">
-                                            <ul class="list-unstyled" id="test" style="padding-left: 1em">
-                                                <li class="filter-item items" data-filter="item 1" onclick="tofid(1)">item 1</li>
-                                            </ul>
-                                            <div class="no-search-results">
-                                                <div class="alert alert-warning" role="alert"><i
-                                                        class="fa fa-warning margin-right-sm"></i>我们暂时没有<strong>'<span></span>'</strong>
-                                                    这种植物哦.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="hidden" name="fid" value="" id="fromfid">
-                            </div>
+                        <h5 style="color: #555555;">组名</h5>
+                        <div class="ui small left labeled icon input">
+                            <input type="text" placeholder="给您的组起个名,您容易记住就行，10个字符内……" id="device_title"
+                                   name="" maxlength='10' required/>
                         </div>
                     </div>
                 </div>
                 <div class="two fields">
                     <div class="field">
                         <h5 style="color: #555555;">描述</h5>
-                        <textarea placeholder="不超过30个字符……"></textarea>
+                        <textarea placeholder="不超过30个字符……" maxlength='30'></textarea>
                     </div>
                 </div>
                 <input class="ui small blue submit button" type="submit" value="保存">

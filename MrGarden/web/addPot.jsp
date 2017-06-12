@@ -46,6 +46,9 @@
     <script src="js/modernizr.min.js"></script>
     <link type="text/css" rel="stylesheet" href="css/framework.css"/>
     <link type="text/css" rel="stylesheet" href="css/main.css"/>
+    <link href="jquery.searchableSelect.css" rel="stylesheet" type="text/css">
+    <script src="jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/select_style.css" />
     <style>
         table {
             line-height: 45px;
@@ -150,12 +153,12 @@
             <form name="form" action="append" method="post">
                 <div class="two fields">
                     <div class="field">
-                        <h5 style="color: #555555;">选择花的类型</h5>
+                        <h5 style="color: #555555;">选择植物的类型</h5>
                         <div class="col-sm-8">
                             <div id="bts-ex-4" class="selectpicker" data-live="true">
                                 <button data-id="prov" type="button"
                                         class="btn btn-lg btn-block btn-default dropdown-toggle">
-                                    <span class="placeholder">Choose an option</span>
+                                    <span class="placeholder">选择植物类型</span>
                                     <span class="caret"></span>
                                 </button>
                                 <div class="dropdown-menu">
@@ -200,9 +203,28 @@
                     <div class="field">
                         <h5 style="color: #555555;">花盆名</h5>
                         <div class="ui small left labeled icon input">
-                            <input type="text" placeholder="给您的花盆起个名,您容易记住就行，30个字符内……" id="device_title"
-                                   name="flowername" required/>
+                            <input type="text" placeholder="给您的花盆起个名,您容易记住就行，10个字符内……" id="device_title"
+                                   name="flowername" maxlength='10' required/>
                         </div>
+                    </div>
+                    <div class="field"></div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <h5 style="color: #555555;">选择组</h5>
+                        <section class="main1">
+                            <div class="wrapper-demo">
+                                <div id="dd" class="wrapper-dropdown-3" tabindex="1">
+                                    <span>组</span>
+                                    <ul class="dropdown">
+                                        <li><a href="#">组1</a></li>
+                                        <li><a href="#">组2</a></li>
+                                        <li><a href="#">组3</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                        <a href="addGroup.jsp" style="text-decoration:underline"><img src="images/PlusGroup.png" width="15px"/>&nbsp;添加组</a>
                     </div>
                     <div class="field"></div>
                 </div>
@@ -263,6 +285,53 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+
+    function DropDown(el) {
+        this.dd = el;
+        this.placeholder = this.dd.children('span');
+        this.opts = this.dd.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+    DropDown.prototype = {
+        initEvents : function() {
+            var obj = this;
+
+            obj.dd.on('click', function(event){
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click',function(){
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+        },
+        getValue : function() {
+            return this.val;
+        },
+        getIndex : function() {
+            return this.index;
+        }
+    }
+
+    $(function() {
+
+        var dd = new DropDown( $('#dd') );
+
+        $(document).click(function() {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+
+    });
+
+</script>
 <script>
     function value_change() {
         var number = document.getElementById("range").value;
