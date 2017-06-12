@@ -19,7 +19,6 @@ public class fdataDaoAndroid {
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
-        con = DBConnection.getDBConnection();
         Map wai = new HashMap();
         JSONArray array = new JSONArray();
         int pot_ids[] = new int[50];//同一用户花盆最大不超过50个
@@ -29,7 +28,6 @@ public class fdataDaoAndroid {
         DateFormat dateFormatyM = new SimpleDateFormat("yyyy-MM");
         DateFormat dateFormatd = new SimpleDateFormat("dd");//获取当前天
         String flower_name = "";
-//        String sqlFdata = "SELECT time,out_temperature,out_humidity,in_humidity,light FROM pot_";
         ArrayList<Integer> humidity = new ArrayList<Integer>();//湿度
         ArrayList<Integer> inhumidity = new ArrayList<Integer>();//土壤湿度
         ArrayList<Integer> sunshine = new ArrayList<Integer>();//光照
@@ -37,6 +35,7 @@ public class fdataDaoAndroid {
         ArrayList<Integer> days = new ArrayList<Integer>();//日期
         Boolean nullMark = false;
         try {
+            con = DBConnection.getDBConnection();
             prepstmt = con.prepareStatement(sqlFindPots);
             prepstmt.setInt(1, user_id);
             rs = prepstmt.executeQuery();
@@ -128,7 +127,7 @@ public class fdataDaoAndroid {
                     msg = "您的植物在" + days.get(warn) + "日土壤湿度过高对植物生长不利,请进行将花盆移至合适处！";
                 } else if ((warn = isUpMinWei(inhumidity, 10)) != -1) {
                     msg = "您的植物在" + days.get(warn) + "日土壤湿度过低对植物生长不利,请进行将花盆移至合适处！";
-                } else if ((warn = isOutMaxWei(sunshine, 30)) != -1) {
+                } else if ((warn = isOutMaxWei(sunshine, 70)) != -1) {
                     msg = "您的植物在" + days.get(warn) + "日光照过强对植物生长不利,请进行将花盆移至合适处！";//----------------光照数据待确认
                 } else if ((warn = isUpMinWei(sunshine, 10)) != -1) {
                     msg = "您的植物在" + days.get(warn) + "日光照过低对植物生长不利,请进行将花盆移至合适处！";

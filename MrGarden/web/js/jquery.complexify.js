@@ -125,11 +125,11 @@
 				for (var i = str.length - 1; i >= 0; i--) {
 					if (charset[0] <= str.charCodeAt(i) && str.charCodeAt(i) <= charset[1]) {
 						return charset[1] - charset[0] + 1;
-					};
-				}; return 0;
-			};
-
-			return this.each(function () {
+                    }
+                }
+                return 0;
+            }
+            return this.each(function () {
 				$(this).keyup(function () {
 					var password = $(this).val();
 					var complexity = 0, valid = false;

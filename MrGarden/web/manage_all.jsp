@@ -165,10 +165,10 @@
         ul.a div{height:34px;width:100%;padding-left:27px;background:url("images/arrow_right.png") no-repeat;background-size:30px;padding-top:6px;color:#333333;font-weight:bold;font-size:15px}
         .shows{display:block}
         /*tr:nth-child(even) {*/
-            /*background: #d8ebfa;*/
+        /*background: #d8ebfa;*/
         /*}*/
         /*tr:nth-child(odd) {*/
-            /*background: White;*/
+        /*background: White;*/
         /*}*/
 
     </style>
@@ -321,6 +321,7 @@
                                                                                              style="width: 24px;height: auto"><font
                                         size="24" color="#5fe18c">添加组</font></a>
                                 <a href="#"
+
                                    style="text-decoration:underline;float: right;padding-right: 2em"><img
                                         src="images/Cancelred.png"
                                         style="width: 24px;height: auto"><font
@@ -469,15 +470,15 @@
                             "                    <strong>" + lastFertilizerDates.get(i) + "</strong>\n" +
                             "                </td>\n" +
                             "                <td>\n" +
-                            "                    <a style=\"text-decoration:underline;\" href=\"equipment.jsp\">管理单个区域</a>\n" +
+                            "                    <a style=\"text-decoration:underline;\" href=\"equipment?pot_id=" + pot_ids.get(i) + "\">管理本节点</a>\n" +
                             "                </td>\n" +
                             "            </tr>");
                 }
             %>
             <tr>
-                <th><input type="checkbox" id="pot2" name="" class="check"  onclick="ckeckall()"></th>
+                <th><input type="checkbox" id="pot2" name="" class="check" onclick="ckeckall()"></th>
                 <td>
-                    <div>区域1</div>
+                    <div>节点1</div>
                     <span style="font-size: 14px;color:red">离线不可选</span>
                 </td>
                 <td>
@@ -489,7 +490,8 @@
                             <strong>60%</strong></div>
                     </div>
                     <div class="progress progress-xs">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 60%; aria-valuenow:60; aria-valuemax:100"></div>
+                        <div class="progress-bar bg-success" role="progressbar"
+                             style="width: 60%; aria-valuenow:60; aria-valuemax:100"></div>
                     </div>
                 </td>
                 <td>
@@ -499,7 +501,8 @@
                         </div>
                     </div>
                     <div class="progress progress-xs">
-                        <div class="progress-bar bg-success" role="progressbar" style="width:50%; aria-valuenow:50; aria-valuemax:100"></div>
+                        <div class="progress-bar bg-success" role="progressbar"
+                             style="width:50%; aria-valuenow:50; aria-valuemax:100"></div>
                     </div>
                 </td>
                 <td>
@@ -509,52 +512,11 @@
                     <strong>一天前</strong>
                 </td>
                 <td>
-                    <a style="text-decoration:underline;" href="equipment.jsp">管理单个区域</a>
+                    <a style="text-decoration:underline;" href="equipment.jsp">管理本节点</a>
                 </td>
             </tr>
             <%--<tr>--%>
-                <%--<td colspan="8"><span>水量充足，暂时不需要添水</span></td>--%>
-            <%--</tr>--%>
-            <tr>
-                <th><input type="checkbox" id="pot" name="" class="check"  onclick="ckeckall()"></th>
-                <td>
-                    <div>区域2</div>
-                    <span style="font-size: 14px;color:red">离线不可选</span>
-                </td>
-                <td>
-                    <img src="images/Light_Off.png" alt="离线" style="height:24px;">离线
-                </td>
-                <td>
-                    <div class="clearfix">
-                        <div class="float-left">
-                            <strong>60%</strong></div>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 60%; aria-valuenow:60; aria-valuemax:100"></div>
-                    </div>
-                </td>
-                <td>
-                    <div class="clearfix">
-                        <div class="float-left">
-                            <strong>50%</strong>
-                        </div>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-success" role="progressbar" style="width:50%; aria-valuenow:50; aria-valuemax:100"></div>
-                    </div>
-                </td>
-                <td>
-                    <strong>一天前</strong>
-                </td>
-                <td>
-                    <strong>一天前</strong>
-                </td>
-                <td>
-                    <a style="text-decoration:underline;" href="equipment.jsp">管理单个区域</a>
-                </td>
-            </tr>
-            <%--<tr>--%>
-                <%--<td colspan="8"><span>水量充足，暂时不需要添水</span></td>--%>
+            <%--<td colspan="8"><span>水量充足，暂时不需要添水</span></td>--%>
             <%--</tr>--%>
             </tbody>
         </table>

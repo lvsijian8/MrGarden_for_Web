@@ -15,44 +15,51 @@ import java.util.*;
  * Created by lvsijian8 on 2017/4/8.
  */
 public class chartDaoWeb {
-    public JSONArray findchart(int pot_id, int user_id) {
+    public JSONArray findchart(int user_id, int pot_id) {
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
         JSONArray array = new JSONArray();
         Map params = new HashMap();
-        String sqlFindPots = "SELECT pot_id FROM user_pot WHERE user_id=?;";
-        ArrayList<Integer> pot_ids = new ArrayList<Integer>();
-        ArrayList<String> pot_names = new ArrayList<String>();
+        ArrayList<Integer> group_ids = new ArrayList<Integer>();
+        ArrayList<String> group_names = new ArrayList<String>();
         ArrayList<Double> temperature = new ArrayList<Double>();//温度
         ArrayList<Integer> humidity = new ArrayList<Integer>();//湿度
-        int checked = 0;
-        String sqlFindPotName = "SELECT flower_name FROM pot WHERE pot_id=?;";
+        String sqlFindGroud = "SELECT group_id,group_name FROM groups WHERE user_id=?;";
+        String sqlFindPots = "SELECT pot_id,flower_name FROM pot WHERE group_id=?;";
         String sql = "SELECT out_temperature,out_humidity FROM pot_";
         String sqlFindWaterFertilizer = "SELECT now_water,now_bottle FROM pot WHERE pot_id=?;";
         String sqlFdata = "SELECT time,out_temperature,out_humidity FROM pot_";
         DateFormat dateFormat = new SimpleDateFormat("dd");//获取当前天
         try {
             con = DBConnection.getDBConnection();
-            prepstmt = con.prepareStatement(sqlFindPots);
+            prepstmt = con.prepareStatement(sqlFindGroud);
             prepstmt.setInt(1, user_id);
             rs = prepstmt.executeQuery();
             while (rs.next()) {
-                pot_ids.add(rs.getInt("pot_id"));
+                group_ids.add(rs.getInt("group_id"));
+                group_names.add(rs.getString("group_name"));
             }
-            prepstmt = con.prepareStatement(sqlFindPotName);
-            for (int i = 0; i < pot_ids.size(); i++) {
-                if (pot_ids.get(i) == pot_id)
-                    checked = i;
-                prepstmt.setInt(1, pot_ids.get(i));
+            params.put("group_ids", group_ids);
+            params.put("group_names", group_names);
+            prepstmt = con.prepareStatement(sqlFindPots);
+            for (int i = 0; i < group_ids.size(); i++) {
+                prepstmt.setInt(1, group_ids.get(i));
                 rs = prepstmt.executeQuery();
+                ArrayList<Integer> p_ids = new ArrayList<Integer>();
+                ArrayList<String> p_names = new ArrayList<String>();
                 while (rs.next()) {
-                    pot_names.add(rs.getString("flower_name"));
+                    int p_id = rs.getInt("pot_id");
+                    String p_name = rs.getString("flower_name");
+                    if (pot_id == -1)
+                        pot_id = p_id;
+                    if (p_id == pot_id)
+                        params.put("top_name", p_name);
+                    p_ids.add(p_id);
+                    p_names.add(p_name);
                 }
-            }
-            if (pot_id == -1) {
-                checked = 0;
-                pot_id = pot_ids.get(0);
+                params.put(group_names.get(i) + "_ids", p_ids);
+                params.put(group_names.get(i) + "_names", p_names);
             }
             sql = sql + pot_id + " ORDER BY time DESC limit 0,1";
             prepstmt = con.prepareStatement(sql);
@@ -115,9 +122,6 @@ public class chartDaoWeb {
         for (int i = 0; i < temperature.size(); i++) {
             temperature.set(i, Math.floor(((temperature.get(i) - 10.0) / 30.0) * 100.0));
         }
-        params.put("checked", checked);
-        params.put("pot_names", pot_names);
-        params.put("pot_ids", pot_ids);
         params.put("humidity", humidity);
         params.put("temperature", temperature);
         array.add(params);

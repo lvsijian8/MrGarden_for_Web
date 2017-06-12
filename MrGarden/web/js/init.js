@@ -9,7 +9,7 @@ var q = {
     diagram: function(){
         var r = Raphael('diagram', 600, 600),
             rad = 73,
-            defaultText = '营养液',
+            defaultText = '当前营养液',
             speed = 250;
 
         r.circle(300, 300, 85).attr({ stroke: 'none', fill: '#193340' });
@@ -31,7 +31,7 @@ var q = {
                 y = 300 - rad * Math.sin(a),
                 path = [['M', sx, sy], ['A', rad, rad, 0, +(alpha > 180), 1, x, y]];
             return { path: path, stroke: color }
-        }
+        };
 
         $('.get2').find('.arc').each(function(i){
             var t = $(this),
@@ -58,7 +58,7 @@ var q = {
         });
 
     }
-}
+};
 $(function(){ q.init(); });
 
 
@@ -72,7 +72,7 @@ var o = {
     diagram: function(){
         var r = Raphael('diagram', 600, 600),
             rad = 73,
-            defaultText = '水量',
+            defaultText = '当前水量',
             speed = 250;
 
         r.circle(300, 300, 85).attr({ stroke: 'none', fill: '#193340' });
@@ -94,7 +94,7 @@ var o = {
                 y = 300 - rad * Math.sin(a),
                 path = [['M', sx, sy], ['A', rad, rad, 0, +(alpha > 180), 1, x, y]];
             return { path: path, stroke: color }
-        }
+        };
 
         $('.get').find('.arc').each(function(i){
             var t = $(this),
@@ -121,7 +121,7 @@ var o = {
         });
 
     }
-}
+};
 $(function(){ o.init(); });
 
 

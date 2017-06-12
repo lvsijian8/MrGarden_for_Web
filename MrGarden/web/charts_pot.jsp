@@ -18,8 +18,8 @@
     }
 %>
 <%
-    List<String> pot_names = ((List<String>) Potchart.getJSONObject(0).get("pot_names"));
-    List<Integer> pot_ids = ((List<Integer>) Potchart.getJSONObject(0).get("pot_ids"));
+    List<String> group_names = ((List<String>) Potchart.getJSONObject(0).get("group_names"));
+    List<Integer> group_ids = ((List<Integer>) Potchart.getJSONObject(0).get("group_ids"));
     List<Integer> humidity = ((List<Integer>) Potchart.getJSONObject(0).get("humidity"));
     List<Integer> temperature = ((List<Integer>) Potchart.getJSONObject(0).get("temperature"));
 %>
@@ -220,12 +220,7 @@
                             <h4 class="panel-title">
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <%
-                                        if ((Integer) Potchart.getJSONObject(0).get("checked") != 0)
-                                            out.print(pot_names.get((Integer) Potchart.getJSONObject(0).get("checked")));
-                                        else
-                                            out.print("选择您的花盆");
-                                    %>
+                                    <%=Potchart.getJSONObject(0).get("top_name")%>
                                 </a>
                             </h4>
                         </div>
@@ -234,28 +229,20 @@
                             <div class="panel-body">
                                 <div class="treelist">
                                     <div class="treelist">
-                                        <ul class="a">
-                                            <div><a class="ul" href="chart.jsp">ccccc</a></div>
-                                            <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                            <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                            <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                        </ul>
-
-                                        <ul class="a">
-                                            <div><a class="ul" href="chart.jsp">ccccc</a></div>
-                                            <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                            <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                            <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                            <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                        </ul>
-
-                                        <ul class="a">
-                                            <div><a class="ul" href="chart.jsp">ccccc</a></div>
-                                            <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                            <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                            <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                            <li><a class="li" href="charts_pot.jsp">xxxx</a></li>
-                                        </ul>
+                                        <%
+                                            for (int i = 0; i < group_ids.size(); i++) {
+                                                out.print("\n" +
+                                                        "                                    <ul class=\"a\">\n" +
+                                                        "                                        <div><a class=\"ul\" href=\"chartGroup?group_id=" + group_ids.get(i) + "\">" + group_names.get(i) + "</a></div>\n");
+                                                List<Integer> p_ids = ((List<Integer>) Potchart.getJSONObject(0).get(group_names.get(i) + "_ids"));
+                                                List<String> p_names = ((List<String>) Potchart.getJSONObject(0).get(group_names.get(i) + "_names"));
+                                                for (int j = 0; j < p_ids.size(); j++) {
+                                                    out.print("<li><a class=\"li\" href=\"chart?pot_id=" + p_ids.get(j) + "\">" + p_names.get(j) + "</a></li>");
+                                                }
+                                                out.print("\n" +
+                                                        "                                    </ul>");
+                                            }
+                                        %>
                                     </div>
 
                                     <span style="float: right;color: #FFFFFF">*点击符号展开列表</span>
@@ -265,12 +252,12 @@
                                     $("span").click(function(event){
 //                                        window.location.href="chart.jsp";
                                         return false;
-                                    })
+                                    });
 
                                     $(".a").click(function(){
                                         $(this).find("li").click(function(event){
 //                                            window.location.href="chart.jsp";
-                                        })
+                                        });
 
 
                                         if($(this).hasClass("shows")){

@@ -135,4 +135,4 @@ $(function(){
     $("#clear2").click(function() {
         $("input[name='user_phone']").val("").focus(); // 清空并获得焦点
     });
-}) 
+}); 
