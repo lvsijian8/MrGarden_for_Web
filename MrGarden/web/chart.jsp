@@ -1,6 +1,5 @@
 <%@ page import="net.sf.json.JSONArray" %>
 <%@ page import="java.net.URLDecoder" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Map" %>
 <%--
@@ -499,8 +498,8 @@
             dataZoom: {
                 show: true,
                 realtime: true,
-                start: 20,
-                end: 80
+                start: 0,
+                end: 100
             },
             xAxis: [
                 {
@@ -545,6 +544,12 @@
                     out.print("];\n" +
 "                        return list;\n" +
 "                    }(),\n" +
+"markPoint: {\n" +
+"data: [\n" +
+"{type: 'max', name: '最大值'},\n" +
+"{type: 'min', name: '最小值'}\n" +
+"]\n" +
+"},"+
 "                    markLine: {\n" +
 "                        data: [\n" +
 "                            {type: 'average', name: '平均值'}\n" +
@@ -564,6 +569,12 @@
 "                        var list = [];\n" +
 "                        return list;\n" +
 "                    }(),\n" +
+"markPoint: {\n" +
+"data: [\n" +
+"{type: 'max', name: '最大值'},\n" +
+"{type: 'min', name: '最小值'}\n" +
+"]\n" +
+"},"+
 "                    markLine: {\n" +
 "                        data: [\n" +
 "                            {type: 'average', name: '平均值'}\n" +
@@ -685,8 +696,8 @@
             dataZoom: {
                 show: true,
                 realtime: true,
-                start: 20,
-                end: 80
+                start: 0,
+                end: 100
             },
             xAxis: [
                 {
@@ -731,6 +742,12 @@
                     out.print("];\n" +
 "                        return list;\n" +
 "                    }(),\n" +
+"markPoint: {\n" +
+"data: [\n" +
+"{type: 'max', name: '最大值'},\n" +
+"{type: 'min', name: '最小值'}\n" +
+"]\n" +
+"},"+
 "                    markLine: {\n" +
 "                        data: [\n" +
 "                            {type: 'average', name: '平均值'}\n" +
@@ -750,6 +767,12 @@
 "                        var list = [];\n" +
 "                        return list;\n" +
 "                    }(),\n" +
+"markPoint: {\n" +
+"data: [\n" +
+"{type: 'max', name: '最大值'},\n" +
+"{type: 'min', name: '最小值'}\n" +
+"]\n" +
+"},"+
 "                    markLine: {\n" +
 "                        data: [\n" +
 "                            {type: 'average', name: '平均值'}\n" +

@@ -50,7 +50,7 @@
       if(event.which != 13 && event.which != 27 && event.which != 38 && event.which != 40)
         _this.filter();
     })
-  }
+  };
 
   var $sS = $.searchableSelect;
 
@@ -83,7 +83,7 @@
           var scrollTop = _this.items.scrollTop();
           _this.items.scrollTop(scrollTop + 20);
           _this.hasNextTimer = setTimeout(f, 50);
-        }
+        };
 
         f();
       }).on('mouseleave', function(event) {
@@ -97,7 +97,7 @@
           var scrollTop = _this.items.scrollTop();
           _this.items.scrollTop(scrollTop - 20);
           _this.hasPriviousTimer = setTimeout(f, 50);
-        }
+        };
 
         f();
       }).on('mouseleave', function(event) {
@@ -144,7 +144,7 @@
       if(!this.hasCurrentHoverItem())
         this.hoverFirstNotHideItem();
       else{
-        var prevItem = this.currentHoverItem.prevAll('.searchable-select-item:not(.searchable-select-hide):first')
+        var prevItem = this.currentHoverItem.prevAll('.searchable-select-item:not(.searchable-select-hide):first');
         if(prevItem.length > 0)
           this.hoverItem(prevItem);
       }
@@ -154,7 +154,7 @@
       if(!this.hasCurrentHoverItem())
         this.hoverFirstNotHideItem();
       else{
-        var nextItem = this.currentHoverItem.nextAll('.searchable-select-item:not(.searchable-select-hide):first')
+        var nextItem = this.currentHoverItem.nextAll('.searchable-select-item:not(.searchable-select-hide):first');
         if(nextItem.length > 0)
           this.hoverItem(nextItem);
       }

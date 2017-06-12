@@ -1,4 +1,4 @@
-package pot.dao.android;
+package pot.dao.androidWeb;
 
 import pot.util.DBConnection;
 
@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * Created by lvsijian8 on 2017/4/16.
  */
-public class deletepotDaoAndroid {
+public class deletepotDao {
     public int deletepot(int user_id, int pot_id) {
         int state = 0;
         Connection con = null;

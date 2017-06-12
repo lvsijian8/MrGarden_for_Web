@@ -8,12 +8,12 @@ import java.sql.*;
  * Created by lvsijian8 on 2017/4/6.
  */
 public class appendDao {
-    public String append(int user_id, int fid, String fname, int bday, int bbtime, int bml, int wday, int wtime, int wml, String device) {
+    public String append(int user_id,int group_id, int fid, String fname, int bday, int bbtime, int bml, int wday, int wtime, int wml, String device) {
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
         int state = 0, pot_id = 0;
-        String sql = "INSERT INTO pot (fid, flower_name, bottle_day, bottle_time, bottle_ml, water_day,water_time, water_ml) VALUES(?,?,?,?,?,?,?,?);";
+        String sql = "INSERT INTO pot (fid, flower_name, bottle_day, bottle_time, bottle_ml, water_day,water_time, water_ml,group_id) VALUES(?,?,?,?,?,?,?,?,?);";
         String sqlFind = "select MAX(pot_id) from pot where fid=? AND flower_name=? AND bottle_day=? AND bottle_time=? AND bottle_ml=? AND water_day=? AND water_time=? AND water_ml=?;";
         String sqlPot = "INSERT INTO user_pot (user_id,pot_id) VALUES(?,?);";
         String sqlAddHistory = "INSERT INTO history (pot_id, user_id, device, time, handle,detail) VALUES(?,?,?,?,?,?);";
@@ -29,6 +29,7 @@ public class appendDao {
             prepstmt.setInt(6, wday);
             prepstmt.setInt(7, wtime);
             prepstmt.setInt(8, wml);
+            prepstmt.setInt(9, group_id);
             prepstmt.executeUpdate();
             prepstmt = con.prepareStatement(sqlFind);
             prepstmt.setInt(1, fid);
@@ -47,7 +48,7 @@ public class appendDao {
             prepstmt.setInt(1, user_id);
             prepstmt.setInt(2, pot_id);
             state = prepstmt.executeUpdate();
-            String sqlTable = "CREATE TABLE `flowerpot`.`pot_" + pot_id + "` (" +
+            String sqlTable = "CREATE TABLE `MrGarden`.`pot_" + pot_id + "` (" +
                     "`time` datetime NOT NULL," +
                     "`out_temperature` int(3) DEFAULT NULL," +
                     "`out_humidity` int(3) DEFAULT NULL," +
@@ -63,7 +64,7 @@ public class appendDao {
             prepstmt.setString(3, device);
             prepstmt.setTimestamp(4, now);
             prepstmt.setString(5, "add_pot");
-            prepstmt.setString(6, "本次创建花盆名称为:" + fname + ",施肥间隔:" + bday + "天,施肥时间:" + bbtime + "点,施肥量:" + bml + "ml,浇水间隔:" + wday + ",浇水时间:" + wtime + ",浇水量:" + wml);
+            prepstmt.setString(6, "本次创建花盆名称为:" + fname + "组id为:"+group_id+",施肥间隔:" + bday + "天,施肥时间:" + bbtime + "点,施肥量:" + bml + "ml,浇水间隔:" + wday + ",浇水时间:" + wtime + ",浇水量:" + wml);
             prepstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -1,6 +1,6 @@
 package pot.servlet.android;
 
-import pot.dao.android.deletepotDaoAndroid;
+import pot.dao.androidWeb.deletepotDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +18,7 @@ public class deletepotAndroid extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int pot_id = Integer.parseInt(new String(request.getParameter("pot_id").getBytes("ISO8859-1"), "UTF-8"));
         int user_id = Integer.parseInt(new String(request.getParameter("user_id").getBytes("ISO8859-1"), "UTF-8"));
-        deletepotDaoAndroid deletepotDao = new deletepotDaoAndroid();
+        deletepotDao deletepotDao = new deletepotDao();
         response.setContentType("text/html;charset=utf-8");//打印至HTML页面
         PrintWriter out = response.getWriter();
         out.print(deletepotDao.deletepot(user_id, pot_id));

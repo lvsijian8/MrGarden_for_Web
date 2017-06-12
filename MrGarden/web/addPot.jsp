@@ -17,6 +17,8 @@
     }
 %>
 <%
+    List<String> group_names = ((List<String>) PlantList.getJSONObject(0).get("group_names"));
+    List<Integer> group_ids = ((List<Integer>) PlantList.getJSONObject(0).get("group_ids"));
     List<String> plant_names = ((List<String>) PlantList.getJSONObject(0).get("plant_names"));
     List<Integer> plant_ids = ((List<Integer>) PlantList.getJSONObject(0).get("plant_ids"));
 %>
@@ -164,12 +166,12 @@
                                 <div class="dropdown-menu">
                                     <div class="live-filtering" data-clear="true" data-autocomplete="true"
                                          data-keys="true">
-                                        <label class="sr-only" for="input-bts-ex-4">Search in the list</label>
+                                        <label class="sr-only" for="input-bts-ex-4">在列表中搜索</label>
                                         <div class="search-box">
                                             <div class="input-group">
 											<span class="input-group-addon" id="search-icon3">
 											<span class="fa fa-search"></span>
-											<a href="#" class="fa fa-times hide filter-clear"><span class="sr-only">Clear filter</span></a>
+											<a href="#" class="fa fa-times hide filter-clear"><span class="sr-only">清空</span></a>
 											</span>
                                                 <input type="text" placeholder="Search in the list" id="input-bts-ex-4"
                                                        class="form-control live-search" aria-describedby="search-icon3"
@@ -217,14 +219,17 @@
                                 <div id="dd" class="wrapper-dropdown-3" tabindex="1">
                                     <span>组</span>
                                     <ul class="dropdown">
-                                        <li><a href="#">组1</a></li>
-                                        <li><a href="#">组2</a></li>
-                                        <li><a href="#">组3</a></li>
+                                        <%
+                                            for (int i=0;i<group_ids.size();i++){
+                                                out.print("<li onclick=\"tofid2("+group_ids.get(i)+")\">"+group_names.get(i)+"</li>");
+                                            }
+                                        %>
                                     </ul>
                                 </div>
+                                <input type="hidden" name="group_id" id="hidein" value="" />
                             </div>
                         </section>
-                        <a href="addGroup.jsp" style="text-decoration:underline"><img src="images/PlusGroup.png" width="15px"/>&nbsp;添加组</a>
+                        <a href="addGroup.jsp" style="text-decoration:underline;float: right; padding-right: 2em"><img src="images/PlusGroup.png" width="15px"/>&nbsp;添加组</a>
                     </div>
                     <div class="field"></div>
                 </div>
@@ -287,6 +292,9 @@
 </div>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript">
+    function tofid2(fid2) {
+        document.getElementById("hidein").value = fid2;
+    }
 
     function DropDown(el) {
         this.dd = el;
@@ -318,7 +326,7 @@
         getIndex : function() {
             return this.index;
         }
-    }
+    };
 
     $(function() {
 

@@ -87,7 +87,6 @@ public class historyDaoWeb {
                 sqlhistory = sqlhistory.replace("COUNT(user_id) ", "device,handle,detail,time ");
             }
             sqlhistory = sqlhistory.replace(";", "LIMIT ?,?;");
-            System.out.print(sqlhistory);
             prepstmt = con.prepareStatement(sqlhistory);
             prepstmt.setInt(1, user_id);
             leng = 1;
@@ -107,7 +106,6 @@ public class historyDaoWeb {
             prepstmt.setInt(leng, page);
             leng++;
             prepstmt.setInt(leng, next);
-            System.out.println(pot_handle+"..."+page+"..."+next);
             rs = prepstmt.executeQuery();
             while (rs.next()) {
                 String detail = "";

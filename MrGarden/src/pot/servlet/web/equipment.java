@@ -28,7 +28,7 @@ public class equipment extends HttpServlet {
         JSONArray array;
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-        array = deviceDao.findPotData(pot_id, user_id);
+        array = deviceDao.findPotData(user_id,pot_id);
         request.setAttribute("Potdevic", array);
         request.getRequestDispatcher("equipment.jsp").forward(request, response);
     }

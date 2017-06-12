@@ -13,14 +13,17 @@ import java.util.Map;
  * Created by lvsijian8 on 2017/5/10.
  */
 public class getManageAllDaoWeb {
-    public JSONArray findAllPot(int user_id) {
+    public JSONArray findAllPot(int user_id, int group_id) {
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
         JSONArray array = new JSONArray();
         Map params = new HashMap();
-        String sqlFindPots = "SELECT pot_id FROM user_pot WHERE user_id=?;";
-        ArrayList<Integer> pot_ids = new ArrayList<Integer>();
+        ArrayList<Integer> group_ids = new ArrayList<Integer>();
+        ArrayList<String> group_names = new ArrayList<String>();
+        String sqlFindGroud = "SELECT group_id,group_name FROM groups WHERE user_id=?;";
+        String sqlFindPots = "SELECT pot_id,flower_name FROM pot WHERE group_id=?;";
+        ArrayList<Integer> pot_ids = null;
         ArrayList<String> pot_names = new ArrayList<String>();
         ArrayList<Integer> pot_waters = new ArrayList<Integer>();
         ArrayList<Integer> pot_bottles = new ArrayList<Integer>();
@@ -34,11 +37,38 @@ public class getManageAllDaoWeb {
         String sqlFindHandleTime = "SELECT time FROM history WHERE handle=? AND user_id=? AND pot_id=? ORDER BY time DESC limit 0,1;";
         try {
             con = DBConnection.getDBConnection();
-            prepstmt = con.prepareStatement(sqlFindPots);
+            prepstmt = con.prepareStatement(sqlFindGroud);
             prepstmt.setInt(1, user_id);
             rs = prepstmt.executeQuery();
             while (rs.next()) {
-                pot_ids.add(rs.getInt("pot_id"));
+                int g_id = rs.getInt("group_id");
+                String g_name = rs.getString("group_name");
+                if (group_id == -1)
+                    group_id = g_id;
+                if (g_id == group_id){
+                    params.put("top_name", g_name);
+                    params.put("top_id",g_id);
+                }
+                group_ids.add(g_id);
+                group_names.add(g_name);
+            }
+            params.put("group_ids", group_ids);
+            params.put("group_names", group_names);
+            prepstmt = con.prepareStatement(sqlFindPots);
+            for (int i = 0; i < group_ids.size(); i++) {
+                prepstmt.setInt(1, group_ids.get(i));
+                rs = prepstmt.executeQuery();
+                ArrayList<Integer> p_ids = new ArrayList<Integer>();
+                ArrayList<String> p_names = new ArrayList<String>();
+                while (rs.next()) {
+                    p_ids.add(rs.getInt("pot_id"));
+                    p_names.add(rs.getString("flower_name"));
+                }
+                params.put(group_names.get(i) + "_ids", p_ids);
+                params.put(group_names.get(i) + "_names", p_names);
+                if (group_id == group_ids.get(i)) {
+                    pot_ids = p_ids;
+                }
             }
             prepstmt = con.prepareStatement(sqlFindPotName);
             for (int i = 0; i < pot_ids.size(); i++) {

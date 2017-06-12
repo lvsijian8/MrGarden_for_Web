@@ -13,7 +13,7 @@ import java.net.URLDecoder;
 /**
  * Created by lvsijian8 on 2017/3/31.
  */
-@WebFilter({"/addPot.jsp", "/addSchool.jsp", "/chart.jsp", "/equipment.jsp", "/history.jsp", "/manage.jsp", "/editInfo.jsp", "/manage_all.jsp", "/append", "/changeUser", "/chart", "/deletepot", "/deviceState", "/equipment", "/getManageAll", "/getPlant", "/getUser", "/history", "/setTimeMl", "/wateringWeb"})
+@WebFilter({"/addGroup.jsp", "/addPot.jsp", "/chart.jsp", "/chart_pot.jsp", "/equipment.jsp", "/editInfo.jsp", "/history.jsp", "/manage.jsp", "/manage_all.jsp", "/append", "/bottleAll", "/changeUser", "/chart", "/chartGroup", "/deletepot", "/deviceState", "/equipment", "/getManageAll", "/getPlant", "/getUser", "/history", "/setTimeMl", "/wateringWeb", "/waterAll"})
 public class checkLogin implements Filter {
     public void destroy() {
     }

@@ -18,7 +18,8 @@
     }
 %>
 <%
-    List<String> pot_names = ((List<String>) Potdevic.getJSONObject(0).get("pot_names"));
+    List<String> group_names = ((List<String>) Potdevic.getJSONObject(0).get("group_names"));
+    List<Integer> group_ids = ((List<Integer>) Potdevic.getJSONObject(0).get("group_ids"));
     List<Integer> pot_ids = ((List<Integer>) Potdevic.getJSONObject(0).get("pot_ids"));
 %>
 <html>
@@ -144,11 +145,43 @@
             z-index: 1;
         }
 
-        ul.a{width:100%;cursor:pointer;padding:0 0px;color:white;}
-        ul.a li{list-style-type:none;cursor:pointer;padding:5px 0 0 60px;color:black;width:90%;background:url("images/circle.png") no-repeat 40px;background-size:8px;display:none}
-        .treelist{width:222px;}
-        ul.a div{height:34px;width:100%;padding-left:27px;background:url("images/arrow_right.png") no-repeat;background-size:30px;padding-top:6px;color:#333333;font-weight:bold;font-size:15px}
-        .shows{display:block}
+        ul.a {
+            width: 100%;
+            cursor: pointer;
+            padding: 0 0px;
+            color: white;
+        }
+
+        ul.a li {
+            list-style-type: none;
+            cursor: pointer;
+            padding: 5px 0 0 60px;
+            color: black;
+            width: 90%;
+            background: url("images/circle.png") no-repeat 40px;
+            background-size: 8px;
+            display: none
+        }
+
+        .treelist {
+            width: 222px;
+        }
+
+        ul.a div {
+            height: 34px;
+            width: 100%;
+            padding-left: 27px;
+            background: url("images/arrow_right.png") no-repeat;
+            background-size: 30px;
+            padding-top: 6px;
+            color: #333333;
+            font-weight: bold;
+            font-size: 15px
+        }
+
+        .shows {
+            display: block
+        }
 
     </style>
     <script type="text/javascript">
@@ -282,95 +315,70 @@
                             <h4 class="panel-title">
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <%
-                                        if ((Integer) Potdevic.getJSONObject(0).get("checked") != 0)
-                                            out.print(pot_names.get((Integer) Potdevic.getJSONObject(0).get("checked")));
-                                        else
-                                            out.print("选择您的花盆");
-                                    %>
+                                    <%=Potdevic.getJSONObject(0).get("top_name")%>
                                 </a>
                             </h4>
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
                              aria-labelledby="headingTwo">
                             <div class="panel-body" style="padding-left: 2em">
-                                <%--<form class="form" method="post">
+                                <div class="treelist">
                                     <%
-                                        for (int i = 0; i < pot_names.size(); i++) {
-                                            String checked1 = "";
-                                            if ((Integer) Potdevic.getJSONObject(0).get("checked") == i)
-                                                checked1 = "checked";
-                                            out.print("<input " + checked1 + " type=\"radio\" id=\"huahua" + i + "\" name=\"radio\" onclick=\"changePot(" + pot_ids.get(i) + ")\"><label for=\"huahua" + i + "\" onclick=\"changePot(" + pot_ids.get(i) + ")\">" + pot_names.get(i) + "</label>");
-                                            if (i + 1 < pot_names.size())
-                                                out.print("<br/>");
+                                        for (int i = 0; i < group_ids.size(); i++) {
+                                            out.print("\n" +
+                                                    "                                    <ul class=\"a\">\n" +
+                                                    "                                        <div><a class=\"ul\" href=\"getManageAll?group_id=" + group_ids.get(i) + "\">" + group_names.get(i) + "</a></div>\n");
+                                            List<Integer> p_ids = ((List<Integer>) Potdevic.getJSONObject(0).get(group_names.get(i) + "_ids"));
+                                            List<String> p_names = ((List<String>) Potdevic.getJSONObject(0).get(group_names.get(i) + "_names"));
+                                            for (int j = 0; j < p_ids.size(); j++) {
+                                                out.print("<li><a class=\"li\" href=\"equipment?pot_id=" + p_ids.get(j) + "\">" + p_names.get(j) + "</a></li>");
+                                            }
+                                            out.print("\n" +
+                                                    "                                    </ul>");
                                         }
                                     %>
-                                </form>--%>
-                                    <div class="treelist">
-                                        <ul class="a">
-                                            <div><a class="ul" href="manage_all.jsp">ccccc</a></div>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                        </ul>
+                                </div>
 
-                                        <ul class="a">
-                                            <div><a class="ul" href="manage_all.jsp">ccccc</a></div>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                        </ul>
+                                <script>
 
-                                        <ul class="a">
-                                            <div><a class="ul" href="manage_all.jsp">ccccc</a></div>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <script>
-
-                                        $(".ul").click(function(event){
+                                    $(".ul").click(function (event) {
 //                                        return false;
-                                        })
+                                    });
 
-                                        $(".a").click(function(){
-                                            $(this).find("li").click(function(event){
+                                    $(".a").click(function () {
+                                        $(this).find("li").click(function (event) {
 //                                            return false;
-                                            })
+                                        });
 
 
-                                            if($(this).hasClass("shows")){
-                                                $(this).removeClass("shows");
-                                                $(this).find("li").find("ul").removeClass("shows");
-                                                $(this).find("li").hide();
-                                                $(this).find("div").css("background","url(images/arrow_right.png) no-repeat").css("background-size","30px");
+                                        if ($(this).hasClass("shows")) {
+                                            $(this).removeClass("shows");
+                                            $(this).find("li").find("ul").removeClass("shows");
+                                            $(this).find("li").hide();
+                                            $(this).find("div").css("background", "url(images/arrow_right.png) no-repeat").css("background-size", "30px");
 
 
-                                            }else{
-                                                $(this).addClass("shows");
-                                                $(this).find("li").show();
-                                                $(this).find("li").find("ul").find("li").hide();
-                                                $(this).show();
-                                                $(this).find("div").eq(0).css("background","url(images/arrow_down.png) no-repeat").css("background-size","30px");
-                                            }
+                                        } else {
+                                            $(this).addClass("shows");
+                                            $(this).find("li").show();
+                                            $(this).find("li").find("ul").find("li").hide();
+                                            $(this).show();
+                                            $(this).find("div").eq(0).css("background", "url(images/arrow_down.png) no-repeat").css("background-size", "30px");
+                                        }
 
-                                        })
-                                    </script>
+                                    })
+                                </script>
                                 <br/>
-                                    <a href="addPot.jsp" style="text-decoration:underline;"><img src="images/PlusGreen.png"
-                                                                                                   style="width: 24px;height: auto"><font
-                                            size="24" color="#5fe18c">添加花盆</font></a>
-                                    <a href="#"
-                                       style="text-decoration:underline;float: right;padding-right: 2em"><img
-                                            src="images/Cancelred.png"
-                                            style="width: 24px;height: auto"><font
-                                            size="24" color="#FC1717">删除花盆</font></a>
-                                    <br/>
-                                    <span style="float: right;color: #FFFFFF">*点击箭头展开列表</span>
+                                <a href="addPot.jsp" style="text-decoration:underline;"><img src="images/PlusGreen.png"
+                                                                                             style="width: 24px;height: auto"><font
+                                        size="24" color="#5fe18c">添加花盆</font></a>
+                                <a href="deletepot?pot_id=<%=pot_ids.get((Integer) Potdevic.getJSONObject(0).get("checked"))%>"
+                                   style="text-decoration:underline;float: right;padding-right: 2em"><img
+                                        src="images/Cancelred.png"
+                                        style="width: 24px;height: auto"><font
+                                        size="24" color="#FC1717">删除花盆</font></a>
+                                <br/>
+                                <span style="float: right;color: #FFFFFF">*点击箭头展开列表</span>
                             </div>
                         </div>
                     </div>

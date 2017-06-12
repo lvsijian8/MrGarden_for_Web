@@ -18,6 +18,8 @@
     }
 %>
 <%
+    List<String> group_names = ((List<String>) getManage.getJSONObject(0).get("group_names"));
+    List<Integer> group_ids = ((List<Integer>) getManage.getJSONObject(0).get("group_ids"));
     List<String> pot_names = ((List<String>) getManage.getJSONObject(0).get("pot_names"));
     List<Integer> pot_ids = ((List<Integer>) getManage.getJSONObject(0).get("pot_ids"));
     List<Integer> pot_waters = ((List<Integer>) getManage.getJSONObject(0).get("pot_waters"));
@@ -172,7 +174,14 @@
         /*}*/
 
     </style>
+    <script>
 
+        window.onload = function () {
+            <%
+                out.print(request.getAttribute("error"));
+            %>
+        };
+    </script>
 
     <script>
 
@@ -246,57 +255,40 @@
                             <h4 class="panel-title">
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    选择您的学校
+                                    <%=getManage.getJSONObject(0).get("top_name")%>
                                 </a>
                             </h4>
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
                              aria-labelledby="headingTwo">
                             <div class="panel-body" style="padding-left: 2em">
-                                <%--<form class="form" method="post">
-                                    <%
-                                        for (int i = 0; i < pot_names.size(); i++) {
-                                            out.print("<input type=\"radio\" id=\"huahua" + i + "\" name=\"radio\" onclick=\"changePot(" + pot_ids.get(i) + ")\"><label for=\"huahua" + i + "\" onclick=\"changePot(" + pot_ids.get(i) + ")\">" + pot_names.get(i) + "</label>");
-                                            if (i + 1 < pot_names.size())
-                                                out.print("<br/>");
-                                        }
-                                    %>
-                                </form>--%>
                                     <div class="treelist">
-                                        <ul class="a">
-                                            <div><a class="ul" href="manage_all.jsp">ccccc</a></div>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                        </ul>
-
-                                        <ul class="a">
-                                            <div><a class="ul" href="manage_all.jsp">ccccc</a></div>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                        </ul>
-
-                                        <ul class="a">
-                                            <div><a class="ul" href="manage_all.jsp">ccccc</a></div>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                            <li><a class="li" href="equipment.jsp">xxxx</a></li>
-                                        </ul>
+                                        <%
+                                            for (int i = 0; i < group_ids.size(); i++) {
+                                                out.print("\n" +
+                                                        "                                    <ul class=\"a\">\n" +
+                                                        "                                        <div><a class=\"ul\" href=\"getManageAll?group_id=" + group_ids.get(i) + "\">" + group_names.get(i) + "</a></div>\n");
+                                                List<Integer> p_ids = ((List<Integer>) getManage.getJSONObject(0).get(group_names.get(i) + "_ids"));
+                                                List<String> p_names = ((List<String>) getManage.getJSONObject(0).get(group_names.get(i) + "_names"));
+                                                for (int j = 0; j < p_ids.size(); j++) {
+                                                    out.print("<li><a class=\"li\" href=\"equipment?pot_id=" + p_ids.get(j) + "\">" + p_names.get(j) + "</a></li>");
+                                                }
+                                                out.print("\n" +
+                                                        "                                    </ul>");
+                                            }
+                                        %>
                                     </div>
 
                                     <script>
 
                                         $(".ul").click(function(event){
 //                                        return false;
-                                        })
+                                        });
 
                                         $(".a").click(function(){
                                             $(this).find("li").click(function(event){
 //                                            return false;
-                                            })
+                                            });
 
 
                                             if($(this).hasClass("shows")){
@@ -320,7 +312,7 @@
                                 <a href="addGroup.jsp" style="text-decoration:underline;"><img src="images/PlusGreen.png"
                                                                                              style="width: 24px;height: auto"><font
                                         size="24" color="#5fe18c">添加组</font></a>
-                                <a href="#"
+                                <a href="delectGroup?group_id=<%=getManage.getJSONObject(0).get("top_id")%>"
 
                                    style="text-decoration:underline;float: right;padding-right: 2em"><img
                                         src="images/Cancelred.png"
@@ -378,12 +370,12 @@
             }
 
             function submit1() {
-                $("#manage_form").attr("action", "waterAll");
+                $("#manage_form").attr("action", "waterAll?group_id=<%=getManage.getJSONObject(0).get("top_id")%>");
                 document.getElementById('manage_form').submit();
             }
 
             function submit2() {
-                $("#manage_form").attr("action", "bottleAll");
+                $("#manage_form").attr("action", "bottleAll?group_id=<%=getManage.getJSONObject(0).get("top_id")%>");
                 document.getElementById('manage_form').submit();
             }
 
@@ -475,51 +467,13 @@
                             "            </tr>");
                 }
             %>
-            <tr>
-                <th><input type="checkbox" id="pot2" name="" class="check" onclick="ckeckall()"></th>
-                <td>
-                    <div>节点1</div>
-                    <span style="font-size: 14px;color:red">离线不可选</span>
-                </td>
-                <td>
-                    <img src="images/Light_Off.png" alt="离线" style="height:24px;">离线
-                </td>
-                <td>
-                    <div class="clearfix">
-                        <div class="float-left">
-                            <strong>60%</strong></div>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-success" role="progressbar"
-                             style="width: 60%; aria-valuenow:60; aria-valuemax:100"></div>
-                    </div>
-                </td>
-                <td>
-                    <div class="clearfix">
-                        <div class="float-left">
-                            <strong>50%</strong>
-                        </div>
-                    </div>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar bg-success" role="progressbar"
-                             style="width:50%; aria-valuenow:50; aria-valuemax:100"></div>
-                    </div>
-                </td>
-                <td>
-                    <strong>一天前</strong>
-                </td>
-                <td>
-                    <strong>一天前</strong>
-                </td>
-                <td>
-                    <a style="text-decoration:underline;" href="equipment.jsp">管理本节点</a>
-                </td>
-            </tr>
-            <%--<tr>--%>
-            <%--<td colspan="8"><span>水量充足，暂时不需要添水</span></td>--%>
-            <%--</tr>--%>
             </tbody>
         </table>
+        <%
+            if (pot_ids.isEmpty()){
+                out.println("<br><br><p style=\"text-align: center; font-size: 24px\">当前组尚无任何节点,<a href=\"addPot.jsp\" style=\"text-decoration: underline\">请添加节点.</a></p><br>");
+            }
+        %>
     </form>
 </div>
 <script>

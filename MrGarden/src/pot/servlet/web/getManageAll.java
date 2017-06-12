@@ -18,11 +18,17 @@ import java.io.IOException;
 public class getManageAll extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int user_id = Findipid.finduser_id(request.getCookies());
+        int group_id = -1;
+        try {
+            group_id = Integer.parseInt(new String(request.getParameter("group_id").getBytes("ISO8859-1"), "UTF-8"));
+        } catch (NullPointerException e) {
+            group_id = -1;
+        }
         getManageAllDaoWeb getManageAllDao = new getManageAllDaoWeb();
         JSONArray array;
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-        array = getManageAllDao.findAllPot(user_id);
+        array = getManageAllDao.findAllPot(user_id, group_id);
         request.setAttribute("getManage", array);
         request.getRequestDispatcher("manage_all.jsp").forward(request, response);
     }

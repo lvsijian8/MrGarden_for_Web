@@ -2,6 +2,7 @@ package pot.servlet.web;
 
 import net.sf.json.JSONArray;
 import pot.dao.web.getPlantDaoWeb;
+import pot.util.Findipid;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,8 +17,9 @@ import java.io.IOException;
 @WebServlet("/getPlant")
 public class getPlant extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int user_id = Findipid.finduser_id(request.getCookies());
         getPlantDaoWeb getPlantDaoWeb = new getPlantDaoWeb();
-        JSONArray array = getPlantDaoWeb.findPlant();
+        JSONArray array = getPlantDaoWeb.findPlant(user_id);
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         request.setAttribute("PlantList", array);

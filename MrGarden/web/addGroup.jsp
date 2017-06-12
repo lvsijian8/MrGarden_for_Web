@@ -45,6 +45,12 @@
             padding: 1em;
         }
     </style>
+
+    <script language="javascript">
+        window.onload = function () {
+            <%=request.getAttribute("error")%>
+        };
+    </script>
 </head>
 <body>
 
@@ -112,20 +118,20 @@
             </div>
         </div>
         <div class="ui form fluid vertical segment">
-            <form name="form" action="append" method="post">
+            <form name="form" action="addGroup" method="post">
                 <div class="two fields">
                     <div class="field">
                         <h5 style="color: #555555;">组名</h5>
                         <div class="ui small left labeled icon input">
                             <input type="text" placeholder="给您的组起个名,您容易记住就行，10个字符内……" id="device_title"
-                                   name="" maxlength='10' required/>
+                                   name="group_name" maxlength='10' required/>
                         </div>
                     </div>
                 </div>
                 <div class="two fields">
                     <div class="field">
                         <h5 style="color: #555555;">描述</h5>
-                        <textarea placeholder="不超过30个字符……" maxlength='30'></textarea>
+                        <textarea placeholder="不超过30个字符……" maxlength='30' name="group_text"></textarea>
                     </div>
                 </div>
                 <input class="ui small blue submit button" type="submit" value="保存">

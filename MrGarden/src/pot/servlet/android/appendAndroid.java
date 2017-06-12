@@ -25,11 +25,12 @@ public class appendAndroid extends HttpServlet {
         int num_water_day = Integer.parseInt(request.getParameter("num_water_day"));
         int num_water_time = Integer.parseInt(request.getParameter("num_water_time"));
         int num_water_ml = Integer.parseInt(request.getParameter("num_water_ml"));
+        int group_id = Integer.parseInt(request.getParameter("group_id"));
         appendDao appendDao = new appendDao();
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        out.println(appendDao.append(user_id, fid, flowername, num_bottle_day, num_bottle_time, num_bottle_ml, num_water_day, num_water_time, num_water_ml, "android"));
+        out.println(appendDao.append(user_id,group_id, fid, flowername, num_bottle_day, num_bottle_time, num_bottle_ml, num_water_day, num_water_time, num_water_ml, "android"));
         out.close();
     }
 

@@ -21,12 +21,19 @@ import java.util.Enumeration;
 public class waterAll extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int user_id = Findipid.finduser_id(request.getCookies());
+        int group_id = -1;
+        try {
+            group_id = Integer.parseInt(new String(request.getParameter("group_id").getBytes("ISO8859-1"), "UTF-8"));
+        } catch (NullPointerException e) {
+            group_id = -1;
+        }
         String key = "speak";
         String speak = "操作成功";
         wateringDao wateringDao = new wateringDao();
         Enumeration paramNames = request.getParameterNames();
         ArrayList<Integer> pot_unids = new ArrayList<Integer>();
         paramNames.hasMoreElements();
+        paramNames.nextElement();//跳过参数中的group_id
         while (paramNames.hasMoreElements()) {
             int pot_id = Integer.parseInt((String) paramNames.nextElement());
             if (-1 == wateringDao.watering(user_id, pot_id, "web")) {
@@ -38,7 +45,7 @@ public class waterAll extends HttpServlet {
         JSONArray array;
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-        array = getManageAllDao.findAllPot(user_id);
+        array = getManageAllDao.findAllPot(user_id,group_id);
         request.setAttribute("getManage", array);
         if (speak.equals("no"))
             request.setAttribute("pot_unids", pot_unids);
