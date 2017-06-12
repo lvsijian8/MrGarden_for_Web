@@ -25,7 +25,6 @@ public class chartGroupDaoWeb {
         ArrayList<String> group_names = new ArrayList<String>();
         String sqlFindGroud = "SELECT group_id,group_name FROM groups WHERE user_id=?;";
         String sqlFindPots = "SELECT pot_id,flower_name FROM pot WHERE group_id=?;";
-
         ArrayList<Integer> pot_ids = null;
         String sqlFindWaterFertilizer = "SELECT now_water,now_bottle FROM pot WHERE pot_id=?;";
         ArrayList<Map> potsdata = new ArrayList<Map>();
@@ -120,19 +119,20 @@ public class chartGroupDaoWeb {
                 potdata.put("humidity", humidity);
                 potdata.put("temperature", temperature);
                 potdata.put("days", days);
-                potsdata.add(potdata);
+                //if (!days.isEmpty())
+                    potsdata.add(potdata);//将查询的未处理的数据存至数据结构
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             DBConnection.closeDB(con, prepstmt, rs);
         }
-        ArrayList<Map> potsEndData = new ArrayList<Map>();
-        ArrayList<String> EndDays = new ArrayList<String>();//日期
+        ArrayList<Map> potsEndData = new ArrayList<Map>();//建一个相同的数据结构存储处理后的数据
+        ArrayList<String> EndDays = new ArrayList<String>();//日期//索引0存唯一日期
         Map potEndDate = new HashMap();
         potEndDate.put("EndDays", EndDays);
         potsEndData.add(potEndDate);
-        for (int i = 0; i < potsdata.size(); i++) {
+        for (int i = 0; i < potsdata.size(); i++) {//索引1~n存1~n个植物的温度和湿度
             Map potEndData = new HashMap();
             ArrayList<Integer> humidity = new ArrayList<Integer>();//湿度
             ArrayList<Integer> temperature = new ArrayList<Integer>();//温度
@@ -144,33 +144,40 @@ public class chartGroupDaoWeb {
             int minIndex = -1;
             String minDate = "9999-99-99";
             for (int i = 0; i < potsdata.size(); i++) {
-                if (minDate.compareTo(((ArrayList<String>) potsdata.get(i).get("days")).get(0)) > 0) {
+                if (((ArrayList<Integer>) potsdata.get(i).get("days")).isEmpty()) {
+                    potsdata.remove(i);
+                    continue;
+                }
+                if (minDate.compareTo(((ArrayList<String>) potsdata.get(i).get("days")).get(0)) > 0) {//获取全部数据中最小的日期的位置和值
                     minDate = ((ArrayList<String>) potsdata.get(i).get("days")).get(0);
                     minIndex = i;
                 }
             }
-            if (((ArrayList<String>) potsEndData.get(0).get("EndDays")).isEmpty() || !((ArrayList<String>) potsEndData.get(0).get("EndDays")).get(((ArrayList<String>) potsEndData.get(0).get("EndDays")).size() - 1).equals(((ArrayList<String>) potsdata.get(minIndex).get("days")).get(0))) {
-                ((ArrayList<String>) potsEndData.get(0).get("EndDays")).add(((ArrayList<String>) potsdata.get(minIndex).get("days")).get(0));
+            if (minIndex==-1){
+                continue;
+            }
+            if (((ArrayList<String>) potsEndData.get(0).get("EndDays")).isEmpty() || !(((ArrayList<String>) potsEndData.get(0).get("EndDays")).get(((ArrayList<String>) potsEndData.get(0).get("EndDays")).size() - 1)).equals(minDate)) {
+                ((ArrayList<String>) potsEndData.get(0).get("EndDays")).add(minDate);//当最终结果中无日期,或和最小日期不一样时,添加日期,并从原本的数据结构中移除
                 ((ArrayList<String>) potsdata.get(minIndex).get("days")).remove(0);
                 for (int i = 1; i < potsEndData.size(); i++) {
-                    ((ArrayList<Integer>) potsEndData.get(i).get("humidity")).add(-9999);
+                    ((ArrayList<Integer>) potsEndData.get(i).get("humidity")).add(-9999);//添加时间日期对应的位置占位符
                     ((ArrayList<Integer>) potsEndData.get(i).get("temperature")).add(-9999);
                 }
             }
-            else if (!((ArrayList<String>) potsEndData.get(0).get("EndDays")).isEmpty()){
+            else if ((((ArrayList<String>) potsEndData.get(0).get("EndDays")).get(((ArrayList<String>) potsEndData.get(0).get("EndDays")).size() - 1)).equals(minDate)){
                 ((ArrayList<String>) potsdata.get(minIndex).get("days")).remove(0);
             }
             ((ArrayList<Integer>) potsEndData.get(minIndex + 1).get("humidity")).set(((ArrayList<Integer>) potsEndData.get(minIndex + 1).get("humidity")).size() - 1, ((ArrayList<Integer>) potsdata.get(minIndex).get("humidity")).get(0));
             ((ArrayList<Integer>) potsEndData.get(minIndex + 1).get("temperature")).set(((ArrayList<Integer>) potsEndData.get(minIndex + 1).get("temperature")).size() - 1, ((ArrayList<Integer>) potsdata.get(minIndex).get("temperature")).get(0));
-            ((ArrayList<Integer>) potsdata.get(minIndex).get("temperature")).remove(((ArrayList<Integer>) potsdata.get(minIndex).get("temperature")).size() - 1);
-            ((ArrayList<Integer>) potsdata.get(minIndex).get("humidity")).remove(((ArrayList<Integer>) potsdata.get(minIndex).get("humidity")).size() - 1);
+            ((ArrayList<Integer>) potsdata.get(minIndex).get("temperature")).remove(0);
+            ((ArrayList<Integer>) potsdata.get(minIndex).get("humidity")).remove(0);
             if (((ArrayList<Integer>) potsdata.get(minIndex).get("humidity")).isEmpty()) {
                 potsdata.remove(minIndex);
             }
         }
-        for (int i = 0; i < ((ArrayList<Integer>) potsEndData.get(1).get("temperature")).size(); i++) {
-            System.out.println(((ArrayList<Integer>) potsEndData.get(1).get("temperature")).get(i));
-        }
+        Map potsEndDatajson = new HashMap();
+        potsEndDatajson.put("potsEndDatajson",potsEndData);
+        array.add(potsEndDatajson);
         return array;
     }
 }

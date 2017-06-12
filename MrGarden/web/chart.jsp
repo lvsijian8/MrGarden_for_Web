@@ -1,6 +1,8 @@
 <%@ page import="net.sf.json.JSONArray" %>
 <%@ page import="java.net.URLDecoder" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
 <%--
   Created by IntelliJ IDEA.
   User: lvsijian8
@@ -20,7 +22,8 @@
 <%
     List<String> group_names = ((List<String>) Groupchart.getJSONObject(0).get("group_names"));
     List<Integer> group_ids = ((List<Integer>) Groupchart.getJSONObject(0).get("group_ids"));
-    List<String> pot_names = ((List<String>) Groupchart.getJSONObject(0).get(Groupchart.getJSONObject(0).get("top_name")+"_names"));
+    List<String> pot_names = ((List<String>) Groupchart.getJSONObject(0).get(Groupchart.getJSONObject(0).get("top_name") + "_names"));
+    List<Map> potsEndData = ((List<Map>) Groupchart.getJSONObject(pot_names.size() + 1).get("potsEndDatajson"));
 %>
 <html>
 <head>
@@ -156,11 +159,44 @@
             height: 40%;
             margin: 2em auto;
         }
-        ul.a{width:100%;cursor:pointer;padding:0 0px;color:white;}
-        ul.a li{list-style-type:none;cursor:pointer;padding:5px 0 0 60px;color:black;width:90%;background:url("images/circle.png") no-repeat 40px;background-size:8px;display:none}
-        .treelist{width:222px;}
-        ul.a div{height:34px;width:100%;padding-left:27px;background:url("images/arrow_right.png") no-repeat;background-size:30px;padding-top:6px;color:#333333;font-weight:bold;font-size:15px}
-        .shows{display:block}
+
+        ul.a {
+            width: 100%;
+            cursor: pointer;
+            padding: 0 0px;
+            color: white;
+        }
+
+        ul.a li {
+            list-style-type: none;
+            cursor: pointer;
+            padding: 5px 0 0 60px;
+            color: black;
+            width: 90%;
+            background: url("images/circle.png") no-repeat 40px;
+            background-size: 8px;
+            display: none
+        }
+
+        .treelist {
+            width: 222px;
+        }
+
+        ul.a div {
+            height: 34px;
+            width: 100%;
+            padding-left: 27px;
+            background: url("images/arrow_right.png") no-repeat;
+            background-size: 30px;
+            padding-top: 6px;
+            color: #333333;
+            font-weight: bold;
+            font-size: 15px
+        }
+
+        .shows {
+            display: block
+        }
     </style>
 
 </head>
@@ -235,14 +271,14 @@
                             <div class="panel-body">
                                 <div class="treelist">
                                     <%
-                                        for(int i=0;i<group_ids.size();i++){
+                                        for (int i = 0; i < group_ids.size(); i++) {
                                             out.print("\n" +
                                                     "                                    <ul class=\"a\">\n" +
-                                                    "                                        <div><a class=\"ul\" href=\"chartGroup?group_id="+group_ids.get(i)+"\">"+group_names.get(i)+"</a></div>\n");
-                                            List<Integer> p_ids = ((List<Integer>) Groupchart.getJSONObject(0).get(group_names.get(i)+"_ids"));
-                                            List<String> p_names = ((List<String>) Groupchart.getJSONObject(0).get(group_names.get(i)+"_names"));
-                                            for (int j=0;j<p_ids.size();j++){
-                                                out.print("<li><a class=\"li\" href=\"chart?pot_id="+p_ids.get(j)+"\">"+p_names.get(j)+"</a></li>");
+                                                    "                                        <div><a class=\"ul\" href=\"chartGroup?group_id=" + group_ids.get(i) + "\">" + group_names.get(i) + "</a></div>\n");
+                                            List<Integer> p_ids = ((List<Integer>) Groupchart.getJSONObject(0).get(group_names.get(i) + "_ids"));
+                                            List<String> p_names = ((List<String>) Groupchart.getJSONObject(0).get(group_names.get(i) + "_names"));
+                                            for (int j = 0; j < p_ids.size(); j++) {
+                                                out.print("<li><a class=\"li\" href=\"chart?pot_id=" + p_ids.get(j) + "\">" + p_names.get(j) + "</a></li>");
                                             }
                                             out.print("\n" +
                                                     "                                    </ul>");
@@ -254,29 +290,29 @@
 
                                 <script>
 
-                                    $(".ul").click(function(event){
+                                    $(".ul").click(function (event) {
 //                                        return false;
                                     });
 
-                                    $(".a").click(function(){
-                                        $(this).find("li").click(function(event){
+                                    $(".a").click(function () {
+                                        $(this).find("li").click(function (event) {
 //                                            return false;
                                         });
 
 
-                                        if($(this).hasClass("shows")){
+                                        if ($(this).hasClass("shows")) {
                                             $(this).removeClass("shows");
                                             $(this).find("li").find("ul").removeClass("shows");
                                             $(this).find("li").hide();
-                                            $(this).find("div").css("background","url(images/arrow_right.png) no-repeat").css("background-size","30px");
+                                            $(this).find("div").css("background", "url(images/arrow_right.png) no-repeat").css("background-size", "30px");
 
 
-                                        }else{
+                                        } else {
                                             $(this).addClass("shows");
                                             $(this).find("li").show();
                                             $(this).find("li").find("ul").find("li").hide();
                                             $(this).show();
-                                            $(this).find("div").eq(0).css("background","url(images/arrow_down.png) no-repeat").css("background-size","30px");
+                                            $(this).find("div").eq(0).css("background", "url(images/arrow_down.png) no-repeat").css("background-size", "30px");
                                         }
 
                                     })
@@ -299,12 +335,12 @@
         <div id="diagram"></div>
         <div class="get">
             <%
-                String colors[]={"97BE0D","88B8E6","D84F5F","BEDBE9"};
-                for(int i=0;i<pot_names.size();i++){
+                String colors[] = {"97BE0D", "88B8E6", "D84F5F", "BEDBE9"};
+                for (int i = 0; i < pot_names.size(); i++) {
                     out.print("<div class=\"arc\">\n" +
-                            "                <span class=\"text\">"+pot_names.get(i)+"</span>\n" +
-                            "                <input type=\"hidden\" class=\"percent\" value=\""+Groupchart.getJSONObject(i+1).get("water")+"\"/>\n" +
-                            "                <input type=\"hidden\" class=\"color\" value=\"#"+colors[i%colors.length]+"\"/>\n" +
+                            "                <span class=\"text\">" + pot_names.get(i) + "</span>\n" +
+                            "                <input type=\"hidden\" class=\"percent\" value=\"" + Groupchart.getJSONObject(i + 1).get("water") + "\"/>\n" +
+                            "                <input type=\"hidden\" class=\"color\" value=\"#" + colors[i % colors.length] + "\"/>\n" +
                             "            </div>");
                 }
             %>
@@ -315,8 +351,8 @@
             <div class="surplus">
                 <ul>
                     <%
-                        for(int i=0;i<pot_names.size();i++){
-                            out.print("<li style=\"background: #"+colors[i%colors.length]+"\">"+pot_names.get(i)+"</li>");
+                        for (int i = 0; i < pot_names.size(); i++) {
+                            out.print("<li style=\"background: #" + colors[i % colors.length] + "\">" + pot_names.get(i) + "</li>");
                         }
                     %>
                 </ul>
@@ -327,11 +363,11 @@
         <div id="diagram2"></div>
         <div class="get2">
             <%
-                for(int i=0;i<pot_names.size();i++){
+                for (int i = 0; i < pot_names.size(); i++) {
                     out.print("<div class=\"arc\">\n" +
-                            "                <span class=\"text\">"+pot_names.get(i)+"</span>\n" +
-                            "                <input type=\"hidden\" class=\"percent\" value=\""+Groupchart.getJSONObject(i+1).get("fertilizer")+"\"/>\n" +
-                            "                <input type=\"hidden\" class=\"color\" value=\"#"+colors[i%colors.length]+"\"/>\n" +
+                            "                <span class=\"text\">" + pot_names.get(i) + "</span>\n" +
+                            "                <input type=\"hidden\" class=\"percent\" value=\"" + Groupchart.getJSONObject(i + 1).get("fertilizer") + "\"/>\n" +
+                            "                <input type=\"hidden\" class=\"color\" value=\"#" + colors[i % colors.length] + "\"/>\n" +
                             "            </div>");
                 }
             %>
@@ -471,10 +507,13 @@
                     type: 'category',
                     boundaryGap: false,
                     data: function () {
-                        var list = [];//------------
-                        for (var i = 1; i <= 30; i++) {
-                            list.push('2017-06-' + i);
+                        var list = [<%
+                        for (int i = 0; i < ((List<Integer>) potsEndData.get(0).get("EndDays")).size(); i++) {
+                            out.println("\'"+((List<Integer>) potsEndData.get(0).get("EndDays")).get(i)+"\'");
+                            if (i<((List<Integer>) potsEndData.get(0).get("EndDays")).size()-1)
+                                out.print(",");
                         }
+                        %>];
                         return list;
                     }()
                 }
@@ -487,48 +526,54 @@
                 }
             ],
             series: [
-                {
-                    name: '区域1',
-                    type: 'line',
-                    stack: '水量',
-                    areaStyle: {normal: {}},
-                    data: function () {
-                        var list = [,,,,,22,23,34,43,32,21,12,23];
-                       /* for (var i = 1; i <= 30; i++) {
-                            list.push(Math.round(Math.random() * 10));
-                        }*/
-                        return list;
-                    }(),
-                    markLine: {
-                        data: [
-                            {type: 'average', name: '平均值'}
-                        ]
+                <%
+                for (int i=1;i<potsEndData.size();i++){
+                    out.print("{\n" +
+"                    name: '"+pot_names.get(i-1)+"',\n" +
+"                    type: 'line',\n" +
+"                    stack: 'stack',\n" +
+"                    areaStyle: {normal: {}},\n" +
+"                    data: function () {\n" +
+"                        var list = [");
+                    for (int j=0;j<((List<Integer>)potsEndData.get(i).get("temperature")).size();j++){
+                        if (((List<Integer>)potsEndData.get(i).get("temperature")).get(j)!=-9999)
+                            out.print(((List<Integer>)potsEndData.get(i).get("temperature")).get(j));
+                        if (j<((List<Integer>)potsEndData.get(i).get("temperature")).size()-1)
+                            out.print(",");
+
                     }
-                }/*,
-                {
-                    name: '区域2',
-                    type: 'line',
-                    stack: '水量',
-                    areaStyle: {normal: {}},
-                    data: function () {
-                        var list = [];
-                        for (var i = 1; i <= 30; i++) {
-                            list.push(Math.round(Math.random() * 10));
-                        }
-                        return list;
-                    }(),
-                    markLine: {
-                        data: [
-                            {type: 'average', name: '平均值'}
-                        ]
-                    }
-                }*/
+                    out.print("];\n" +
+"                        return list;\n" +
+"                    }(),\n" +
+"                    markLine: {\n" +
+"                        data: [\n" +
+"                            {type: 'average', name: '平均值'}\n" +
+"                        ]\n" +
+"                    }\n" +
+"                }");
+                    if (i<potsEndData.size()-1)
+                        out.print(",");
+                }
+                if (potsEndData.size()==0){
+                    out.print("{\n" +
+"                    name: '尚无数据',\n" +
+"                    type: 'line',\n" +
+"                    stack: 'stack',\n" +
+"                    areaStyle: {normal: {}},\n" +
+"                    data: function () {\n" +
+"                        var list = [];\n" +
+"                        return list;\n" +
+"                    }(),\n" +
+"                    markLine: {\n" +
+"                        data: [\n" +
+"                            {type: 'average', name: '平均值'}\n" +
+"                        ]\n" +
+"                    }\n" +
+"                }");
+                }
+                %>
             ]
         };
-
-
-
-
 
 
         //---------------
@@ -648,10 +693,13 @@
                     type: 'category',
                     boundaryGap: false,
                     data: function () {
-                        var list = [];
-                        for (var i = 1; i <= 30; i++) {
-                            list.push('2017-06-' + i);
+                        var list = [<%
+                        for (int i = 0; i < ((List<Integer>) potsEndData.get(0).get("EndDays")).size(); i++) {
+                            out.println("\'"+((List<Integer>) potsEndData.get(0).get("EndDays")).get(i)+"\'");
+                            if (i<((List<Integer>) potsEndData.get(0).get("EndDays")).size()-1)
+                                out.print(",");
                         }
+                        %>];
                         return list;
                     }()
                 }
@@ -664,78 +712,52 @@
                 }
             ],
             series: [
-                {
-                    name: '区域1',
-                    type: 'line',
-                    stack: 'stack',
-                    areaStyle: {normal: {}},
-                    data: function () {
-                        var list = [];
-                        for (var i = 1; i <= 30; i++) {
-                            list.push(Math.round(Math.random() * 10));
-                        }
-                        return list;
-                    }(),
-                    markLine: {
-                        data: [
-                            {type: 'average', name: '平均值'}
-                        ]
+                <%
+                for (int i=1;i<potsEndData.size();i++){
+                    out.print("{\n" +
+"                    name: '"+pot_names.get(i-1)+"',\n" +
+"                    type: 'line',\n" +
+"                    stack: 'stack',\n" +
+"                    areaStyle: {normal: {}},\n" +
+"                    data: function () {\n" +
+"                        var list = [");
+                    for (int j=0;j<((List<Integer>)potsEndData.get(i).get("humidity")).size();j++){
+                        if (((List<Integer>)potsEndData.get(i).get("humidity")).get(j)!=-9999)
+                            out.print(((List<Integer>)potsEndData.get(i).get("humidity")).get(j));
+                        if (j<((List<Integer>)potsEndData.get(i).get("humidity")).size()-1)
+                            out.print(",");
+
                     }
-                },
-                {
-                    name: '区域2',
-                    type: 'line',
-                    stack: 'stack',
-                    areaStyle: {normal: {}},
-                    data: function () {
-                        var list = [];
-                        for (var i = 1; i <= 30; i++) {
-                            list.push(Math.round(Math.random() * 10));
-                        }
-                        return list;
-                    }(),
-                    markLine: {
-                        data: [
-                            {type: 'average', name: '平均值'}
-                        ]
-                    }
-                },
-                {
-                    name: '区域3',
-                    type: 'line',
-                    stack: 'stack',
-                    areaStyle: {normal: {}},
-                    data: function () {
-                        var list = [];
-                        for (var i = 1; i <= 30; i++) {
-                            list.push(Math.round(Math.random() * 10));
-                        }
-                        return list;
-                    }(),
-                    markLine: {
-                        data: [
-                            {type: 'average', name: '平均值'}
-                        ]
-                    }
-                },
-                {
-                    name: '区域4',
-                    type: 'line',
-                    stack: 'stack',
-                    areaStyle: {normal: {}},
-                    data: function () {
-                        var list = [];
-                        for (var i = 1; i <= 30; i++) {
-                            list.push(Math.round(Math.random() * 10));
-                        }
-                        return list;
-                    }(),
-                    markLine: {
-                        data: [
-                            {type: 'average', name: '平均值'}
-                        ]
-                    }
+                    out.print("];\n" +
+"                        return list;\n" +
+"                    }(),\n" +
+"                    markLine: {\n" +
+"                        data: [\n" +
+"                            {type: 'average', name: '平均值'}\n" +
+"                        ]\n" +
+"                    }\n" +
+"                }");
+                    if (i<potsEndData.size()-1)
+                        out.print(",");
                 }
+                if (potsEndData.size()==0){
+                    out.print("{\n" +
+"                    name: '尚无数据',\n" +
+"                    type: 'line',\n" +
+"                    stack: 'stack',\n" +
+"                    areaStyle: {normal: {}},\n" +
+"                    data: function () {\n" +
+"                        var list = [];\n" +
+"                        return list;\n" +
+"                    }(),\n" +
+"                    markLine: {\n" +
+"                        data: [\n" +
+"                            {type: 'average', name: '平均值'}\n" +
+"                        ]\n" +
+"                    }\n" +
+"                }");
+                }
+                %>
             ]
         };
 
