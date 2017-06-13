@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by lvsijian8 on 2017/5/10.
@@ -16,15 +18,24 @@ public class havePotDaoWeb {
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
         Boolean stats = false;
-        String sql = "SELECT COUNT(pot_id) FROM user_pot WHERE user_id=?;";
+        String sqlGroup="SELECT group_id FROM groups WHERE user_id=?;";
+        String sqlPot="SELECT pot_id FROM pot WHERE group_id=?;";
+        ArrayList<Integer> group_ids=new ArrayList<Integer>();
         try {
             con = DBConnection.getDBConnection();
-            prepstmt = con.prepareStatement(sql);
+            prepstmt = con.prepareStatement(sqlGroup);
             prepstmt.setInt(1, user_id);
             rs = prepstmt.executeQuery();
-            while (rs.next()) {
-                if (rs.getInt(1) > 0)
-                    stats = true;
+            while (rs.next()){
+                group_ids.add(rs.getInt(1));
+            }
+            prepstmt = con.prepareStatement(sqlPot);
+            for (int pot_id:group_ids){
+                prepstmt.setInt(1,pot_id);
+                rs = prepstmt.executeQuery();
+                while (rs.next()){
+                    stats=true;
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Created by lvsijian8 on 2017/5/10.
  */
-@WebFilter({"/chart.jsp","/charts_pot.jsp", "/equipment.jsp", "/manage.jsp", "/manage_all.jsp", "/history.jsp", "/chart","/chartGroup",  "/deletepot", "/deviceState","/equipment", "/getManageAll", "/setTimeMl","/wateringWeb", "/waterAll"})
+@WebFilter({"/chart.jsp", "/charts_pot.jsp", "/equipment.jsp", "/manage.jsp", "/manage_all.jsp", "/bottleAll", "/chart", "/chartGroup", "/deletepot", "/deviceState", "/equipment", "/getManageAll", "/setTimeMl", "/wateringWeb", "/waterAll"})
 public class havePot implements Filter {
     public void destroy() {
     }

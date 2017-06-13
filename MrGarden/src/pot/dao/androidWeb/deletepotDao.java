@@ -18,10 +18,9 @@ public class deletepotDao {
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
         Timestamp now = new Timestamp(new Date().getTime());
-        String sqldelete = "DELETE FROM pot WHERE pot_id = ?;";
-        String sqluserpot = "DELETE FROM user_pot WHERE pot_id = ? AND user_id=?;";
-        String sqltable = "drop table pot_" + pot_id + ";";
         String sqlFindPotName = "SELECT flower_name FROM pot WHERE pot_id=?;";
+        String sqldelete = "DELETE FROM pot WHERE pot_id = ?;";
+        String sqltable = "drop table pot_" + pot_id + ";";
         String sqlAddHistory = "INSERT INTO history (pot_id, user_id, device, time, handle,detail) VALUES(?,?,?,?,?,?);";
         String flower_name = "";
         try {
@@ -34,10 +33,6 @@ public class deletepotDao {
             }
             prepstmt = con.prepareStatement(sqldelete);
             prepstmt.setInt(1, pot_id);
-            state = prepstmt.executeUpdate();
-            prepstmt = con.prepareStatement(sqluserpot);
-            prepstmt.setInt(1, pot_id);
-            prepstmt.setInt(2, user_id);
             state = prepstmt.executeUpdate();
             prepstmt = con.prepareStatement(sqltable);
             prepstmt.executeUpdate();

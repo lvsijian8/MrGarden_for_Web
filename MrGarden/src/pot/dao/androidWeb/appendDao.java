@@ -15,7 +15,6 @@ public class appendDao {
         int state = 0, pot_id = 0;
         String sql = "INSERT INTO pot (fid, flower_name, bottle_day, bottle_time, bottle_ml, water_day,water_time, water_ml,group_id) VALUES(?,?,?,?,?,?,?,?,?);";
         String sqlFind = "select MAX(pot_id) from pot where fid=? AND flower_name=? AND bottle_day=? AND bottle_time=? AND bottle_ml=? AND water_day=? AND water_time=? AND water_ml=?;";
-        String sqlPot = "INSERT INTO user_pot (user_id,pot_id) VALUES(?,?);";
         String sqlAddHistory = "INSERT INTO history (pot_id, user_id, device, time, handle,detail) VALUES(?,?,?,?,?,?);";
         Timestamp now = new Timestamp(new java.util.Date().getTime());
         try {
@@ -44,10 +43,6 @@ public class appendDao {
             while (rs.next()) {
                 pot_id = rs.getInt(1);
             }
-            prepstmt = con.prepareStatement(sqlPot);
-            prepstmt.setInt(1, user_id);
-            prepstmt.setInt(2, pot_id);
-            state = prepstmt.executeUpdate();
             String sqlTable = "CREATE TABLE `MrGarden`.`pot_" + pot_id + "` (" +
                     "`time` datetime NOT NULL," +
                     "`out_temperature` int(3) DEFAULT NULL," +

@@ -22,7 +22,9 @@ public class historyDaoWeb {
         ResultSet rs = null;
         JSONArray array = new JSONArray();
         Map params = new HashMap();
-        String sqlFindName = "SELECT pot.pot_id,pot.flower_name FROM user_pot left join pot ON pot.pot_id=user_pot.pot_id WHERE user_id=?;";
+        String sqlGroup="SELECT group_id,group_name FROM groups WHERE user_id=?;";
+        String sqlPot="SELECT pot_id,flower_name FROM pot WHERE group_id=?;";
+        ArrayList<Integer> group_ids=new ArrayList<Integer>();
         String sqlhistory = "SELECT COUNT(H.user_id) " +
                 "FROM history AS H left join pot ON pot.pot_id=H.pot_id WHERE H.user_id=?";
 
@@ -53,14 +55,21 @@ public class historyDaoWeb {
         ArrayList<String> pot_times = new ArrayList<String>();
         try {
             con = DBConnection.getDBConnection();
-            prepstmt = con.prepareStatement(sqlFindName);
+            prepstmt = con.prepareStatement(sqlGroup);
             prepstmt.setInt(1, user_id);
             rs = prepstmt.executeQuery();
-            while (rs.next()) {
-                pot_ids.add(rs.getInt("pot_id"));
-                pot_names.add(rs.getString("flower_name"));
+            while (rs.next()){
+                group_ids.add(rs.getInt(1));
             }
-
+            prepstmt = con.prepareStatement(sqlPot);
+            for (int id:group_ids){
+                prepstmt.setInt(1,id);
+                rs = prepstmt.executeQuery();
+                while (rs.next()){
+                    pot_ids.add(rs.getInt("pot_id"));
+                    pot_names.add(rs.getString("flower_name"));
+                }
+            }
             prepstmt = con.prepareStatement(sqlhistory);
             prepstmt.setInt(1, user_id);
             int leng = 1;
