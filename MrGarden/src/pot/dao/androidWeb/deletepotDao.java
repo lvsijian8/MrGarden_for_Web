@@ -42,12 +42,12 @@ public class deletepotDao {
             prepstmt.setString(3, "android");
             prepstmt.setTimestamp(4, now);
             prepstmt.setString(5, "delete_pot");
-            prepstmt.setString(6, "被删除的花盆为:" + flower_name);
+            prepstmt.setString(6, "被删除的节点为:" + flower_name);
             prepstmt.executeUpdate();
         } catch (Exception e) {
-            System.out.println("<<<删除花盆出错.");
+            System.out.println("<<<删除节点出错.");
             e.printStackTrace();
-            System.out.println("删除花盆出错.>>>");
+            System.out.println("删除节点出错.>>>");
             state = 0;
         } finally {
             DBConnection.closeDB(con, prepstmt, rs);

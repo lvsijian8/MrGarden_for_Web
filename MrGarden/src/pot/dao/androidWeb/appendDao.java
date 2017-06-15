@@ -59,8 +59,9 @@ public class appendDao {
             prepstmt.setString(3, device);
             prepstmt.setTimestamp(4, now);
             prepstmt.setString(5, "add_pot");
-            prepstmt.setString(6, "本次创建花盆名称为:" + fname + "组id为:"+group_id+",施肥间隔:" + bday + "天,施肥时间:" + bbtime + "点,施肥量:" + bml + "ml,浇水间隔:" + wday + ",浇水时间:" + wtime + ",浇水量:" + wml);
-            prepstmt.executeUpdate();
+            prepstmt.setString(6, "本次创建节点名称为:" + fname + "组id为:"+group_id+",施肥间隔:" + bday + "天,施肥时间:" + bbtime + "点,施肥量:" + bml + "ml,浇水间隔:" + wday + ",浇水时间:" + wtime + ",浇水量:" + wml);
+            state=prepstmt.executeUpdate();
+            System.out.print(state);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

@@ -1,6 +1,6 @@
 package pot.servlet.android;
 
-import pot.dao.android.deviceDaoAndroid;
+import pot.dao.android.gdataDaoAndroid;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,20 +12,20 @@ import java.io.PrintWriter;
 import java.util.Map;
 
 /**
- * Created by lvsijian8 on 2017/4/15.
+ * Created by lvsijian8 on 2017/6/14.
  */
-@WebServlet("/deviceAndroid")
-public class deviceAndroid extends HttpServlet {
+@WebServlet("/gdataAndroid")
+public class gdataAndroid extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int user_id = Integer.parseInt(new String(request.getParameter("user_id").getBytes("ISO8859-1"), "UTF-8"));
+        String user_id = new String(request.getParameter("user_id").getBytes("ISO8859-1"), "UTF-8");
         int group_id = -1;
         try {
             group_id = Integer.parseInt(new String(request.getParameter("group_id").getBytes("ISO8859-1"), "UTF-8"));
         } catch (NullPointerException e) {
             group_id = -1;
         }
-        deviceDaoAndroid deviceDao = new deviceDaoAndroid();
-        Map wai = deviceDao.finddevice(user_id,group_id);
+        gdataDaoAndroid gdataDao =new gdataDaoAndroid();
+        Map wai = gdataDao.getgdata(Integer.parseInt(user_id),group_id);
         if (wai != null) {
             response.setContentType("text/json;charset=UTF-8");
             response.setCharacterEncoding("UTF-8");

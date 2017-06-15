@@ -194,7 +194,7 @@
                 url: 'deviceState',
                 data: {
                     'user_id':<%= Potdevic.getJSONObject(0).get("user_id")%>,
-                    'pot_id': <%=pot_ids.get((Integer) Potdevic.getJSONObject(0).get("checked"))%>
+                    'pot_id': <%=Potdevic.getJSONObject(0).get("checked")%>
                 },//通过POST模式与deviceState交互
                 success: function (data) {//交互成功后将返回信息输出至HTML相应位置
                     $('#now_temperature')[0].innerHTML = data.split('|')[0];
@@ -371,12 +371,12 @@
                                 <br/>
                                 <a href="addPot.jsp" style="text-decoration:underline;"><img src="images/PlusGreen.png"
                                                                                              style="width: 24px;height: auto"><font
-                                        size="24" color="#5fe18c">添加花盆</font></a>
-                                <a href="deletepot?pot_id=<%=pot_ids.get((Integer) Potdevic.getJSONObject(0).get("checked"))%>"
+                                        size="24" color="#5fe18c">添加节点</font></a>
+                                <a href="deletepot?pot_id=<%=Potdevic.getJSONObject(0).get("checked")%>"
                                    style="text-decoration:underline;float: right;padding-right: 2em"><img
                                         src="images/Cancelred.png"
                                         style="width: 24px;height: auto"><font
-                                        size="24" color="#FC1717">删除花盆</font></a>
+                                        size="24" color="#FC1717">删除花节点</font></a>
                                 <br/>
                                 <span style="float: right;color: #FFFFFF">*点击箭头展开列表</span>
                             </div>
@@ -496,7 +496,7 @@
                                 <input type="button" id="green1" value="点击加水" onclick="unOnline()"
                                        style="height: 33px;border: 2px solid #f9f9f9;border-radius: 2px;background-color: transparent;"></input>
                                 <a class="ui tiny green button"
-                                   href="manage.jsp?&pot_id=<%=pot_ids.get((Integer) Potdevic.getJSONObject(0).get("checked"))%>"><i><img
+                                   href="manage.jsp?&pot_id=<%=Potdevic.getJSONObject(0).get("checked")%>"><i><img
                                         src="images/Settings.png"
                                         width="14px" height="auto">
                                 </i>管 理</a>
@@ -530,7 +530,7 @@
                                 <input type="button" id="green2" value="点击施肥" onclick="unOnline()"
                                        style="height: 33px;border: 2px solid #f9f9f9;border-radius: 2px;background-color: transparent;"></input>
                                 <a class="ui tiny green button"
-                                   href="manage.jsp?&pot_id=<%=pot_ids.get((Integer) Potdevic.getJSONObject(0).get("checked"))%>"><i><img
+                                   href="manage.jsp?&pot_id=<%=Potdevic.getJSONObject(0).get("checked")%>"><i><img
                                         src="images/Settings.png" width="14px"
                                         height="auto"> </i>管 理</a>
                                 <a class="ui tiny blue button" href="history.jsp"><i><img src="images/Clock.png"
@@ -550,7 +550,7 @@
                 url: 'wateringWeb',
                 data: {
                     'user_id':<%= Potdevic.getJSONObject(0).get("user_id")%>,
-                    'pot_id': <%=pot_ids.get((Integer) Potdevic.getJSONObject(0).get("checked"))%>,
+                    'pot_id': <%=Potdevic.getJSONObject(0).get("checked")%>,
                     'type': type,
                     'watered': watered
                 },//通过POST模式与deviceState交互

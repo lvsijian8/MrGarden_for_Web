@@ -40,7 +40,7 @@
 %>
 <html>
 <head>
-    <title>管理全部花盆</title>
+    <title>管理全部节点</title>
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
     <meta name="format-detection" content="telephone=no"/>
@@ -354,7 +354,7 @@
 
         <script>
             function nockeck() {
-                alert("请选择您要操作的花盆!!!");
+                alert("请选择您要操作的节点!!!");
             }
 
             function ckeckall() {
@@ -385,7 +385,7 @@
             <thead class="thead-default">
             <tr>
                 <th style="width: 2em"><input type="checkbox" id="ckAll" onchange="ckeckall()"></th>
-                <th style="width: 10em">花盆名</th>
+                <th style="width: 10em">节点名</th>
                 <th style="width: 6em">在线状态</th>
                 <th style="width: 18em" class="text-center">水量</th>
                 <th style="width: 16em" class="text-center">营养液</th>

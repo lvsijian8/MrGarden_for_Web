@@ -187,7 +187,7 @@
     <form>
         <div>
             <div class="selectStyle">
-                花盆：<select class="select" id="pot_names">
+                节点：<select class="select" id="pot_names">
                 <option value="-1">全部</option>
                 <%
                     for (int i = 0; i < pot_ids.size(); i++) {
@@ -208,7 +208,7 @@
                 <option value="-1" id="-1">全部</option>
                 <option value="watering" id="watering1">浇水</option>
                 <option value="fertilizering" id="fertilizering1">施肥</option>
-                <option value="delete_pot" id="delete_pot1">删除花盆</option>
+                <option value="delete_pot" id="delete_pot1">删除节点</option>
                 <option value="set" id="set1">设置操作</option>
                 <option value="login" id="login1">登陆</option>
                 <option value="signup" id="signup1">注册</option>

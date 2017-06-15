@@ -21,7 +21,7 @@ public class fdataDaoAndroid {
         ResultSet rs = null;
         Map wai = new HashMap();
         JSONArray array = new JSONArray();
-        int pot_ids[] = new int[50];//同一用户花盆最大不超过50个
+        int pot_ids[] = new int[50];//同一用户节点最大不超过50个
         String sqlFindPots = "SELECT pot_id FROM user_pot WHERE user_id=?;";
         int leng = 0;
         String sqlFindPotName = "SELECT flower_name FROM pot WHERE pot_id=?;";
@@ -120,21 +120,21 @@ public class fdataDaoAndroid {
                 String msg = "您的植物近期生长状况不错,再接再厉哦.";
                 int warn = -1;
                 if ((warn = isOutMaxWei(humidity, 90)) != -1) {
-                    msg = "您的植物在" + days.get(warn) + "日环境湿度过高对植物生长不利,请进行将花盆移至合适处！";
+                    msg = "您的植物在" + days.get(warn) + "日环境湿度过高对植物生长不利,请进行将节点移至合适处！";
                 } else if ((warn = isUpMinWei(humidity, 10)) != -1) {
-                    msg = "您的植物在" + days.get(warn) + "日环境湿度过低对植物生长不利,请进行将花盆移至合适处！";
+                    msg = "您的植物在" + days.get(warn) + "日环境湿度过低对植物生长不利,请进行将节点移至合适处！";
                 } else if ((warn = isOutMaxWei(inhumidity, 95)) != -1) {
-                    msg = "您的植物在" + days.get(warn) + "日土壤湿度过高对植物生长不利,请进行将花盆移至合适处！";
+                    msg = "您的植物在" + days.get(warn) + "日土壤湿度过高对植物生长不利,请进行将节点移至合适处！";
                 } else if ((warn = isUpMinWei(inhumidity, 10)) != -1) {
-                    msg = "您的植物在" + days.get(warn) + "日土壤湿度过低对植物生长不利,请进行将花盆移至合适处！";
+                    msg = "您的植物在" + days.get(warn) + "日土壤湿度过低对植物生长不利,请进行将节点移至合适处！";
                 } else if ((warn = isOutMaxWei(sunshine, 70)) != -1) {
-                    msg = "您的植物在" + days.get(warn) + "日光照过强对植物生长不利,请进行将花盆移至合适处！";//----------------光照数据待确认
+                    msg = "您的植物在" + days.get(warn) + "日光照过强对植物生长不利,请进行将节点移至合适处！";//----------------光照数据待确认
                 } else if ((warn = isUpMinWei(sunshine, 10)) != -1) {
-                    msg = "您的植物在" + days.get(warn) + "日光照过低对植物生长不利,请进行将花盆移至合适处！";
+                    msg = "您的植物在" + days.get(warn) + "日光照过低对植物生长不利,请进行将节点移至合适处！";
                 } else if ((warn = isOutMaxWei(temperature, 30)) != -1) {
-                    msg = "您的植物在" + days.get(warn) + "日温度过高对植物生长不利,请进行将花盆移至合适处！";
+                    msg = "您的植物在" + days.get(warn) + "日温度过高对植物生长不利,请进行将节点移至合适处！";
                 } else if ((warn = isUpMinWei(temperature, 10)) != -1) {
-                    msg = "您的植物在" + days.get(warn) + "日温度过低对植物生长不利,请进行将花盆移至合适处！";
+                    msg = "您的植物在" + days.get(warn) + "日温度过低对植物生长不利,请进行将节点移至合适处！";
                 }
                 params.put("msg", msg);
                 params.put("month", month);

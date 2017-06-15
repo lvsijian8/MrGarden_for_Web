@@ -125,7 +125,7 @@
                     <span class="rb"></span>
                     <span class="rrb"></span>
                 </div>
-                <div class="text1">花盆正视图</div>
+                <div class="text1">系统正视图</div>
                 <br>
             </div>
         </div>
@@ -142,7 +142,7 @@
                     <span class="rb"></span>
                     <span class="rrb"></span>
                 </div>
-                <div class="text1">花盆侧视图</div>
+                <div class="text1">系统侧视图</div>
                 <br>
             </div>
         </div>
@@ -159,7 +159,7 @@
                     <span class="rb"></span>
                     <span class="rrb"></span>
                 </div>
-                <div class="text1">花盆俯视图</div>
+                <div class="text1">系统俯视图</div>
                 <br>
             </div>
         </div>

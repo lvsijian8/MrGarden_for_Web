@@ -74,7 +74,7 @@ public class potDataDaoWeb {
             DBConnection.closeDB(con, prepstmt, rs);
         }
         params.put("user_id", user_id);
-        params.put("checked", checked);
+        params.put("checked", pot_id);
         params.put("pot_ids", pot_ids);
         array.add(params);
         return array;

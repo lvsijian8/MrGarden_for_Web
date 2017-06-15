@@ -219,7 +219,7 @@
                         <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab"
                                                    data-toggle="tab">施肥设置</a></li>
                         <li role="presentation"><a href="#Section3" aria-controls="profile" role="tab"
-                                                   data-toggle="tab">删除花盆</a></li>
+                                                   data-toggle="tab">删除节点</a></li>
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content tabs">
@@ -295,7 +295,7 @@
                         <div role="tabpanel" class="tab-pane fade" id="Section3">
                             <form id="testform2" action="deletepot?pot_id=<%=request.getParameter("pot_id")%>"
                                   method="post">
-                                <h3>点击删除按钮删除花盆</h3>
+                                <h3>点击删除按钮删除节点</h3>
                                 <div style="padding: 10px 0">
                                     <input value="删&nbsp;&nbsp;除" class="delectPot" type="submit">
                                 </div>

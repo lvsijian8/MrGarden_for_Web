@@ -27,7 +27,7 @@
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
     <link rel="bookmark" href="/images/favicon.ico" type="image/x-icon"/>
-    <title>添加花盆</title>
+    <title>添加节点</title>
     <meta name="format-detection" content="telephone=no"/>
     <link rel="icon" href="images/favicon.ico">
     <link rel="shortcut icon" href="images/favicon.ico"/>
@@ -145,7 +145,7 @@
             <div class="segment">
                 <h3 class="ui dividing header">
                     <div class="content" style="padding: 20px 0">
-                        <img src="images/Plus_Math.png" width="30px" height="auto">添加花盆
+                        <img src="images/Plus_Math.png" width="30px" height="auto">添加节点
                         <div class="sub header">将您的设备连接到云端</div>
                     </div>
                 </h3>
@@ -203,9 +203,9 @@
                 </div>
                 <div class="two fields">
                     <div class="field">
-                        <h5 style="color: #555555;">花盆名</h5>
+                        <h5 style="color: #555555;">节点名</h5>
                         <div class="ui small left labeled icon input">
-                            <input type="text" placeholder="给您的花盆起个名,您容易记住就行，10个字符内……" id="device_title"
+                            <input type="text" placeholder="给您的节点起个名,您容易记住就行，10个字符内……" id="device_title"
                                    name="flowername" maxlength='10' required/>
                         </div>
                     </div>
