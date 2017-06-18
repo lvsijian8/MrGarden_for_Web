@@ -539,7 +539,6 @@
                             out.print(((List<Integer>)potsEndData.get(i).get("temperature")).get(j));
                         if (j<((List<Integer>)potsEndData.get(i).get("temperature")).size()-1)
                             out.print(",");
-
                     }
                     out.print("];\n" +
 "                        return list;\n" +
