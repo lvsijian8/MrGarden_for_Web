@@ -15,15 +15,12 @@ import java.util.*;
  * Created by lvsijian8 on 2017/4/7.
  */
 public class fdataDaoAndroid {
-    public Map getfdata(int user_id) {
+    public Map getfdata(int user_id,int pot_id) {
         Connection con = null;
         PreparedStatement prepstmt = null;
         ResultSet rs = null;
         Map wai = new HashMap();
         JSONArray array = new JSONArray();
-        int pot_ids[] = new int[50];//同一用户节点最大不超过50个
-        String sqlFindPots = "SELECT pot_id FROM user_pot WHERE user_id=?;";
-        int leng = 0;
         String sqlFindPotName = "SELECT flower_name FROM pot WHERE pot_id=?;";
         DateFormat dateFormatyM = new SimpleDateFormat("yyyy-MM");
         DateFormat dateFormatd = new SimpleDateFormat("dd");//获取当前天
@@ -33,27 +30,18 @@ public class fdataDaoAndroid {
         ArrayList<Integer> sunshine = new ArrayList<Integer>();//光照
         ArrayList<Integer> temperature = new ArrayList<Integer>();//温度
         ArrayList<Integer> days = new ArrayList<Integer>();//日期
-        Boolean nullMark = false;
+        Boolean nullMark = true;
         try {
             con = DBConnection.getDBConnection();
-            prepstmt = con.prepareStatement(sqlFindPots);
-            prepstmt.setInt(1, user_id);
-            rs = prepstmt.executeQuery();
-            for (int i = 0; rs.next(); i++) {
-                pot_ids[i] = rs.getInt("pot_id");
-                leng++;
-                nullMark = true;
-            }
-            for (int i = 0; i < leng; i++) {
                 Map params = new HashMap();
                 flower_name = "";
                 prepstmt = con.prepareStatement(sqlFindPotName);
-                prepstmt.setInt(1, pot_ids[i]);
+                prepstmt.setInt(1, pot_id);
                 rs = prepstmt.executeQuery();
                 while (rs.next()) {
                     flower_name = rs.getString("flower_name");
                 }
-                String sqlFdata = "SELECT time,out_temperature,out_humidity,in_humidity,light FROM pot_" + pot_ids[i] + " ORDER BY time DESC limit 0,192";
+                String sqlFdata = "SELECT time,out_temperature,out_humidity,in_humidity,light FROM pot_" +pot_id + " ORDER BY time DESC limit 0,192";
                 prepstmt = con.prepareStatement(sqlFdata);
                 rs = prepstmt.executeQuery();
                 int outT[] = new int[30];
@@ -138,11 +126,10 @@ public class fdataDaoAndroid {
                 }
                 params.put("msg", msg);
                 params.put("month", month);
-                params.put("id", pot_ids[i]);
+                params.put("id", pot_id);
                 params.put("name", flower_name);
                 params.put("warn", warn);
                 array.add(params);
-            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

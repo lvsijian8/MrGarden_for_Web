@@ -19,19 +19,30 @@ public class getManageAllDaoAndroid {
         boolean nullMark = false;
         Map wai = new HashMap();
         JSONArray array = new JSONArray();
+        ArrayList<Integer> group_ids = new ArrayList<Integer>();
         ArrayList<Integer> pot_ids = new ArrayList<Integer>();
         Timestamp date = new Timestamp(new java.util.Date().getTime() - 10000);
         Timestamp now = new Timestamp(new java.util.Date().getTime());
-        String sqlFindPots = "SELECT pot_id FROM user_pot WHERE user_id=?;";
+        String sqlFindGroups = "SELECT group_id FROM groups WHERE user_id=?;";
+        String sqlFindPots="SELECT pot_id FROM pot WHERE group_id=?;";
         String sqlFindPotName = "SELECT flower_name,heartBeat_time,now_water,now_bottle FROM pot WHERE pot_id=?;";
         try {
             con = DBConnection.getDBConnection();
-            prepstmt = con.prepareStatement(sqlFindPots);
+            prepstmt = con.prepareStatement(sqlFindGroups);
             prepstmt.setInt(1, user_id);
             rs = prepstmt.executeQuery();
             while (rs.next()) {
-                nullMark = true;
-                pot_ids.add(rs.getInt("pot_id"));
+                group_ids.add(rs.getInt("group_id"));
+            }
+            prepstmt = con.prepareStatement(sqlFindPots);
+            for (int i=0;i<group_ids.size();i++){
+                prepstmt.setInt(1, group_ids.get(i));
+                rs = prepstmt.executeQuery();
+                while (rs.next()) {
+                    nullMark = true;
+                    pot_ids.add(rs.getInt("pot_id"));
+                    System.out.println(rs.getInt("pot_id"));
+                }
             }
             prepstmt = con.prepareStatement(sqlFindPotName);
             for (int i = 0; i < pot_ids.size(); i++) {

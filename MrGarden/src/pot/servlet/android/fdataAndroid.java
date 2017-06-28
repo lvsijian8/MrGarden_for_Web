@@ -18,8 +18,9 @@ import java.util.Map;
 public class fdataAndroid extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String user_id = new String(request.getParameter("user_id").getBytes("ISO8859-1"), "UTF-8");
+        String pot_id = new String(request.getParameter("pot_id").getBytes("ISO8859-1"), "UTF-8");
         fdataDaoAndroid fdataDao = new fdataDaoAndroid();
-        Map wai = fdataDao.getfdata(Integer.parseInt(user_id));
+        Map wai = fdataDao.getfdata(Integer.parseInt(user_id),Integer.parseInt(pot_id));
         if (wai != null) {
             response.setContentType("text/json;charset=UTF-8");
             response.setCharacterEncoding("UTF-8");

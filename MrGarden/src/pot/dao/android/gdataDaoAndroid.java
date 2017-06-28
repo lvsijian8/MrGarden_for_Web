@@ -46,6 +46,7 @@ public class gdataDaoAndroid {
             prepstmt.setInt(1, group_id);
             rs = prepstmt.executeQuery();
             while (rs.next()) {
+                nullMark = true;
                 pot_ids.add(rs.getInt("pot_id"));
                 pot_names.add(rs.getString("flower_name"));
             }
@@ -60,7 +61,6 @@ public class gdataDaoAndroid {
                 int outT[] = new int[30];
                 int time[] = new int[8];
                 for (int j = 0, mark = 0, d = 0; rs.next() && j < 8; d++) {//近8天的数据
-                    nullMark = true;
                     if (mark == 0) {//获取一次年份
                         Date date1 = rs.getDate(1);
                         month = dateFormatyM.format(date1);
