@@ -32,7 +32,7 @@ public class SocketReader implements Runnable {
             String content = null;
             while ((content = in.readLine()) != null) {
                 //System.out.println(2);
-                //System.out.println(content);//-----------
+                //System.out.print(content);//-----------
                 switch (content.split("\\|")[0]) {
                     case "headBeat": {
                         int pot_id = Integer.parseInt(content.split("\\|")[1]);
